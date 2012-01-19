@@ -88,23 +88,18 @@
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Introduzione e definizioni preliminari}
 
-L'entropia di grafo fu introdotta da Janos K\"orner come soluzione del seguente problema: assegnare ad un grafo una quantità che ne rappresenti la complessità ma che ammetta una interpretazione in termini di teoria dell'informazione.
+Il concetto di entropia di grafo fu introdotta da Janos K\"oner come possibile risposta al problema di assegnare ad un grafo un numero che ne rappresenti la complessità, ma che allo stesso tempo ammetta un'interpretazione in termini di teoria dell'informazione.
+Questo si ottiene interpretando il grafo come rappresentante la relazione di distinguibilità dei simboli emessi da una sorgente discreta. Più precisamente, consideriamo $X$ una sorgente la quale ad ogni istante discreto emetta un simbolo $v_i$ dall'alfabeto finito $\{v_1,\dots,v_n\}$, con probabilità $p_1,\dots,p_n$ rispettivamente, ma supponiamo di non essere in grado di distinguere $v_i$ da $v_j$ per ogni $i,j$. Rappresentiamo dunque tale relazione di distinguibilità con un grafo con vertici i simboli $v_1,\dots,v_n$ e con un arco $(v_i,v_j)$ ogni volta che i simboli $v_i$ e $v_j$ sono distinguibili; questa relazione, come è immediato verificare, è simmetrica ma non necessariamente transitiva nè riflessiva. 
+Vogliamo inoltre che, una volta definita, l'entropia sia, per un grafo completo (ovvero nel caso di totale distinguibilità), equivalente alla classica nozione di entropia per una sorgente; mostreremo infatti che essa generalizza l'entropia di Shannon.
 
-Ciò fu ottenuto interpretando un grafo come grafo di distinguibilità dei simboli emessi da una sorgente discreta. Sia \(X\) una sorgente che ad ogni istante discreto emetta un simbolo \(v_i\) nell'alfabeto \(\{v_1\dots v_n\}\) con corrispondente probabilità \(p_i\). Supponiamo però di non essere necessariamente in grado di distinguire due simboli distinti, ed anzi rappresentiamo questa relazione di distinguibilità con un grafo: esso avrà come vertici i simboli \(\{v_1\dots v_n\}\) ed un arco fra \(v_i\) e \(v_j\) soltanto se tali simboli sono distinguibili. Tale relazione è simmetrica, ma non necessariamente transitiva o riflessiva.
+Grazie ad alcune sue proprietà peculiari, ad esempio una particolare forma di subadditività, l'entropia di grafo ha trovato applicazione in campo combinatorico e algoritmico, in particolare per dimostrare particolari disuguaglianze.
+Lo stesso K\"orner l'ha usata per mostrare nuovamente una stima sul numero di funzioni di hash perfetto di un insieme dovuta a Fredman e Kolmos  e successivamente, insieme a Marton, per migliorare tale stima sfruttando le disuguaglianze più precise che si ottengono estendendo il concetto di entropia agli ipergrafi. 
+Sempre K\"orner, in collaborazione con altri, ha analizzato i casi in cui la subbaditività è in realtà un'uguaglianza, deducendone una caratterizzazione dei grafi perfetti in termini di entropia e quindi una nuova dimostrazione della congettura debole che li riguarda.
+Kahn e Kim hanno invece esibito un algoritmo che utilizza l'entropia per determinare additivamente un ordine totale fissato in precedenza ma ignoto, tramite il calcolo della stessa su una particolare successione di grafi associati. Questo approccio ha anche consentito di stimare il numero di estensioni lineari di un dato ordine parziale, la cui determinazione esatta è un problema \#P-completo.
 
-Osserviamo immediatamente che il caso di grafo completo, e quindi di totale distinguibilità dei simboli, corrisponde all'entropia classica di una sorgente. Dimostreremo infatti che l'entropia di grafo generalizza l'entropia di Shannon.
+Per tutto il seguito con $G=(V,E)$ indicheremo un grafo semplice non diretto di insieme di vertici $V$ ed insieme degli archi $E$. Ricordiamo inoltre che un sottoinsieme di vertici di $G$ è un \emph{insieme indipendente} se essi sono due a due non adiacenti e che una \emph{colorazione} di $G$ è una partizione di $V$ in insiemi indipendenti. Definiamo quindi il \emph{numero cromatico} di $G$ il numero minimo $\chi(G)$ di insiemi indipendenti necessari a colorare $G$. Infine, assumiamo che tutti i logaritmi siano in base $2$.
 
-Grazie ad alcune sue proprietà notevoli, in particolare una peculiare forma di subadditività, molti autori hanno impiegato l'entropia di grafo per dimostrare disuguaglianze di interesse combinatorico e algoritmico. 
-
-Ad esempio lo stesso K\"orner ha ridimostrato una stima dovuta a Fredman e Komlos sul numero di funzioni di hash perfetto di un insieme.\footnote{Essenzialmente la stessa dimostrazione, tranne che K\"orner ha esplicitato il ricorso all'entropia di grafo.} K\"orner e Marton hanno poi migliorato tale stima sfruttando disuguaglianze più precise ricavate dall'analogo concetto di entropia di ipergrafo. 
-
-Analizzando invece quando tale subadditività è in realtà una eguaglianza K\"orner et al. hanno dato una caratterizzazione dei grafi perfetti in termini di entropia, fornendo una nuova dimostrazione della congettura debole dei grafi perfetti. 
-
-Kahn e Kim hanno esibito un algoritmo che determina adattivamente un ordine totale fissato ma ignoto. Ad ogni passo l'algoritmo fa ricorso al calcolo dell'entropia di un particolare grafo associato per determinare on-line il successivo confronto. Questo approccio consente anche di stimare il numero di estensioni lineari di un dato ordine parziale, la cui determinazione esatta è un problema nella classe \textsc{\#P-complete}. L'approccio di Kahn e Kim riconduce il calcolo dell'entropia a un problema di ottimizzazione convessa applicando il metodo dell'ellissoide. Cardinal et al. invece hanno esibito algoritmi polinomiali per lo stesso problema che non si avvalgono di tale metodo, ma sfruttano comunque l'entropia di grafo.
-
-Nel seguito \(G = (V,E)\) denoterà un grafo semplice non diretto di insieme dei vertici \(V\) ed insieme degli archi \(E\). Ricordiamo che un insieme indipendente è un sottoinsieme di vertici non adiacenti e che una colorazione di \(G\) è una partizione di \(V\) in insiemi indipendenti. Chiameremo numero cromatico di \(G\) il minimo numero \(\chi(G)\) di insiemi indipendenti al variare delle colorazioni di \(G\). Infine assumeremo che tutti i logaritmi siano in base \(2\).
-
-La rigorosa definizione di entropia di grafo comporta qualche difficoltà tecnica, la cui risoluzione costituisce l'obiettivo centrale di questo lavoro. Nella prossima sezione daremo tre possibili definizioni, mentre nella terza verrà dimostrata la loro equivalenza. Nell'ultima sezione verranno enunciate alcune proprietà di rilievo.
+La rigorosa definizione di entropia di un grafo comporta alcune difficoltà tecniche, la cui risoluzione costituisce l'obiettivo principale di questo lavoro. La prima sezione sarà dedicata a proporre tre possibili definizioni di entropia, la cui equivalenza sarà dimostrata nella sezione successiva. Nell'ultima sezione ne saranno enunciate le proprietà di rilievo.
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Tre definizioni di entropia di grafo}
@@ -520,9 +515,10 @@ Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice 
 	\[H(G_{v\leftarrow F}, P_{v\leftarrow Q})=H(G,P)+P(v)H(F,Q)\]
 \end{lemma}
 
-% \begin{proof}
-%   TODO\qed 
-% \end{proof}
+\begin{proof}
+  TODO\qed 
+\end{proof}
+
 \begin{corollary}
 	Sia \((G,P)\) un grafo probabilistico e siano \(G_{1}\dots G_{n}\) le sue componenti connesse. Poniamo \(P_i(x)=P(x)[P(V(G_i))]^{-1}\) per \(x\in V(G_i)\). Allora abbiamo
 	\[H(G,P)=\sum_{i=1}^n P(V(G_i))H(G_i,P_i)\]
