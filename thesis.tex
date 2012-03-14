@@ -104,7 +104,7 @@ La rigorosa definizione di entropia di un grafo comporta alcune difficoltà tecn
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Tre definizioni di entropia di grafo}
 
-\subsection{Definizione in termini di numero cromatico} \label{codinganalogy} 
+\subsection{Definizione in termini di Numero Cromatico} \label{codinganalogy} 
 \begin{definition}
 	Chiameremo \emph{grafo probabilistico} una coppia \((G,P)\) dove \(G\) è un grafo e \(P\) una distribuzione di probabilità discreta sui vertici, cioè se \(|V|=n\) allora \(P\) è una \(n-\)upla \((p_1 \dots p_n)\) tale che \(p_1 + \dots + p_n = 1\). 
 \end{definition}
@@ -119,8 +119,6 @@ Vogliamo valutare la bontà della migliore codifica possibile dell'informazione 
 Una codifica propria dell'informazione in esse contenute è una mappa dalle stringhe a un insieme finito di simboli tale che a stringhe distinguibili vengano assegnati simboli distinti.
 
 È però tipico dei problemi di codifica trascurare parte delle stringhe possibili, a cui non ci interessa assegnare un significato e quindi un simbolo. Sia quindi \(0<\varepsilon <1\) fissato, ed ammettiamo che la condizione di codifica propria debba essere soddisfatta all'esterno di un insieme di probabilità totale \(\varepsilon\).
-
-\pagebreak
 
 Una definizione ragionevole di bontà della codifica è la quantità
 
@@ -141,9 +139,9 @@ La definizione \eqref{eq:entropyzero} non consente però il calcolo dell'entropi
 
 In altri termini fra due vertici \(\mathbf{v}\) e \(\mathbf{w}\) di \(G^t\) esiste un arco se e soltanto se le corrispondenti sequenze di lunghezza \(t\) sono distinguibili in almeno un elemento.
 
-% \begin{example}
-%   TODO
-% \end{example}
+\begin{example}
+  TODO
+\end{example}
 Osserviamo che la coppia \((G^t, \mathbf{P}^t)\), dove \(\mathbf{P}^t\) è definita da \eqref{eq:probability}, è un grafo probabilistico. Se \(U\subset V^{t}\) possiamo denotare con \(\mathbf{P}^t(U)\) la somma delle probabilità dei vertici in \(U\).
 
 Dovendo codificare propriamente un sottoinsieme \(U\subset V^{t}\) avremo bisogno di almeno tante parole quanti insiemi indipendenti al minimo partizionano \(U\). Ma questo è proprio il numero cromatico del sottografo indotto da \(G^t\) su \(U\), che denoteremo \(\chi(G^t(U))\). Siamo ora pronti per enunciare la prima definizione di entropia di grafo. 
@@ -157,7 +155,7 @@ Dovendo codificare propriamente un sottoinsieme \(U\subset V^{t}\) avremo bisogn
 
 Perché la precedente risulti una buona definizione dovremmo dimostrarne l'indipendenza da \(\varepsilon\). Salteremo questa verifica e dimostreremo direttamente nella prossima sezione l'equivalenza con la seconda definizione, la quale non dipende da \(\varepsilon\). Ne seguirà la buona definizione.
 
-\subsection{Definizione in termini di mutua informazione} 
+\subsection{Definizione in termini di Mutua Informazione} 
 \begin{definition}
 	Sia \(X\) una variabile aleatoria discreta di densità \(P=(p_1\dots p_n)\). Chiameremo \emph{entropia di \(X\)} la somma
 	\[H(X)=\sum_{i=1}^n p_i \log{\frac{1}{p_i}}\]
@@ -179,7 +177,7 @@ Possiamo già enunciare la seconda definizione di entropia di grafo.
 
 Perché la precedente risulti una buona definizione dovremmo dimostrare che tale minimo esiste. Rinviamo alla prossima sezione per una dimostrazione di questo fatto.
 
-\subsection{Definizione in termini di VP(G)} 
+\subsection{Definizione in termini di Politopo dei Vertici} 
 \begin{definition}
 	Sia \(G\) un grafo. Chiameremo \emph{politopo dei vertici di \(G\)} l'involucro convesso dei vettori caratteristici degli insiemi indipendenti di \(G\) e lo denoteremo \(\text{VP}(G)\). 
 \end{definition}
@@ -208,7 +206,7 @@ Perché la precedente risulti una buona definizione dovremmo dimostrare che tale
 	\]
 	ed il loro involucro convesso è \(\text{VP}(G)\).
 	
-	% TODO: Disegno 
+  TODO: Disegno 
 \end{example}
 
 Non abbiamo bisogno di altro per enunciare la terza definizione di entropia di grafo. 
@@ -226,7 +224,7 @@ Non abbiamo bisogno di altro per enunciare la terza definizione di entropia di g
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Equivalenza delle tre definizioni}
 
-\subsection{Equivalenza delle definizioni \eqref{eq:entropyone} e \eqref{eq:entropytwo}}
+\subsection{Numero Cromatico e Mutua Informazione}
 
 Sia \(G\) un grafo. Chiameremo \emph{nucleo} un insieme indipendente e massimale per l'inclusione. Avremo bisogno di due lemmi di teoria dei grafi ed una seconda nozione di potenza di grafo. 
 \begin{lemma}
@@ -250,9 +248,9 @@ Sia \(G\) un grafo. Chiameremo \emph{nucleo} un insieme indipendente e massimale
 
 In altri termini fra due vertici \(\mathbf{v}\) e \(\mathbf{w}\) di \(G_t\) esiste un arco se le corrispondenti sequenze di lunghezza \(t\) sono distinguibili in almeno un elemento, nei restanti sono distinguibili oppure coincidono.
 
-% \begin{example}
-%   TODO
-% \end{example}
+\begin{example}
+  TODO
+\end{example}
 Osserviamo che la coppia \((G_t, \mathbf{P}^t)\), dove \(\mathbf{P}^t\) è definita da \eqref{eq:probability}, è un grafo probabilistico. Sia \(0<\varepsilon <1\), la quantità
 \[\chi_{n}(t,\varepsilon) = \min_{\substack{U\subset V^{t}\\\mathbf{P}^t(U)\ge 1-\varepsilon}} \chi(G_{t}(U))\]
 conta il numero minimo di parole necessarie in una codifica propria di quasi tutte le sequenze di lunghezza \(t\), in analogia con quanto discusso nel paragrafo \ref{codinganalogy}.
@@ -321,7 +319,7 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 	\end{equation}
 	dove abbiamo indicato con \(\mathcal{N}^t\) l'insieme dei nuclei di \(G^t\).
 	
-	Si tratta in effetti del prodotto cartesiano di \(t\) copie di \(\mathcal{N}\). Supponiamo infatti che \(\mathbf{N}\in \mathcal{N}^t\), e che \(p_i\) per \(i\in\{1\dots t\}\) siano le proiezioni di una sequenza di lunghezza \(t\) sull'\(i-\)esimo elemento. Supponiamo per assurdo che \(p_i(\mathcal{N}^t)\) non sia un nucleo. Allora deve esistere \(v\) non connesso ad alcun vertice di \(p_i(\mathcal{N}^t)\). Definiamo \(\mathbf{w}\) come un qualunque elemento di \(\mathbf{N}\) in cui abbiamo rimpiazzato l'\(i-\)esimo elemento con \(v\). Questo elemento non è adiacente a nessun elemento del nucleo, contro la massimalità di \(\mathbf{N}\).
+	Si tratta in effetti del prodotto cartesiano di \(t\) copie di \(\mathcal{N}\). Supponiamo infatti che \(\mathbf{N}\in \mathcal{N}^t\), e che \(p_i\) per \(i\in\{1\dots t\}\) siano le proiezioni di una sequenza di lunghezza \(t\) sull'\(i-\)esimo elemento. Supponiamo per assurdo che \(p_i(\mathcal{N}^t)\) non sia un nucleo. Allora deve esistere \(v\) non connesso ad alcun vertice di \(p_i(\mathcal{N}^t)\). Definiamo \(\mathbf{w}\) come un qualunque elemento di \(\mathbf{N}\) in cui abbiamo rimpiazzato l'\(i-\)esimo elemento con \(v\). Questo elemento non è adiacente ad alcun elemento del nucleo, contro la massimalità di \(\mathbf{N}\).
 	
 	Stimando con il massimo la probabilità di ogni \(\mathbf{v}\in \mathbf{N}\cap T^{t}(P)\) abbiamo la diseguaglianza 
 	\begin{equation}
@@ -435,7 +433,7 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 	\qed 
 \end{proof}
 
-\subsection{Equivalenza delle definizioni \eqref{eq:entropytwo} e \eqref{eq:entropythree}} 
+\subsection{Mutua Informazione e Politopo dei Vertici} 
 \begin{theorem}
 	Sia \(G\) un grafo e siano \(S(G)\) i suoi insiemi indipendenti. Sia \(P\) una densità discreta sui vertici di \(G\). Avremo allora:
 	\[\min_{\substack{X\in Y\in S(G) \\
