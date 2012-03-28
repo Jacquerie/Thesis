@@ -32,6 +32,10 @@
 % This is now the recommended way for checking for PDFLaTeX:
 \usepackage{ifpdf}
 
+% Packages to include algorithms in the document
+\usepackage{algpseudocode} 
+\usepackage{algorithm}
+
 %\newif\ifpdf
 %\ifx\pdfoutput\undefined
 %\pdffalse % we are not running PDFLaTeX
@@ -76,7 +80,7 @@
 \ifpdf 
 \usepackage[pdftex]{graphicx} \else 
 \usepackage{graphicx} \fi 
-\title{Ordinare per confronti con informazione parziale} 
+\title{Tre algoritmi per ordinare con informazione parziale} 
 \author{Jacopo Notarstefano}
 
 \begin{document}
@@ -87,6 +91,36 @@
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Introduzione e definizioni preliminari}
+
+Sebbene originariamente introdotta come soluzione del già citato problema di teoria dell'informazione, l'entropia di grafo ha trovato applicazione nella dimostrazione di fatti di interesse combinatorico e algoritmico. In particolare un articolo di Kahn e Kim ha evidenziato il collegamento fra l'entropia di grafo e il problema dell'ordinamento con informazione parziale. Tale problema chiede di determinare un ordine lineare \(\le\) fissato ma ignoto su di un insieme \(\left\{v_1,\dots,v_n\right\}\) per mezzo di interrogazioni del tipo `\emph{vale} \(v_i\le v_j\) \emph{?}`, supposto noto un sottoinsieme di queste relazioni. A questo fondamentale lavoro sono seguiti altri che hanno applicato simili metodi a problemi affini
+
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+\section{Alcuni teoremi di interesse}
+
+Dato un grafo \(G\) possiamo trovarne una partizione in insiemi indipendenti tramite l'algoritmo goloso che prova ad espandere 
+\begin{definition}
+	Sia \(G\) un grafo perfetto e sia \(\left\{S_1,\dots,S_k\right\}\) una sua partizione ottenuta con il precedente algoritmo goloso. Chiameremo \emph{punto goloso} il punto \(x\) definito da
+	\[x=\sum_{i=1}^k\frac{|S_i|}{n}\chi^{S_i}\]
+\end{definition}
+\begin{theorem}
+	Sia \(G\) un grafo perfetto su \(n\) vertici e sia \(x\) un suo punto goloso. Allora, comunque fissato \(\varepsilon>0\), vale
+	\[H(x)\le(1+\varepsilon)H(G)+(1+\varepsilon)\log\left(1+\frac{1}{\varepsilon}\right)\]
+\end{theorem}
+
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+\section{Insertion sort}
+\begin{lemma}
+	Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\) e sia \(C\) una catena di lunghezza massima in \(P\). Vale allora \(\left|C\right|\ge n\cdot2^{-H(\overline{P})}\). 
+\end{lemma}
+\begin{theorem}
+	L'algoritmo \(1\) compie 
+\end{theorem}
+
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+\section{Merge sort naive}
+
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+\section{Merge sort}
 
 \bibliographystyle{plain} 
 \bibliography{} \end{document} 
