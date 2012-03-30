@@ -91,12 +91,7 @@
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Introduzione e definizioni preliminari}
-
-<<<<<<< HEAD
-Sebbene originariamente introdotta come soluzione del già citato problema di teoria dell'informazione, l'entropia di grafo ha trovato applicazione nella dimostrazione di fatti di interesse combinatorico e algoritmico. In particolare un articolo di Kahn e Kim ha evidenziato il collegamento fra l'entropia di grafo e il problema dell'ordinamento con informazione parziale. Tale problema chiede di determinare un ordine lineare \(\le\) fissato ma ignoto su di un insieme \(\left\{v_1,\dots,v_n\right\}\) per mezzo di interrogazioni del tipo `\emph{vale} \(v_i\le v_j\) \emph{?}`, supposto noto un sottoinsieme di queste relazioni. A questo fondamentale lavoro sono seguiti altri che hanno applicato simili metodi a problemi affini
-=======
 Sebbene originariamente introdotta come soluzione del già citato problema di teoria dell'informazione, l'entropia di grafo ha trovato applicazione nella dimostrazione di fatti di interesse combinatorico e algoritmico. In particolare un articolo di Kahn e Kim ha evidenziato il collegamento fra l'entropia di grafo e il problema dell'ordinamento con informazione parziale. Tale problema consiste nel determinare un ordine lineare \(\le\) fissato ma ignoto su di un insieme \(\left\{v_1,\dots,v_n\right\}\) per mezzo di query del tipo `\emph{vale} \(v_i\le v_j\) \emph{?}`, supposto noto un sottoinsieme di queste relazioni.
->>>>>>> e86994981aabfc1da26855fa04d657aa5e4aef35
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Alcuni teoremi di interesse}
@@ -112,11 +107,7 @@ Dato un grafo \(G\) possiamo trovarne una partizione in insiemi indipendenti tra
 \end{theorem}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-<<<<<<< HEAD
-\section{Insertion sort}
-=======
 \section{Insertion sort} 
->>>>>>> e86994981aabfc1da26855fa04d657aa5e4aef35
 \begin{lemma}
 	Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\) e sia \(C\) una catena di lunghezza massima in \(P\). Vale allora \(\left|C\right|\ge n\cdot2^{-H(\overline{P})}\). 
 \end{lemma}
@@ -128,9 +119,6 @@ Dato un grafo \(G\) possiamo trovarne una partizione in insiemi indipendenti tra
 \section{Merge sort naive}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-<<<<<<< HEAD
-\section{Merge sort}
-=======
 \section{Merge sort} 
 \begin{definition}
 	Sia \(K\) una componente connessa di \(G(x)\). Se \(K\) è rossa chiamo \(A\cap K\) \emph{catena maggiore} e \(B\cap K\) \emph{catena minore}. Se \(K\) è blu il contrario. 
@@ -139,14 +127,13 @@ Dato un grafo \(G\) possiamo trovarne una partizione in insiemi indipendenti tra
 	Sia \(K\) una componente connessa di \(G(x)\). Dico che \(K\) è \emph{buona} se ogni arco di \(G\) che possiede un estremo nella catena minore di \(K\) ha l'altro estremo nella catena maggiore oppure in una componente connessa di colore opposto. 
 \end{definition}
 \begin{lemma}
-	Sia \(x\in \{STAB}(G)\) localmente ottimo. Se \(G(x)\) possiede almeno una componente rossa non banale allora una di esse è buona. 
+	Sia \(x\in \text{STAB}(G)\) localmente ottimo. Se \(G(x)\) possiede almeno una componente rossa non banale allora una di esse è buona. 
 \end{lemma}
 \begin{proof}
 	Sia \(K\) una componente connessa rossa non banale tale che \(\frac{|A\cap K|}{|K|}\) sia minimo. Vogliamo dimostrare che \(K\) è buona. Sia \(v\in B\cap K\) e sia \(w\) adiacente a \(v\) in \(G\) ma non in \(G(x)\). Per definizione l'arco di estremi \(v\) e \(w\) non è stretto, quindi \(x_v+x_w<1\). In particolare \(x_w<1\), quindi \(w\) appartiene ad una qualche componente connessa \(L\) non banale. Se per assurdo \(L\) fosse rossa per ipotesi \(\frac{|A\cap L|}{|L|}\ge\frac{|A\cap K|}{|K|}\), dunque per ottimalità di \(x\) avremo
 	\[x_v+x_w=\frac{|B\cap K|}{|K|}+\frac{|A\cap L|}{|L|}\ge\frac{|B\cap K|}{|K|}+\frac{|A\cap K|}{|K|}\ge 1\]
 	da cui dedurremmo che l'arco di estremi \(v\) e \(w\) è stretto, una contraddizione. Segue quindi che \(L\) è blu oppure non esiste \(w\) adiacente a \(v\) in \(G\) ma non in \(G(x)\), cioè la tesi. 
 \end{proof}
->>>>>>> e86994981aabfc1da26855fa04d657aa5e4aef35
 
 \bibliographystyle{plain} 
 \bibliography{} \end{document} 
