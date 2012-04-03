@@ -90,8 +90,7 @@
 \maketitle
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Introduzione e definizioni preliminari}
-Sebbene originariamente introdotta come soluzione del già citato problema di teoria dell'informazione, l'entropia di grafo ha trovato applicazione nella dimostrazione di fatti di interesse combinatorico e algoritmico. In particolare un articolo di Kahn e Kim ha evidenziato il collegamento fra l'entropia di grafo e il problema dell'ordinamento con informazione parziale. Tale problema consiste nel determinare un ordine lineare \(\le\) fissato ma ignoto su di un insieme \(\left\{v_1,\dots,v_n\right\}\) per mezzo di query del tipo `\emph{vale} \(v_i\le v_j\) \emph{?}`, supposto noto un sottoinsieme di queste relazioni.
+\section{Introduzione e definizioni preliminari} Sebbene originariamente introdotta come soluzione del già citato problema di teoria dell'informazione, l'entropia di grafo ha trovato applicazione nella dimostrazione di fatti di interesse combinatorico e algoritmico. In particolare un articolo di Kahn e Kim ha evidenziato il collegamento fra l'entropia di grafo e il problema dell'ordinamento con informazione parziale. Tale problema consiste nel determinare un ordine lineare \(\le\) fissato ma ignoto su di un insieme \(\left\{v_1,\dots,v_n\right\}\) per mezzo di query del tipo `\emph{vale} \(v_i\le v_j\) \emph{?}`, supposto noto un sottoinsieme di queste relazioni.
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Alcuni teoremi di interesse}
@@ -105,6 +104,10 @@ Dato un grafo \(G\) possiamo trovarne una partizione in insiemi indipendenti tra
 	Sia \(G\) un grafo perfetto su \(n\) vertici e sia \(x\) un suo punto goloso. Allora, comunque fissato \(\varepsilon>0\), vale
 	\[H(x)\le(1+\varepsilon)H(G)+(1+\varepsilon)\log\left(1+\frac{1}{\varepsilon}\right)\]
 \end{theorem}
+\begin{proof}
+	Sia \(S_1,\dots,S_k\) la sequenza di insiemi indipendenti prodotta dall'algoritmo goloso. Di conseguenza \(S_1\) è un insieme indipendente e massimale in \(G\), mentre \(S_2\) è indipendente e massimale in \(G-S_1\) e così via. Sia \(\delta>0\) fissato. Per ogni vertice \(v\in V\) poniamo \(m(v)\) l'unico indice in \(\left\{1,\dots,k\right\}\) tale che \(v\in S_m(v)\). Definiamo allora un punto \(z\) di componenti date da
+	\[z_v=\frac{\delta}{n}\left(\frac{1}{\tilde{x_v}}\right)^{1-\delta}=\frac{\delta}{n}\left(\frac{n}{|S_m(v)|}\right)^{1-\delta}=\frac{\delta}{n^{\delta}}\left(\frac{1}{|S_m(v)|}\right)^{1-\delta}\]
+\end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Insertion sort} 
