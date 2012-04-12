@@ -1,3 +1,4 @@
+\chapter{Tre definizioni equivalenti di entropia di grafo}
 \section{Tre definizioni di entropia di grafo}
 \subsection{Definizione in termini di Numero Cromatico} \label{codinganalogy} 
 \begin{definition}
@@ -74,7 +75,7 @@ Perché la precedente risulti una buona definizione dovremmo dimostrare che tale
 
 \subsection{Definizione in termini di Politopo dei Vertici} 
 \begin{definition}
-	Sia \(G\) un grafo. Chiameremo \emph{politopo dei vertici di \(G\)} l'involucro convesso dei vettori caratteristici degli insiemi indipendenti di \(G\) e lo denoteremo \(\text{VP}(G)\). 
+	Sia \(G\) un grafo. Chiameremo \emph{politopo dei vertici di \(G\)} l'involucro convesso dei vettori caratteristici degli insiemi indipendenti di \(G\) e lo denoteremo \(\text{STAB}(G)\). 
 \end{definition}
 \begin{example}
 	Sia \(G\) il grafo semplice non diretto su \(3\) vertici con \(2\) archi. A meno di isomorfismo siano \(V=\{1,2,3\}\) ed \(E=\{(1,2),(1,3)\}\). Gli insiemi indipendenti di \(G\) sono allora \(\{\varnothing , \{1\}, \{2\}, \{3\}, \{2,3\}\}\). I loro vettori caratteristici sono quindi
@@ -99,7 +100,7 @@ Perché la precedente risulti una buona definizione dovremmo dimostrare che tale
 		0\\1\\1 
 	\end{pmatrix}
 	\]
-	ed il loro involucro convesso è \(\text{VP}(G)\).
+	ed il loro involucro convesso è \(\text{STAB}(G)\).
 	
   TODO: Disegno 
 \end{example}
@@ -108,12 +109,12 @@ Non abbiamo bisogno di altro per enunciare la terza definizione di entropia di g
 \begin{definition}
 	Sia \((G,P)\) un grafo probabilistico. Chiameremo \emph{entropia di grafo} il seguente minimo: 
 	\begin{equation}
-		\label{eq:entropythree} H(G,P)=\min_{\substack{\mathbf{a}\in \text{VP}(G) \\
+		\label{eq:entropythree} H(G,P)=\min_{\substack{\mathbf{a}\in \text{STAB}(G) \\
 		\mathbf{a} > 0}} \sum_{i=1}^n p_i \log{\frac{1}{a_i}} 
 	\end{equation}
 \end{definition}
 \begin{remark}
-	La funzione obiettivo da minimizzare in \eqref{eq:entropythree} è convessa, tende ad \(\infty\) quando una delle coordinate di \(\mathbf{a}\) tende a \(0\), tende monotonamente a \(-\infty\) lungo le rette per l'origine. Ne segue che tale minimo esiste finito sul bordo di \(\text{VP}(G)\) e che \(\mathbf{a}\) che realizza il minimo ha tutte le coordinate maggiori di \(0\). 
+	La funzione obiettivo da minimizzare in \eqref{eq:entropythree} è convessa, tende ad \(\infty\) quando una delle coordinate di \(\mathbf{a}\) tende a \(0\), tende monotonamente a \(-\infty\) lungo le rette per l'origine. Ne segue che tale minimo esiste finito sul bordo di \(\text{STAB}(G)\) e che \(\mathbf{a}\) che realizza il minimo ha tutte le coordinate maggiori di \(0\). 
 \end{remark}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
@@ -197,7 +198,7 @@ Definendo le variabili aleatorie \(X\sim P\) e \(Y\sim R\) rispettivamente a val
 Sia \(\mathcal{A}\) l'insieme di tutte le distribuzioni ammissibili. Osserviamo che si tratta di un insieme chiuso e limitato nello spazio vettoriale delle funzioni di dominio \(V\times \mathcal{N}\). La limitatezza segue dall'essere un insieme di distribuzioni di probabilità, quindi a somma \(1\). La chiusura invece è conseguenza dell'essere preimmagine di un insieme finito di punti tramite le equazioni \eqref{eq:preimage} al variare di \(v\in V\). Inoltre tale spazio vettoriale è di dimensione finita essendo sia \(V\) sia \(\mathcal{N}\) finiti, per cui possiamo applicare il teorema di Heine-Borel e concludere la compattezza di \(\mathcal{A}\). Ma allora la funzione continua \eqref{eq:continuous} possiede minimo per il teorema di Weierstrass, da cui segue la buona definizione della seconda definizione di entropia di grafo. Nel seguito denoteremo con \(H(G,P)\) tale minimo.
 
 Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle prime due definizioni di entropia di grafo. Ne divideremo la dimostrazione nei successivi due teoremi. 
-\begin{theorem}
+\begin{theorem}[K\"orner]
 	Sia \((G,P)\) un grafo probabilistico e sia \(\delta>0\). Per ogni \(0<\varepsilon<1\) e per \(t\) abbastanza grande abbiamo
 	\[\chi(t,\varepsilon)\ge 2^{t(H(G,P)-\delta)},\]
 	dove \(\chi(t, \varepsilon)\) è il minimo numero di parole necessarie in una codifica propria rispetto al prodotto conormale, tranne per un insieme di probabilità totale \(\varepsilon\). 
@@ -274,7 +275,7 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 	\[ \liminf_{t\to \infty} \frac{1}{t}\log\chi(t,\varepsilon)\ge H(G,P). \]
 	\qed 
 \end{proof}
-\begin{theorem}
+\begin{theorem}[K\"orner]
 	Sia \((G,P)\) un grafo probabilistico e sia \(\delta>0\). Per ogni \(0<\varepsilon<1\) e per \(t\) abbastanza grande esiste \(U_{t}\), sottografo di \(G^{t}\) tale che \(\mathbf{P}^t(U_{t})\ge 1-\varepsilon\) ed inoltre
 	\[\chi(U_{t})\le 2^{t(H(G,P)+\delta)}\]
 \end{theorem}
@@ -329,10 +330,10 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 \end{proof}
 
 \subsection{Mutua Informazione e Politopo dei Vertici} 
-\begin{theorem}
+\begin{theorem}[Simonyi]
 	Sia \(G\) un grafo e siano \(S(G)\) i suoi insiemi indipendenti. Sia \(P\) una densità discreta sui vertici di \(G\). Avremo allora:
 	\[\min_{\substack{X\in Y\in S(G) \\
-	X\sim P}} I(X;Y)\ = \min_{\substack{\mathbf{a}\in \text{VP}(G) \\
+	X\sim P}} I(X;Y)\ = \min_{\substack{\mathbf{a}\in \text{\text{STAB}}(G) \\
 	\mathbf{a}>0}} \sum_{i=1}^n p_i\log{\frac{1}{a_i}}\]
 \end{theorem}
 \begin{proof}
@@ -340,13 +341,13 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 	\[I(X;Y)=-\sum_{i=1}^n p_i\sum_{i\in J\in S(G)} R(J\mid i)\log{\frac{Q(J)}{R(J\mid i)}}\ge -\sum_{i=1}^n p_i \log{\sum_{i\in J\in S(G)}} Q(J)\]
 	utilizzando nel primo passaggio la definizione di mutua informazione, nel secondo la concavità del logaritmo. Poniamo
 	\[a_i=\sum_{i\in J\in S(G)} Q(J)\]
-	ed osserviamo che \(\mathbf{a}\) è contenuto in \(\text{VP}(G)\) perché combinazione convessa di vettori delle caratteristiche degli insiemi indipendenti. Ne segue
+	ed osserviamo che \(\mathbf{a}\) è contenuto in \(\text{STAB}(G)\) perché combinazione convessa di vettori delle caratteristiche degli insiemi indipendenti. Ne segue
 	\[\min_{\substack{X\in Y\in S(G) \\
-	X\sim P}} I(X;Y)\ \ge \min_{\substack{\mathbf{a}\in \text{VP}(G) \\
+	X\sim P}} I(X;Y)\ \ge \min_{\substack{\mathbf{a}\in \text{STAB}(G) \\
 	\mathbf{a}>0}} \sum_{i=1}^n p_i\log{\frac{1}{a_i}}.\]
 	Sia allora \(\mathbf{a}\) che realizzi il minimo nel membro di destra. Similmente a prima possiamo porre
 	\[a_i=\sum_{i\in J\in S(G)} Q'(J)\]
-	poiché \(\mathbf{a}\in \text{VP}(G)\). Possiamo pensare i \(Q'(J)\) sia come pesi di una combinazione convessa sia come una distribuzione di probabilità su \(S(G)\). Definiamo
+	poiché \(\mathbf{a}\in \text{STAB}(G)\). Possiamo pensare i \(Q'(J)\) sia come pesi di una combinazione convessa sia come una distribuzione di probabilità su \(S(G)\). Definiamo
 	\[R'(J\mid i)= 
 	\begin{cases}
 		\frac{Q'(J)}{a_i} & \text{se}\ i\in J\\
@@ -371,4 +372,3 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 	\end{eqnarray}
 	\qed 
 \end{proof}
-\end{document} 
