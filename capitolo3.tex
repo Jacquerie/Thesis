@@ -90,33 +90,21 @@
 \maketitle
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Alcuni teoremi di interesse}
+\section{Ordinamento con informazione parziale}
 
-Dato un grafo \(G\) possiamo trovarne una partizione in insiemi indipendenti tramite l'algoritmo goloso che prova ad espandere 
-\begin{definition}
-	Sia \(G\) un grafo perfetto e sia \(\left\{S_1,\dots,S_k\right\}\) una sua partizione ottenuta con il precedente algoritmo goloso. Chiameremo \emph{punto goloso} il punto \(x\) definito da
-	\[x=\sum_{i=1}^k\frac{|S_i|}{n}\chi^{S_i}\]
-\end{definition}
-\begin{theorem}
-	Sia \(G\) un grafo perfetto su \(n\) vertici e sia \(x\) un suo punto goloso. Allora, comunque fissato \(\varepsilon>0\), vale
-	\[H(x)\le(1+\varepsilon)H(G)+(1+\varepsilon)\log\left(1+\frac{1}{\varepsilon}\right)\]
-\end{theorem}
-\begin{proof}
-	Sia \(S_1,\dots,S_k\) la sequenza di insiemi indipendenti prodotta dall'algoritmo goloso. Di conseguenza \(S_1\) è un insieme indipendente e massimale in \(G\), mentre \(S_2\) è indipendente e massimale in \(G-S_1\) e così via. Sia \(\delta>0\) fissato. Per ogni vertice \(v\in V\) poniamo \(m(v)\) l'unico indice in \(\left\{1,\dots,k\right\}\) tale che \(v\in S_m(v)\). Definiamo allora un punto \(z\) di componenti date da
-	\[z_v=\frac{\delta}{n}\left(\frac{1}{\tilde{x_v}}\right)^{1-\delta}=\frac{\delta}{n}\left(\frac{n}{|S_m(v)|}\right)^{1-\delta}=\frac{\delta}{n^{\delta}}\left(\frac{1}{|S_m(v)|}\right)^{1-\delta}\]
-\end{proof}
+
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Insertion sort} 
 \begin{lemma}
 	Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\) e sia \(C\) una catena di lunghezza massima in \(P\). Vale allora \(\left|C\right|\ge n\cdot2^{-H(\overline{P})}\). 
 \end{lemma}
-\begin{theorem}
-	L'algoritmo \(1\) compie 
-\end{theorem}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Merge sort naive}
+
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+\section{Merge con informazione parziale}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Merge sort} 
@@ -134,6 +122,4 @@ Dato un grafo \(G\) possiamo trovarne una partizione in insiemi indipendenti tra
 	\[x_v+x_w=\frac{|B\cap K|}{|K|}+\frac{|A\cap L|}{|L|}\ge\frac{|B\cap K|}{|K|}+\frac{|A\cap K|}{|K|}\ge 1\]
 	da cui dedurremmo che l'arco di estremi \(v\) e \(w\) è stretto, una contraddizione. Segue quindi che \(L\) è blu oppure non esiste \(w\) adiacente a \(v\) in \(G\) ma non in \(G(x)\), cioè la tesi. 
 \end{proof}
-
-\bibliographystyle{plain} 
-\bibliography{} \end{document} 
+\end{document} 
