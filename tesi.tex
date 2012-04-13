@@ -1,4 +1,4 @@
-\documentclass[a4paper, oneside]{book}
+\documentclass[a4paper, oneside, 12pt]{book}
 
 \usepackage[italian]{babel}
 
@@ -69,7 +69,7 @@
 \ifpdf 
 \usepackage[pdftex]{graphicx} \else 
 \usepackage{graphicx} \fi 
-\title{Entropia di grafo} 
+\title{Entropia di grafo e il problema dell'ordinamento con informazione parziale} 
 \author{Jacopo Notarstefano}
 
 \begin{document}
@@ -77,10 +77,12 @@
 \ifpdf \DeclareGraphicsExtensions{.pdf, .jpg, .tif} \else \DeclareGraphicsExtensions{.eps, .jpg} \fi
 
 \maketitle
+\setcounter{chapter}{-1}
 
 \include{introduzione}
 \include{capitolo1}
 \include{capitolo2}
 \include{capitolo3}
+\include{ringraziamenti}
 
 \end{document}
