@@ -2,7 +2,7 @@
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Ordinamento con informazione parziale}
-
+Sia \(V=\left\{v_1,\dots,v_n\right\}\) un insieme dotato di un ordine totale \(\le\) fissato ma ignoto. Supponiamo di conoscere un sottoinsieme delle relazioni del tipo \(v_i\le v_j\), e di voler determinare l'ordine totale per mezzo di interrogazioni del tipo \(``\text{\emph{è vero che}}\;v_i\le v_j\;\text{?}\,''\)
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Insertion sort} 
 \begin{lemma}
@@ -13,7 +13,7 @@
 \section{Merge sort naive}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Merge con informazione parziale}
+\section{Merge con informazione parziale} 
 \begin{definition}
 	Diremo che un arco \(uv\) è \emph{stretto} rispetto ad \(x\in\text{STAB}(G)\) se vale \(x_u+x_v=1\). Denoteremo con \(G(x)\) il grafo i cui vertici siano gli stessi di \(G\) e i cui archi siano stretti rispetto ad \(x\). 
 \end{definition}
@@ -21,7 +21,7 @@
 	Siano \(uv\) e \(u'v'\) archi di \(G\) tali che \(u,u'\in A\) e \(v,v'\in B\). Diremo che \emph{si incrociano} se \(u<_{P}u'\) e \(v'<_{P}v\) oppure se \(u'<_{P}u\) e \(v<_{P}v'\). 
 \end{definition}
 \begin{lemma}
-	Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline(G)(P)\) il suo grafo associato. Sia \(x\) un punto di \(\text{STAB}(G)\) e siano \(uv\) e \(u'v'\) archi stretti rispetto ad \(x\) tali inoltre che \(u,u'\in A\) e \(v,v'\in B\). Se \(uv\) e \(u'v'\) si incrociano allora sia \(u'v\) sia \(uv'\) sono archi di \(G\), entrambi stretti rispetto ad \(x\). 
+	Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il suo grafo associato. Sia \(x\) un punto di \(\text{STAB}(G)\) e siano \(uv\) e \(u'v'\) archi stretti rispetto ad \(x\) tali inoltre che \(u,u'\in A\) e \(v,v'\in B\). Se \(uv\) e \(u'v'\) si incrociano allora sia \(u'v\) sia \(uv'\) sono archi di \(G\), entrambi stretti rispetto ad \(x\). 
 \end{lemma}
 \begin{proof}
 	TODO 
@@ -38,7 +38,18 @@
 	È noto che l'algoritmo di Hwang-Lin faccia uso di al più
 	\[|Y|\left(1+\left\lfloor{\log{\frac{X}{Y}}}\right\rfloor\right)+\left\lfloor\frac{|X|}{2^{\left\lfloor\log{\frac{|X|}{|Y|}}\right\rfloor}}\right\rfloor-1\]
 	confronti. Sia allora \(\xi\in\left[0,1\right)\) tale che
-	\[\left\lfloor\log{\frac{|X|}{|Y|}}\right\rfloor=\log{\frac{|X|}{|Y|}}-\xi\]
+	\[\left\lfloor\log{\frac{|X|}{|Y|}}\right\rfloor=\log{\frac{|X|}{|Y|}}-\xi.\]
+	È facile verificare che per \(\xi\in\left[0,1\right)\) valga la disuguaglianza
+	\[ 1-\xi+2^{\xi}\le 2. \]
+	Passaggi algebrici altrettanto facili danno
+	\[ \frac{|X|}{2^{\left\lfloor\log{\frac{|X|}{|Y|}}\right\rfloor}}=\frac{|X|}{2^{\log{\frac{|X|}{|Y|}}-\xi}}=\frac{|X|}{2^{\log{\frac{|X|}{|Y|}}}}\cdot 2^{\xi}=|Y|\cdot 2^{\xi}. \]
+	Possiamo infine mettere insieme le precedenti due equazioni per ottenere 
+	\begin{eqnarray}
+		|Y|\left(1+\left\lfloor{\log{\frac{X}{Y}}}\right\rfloor\right)+\left\lfloor\frac{|X|}{2^{\left\lfloor\log{\frac{|X|}{|Y|}}\right\rfloor}}\right\rfloor-1&\le&|Y|\left(1-\xi+\log{\frac{|X|}{|Y|}}+2^{\xi}\right) \nonumber \\
+		&\le& |Y|\left(\log{\frac{|X|}{|Y|}}+2\right) \nonumber \\
+		&=& |Y|\left(\log{\frac{4|X|}{|Y|}}\right) \nonumber 
+	\end{eqnarray}
+	cioé la tesi.\qed
 \end{proof}
 \begin{definition}
 	Sia \(K\) una componente connessa di \(G(x)\). Se \(K\) è rossa chiamo \(A\cap K\) \emph{catena maggiore} e \(B\cap K\) \emph{catena minore}. Se \(K\) è blu il contrario. 
@@ -52,7 +63,7 @@
 \begin{proof}
 	Sia \(K\) una componente connessa rossa non banale tale che \(\frac{|A\cap K|}{|K|}\) sia minimo. Vogliamo dimostrare che \(K\) è buona. Sia \(v\in B\cap K\) e sia \(w\) adiacente a \(v\) in \(G\) ma non in \(G(x)\). Per definizione l'arco di estremi \(v\) e \(w\) non è stretto, quindi \(x_v+x_w<1\). In particolare \(x_w<1\), quindi \(w\) appartiene ad una qualche componente connessa \(L\) non banale. Se per assurdo \(L\) fosse rossa per ipotesi \(\frac{|A\cap L|}{|L|}\ge\frac{|A\cap K|}{|K|}\), dunque per ottimalità di \(x\) avremo
 	\[x_v+x_w=\frac{|B\cap K|}{|K|}+\frac{|A\cap L|}{|L|}\ge\frac{|B\cap K|}{|K|}+\frac{|A\cap K|}{|K|}\ge 1\]
-	da cui dedurremmo che l'arco di estremi \(v\) e \(w\) è stretto, una contraddizione. Segue quindi che \(L\) è blu oppure non esiste \(w\) adiacente a \(v\) in \(G\) ma non in \(G(x)\), cioè la tesi. 
+	da cui dedurremmo che l'arco di estremi \(v\) e \(w\) è stretto, una contraddizione. Segue quindi che \(L\) è blu oppure non esiste \(w\) adiacente a \(v\) in \(G\) ma non in \(G(x)\), cioè la tesi.\qed
 \end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
