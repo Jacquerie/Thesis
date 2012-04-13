@@ -2,7 +2,22 @@
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Ordinamento con informazione parziale}
-Sia \(V=\left\{v_1,\dots,v_n\right\}\) un insieme dotato di un ordine totale \(\le\) fissato ma ignoto. Supponiamo di conoscere un sottoinsieme delle relazioni del tipo \(v_i\le v_j\), e di voler determinare l'ordine totale per mezzo di interrogazioni del tipo \(``\text{\emph{è vero che}}\;v_i\le v_j\;\text{?}\,''\)
+Sia \(V=\left\{v_1,\dots,v_n\right\}\) un insieme dotato di un ordine totale \(\le\) fissato ma ignoto. Supponiamo di conoscere un sottoinsieme delle relazioni del tipo \(v_i\le v_j\), e di voler determinare l'ordine totale per mezzo di interrogazioni del tipo \(``\text{\emph{è vero che}}\;v_i\le v_j\;\text{?}\,''\).
+
+\begin{theorem}[Cardinal, Fiorini, Joret, Jungers, Munro]
+  Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
+  \[nH\left(\overline{P}\right)\le 2\log{e(P)}.\]
+\end{theorem}
+\begin{proof}
+  La dimostrazione procede per induzione su \(n\), e per \(n\) fissato, sul numero di elementi inconfrontabili di \(P\). Essendo la tesi banalmente vera per \(n=1\) supporremo che sia \(n\ge 2\). Sia \(x\in \mathbb{R}_{+}^{V}\) un vettore che realizzi il minimo dell'entropia. Sia inoltre \(\left\{\left(y_{v^-},y_{v^+}\right)\right\}_{v\in V}\) la corrispondente collezione di intervalli. Sia infine \(a\in V\) tale che \(y_{a^+}\) sia massimo.
+  Se \(a\) fosse confrontabile con tutti gli elementi di \(V\) avremmo per ipotesi induttiva che
+  \[nH\left(\overline{P}\right)=(n-1)H\left(\overline{P-a}\right)\le 2\log{e(P-a)=2\log{e(P)}}.\]
+  Sia allora \(b\) non confrontabile con \(a\) e tale inoltre che \(y_{b^+}\) sia massimo. Per come abbiamo scelto \(a\) deve per forza essere \(y_{b^+}\le y_{a^+}\). In realtà vale l'uguaglianza. Supponiamo per assurdo che \(y_{b^+}<y_{a^+}\), ed estendiamo l'intervallo corrispondente a \(b\) a destra di \(y_{a^+}-y_{b^+}\). Questa nuova collezione di intervalli è ancora consistente con \(P\), ma il punto \(x'\in \mathbb{R}_{+}^{V}\) da essa definito realizza un valore dell'entropia più piccolo del minimo. Abbiamo infatti
+  \[-\frac{1}{n}\sum_{v\in V}{\log{x'_{v}}}=-\frac{1}{n}\sum_{v\in V}{\log{x_{v}}}+\frac{1}{n}\left(\log{x_b}-\log{x'_{b}}\right)<-\frac{1}{n}\sum_{v\in V}{\log{x_v}},\]
+  contro l'ipotesi che \(x\) realizzi il minimo dell'entropia.
+  Possiamo 
+\end{proof}
+
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Insertion sort} 
 \begin{lemma}
@@ -35,7 +50,7 @@ Sia \(V=\left\{v_1,\dots,v_n\right\}\) un insieme dotato di un ordine totale \(\
 	Siano \(X\) e \(Y\) due catene disgiunte. Supponiamo che \(|X|\ge|Y|\). Allora il numero di confronti richiesto dall'algoritmo di Hwang-Lin è maggiorato da \(|Y|\log(\frac{4|X|}{|Y|})\). 
 \end{lemma}
 \begin{proof}
-	È noto che l'algoritmo di Hwang-Lin faccia uso di al più
+	È noto che l'algoritmo di Hwang-Lin compia al più
 	\[|Y|\left(1+\left\lfloor{\log{\frac{X}{Y}}}\right\rfloor\right)+\left\lfloor\frac{|X|}{2^{\left\lfloor\log{\frac{|X|}{|Y|}}\right\rfloor}}\right\rfloor-1\]
 	confronti. Sia allora \(\xi\in\left[0,1\right)\) tale che
 	\[\left\lfloor\log{\frac{|X|}{|Y|}}\right\rfloor=\log{\frac{|X|}{|Y|}}-\xi.\]
