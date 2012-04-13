@@ -14,29 +14,32 @@
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Merge con informazione parziale}
-
 \begin{definition}
-  Diremo che un arco \(uv\) è \emph{stretto} rispetto ad \(x\in\text{STAB}(G)\) se vale \(x_u+x_v=1\). Denoteremo con \(G(x)\) il grafo i cui vertici siano gli stessi di \(G\) e i cui archi siano stretti rispetto ad \(x\).
+	Diremo che un arco \(uv\) è \emph{stretto} rispetto ad \(x\in\text{STAB}(G)\) se vale \(x_u+x_v=1\). Denoteremo con \(G(x)\) il grafo i cui vertici siano gli stessi di \(G\) e i cui archi siano stretti rispetto ad \(x\). 
 \end{definition}
-
 \begin{definition}
-  Siano \(uv\) e \(u'v'\) archi di \(G\) tali che \(u,u'\in A\) e \(v,v'\in B\). Diremo che \emph{si incrociano} se \(u<_{P}u'\) e \(v'<_{P}v\) oppure se \(u'<_{P}u\) e \(v<_{P}v'\).
+	Siano \(uv\) e \(u'v'\) archi di \(G\) tali che \(u,u'\in A\) e \(v,v'\in B\). Diremo che \emph{si incrociano} se \(u<_{P}u'\) e \(v'<_{P}v\) oppure se \(u'<_{P}u\) e \(v<_{P}v'\). 
 \end{definition}
-
 \begin{lemma}
-  Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline(G)(P)\) il suo grafo associato. Sia \(x\) un punto di \(\text{STAB}(G)\) e siano \(uv\) e \(u'v'\) archi stretti rispetto ad \(x\) tali inoltre che \(u,u'\in A\) e \(v,v'\in B\). Se \(uv\) e \(u'v'\) si incrociano allora sia \(u'v\) sia \(uv'\) sono archi di \(G\), entrambi stretti rispetto ad \(x\).
+	Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline(G)(P)\) il suo grafo associato. Sia \(x\) un punto di \(\text{STAB}(G)\) e siano \(uv\) e \(u'v'\) archi stretti rispetto ad \(x\) tali inoltre che \(u,u'\in A\) e \(v,v'\in B\). Se \(uv\) e \(u'v'\) si incrociano allora sia \(u'v\) sia \(uv'\) sono archi di \(G\), entrambi stretti rispetto ad \(x\). 
 \end{lemma}
-
 \begin{proof}
-  TODO
+	TODO 
 \end{proof}
-
 \begin{definition}
-  Diremo che \(x\in\text{STAB}(G)\) è \emph{localmente ottimo} se per ogni componente connessa \(K\) di \(G(x)\) valgono
-  \[x_u=\frac{|A\cap K|}{|K|}\;\text{per ogni}\,u\in A\cap K\qquad\text{e}\qquad x_v=\frac{|B\cap K}{|K|}\;\text{per ogni}\,v\in B\cap K.\]
-  Diremo che \(K\) è \emph{bilanciata} se per essa valgono le precedenti condizioni di ottimalità, \emph{sbilanciata} altrimenti.
+	Diremo che \(x\in\text{STAB}(G)\) è \emph{localmente ottimo} se per ogni componente connessa \(K\) di \(G(x)\) valgono
+	\[x_u=\frac{|A\cap K|}{|K|}\;\text{per ogni}\,u\in A\cap K\qquad\text{e}\qquad x_v=\frac{|B\cap K}{|K|}\;\text{per ogni}\,v\in B\cap K.\]
+	Diremo che \(K\) è \emph{bilanciata} se per essa valgono le precedenti condizioni di ottimalità, \emph{sbilanciata} altrimenti. 
 \end{definition}
-
+\begin{lemma}
+	Siano \(X\) e \(Y\) due catene disgiunte. Supponiamo che \(|X|\ge|Y|\). Allora il numero di confronti richiesto dall'algoritmo di Hwang-Lin è maggiorato da \(|Y|\log(\frac{4|X|}{|Y|})\). 
+\end{lemma}
+\begin{proof}
+	È noto che l'algoritmo di Hwang-Lin faccia uso di al più
+	\[|Y|\left(1+\left\lfloor{\log{\frac{X}{Y}}}\right\rfloor\right)+\left\lfloor\frac{|X|}{2^{\left\lfloor\log{\frac{|X|}{|Y|}}\right\rfloor}}\right\rfloor-1\]
+	confronti. Sia allora \(\xi\in\left[0,1\right)\) tale che
+	\[\left\lfloor\log{\frac{|X|}{|Y|}}\right\rfloor=\log{\frac{|X|}{|Y|}}-\xi\]
+\end{proof}
 \begin{definition}
 	Sia \(K\) una componente connessa di \(G(x)\). Se \(K\) è rossa chiamo \(A\cap K\) \emph{catena maggiore} e \(B\cap K\) \emph{catena minore}. Se \(K\) è blu il contrario. 
 \end{definition}
