@@ -34,6 +34,14 @@
 % Pretty figures
 \usepackage{tikz}
 
+% Algorithms
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% Hacks needed to get the algorithm package to work.
+\renewcommand{\algorithmiccomment}[1]{// #1}
+\floatname{algorithm}{Algoritmo}
+
 %\newif\ifpdf
 %\ifx\pdfoutput\undefined
 %\pdffalse % we are not running PDFLaTeX
