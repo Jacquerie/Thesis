@@ -3,6 +3,11 @@
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Ordinamento con informazione parziale} Sia \(V=\left\{v_1,\dots,v_n\right\}\) un insieme dotato di un ordine totale \(\le\) fissato ma ignoto. Supponiamo di conoscere un sottoinsieme delle relazioni del tipo \(v_i\le v_j\), e di voler determinare l'ordine totale per mezzo di interrogazioni del tipo \(``\text{\emph{è vero che}}\;v_i\le v_j\;\text{?}\,''\). 
 \begin{theorem}
+	[Kahn, Kim] Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
+	\[nH\left(\overline{P}\right)\le\min\left\{\log{e(P)}+\log{e\cdot n},\; c\log{e(P)}\right\}\]
+	dove \(c=1+7\log{e}\approx 11.1\). 
+\end{theorem}
+\begin{theorem}
 	[Cardinal, Fiorini, Joret, Jungers, Munro] Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
 	\[nH\left(\overline{P}\right)\le 2\log{e(P)}.\]
 \end{theorem}
@@ -11,7 +16,38 @@
 	\[nH\left(\overline{P}\right)=(n-1)H\left(\overline{P-a}\right)\le 2\log{e(P-a)=2\log{e(P)}}.\]
 	Sia allora \(b\) non confrontabile con \(a\) e tale inoltre che \(y_{b^+}\) sia massimo. Per come abbiamo scelto \(a\) deve per forza essere \(y_{b^+}\le y_{a^+}\). In realtà vale l'uguaglianza. Supponiamo per assurdo che \(y_{b^+}<y_{a^+}\), ed estendiamo l'intervallo corrispondente a \(b\) a destra di \(y_{a^+}-y_{b^+}\). Questa nuova collezione di intervalli è ancora consistente con \(P\), ma il punto \(x'\in \mathbb{R}_{+}^{V}\) da essa definito realizza un valore dell'entropia più piccolo del minimo. Abbiamo infatti
 	\[-\frac{1}{n}\sum_{v\in V}{\log{x'_{v}}}=-\frac{1}{n}\sum_{v\in V}{\log{x_{v}}}+\frac{1}{n}\left(\log{x_b}-\log{x'_{b}}\right)<-\frac{1}{n}\sum_{v\in V}{\log{x_v}},\]
-	contro l'ipotesi che \(x\) realizzi il minimo dell'entropia. A meno di scambiare \(a\) e \(b\) possiamo ora supporre che \(x_a\ge x_b\) 
+	contro l'ipotesi che \(x\) realizzi il minimo dell'entropia. A meno di scambiare \(a\) e \(b\) possiamo ora supporre che \(x_a\ge x_b\). Il nostro obiettivo ora è definire due nuove famiglie di intervalli
+	\[\left\{\left(y_{v^-}^1, y_{v^+}^1\right)\right\}_{v\in V}\qquad\mbox{ e }\qquad\left\{\left(y_{v^-}^2, y_{v^+}^2\right)\right\}_{v\in V}\]
+	tali che gli insiemi parzialmente ordinati \(P_1\) e \(P_2\) ad esse associati estendano \(P\), e tali inoltre che le quantità \(e(P_1)\) ed \(e(P_2)\) varino in modo controllato. Per fare questo poniamo
+	\[\lambda=\frac{x_b}{x_a},\]
+	compreso fra \(0\) e \(1\) per come abbiamo scelto \(a\) e \(b\). Poniamo inoltre
+	\[\alpha_1= 
+	\begin{cases}
+		\frac{1}{1-\lambda} & \mbox{se } \lambda\le\frac{1}{2} \\
+		2 & \mbox{altrimenti} 
+	\end{cases}
+	\qquad\mbox{ e }\qquad \beta_1= 
+	\begin{cases}
+		1 & \mbox{se } \lambda\le\frac{1}{2} \\
+		2\lambda & \mbox{altrimenti} 
+	\end{cases}
+	\]
+	e infine
+	\[\alpha_2=\frac{2}{\lambda}\qquad\mbox{ e }\qquad\beta_2=2.\]
+	Allora la famiglia di intervalli \(\left\{\left(y_{v^-}^1, y_{v^+}^1\right)\right\}_{v\in V}\) coincide con \(\left\{\left(y_{v^-}, y_{v^+}\right)\right\}_{v\in V}\) tranne per
+	\begin{align}
+		y_{a^+}^1 &= y_{a^-} + \frac{x_a}{\alpha_1} \nonumber \\
+		y_{b^-}^1 &= y_{b^+} - \frac{x_b}{\beta_1}, \nonumber
+	\end{align}
+	e analogamente \(\left\{\left(y_{v^-}^2, y_{v^+}^2\right)\right\}_{v\in V}\) coincide con \(\left\{\left(y_{v^-}, y_{v^+}\right)\right\}_{v\in V}\) eccetto per
+	\begin{align}
+		y_{a^-}^2 &= y_{a^+} - \frac{x_a}{\alpha_2} \nonumber \\
+		y_{b^+}^2 &= y_{b^-} + \frac{x_b}{\beta_2}. \nonumber
+	\end{align}
+	Siano rispettivamente \(P_1\) e \(P_2\) gli insiemi parzialmente ordinati definiti dalla prima e dalla seconda famiglia di intervalli. Allora esiste un indice \(i\in\left\{1,2\right\}\) tale che
+	\begin{equation}
+	  \frac{e(P_i)}{e(P)}\le\frac{1}{\sqrt{\alpha_i\beta_i}}.
+	\end{equation}
 \end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
@@ -29,7 +65,7 @@
 	\label{structurelemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\). Sia inoltre \(G=\overline{G}(P)\) 
 \end{lemma}
 \begin{proof}
-	TODO\qed
+	TODO\qed 
 \end{proof}
 \begin{definition}
 	Diremo che un arco \(uv\) è \emph{stretto} rispetto ad \(x\in\text{STAB}(G)\) se vale \(x_u+x_v=1\). Denoteremo con \(G(x)\) il grafo i cui vertici siano gli stessi di \(G\) e i cui archi siano stretti rispetto ad \(x\). 
@@ -41,7 +77,7 @@
 	\label{crossinglemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il suo grafo associato. Sia \(x\) un punto di \(\text{STAB}(G)\) e siano \(uv\) e \(u'v'\) archi stretti rispetto ad \(x\) tali inoltre che \(u,u'\in A\) e \(v,v'\in B\). Se \(uv\) e \(u'v'\) si incrociano allora sia \(u'v\) sia \(uv'\) sono archi di \(G\), entrambi stretti rispetto ad \(x\). 
 \end{lemma}
 \begin{proof}
-	TODO\qed
+	TODO\qed 
 \end{proof}
 \begin{definition}
 	Diremo che \(x\in\text{STAB}(G)\) è \emph{localmente ottimo} se per ogni componente connessa \(K\) di \(G(x)\) valgono
@@ -62,13 +98,13 @@
 	\end{enumerate}
 \end{lemma}
 \begin{proof}
-	TODO\qed
+	TODO\qed 
 \end{proof}
 \begin{lemma}
 	\label{touchinglemma} 
 \end{lemma}
 \begin{proof}
-	TODO\qed
+	TODO\qed 
 \end{proof}
 \begin{definition}
 	Sia \(x\in\text{STAB}^{*}(G)\). Diciamo che una componente connessa \(K\) di \(G(x)\) è \emph{rossa} se si ha \(|A\cap K|\ge|B\cap K|\), altrimenti diciamo che \(K\) è \emph{blu}. 
@@ -77,7 +113,7 @@
 	\label{consistentlemma} 
 \end{lemma}
 \begin{proof}
-	TODO\qed
+	TODO\qed 
 \end{proof}
 \begin{lemma}
 	\label{hwanglinlemma} Siano \(X\) e \(Y\) due catene disgiunte. Supponiamo che \(|X|\ge|Y|\). Allora il numero di confronti richiesto dall'algoritmo di Hwang-Lin è maggiorato da \(|Y|\log(\frac{4|X|}{|Y|})\). 
