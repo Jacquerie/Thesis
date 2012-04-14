@@ -31,6 +31,9 @@
 % This is now the recommended way for checking for PDFLaTeX:
 \usepackage{ifpdf}
 
+% Pretty figures
+\usepackage{tikz}
+
 %\newif\ifpdf
 %\ifx\pdfoutput\undefined
 %\pdffalse % we are not running PDFLaTeX
@@ -66,9 +69,9 @@
 
 \newcommand{\qed}{\hfill \ensuremath{\Box}}
 
-\ifpdf 
-\usepackage[pdftex]{graphicx} \else 
-\usepackage{graphicx} \fi 
+% \ifpdf 
+% \usepackage[pdftex]{graphicx} \else 
+% \usepackage{graphicx} \fi 
 \title{Entropia di grafo e il problema dell'ordinamento con informazione parziale} 
 \author{Jacopo Notarstefano}
 
