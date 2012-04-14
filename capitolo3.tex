@@ -12,9 +12,9 @@
 	\[nH\left(\overline{P}\right)\le 2\log{e(P)}.\]
 \end{theorem}
 \begin{proof}
-	La dimostrazione procede per induzione su \(n\), e per \(n\) fissato, sul numero di elementi inconfrontabili di \(P\). Essendo la tesi banalmente vera per \(n=1\) supporremo che sia \(n\ge 2\). Sia \(x\in \mathbb{R}_{+}^{V}\) un vettore che realizzi il minimo dell'entropia. Sia inoltre \(\left\{\left(y_{v^-},y_{v^+}\right)\right\}_{v\in V}\) la corrispondente collezione di intervalli. Sia infine \(a\in V\) tale che \(y_{a^+}\) sia massimo. Se \(a\) fosse confrontabile con tutti gli elementi di \(V\) avremmo per ipotesi induttiva che
+	La dimostrazione procede per induzione su \(n\), e, per \(n\) fissato, sul numero di elementi inconfrontabili di \(P\). Essendo la tesi banalmente vera per \(n=1\) supporremo che sia \(n\ge 2\). Sia \(x\in \mathbb{R}_{+}^{V}\) un vettore che realizzi il minimo dell'entropia. Sia inoltre \(\left\{\left(y_{v^-},y_{v^+}\right)\right\}_{v\in V}\) la corrispondente collezione di intervalli. Sia infine \(a\in V\) tale che \(y_{a^+}\) sia massimo. Se \(a\) fosse confrontabile con tutti gli elementi di \(V\) avremmo per ipotesi induttiva che
 	\[nH\left(\overline{P}\right)=(n-1)H\left(\overline{P-a}\right)\le 2\log{e(P-a)=2\log{e(P)}}.\]
-	Sia allora \(b\) non confrontabile con \(a\) e tale inoltre che \(y_{b^+}\) sia massimo. Per come abbiamo scelto \(a\) deve per forza essere \(y_{b^+}\le y_{a^+}\). In realtà vale l'uguaglianza. Supponiamo per assurdo che \(y_{b^+}<y_{a^+}\), ed estendiamo l'intervallo corrispondente a \(b\) a destra di \(y_{a^+}-y_{b^+}\). Questa nuova collezione di intervalli è ancora consistente con \(P\), ma il punto \(x'\in \mathbb{R}_{+}^{V}\) da essa definito realizza un valore dell'entropia più piccolo del minimo. Abbiamo infatti
+	Sia allora \(b\) non confrontabile con \(a\) e tale inoltre che \(y_{b^+}\) sia massimo. Per come abbiamo scelto \(a\) deve per forza essere \(y_{b^+}\le y_{a^+}\). In realtà vale l'uguaglianza. Supponiamo per assurdo che \(y_{b^+}<y_{a^+}\), ed estendiamo a destra l'intervallo corrispondente a \(b\) di \(y_{a^+}-y_{b^+}\). Questa nuova collezione di intervalli è ancora consistente con \(P\), ma il punto \(x'\in \mathbb{R}_{+}^{V}\) da essa definito realizzerebbe un valore dell'entropia più piccolo del minimo. Abbiamo infatti
 	\[-\frac{1}{n}\sum_{v\in V}{\log{x'_{v}}}=-\frac{1}{n}\sum_{v\in V}{\log{x_{v}}}+\frac{1}{n}\left(\log{x_b}-\log{x'_{b}}\right)<-\frac{1}{n}\sum_{v\in V}{\log{x_v}},\]
 	contro l'ipotesi che \(x\) realizzi il minimo dell'entropia. A meno di scambiare \(a\) e \(b\) possiamo ora supporre che \(x_a\ge x_b\). Il nostro obiettivo ora è definire due nuove famiglie di intervalli
 	\[\left\{\left(y_{v^-}^1, y_{v^+}^1\right)\right\}_{v\in V}\qquad\mbox{ e }\qquad\left\{\left(y_{v^-}^2, y_{v^+}^2\right)\right\}_{v\in V}\]
@@ -34,20 +34,37 @@
 	\]
 	e infine
 	\[\alpha_2=\frac{2}{\lambda}\qquad\mbox{ e }\qquad\beta_2=2.\]
-	Allora la famiglia di intervalli \(\left\{\left(y_{v^-}^1, y_{v^+}^1\right)\right\}_{v\in V}\) coincide con \(\left\{\left(y_{v^-}, y_{v^+}\right)\right\}_{v\in V}\) tranne per
+	Allora la famiglia di intervalli \(\left\{\left(y_{v^-}^1, y_{v^+}^1\right)\right\}_{v\in V}\) coincide con \(\left\{\left(y_{v^-}, y_{v^+}\right)\right\}_{v\in V}\) tranne per 
 	\begin{align}
 		y_{a^+}^1 &= y_{a^-} + \frac{x_a}{\alpha_1} \nonumber \\
-		y_{b^-}^1 &= y_{b^+} - \frac{x_b}{\beta_1}, \nonumber
+		y_{b^-}^1 &= y_{b^+} - \frac{x_b}{\beta_1}, \nonumber 
 	\end{align}
-	e analogamente \(\left\{\left(y_{v^-}^2, y_{v^+}^2\right)\right\}_{v\in V}\) coincide con \(\left\{\left(y_{v^-}, y_{v^+}\right)\right\}_{v\in V}\) eccetto per
+	e analogamente \(\left\{\left(y_{v^-}^2, y_{v^+}^2\right)\right\}_{v\in V}\) coincide con \(\left\{\left(y_{v^-}, y_{v^+}\right)\right\}_{v\in V}\) eccetto per 
 	\begin{align}
 		y_{a^-}^2 &= y_{a^+} - \frac{x_a}{\alpha_2} \nonumber \\
-		y_{b^+}^2 &= y_{b^-} + \frac{x_b}{\beta_2}. \nonumber
+		y_{b^+}^2 &= y_{b^-} + \frac{x_b}{\beta_2}. \nonumber 
 	\end{align}
-	Siano rispettivamente \(P_1\) e \(P_2\) gli insiemi parzialmente ordinati definiti dalla prima e dalla seconda famiglia di intervalli. Allora esiste un indice \(i\in\left\{1,2\right\}\) tale che
+	Siano rispettivamente \(P_1\) e \(P_2\) gli insiemi parzialmente ordinati definiti dalla prima e dalla seconda famiglia di intervalli. Allora esiste un indice \(i\in\left\{1,2\right\}\) tale che 
 	\begin{equation}
-	  \frac{e(P_i)}{e(P)}\le\frac{1}{\sqrt{\alpha_i\beta_i}}.
+		\label{appendixlemma} \frac{e(P_i)}{e(P)}\le\frac{1}{\sqrt{\alpha_i\beta_i}}. 
 	\end{equation}
+	Questo fatto verrà dimostrato in appendice. Assumendo che esista un tale \(i\) sia \(x'\in\mathbb{R}_{+}^V\) il vettore definito dalla corrispondente famiglia di intervalli. Abbiamo allora che
+	\[H(P_i)\le-\frac{1}{n}\sum_{v\in V}{\log{x'_v}=-\frac{1}{n}\sum_{v\in V}{\log{x_v}}+\frac{1}{n}\log{\alpha_i}+\frac{1}{n}\log{\beta_i}},\]
+	dunque
+	\[nH(P_i)\le nH(P)+\log{\alpha_i\beta_i}.\]
+	Possiamo ora concludere. Per il teorema \ref{lovasztheorem} e per la disuguaglianza appena dimostrata possiamo scrivere
+	\begin{align}
+	  nH(\overline{P}) &= n\log{n}-nH(P) \nonumber \\
+	                   &\le n\log{n}-nH(P_i)+\log{\alpha_i\beta_i} \nonumber \\
+	                   &= nH(\overline{P_i})+\log{\alpha_i\beta_i}, \nonumber
+	\end{align}
+	mentre per ipotesi induttiva e per la disuguaglianza \ref{appendixlemma} abbiamo
+	\begin{align}
+	  nH(\overline{P_i})+\log{\alpha_i\beta_i} &\le 2\log{e(P_i)}+\log{\alpha_i\beta_i} \nonumber \\
+	  &\le 2\log{\frac{e(P)}{\sqrt{\alpha_i\beta_i}}}+\log{\alpha_i\beta_i} \nonumber \\
+	  &\le 2\log{e(P)} \nonumber
+  \end{align}
+  cioè la tesi.\qed
 \end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
@@ -149,6 +166,7 @@
 	\[x_v+x_w=\frac{|B\cap K|}{|K|}+\frac{|A\cap L|}{|L|}\ge\frac{|B\cap K|}{|K|}+\frac{|A\cap K|}{|K|}\ge 1\]
 	da cui dedurremmo che l'arco di estremi \(v\) e \(w\) è stretto, una contraddizione. Segue quindi che \(L\) è blu oppure non esiste \(w\) adiacente a \(v\) in \(G\) ma non in \(G(x)\), cioè la tesi.\qed 
 \end{proof}
+È immediato osservare che che la precedente dimostrazione si applichi, \emph{mutatis mutandis}, all'insieme delle componenti blu non banali. Pertanto in analoghe ipotesi esiste una compomente blu che sia buona.
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Merge sort} 
