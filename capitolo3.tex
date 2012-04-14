@@ -70,7 +70,7 @@
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Insertion sort} 
 \begin{algorithm}
-  \caption{``Insertion sort''} \label{insertion}
+  \caption{``Insertion sort'' con informazione parziale} \label{insertion}
 	\begin{algorithmic}
 	  \STATE \, \COMMENT Preparazione
 		\STATE trova una catena \(C\) di lunghezza massima in \(P\)
@@ -97,7 +97,7 @@
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Merge sort naive}
 \begin{algorithm}
-  \caption{``Merge sort naive''} \label{naivemerge}
+  \caption{``Merge sort naive'' con informazione parziale} \label{naivemerge}
 	\begin{algorithmic}
 	  \STATE \, \COMMENT Preparazione
 		\STATE trova una decomposizione golosa di \(P\) in catene \(C_1,\dots,C_k\)
@@ -216,7 +216,7 @@
 È immediato osservare che la precedente dimostrazione si applica, \emph{mutatis mutandis}, all'insieme delle componenti blu non banali. Pertanto in analoghe ipotesi esiste una componente blu che sia buona.
 
 \begin{algorithm}
-  \caption{``Merge''} \label{merge}
+  \caption{``Merge'' con informazione parziale} \label{merge}
 	\begin{algorithmic}
 	  \STATE TODO
 	\end{algorithmic}
@@ -225,7 +225,7 @@
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Merge sort} 
 \begin{algorithm}
-  \caption{``Merge sort''} \label{mergesort}
+  \caption{``Merge sort'' con informazione parziale} \label{mergesort}
 	\begin{algorithmic}
 		\STATE trova una catena \(A\) di lunghezza massima in \(P\)
 		\STATE applica l'algoritmo \ref{naivemerge} a \(P-A\), ottenendo una catena \(B\)
