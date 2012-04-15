@@ -79,7 +79,7 @@ Perché la precedente risulti una buona definizione dovremmo dimostrare che tale
 	Sia \(G\) un grafo. Chiameremo \emph{politopo dei vertici di \(G\)} l'involucro convesso dei vettori caratteristici degli insiemi indipendenti di \(G\) e lo denoteremo \(\text{STAB}(G)\). 
 \end{definition}
 \begin{example}
-	Sia \(G\) il grafo semplice non diretto su \(3\) vertici con \(2\) archi. A meno di isomorfismo siano \(V=\{1,2,3\}\) ed \(E=\{(1,2),(1,3)\}\). Gli insiemi indipendenti di \(G\) sono allora \(\{\varnothing , \{1\}, \{2\}, \{3\}, \{2,3\}\}\). I loro vettori caratteristici sono quindi
+	Sia \(G\) il grafo semplice non diretto su \(3\) vertici con \(2\) archi. A meno di isomorfismo siano \(V=\{1,2,3\}\) ed \(E=\{(1,2),(1,3)\}\). Gli insiemi indipendenti di \(G\) sono allora \(\{\emptyset , \{1\}, \{2\}, \{3\}, \{2,3\}\}\). I loro vettori caratteristici sono quindi
 	\[ 
 	\begin{pmatrix}
 		0\\0\\0 
@@ -227,11 +227,11 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 		\label{eq:probdist} Q(w,M)=\frac{N(w,M\mid \mathbf{v}, \mathbf{N})}{N(w\mid \mathbf{v})}\cdot P(w). 
 	\end{equation}
 	Infatti, sfruttando la \(P-\)tipicità di \(\mathbf{v}\), abbiamo 
-	\begin{eqnarray}
-		\big\vert N(w,M\mid \mathbf{v}, \mathbf{N}) - tQ(w,M)\big\vert &=& \bigg\vert \frac{tQ(w,M)}{tP(w)}\bigg\vert \cdot \big\vert N(w\mid \mathbf{v}) - tP(w)\big\vert \le \nonumber \\
-		&\le& \bigg\vert \frac{Q(w,M)}{P(w)}\bigg\vert \cdot K\sqrt{tP(w)} = K\sqrt{t\cdot\frac{Q^{2}(w,M)}{P(w)}} \le \nonumber \\
-		&\le& K\sqrt{tQ(w,M)}. \nonumber 
-	\end{eqnarray}
+	\begin{align}
+		\big\vert N(w,M\mid \mathbf{v}, \mathbf{N}) - tQ(w,M)\big\vert &= \bigg\vert \frac{tQ(w,M)}{tP(w)}\bigg\vert \cdot \big\vert N(w\mid \mathbf{v}) - tP(w)\big\vert \le \nonumber \\
+		&\le \bigg\vert \frac{Q(w,M)}{P(w)}\bigg\vert \cdot K\sqrt{tP(w)} = K\sqrt{t\cdot\frac{Q^{2}(w,M)}{P(w)}} \le \nonumber \\
+		&\le K\sqrt{tQ(w,M)}. \nonumber 
+	\end{align}
 	Sia poi \(R\) la distribuzione marginale su \(\mathcal{N}\) definita da
 	\[R(M)=\sum_{w:\ w\in M} Q(w,M).\]
 	Allora \(\mathbf{N}\) è \(P-\)tipica rispetto ad essa. Infatti abbiamo
@@ -362,11 +362,11 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 	da cui, sostituendo la definizione di \(Q^*(J)\),
 	\[-\sum_{i,J} p_i\ R'(J\mid i)\log(Q^*(J))\le -\sum_{i,J} p_i\ R'(J\mid i)\log(Q'(J)).\]
 	Sostituendo e ricordando le definizioni di \(Q'(J)\) e \(R'(J\mid i)\) abbiamo la tesi: 
-	\begin{eqnarray}
+	\begin{align}
 		\min_{\substack{X\in Y\in S(G) \\
-		X\sim P}} I(X;Y)&\le& -\sum_{i=1}^n p_i\sum_{i\in J\in S(G)} R'(J\mid i)\log{\frac{Q^*(J)}{R'(J\mid i)}}\le \nonumber \\
-		&\le& -\sum_{i=1}^n p_i\sum_{i\in J\in S(G)} R'(J\mid i)\log{\frac{Q'(J)}{R'(J\mid i)}}= \nonumber \\
-		&=& -\sum_{i=1}^n p_i\log{a_i} \nonumber 
-	\end{eqnarray}
+		X\sim P}} I(X;Y)&\le -\sum_{i=1}^n p_i\sum_{i\in J\in S(G)} R'(J\mid i)\log{\frac{Q^*(J)}{R'(J\mid i)}}\le \nonumber \\
+		&\le -\sum_{i=1}^n p_i\sum_{i\in J\in S(G)} R'(J\mid i)\log{\frac{Q'(J)}{R'(J\mid i)}}= \nonumber \\
+		&= -\sum_{i=1}^n p_i\log{a_i} \nonumber 
+	\end{align}
 	\qed 
 \end{proof}

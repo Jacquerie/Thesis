@@ -2,13 +2,12 @@
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Ordinamento con informazione parziale} Sia \(V=\left\{v_1,\dots,v_n\right\}\) un insieme dotato di un ordine totale \(\le\) fissato ma ignoto. Supponiamo di conoscere un sottoinsieme delle relazioni del tipo \(v_i\le v_j\). Il problema dell'ordinamento con informazione parziale consiste nel determinare l'ordine totale per mezzo di interrogazioni del tipo ``\(\text{\emph{è vero che}}\;v_i\le v_j\;\text{?}\,\)''. 
-\begin{theorem}
-	[Kahn, Kim] Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
-	\[nH\left(\overline{P}\right)\le\min\left\{\log{e(P)}+\log{e\cdot n},\; c\log{e(P)}\right\}\]
+\begin{theorem}[Kahn, Kim] \label{kktheorem} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
+	\[\log{e(P)}\le nH\left(\overline{P}\right)\le\min\left\{\log{e(P)}+\log{e\cdot n},\; c\log{e(P)}\right\}\]
 	dove \(c=1+7\log{e}\approx 11.1\). 
 \end{theorem}
-\begin{theorem}
-	\label{cfjjmtheorem} \emph{(Cardinal, Fiorini, Joret, Jungers, Munro)} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
+\begin{theorem}[Cardinal, Fiorini, Joret, Jungers, Munro]
+	\label{cfjjmtheorem} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
 	\[nH\left(\overline{P}\right)\le 2\log{e(P)}.\]
 \end{theorem}
 \begin{proof}
@@ -72,20 +71,27 @@
 \begin{algorithm}
 	\caption{``Insertion sort'' con informazione parziale} \label{insertion} 
 	\begin{algorithmic}
-		[1] \STATE \, \COMMENT Preparazione \STATE trova una catena \(C\) di lunghezza massima in \(P\) \STATE \, \COMMENT Ordinamento \WHILE{\(P-C\neq\varnothing\)} \STATE togli un elemento da \(P-C\) e inseriscilo in \(C\) con una ricerca binaria \ENDWHILE \RETURN \(C\) 
+		[1] \STATE \, \COMMENT Preparazione \STATE trova una catena \(C\) di lunghezza massima in \(P\) \STATE \, \COMMENT Ordinamento \WHILE{\(P-C\neq\emptyset\)} \STATE togli un elemento da \(P-C\) e inseriscilo in \(C\) con una ricerca binaria \ENDWHILE \RETURN \(C\) 
 	\end{algorithmic}
 \end{algorithm}
 \begin{lemma}
 	\label{maxchainlemma} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\) e sia \(C\) una catena di lunghezza massima in \(P\). Vale allora \(\left|C\right|\ge n\cdot2^{-H(\overline{P})}\). 
 \end{lemma}
 \begin{proof}
-	TODO\qed 
+	È noto che l'entropia di un grafo su \(n\) vertici e dimensione massima di un insieme indipendente \(\alpha\) è maggiore o uguale a \(-\log{\frac{\alpha}{n}}\). La tesi segue applicando questo fatto a \(G=\overline{G}(P)\).\qed 
 \end{proof}
 \begin{theorem}
-	L'algoritmo \ref{insertion} compie \(O(\log{n}\cdot\log{e(P)})\) confronti. 
+	Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora l'algoritmo \ref{insertion} risolve il problema dell'ordinamento con informazione parziale in \(O(\log{n}\cdot\log{e(P)})\) confronti. 
 \end{theorem}
 \begin{proof}
-	TODO\qed 
+	Sia \(g(P)\) il numero di confronti necessario per ordinare \(P\). È chiaro che \[g(P)\le \log{n}\cdot(n-|C|),\]
+	inoltre per il lemma \ref{maxchainlemma}
+	\[g(P)\le\log{n}\cdot(n-2^{-H(\overline{P})}n).\]
+	Usando l'ovvia disuguaglianza \(1-2^{x}\le\ln{2}\cdot x\) deduciamo
+	\[g(P)\le\log{n}\cdot\ln{2}\cdot nH(\overline{P}),\]
+	e applicando il teorema \ref{cfjjmtheorem}
+	\[g(P)=O(\log{n}\cdot\log{e(P)}),\]
+	cioè la tesi.\qed 
 \end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
@@ -103,8 +109,11 @@
 	TODO\qed 
 \end{proof}
 \begin{theorem}
-	\label{naivemergetheorem} Per ogni \(\varepsilon>0\) l'algoritmo \ref{naivemerge} compie al più \((1+\varepsilon)\log{e(P)}+(1+\varepsilon)(\log{e}+\log{(1+\frac{1}{\varepsilon})}+1)n\) confronti. 
+	\label{naivemergetheorem} Per ogni \(\varepsilon>0\) l'algoritmo \ref{naivemerge} compie al più \((1+\varepsilon)\log{e(P)}+(1+\varepsilon)(\log{e}+\log{(1+\frac{1}{\varepsilon})}+1)\cdot n\) confronti. 
 \end{theorem}
+\begin{proof}
+  TODO\qed
+\end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Merge con informazione parziale} 
@@ -183,11 +192,11 @@
 	Semplici passaggi algebrici danno
 	\[\frac{|X|}{2^{\left\lfloor\log{\frac{|X|}{|Y|}}\right\rfloor}}=\frac{|X|}{2^{\log{\frac{|X|}{|Y|}}-\xi}}=\frac{|X|}{2^{\log{\frac{|X|}{|Y|}}}}\cdot 2^{\xi}=|Y|\cdot 2^{\xi}.\]
 	Possiamo infine mettere insieme le precedenti due equazioni per ottenere 
-	\begin{eqnarray}
-		|Y|\left(1+\left\lfloor{\log{\frac{X}{Y}}}\right\rfloor\right)+\left\lfloor\frac{|X|}{2^{\left\lfloor\log{\frac{|X|}{|Y|}}\right\rfloor}}\right\rfloor-1&\le&|Y|\left(1-\xi+\log{\frac{|X|}{|Y|}}+2^{\xi}\right) \nonumber \\
-		&\le& |Y|\left(\log{\frac{|X|}{|Y|}}+2\right) \nonumber \\
-		&=& |Y|\left(\log{\frac{4|X|}{|Y|}}\right) \nonumber 
-	\end{eqnarray}
+	\begin{align}
+		|Y|\left(1+\left\lfloor{\log{\frac{X}{Y}}}\right\rfloor\right)+\left\lfloor\frac{|X|}{2^{\left\lfloor\log{\frac{|X|}{|Y|}}\right\rfloor}}\right\rfloor-1&\le|Y|\left(1-\xi+\log{\frac{|X|}{|Y|}}+2^{\xi}\right) \nonumber \\
+		&\le |Y|\left(\log{\frac{|X|}{|Y|}}+2\right) \nonumber \\
+		&= |Y|\left(\log{\frac{4|X|}{|Y|}}\right) \nonumber 
+	\end{align}
 	cioé la tesi.\qed 
 \end{proof}
 \begin{definition}
@@ -239,7 +248,7 @@
 	\end{algorithmic}
 \end{algorithm}
 \begin{theorem}
-	\label{mergesorttheorem} L'algoritmo \ref{mergesort} risolve il problema dell'ordinamento con informazione parziale impiegando al più \(c \log{e(P)}\) confronti, dove \(c\approx 15.08\). 
+	\label{mergesorttheorem} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora l'algoritmo \ref{mergesort} risolve il problema dell'ordinamento con informazione parziale impiegando al più \(c \log{e(P)}\) confronti, dove \(c\approx 15.08\). 
 \end{theorem}
 \begin{proof}
   Sia \(g(P)\) il numero di confronti necessario ad ordinare \(P\). Per il lemma \ref{maxchainlemma} abbiamo \(|A|\ge n\cdot 2^{-H(\overline{P})}\), dunque
