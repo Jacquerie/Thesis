@@ -8,7 +8,7 @@
 	dove \(c=1+7\log{e}\approx 11.1\). 
 \end{theorem}
 \begin{theorem}
-	[Cardinal, Fiorini, Joret, Jungers, Munro] Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
+	\emph{(Cardinal, Fiorini, Joret, Jungers, Munro)} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
 	\[nH\left(\overline{P}\right)\le 2\log{e(P)}.\]
 \end{theorem}
 \begin{proof}
@@ -70,53 +70,41 @@
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Insertion sort} 
 \begin{algorithm}
-  \caption{``Insertion sort'' con informazione parziale} \label{insertion}
+	\caption{``Insertion sort'' con informazione parziale} \label{insertion} 
 	\begin{algorithmic}
-	  \STATE \, \COMMENT Preparazione
-		\STATE trova una catena \(C\) di lunghezza massima in \(P\)
-		\STATE \, \COMMENT Ordinamento
-		\WHILE{\(P-C\neq\varnothing\)} 
-		  \STATE togli un elemento da \(P-C\) e inseriscilo in \(C\) con una ricerca binaria 
-		\ENDWHILE
-		\RETURN \(C\) 
+		\STATE \, \COMMENT Preparazione \STATE trova una catena \(C\) di lunghezza massima in \(P\) \STATE \, \COMMENT Ordinamento \WHILE{\(P-C\neq\varnothing\)} \STATE togli un elemento da \(P-C\) e inseriscilo in \(C\) con una ricerca binaria \ENDWHILE \RETURN \(C\) 
 	\end{algorithmic}
 \end{algorithm}
 \begin{lemma}
-	Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\) e sia \(C\) una catena di lunghezza massima in \(P\). Vale allora \(\left|C\right|\ge n\cdot2^{-H(\overline{P})}\). 
+	\label{maxchainlemma} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\) e sia \(C\) una catena di lunghezza massima in \(P\). Vale allora \(\left|C\right|\ge n\cdot2^{-H(\overline{P})}\). 
 \end{lemma}
 \begin{proof}
-  TODO\qed
+	TODO\qed 
 \end{proof}
 \begin{theorem}
-  L'algoritmo \ref{insertion} compie \(O(\log{n}\cdot\log{e(P)})\) confronti.
+	L'algoritmo \ref{insertion} compie \(O(\log{n}\cdot\log{e(P)})\) confronti. 
 \end{theorem}
 \begin{proof}
-  TODO\qed
+	TODO\qed 
 \end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Merge sort naive}
+\section{Merge sort naive} 
 \begin{algorithm}
-  \caption{``Merge sort naive'' con informazione parziale} \label{naivemerge}
+	\caption{``Merge sort naive'' con informazione parziale} \label{naivemerge} 
 	\begin{algorithmic}
-	  \STATE \, \COMMENT Preparazione
-		\STATE trova una decomposizione golosa di \(P\) in catene \(C_1,\dots,C_k\)
-		\STATE \(\mathcal{C}\leftarrow\left\{C_1,\dots,C_k\right\}\)
-		\STATE \, \COMMENT Ordinamento
-		\WHILE{\(|\mathcal{C}|>1\)} 
-		  \STATE seleziona da \(\mathcal{C}\) due catene di lunghezza minima \(C\) e \(C'\)
-		  \STATE fondi \(C\) e \(C'\) in tempo lineare, ottenendo \(C''\)
-		  \STATE cancella \(C\) e \(C'\) da \(\mathcal{C}\), aggiungi \(C''\)
-		\ENDWHILE
-		\RETURN l'unica catena di \(\mathcal{C}\)
+		\STATE \, \COMMENT Preparazione \STATE trova una decomposizione golosa di \(P\) in catene \(C_1,\dots,C_k\) \STATE \(\mathcal{C}\leftarrow\left\{C_1,\dots,C_k\right\}\) \STATE \, \COMMENT Ordinamento \WHILE{\(|\mathcal{C}|>1\)} \STATE seleziona da \(\mathcal{C}\) due catene di lunghezza minima \(C\) e \(C'\) \STATE fondi \(C\) e \(C'\) in tempo lineare, ottenendo \(C''\) \STATE cancella \(C\) e \(C'\) da \(\mathcal{C}\), aggiungi \(C''\) \ENDWHILE \RETURN l'unica catena di \(\mathcal{C}\) 
 	\end{algorithmic}
 \end{algorithm}
 \begin{lemma}
-  TODO
+	TODO 
 \end{lemma}
 \begin{proof}
-  TODO\qed
+	TODO\qed 
 \end{proof}
+\begin{theorem}
+	\label{naivemergetheorem} Per ogni \(\varepsilon>0\) l'algoritmo \ref{naivemerge} compie al più \((1+\varepsilon)\log{e(P)}+(1+\varepsilon)(\log{e}+\log{(1+\frac{1}{\varepsilon})}+1)n\) confronti. 
+\end{theorem}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Merge con informazione parziale} 
@@ -162,10 +150,13 @@
 	\end{enumerate}
 \end{lemma}
 \begin{proof}
-	TODO\qed 
+	\begin{enumerate}
+		\item Supponiamo per assurdo che \(L\) non sia libera ma sia incastonata in \(K\). Siano allora \(w\in L\) e \(u,u^{''}\in K\) come nella definizione. Senza perdita di generalità possiamo assumere \(w,u',u^{''}\in A\) TODO 
+		\item TODO \qed 
+	\end{enumerate}
 \end{proof}
 \begin{lemma}
-	\label{touchinglemma} 
+	\label{touchinglemma} TODO
 \end{lemma}
 \begin{proof}
 	TODO\qed 
@@ -174,7 +165,7 @@
 	Sia \(x\in\text{STAB}^{*}(G)\). Diciamo che una componente connessa \(K\) di \(G(x)\) è \emph{rossa} se si ha \(|A\cap K|\ge|B\cap K|\), altrimenti diciamo che \(K\) è \emph{blu}. 
 \end{definition}
 \begin{lemma}
-	\label{consistentlemma} 
+	\label{consistentlemma} TODO
 \end{lemma}
 \begin{proof}
 	TODO\qed 
@@ -213,23 +204,50 @@
 	\[x_v+x_w=\frac{|B\cap K|}{|K|}+\frac{|A\cap L|}{|L|}\ge\frac{|B\cap K|}{|K|}+\frac{|A\cap K|}{|K|}\ge 1\]
 	da cui dedurremmo che l'arco di estremi \(v\) e \(w\) è stretto, una contraddizione. Segue quindi che \(L\) è blu oppure non esiste \(w\) adiacente a \(v\) in \(G\) ma non in \(G(x)\), cioè la tesi.\qed 
 \end{proof}
-È immediato osservare che la precedente dimostrazione si applica, \emph{mutatis mutandis}, all'insieme delle componenti blu non banali. Pertanto in analoghe ipotesi esiste una componente blu che sia buona.
-
+È immediato osservare che la precedente dimostrazione si applica, \emph{mutatis mutandis}, all'insieme delle componenti blu non banali. Pertanto in analoghe ipotesi esiste una componente blu che sia buona. 
+\begin{lemma}
+	\label{evolutionlemma} TODO 
+\end{lemma}
+\begin{proof}
+	TODO\qed 
+\end{proof}
+\begin{lemma}
+	\label{finallemma} TODO 
+\end{lemma}
+\begin{proof}
+	TODO\qed 
+\end{proof}
 \begin{algorithm}
-  \caption{``Merge'' con informazione parziale} \label{merge}
+	\caption{``Merge'' con informazione parziale} \label{merge} 
 	\begin{algorithmic}
-	  \STATE TODO
+		\STATE TODO 
 	\end{algorithmic}
 \end{algorithm}
+\begin{theorem}
+	\label{mergetheorem} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Allora l'algoritmo \ref{merge} fonde \(A\) e \(B\) impiegando al più \(6\log{e(P)}\) confronti. 
+\end{theorem}
+\begin{proof}
+	TODO\qed 
+\end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Merge sort} 
 \begin{algorithm}
-  \caption{``Merge sort'' con informazione parziale} \label{mergesort}
+	\caption{``Merge sort'' con informazione parziale} \label{mergesort} 
 	\begin{algorithmic}
-		\STATE trova una catena \(A\) di lunghezza massima in \(P\)
-		\STATE applica l'algoritmo \ref{naivemerge} a \(P-A\), ottenendo una catena \(B\)
-		\STATE applica l'algoritmo \ref{merge} all'ordine parziale corrente \(P'\)
-		\RETURN la catena risultante
+		\STATE trova una catena \(A\) di lunghezza massima in \(P\) \STATE applica l'algoritmo \ref{naivemerge} a \(P-A\), ottenendo una catena \(B\) \STATE applica l'algoritmo \ref{merge} all'ordine parziale corrente \(P'\) \RETURN la catena risultante 
 	\end{algorithmic}
 \end{algorithm}
+\begin{theorem}
+	\label{mergesorttheorem} L'algoritmo \ref{mergesort} risolve il problema dell'ordinamento con informazione parziale impiegando al più \(c \log{e(P)}\) confronti, dove \(c\approx 15.08\). 
+\end{theorem}
+\begin{proof}
+	Per il lemma \ref{maxchainlemma} abbiamo \(|A|\ge n\cdot 2^{-H(\overline{P})}\), dunque
+	\[|B|=|P-A|\le n(1-2^{-H(\overline{P})})\le\ln{2}\cdot nH(\overline{P}),\]
+	in cui abbiamo usato l'ovvia disuguaglianza \(1-2^{x}\le\ln{2}\cdot x\). Grazie ai teoremi \ref{naivemergetheorem} e \ref{mergetheorem} possiamo stimare il numero di confronti compiuti con 
+	\begin{align}
+		&\qquad(1+\varepsilon)\log{e(P-A)}+\left((1+\varepsilon)\left(\log{e}+\log{\left(1+\frac{1}{\varepsilon}\right)}\right)+1\right)|P-A|+6\log{e(P')} \nonumber \\
+		&\le\;\, (1+\varepsilon)\log{e(P)} \nonumber \\
+		&\le\;\, (1+\varepsilon
+	\end{align}
+\end{proof}
