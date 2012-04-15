@@ -8,7 +8,7 @@
 	dove \(c=1+7\log{e}\approx 11.1\). 
 \end{theorem}
 \begin{theorem}
-	\emph{(Cardinal, Fiorini, Joret, Jungers, Munro)} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
+	\label{cfjjmtheorem} \emph{(Cardinal, Fiorini, Joret, Jungers, Munro)} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
 	\[nH\left(\overline{P}\right)\le 2\log{e(P)}.\]
 \end{theorem}
 \begin{proof}
@@ -72,7 +72,7 @@
 \begin{algorithm}
 	\caption{``Insertion sort'' con informazione parziale} \label{insertion} 
 	\begin{algorithmic}
-		\STATE \, \COMMENT Preparazione \STATE trova una catena \(C\) di lunghezza massima in \(P\) \STATE \, \COMMENT Ordinamento \WHILE{\(P-C\neq\varnothing\)} \STATE togli un elemento da \(P-C\) e inseriscilo in \(C\) con una ricerca binaria \ENDWHILE \RETURN \(C\) 
+		[1] \STATE \, \COMMENT Preparazione \STATE trova una catena \(C\) di lunghezza massima in \(P\) \STATE \, \COMMENT Ordinamento \WHILE{\(P-C\neq\varnothing\)} \STATE togli un elemento da \(P-C\) e inseriscilo in \(C\) con una ricerca binaria \ENDWHILE \RETURN \(C\) 
 	\end{algorithmic}
 \end{algorithm}
 \begin{lemma}
@@ -93,7 +93,7 @@
 \begin{algorithm}
 	\caption{``Merge sort naive'' con informazione parziale} \label{naivemerge} 
 	\begin{algorithmic}
-		\STATE \, \COMMENT Preparazione \STATE trova una decomposizione golosa di \(P\) in catene \(C_1,\dots,C_k\) \STATE \(\mathcal{C}\leftarrow\left\{C_1,\dots,C_k\right\}\) \STATE \, \COMMENT Ordinamento \WHILE{\(|\mathcal{C}|>1\)} \STATE seleziona da \(\mathcal{C}\) due catene di lunghezza minima \(C\) e \(C'\) \STATE fondi \(C\) e \(C'\) in tempo lineare, ottenendo \(C''\) \STATE cancella \(C\) e \(C'\) da \(\mathcal{C}\), aggiungi \(C''\) \ENDWHILE \RETURN l'unica catena di \(\mathcal{C}\) 
+		[1] \STATE \, \COMMENT Preparazione \STATE trova una decomposizione golosa di \(P\) in catene \(C_1,\dots,C_k\) \STATE \(\mathcal{C}\leftarrow\left\{C_1,\dots,C_k\right\}\) \STATE \, \COMMENT Ordinamento \WHILE{\(|\mathcal{C}|>1\)} \STATE seleziona da \(\mathcal{C}\) due catene di lunghezza minima \(C\) e \(C'\) \STATE fondi \(C\) e \(C'\) in tempo lineare, ottenendo \(C''\) \STATE cancella \(C\) e \(C'\) da \(\mathcal{C}\), aggiungi \(C''\) \ENDWHILE \RETURN l'unica catena di \(\mathcal{C}\) 
 	\end{algorithmic}
 \end{algorithm}
 \begin{lemma}
@@ -156,7 +156,7 @@
 	\end{enumerate}
 \end{proof}
 \begin{lemma}
-	\label{touchinglemma} TODO
+	\label{touchinglemma} TODO 
 \end{lemma}
 \begin{proof}
 	TODO\qed 
@@ -165,7 +165,7 @@
 	Sia \(x\in\text{STAB}^{*}(G)\). Diciamo che una componente connessa \(K\) di \(G(x)\) è \emph{rossa} se si ha \(|A\cap K|\ge|B\cap K|\), altrimenti diciamo che \(K\) è \emph{blu}. 
 \end{definition}
 \begin{lemma}
-	\label{consistentlemma} TODO
+	\label{consistentlemma} TODO 
 \end{lemma}
 \begin{proof}
 	TODO\qed 
@@ -220,7 +220,7 @@
 \begin{algorithm}
 	\caption{``Merge'' con informazione parziale} \label{merge} 
 	\begin{algorithmic}
-		\STATE TODO 
+		[1] \STATE TODO 
 	\end{algorithmic}
 \end{algorithm}
 \begin{theorem}
@@ -235,19 +235,22 @@
 \begin{algorithm}
 	\caption{``Merge sort'' con informazione parziale} \label{mergesort} 
 	\begin{algorithmic}
-		\STATE trova una catena \(A\) di lunghezza massima in \(P\) \STATE applica l'algoritmo \ref{naivemerge} a \(P-A\), ottenendo una catena \(B\) \STATE applica l'algoritmo \ref{merge} all'ordine parziale corrente \(P'\) \RETURN la catena risultante 
+		[1] \STATE trova una catena \(A\) di lunghezza massima in \(P\) \STATE applica l'algoritmo \ref{naivemerge} a \(P-A\), ottenendo una catena \(B\) \STATE applica l'algoritmo \ref{merge} all'ordine parziale corrente \(P'\) \RETURN la catena risultante 
 	\end{algorithmic}
 \end{algorithm}
 \begin{theorem}
 	\label{mergesorttheorem} L'algoritmo \ref{mergesort} risolve il problema dell'ordinamento con informazione parziale impiegando al più \(c \log{e(P)}\) confronti, dove \(c\approx 15.08\). 
 \end{theorem}
 \begin{proof}
-	Per il lemma \ref{maxchainlemma} abbiamo \(|A|\ge n\cdot 2^{-H(\overline{P})}\), dunque
+  Sia \(g(P)\) il numero di confronti necessario ad ordinare \(P\). Per il lemma \ref{maxchainlemma} abbiamo \(|A|\ge n\cdot 2^{-H(\overline{P})}\), dunque
 	\[|B|=|P-A|\le n(1-2^{-H(\overline{P})})\le\ln{2}\cdot nH(\overline{P}),\]
-	in cui abbiamo usato l'ovvia disuguaglianza \(1-2^{x}\le\ln{2}\cdot x\). Grazie ai teoremi \ref{naivemergetheorem} e \ref{mergetheorem} possiamo stimare il numero di confronti compiuti con 
-	\begin{align}
-		&\qquad(1+\varepsilon)\log{e(P-A)}+\left((1+\varepsilon)\left(\log{e}+\log{\left(1+\frac{1}{\varepsilon}\right)}\right)+1\right)|P-A|+6\log{e(P')} \nonumber \\
-		&\le\;\, (1+\varepsilon)\log{e(P)} \nonumber \\
-		&\le\;\, (1+\varepsilon
-	\end{align}
+	in cui abbiamo usato l'ovvia disuguaglianza \(1-2^{x}\le\ln{2}\cdot x\). Grazie ai teoremi \ref{naivemergetheorem} e \ref{mergetheorem} possiamo maggiorare il numero di confronti compiuti con
+	\[g(P)\le(1+\varepsilon)\log{e(P-A)}+\left((1+\varepsilon)\left(\log{e}+\log{\left(1+\frac{1}{\varepsilon}\right)}\right)+1\right)|P-A|+6\log{e(P')}\]
+	e, per la disuguaglianza appena dimostrata,
+	\[ g(P)\le(1+\varepsilon)\log{e(P)}+\left((1+\varepsilon)\left(1+\ln{\left(1+\frac{1}{\varepsilon}\right)}\right)+\ln{2}\right)nH(\overline{P})+6\log{e(P')}.\]
+	Possiamo quindi applicare il teorema \ref{cfjjmtheorem} ed ottenere la stima
+	\[g(P)\le\left(1+\varepsilon+2\left((1+\varepsilon)\left(1+\ln{\left(1+\frac{1}{\varepsilon}\right)}\right)+\ln{2}\right)+6\right)\log{e(P)}.\]
+	Infine, ponendo \(\varepsilon\approx 0.351198\), abbiamo
+	\[g(P)\le c\log{e(P)}\nonumber\]
+  dove \(c\approx 15.08\), cioè la tesi.\qed
 \end{proof}
