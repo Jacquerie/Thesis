@@ -2,12 +2,13 @@
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Ordinamento con informazione parziale} Sia \(V=\left\{v_1,\dots,v_n\right\}\) un insieme dotato di un ordine totale \(\le\) fissato ma ignoto. Supponiamo di conoscere un sottoinsieme delle relazioni del tipo \(v_i\le v_j\). Il problema dell'ordinamento con informazione parziale consiste nel determinare l'ordine totale per mezzo di interrogazioni del tipo ``\(\text{\emph{è vero che}}\;v_i\le v_j\;\text{?}\,\)''. 
-\begin{theorem}[Kahn, Kim] \label{kktheorem} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
+\begin{theorem}
+	[Kahn, Kim] \label{kktheorem} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
 	\[\log{e(P)}\le nH\left(\overline{P}\right)\le\min\left\{\log{e(P)}+\log{e\cdot n},\; c\log{e(P)}\right\}\]
 	dove \(c=1+7\log{e}\approx 11.1\). 
 \end{theorem}
-\begin{theorem}[Cardinal, Fiorini, Joret, Jungers, Munro]
-	\label{cfjjmtheorem} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
+\begin{theorem}
+	[Cardinal, Fiorini, Joret, Jungers, Munro] \label{cfjjmtheorem} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
 	\[nH\left(\overline{P}\right)\le 2\log{e(P)}.\]
 \end{theorem}
 \begin{proof}
@@ -84,12 +85,13 @@
 	Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora l'algoritmo \ref{insertion} risolve il problema dell'ordinamento con informazione parziale in \(O(\log{n}\cdot\log{e(P)})\) confronti. 
 \end{theorem}
 \begin{proof}
-	Sia \(g(P)\) il numero di confronti necessario per ordinare \(P\). È chiaro che \[g(P)\le \log{n}\cdot(n-|C|),\]
+	Sia \(g(P)\) il numero di confronti necessario per ordinare \(P\). È chiaro che
+	\[g(P)\le \log{n}\cdot(n-|C|),\]
 	inoltre per il lemma \ref{maxchainlemma}
 	\[g(P)\le\log{n}\cdot(n-2^{-H(\overline{P})}n).\]
 	Usando l'ovvia disuguaglianza \(1-2^{x}\le\ln{2}\cdot x\) deduciamo
 	\[g(P)\le\log{n}\cdot\ln{2}\cdot nH(\overline{P}),\]
-	e applicando il teorema \ref{cfjjmtheorem}
+	e applicando il teorema \ref{cfjjmtheorem} abbiamo
 	\[g(P)=O(\log{n}\cdot\log{e(P)}),\]
 	cioè la tesi.\qed 
 \end{proof}
@@ -112,7 +114,7 @@
 	\label{naivemergetheorem} Per ogni \(\varepsilon>0\) l'algoritmo \ref{naivemerge} compie al più \((1+\varepsilon)\log{e(P)}+(1+\varepsilon)(\log{e}+\log{(1+\frac{1}{\varepsilon})}+1)\cdot n\) confronti. 
 \end{theorem}
 \begin{proof}
-  TODO\qed
+	TODO\qed 
 \end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
@@ -251,7 +253,7 @@
 	\label{mergesorttheorem} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora l'algoritmo \ref{mergesort} risolve il problema dell'ordinamento con informazione parziale impiegando al più \(c \log{e(P)}\) confronti, dove \(c\approx 15.08\). 
 \end{theorem}
 \begin{proof}
-  Sia \(g(P)\) il numero di confronti necessario ad ordinare \(P\). Per il lemma \ref{maxchainlemma} abbiamo \(|A|\ge n\cdot 2^{-H(\overline{P})}\), dunque
+	Sia \(g(P)\) il numero di confronti necessario ad ordinare \(P\). Per il lemma \ref{maxchainlemma} abbiamo \(|A|\ge n\cdot 2^{-H(\overline{P})}\), dunque
 	\[|B|=|P-A|\le n(1-2^{-H(\overline{P})})\le\ln{2}\cdot nH(\overline{P}),\]
 	in cui abbiamo usato l'ovvia disuguaglianza \(1-2^{x}\le\ln{2}\cdot x\). Grazie ai teoremi \ref{naivemergetheorem} e \ref{mergetheorem} possiamo maggiorare il numero di confronti compiuti con
 	\[g(P)\le(1+\varepsilon)\log{e(P-A)}+\left((1+\varepsilon)\left(\log{e}+\log{\left(1+\frac{1}{\varepsilon}\right)}\right)+1\right)|P-A|+6\log{e(P')}\]
@@ -261,5 +263,5 @@
 	\[g(P)\le\left(1+\varepsilon+2\left((1+\varepsilon)\left(1+\ln{\left(1+\frac{1}{\varepsilon}\right)}\right)+\ln{2}\right)+6\right)\log{e(P)}.\]
 	Infine, ponendo \(\varepsilon\approx 0.351198\), abbiamo
 	\[g(P)\le c\log{e(P)}\nonumber\]
-  dove \(c\approx 15.08\), cioè la tesi.\qed
+	dove \(c\approx 15.08\), cioè la tesi.\qed 
 \end{proof}
