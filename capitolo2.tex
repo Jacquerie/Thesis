@@ -105,16 +105,16 @@ Sia \(G\) un grafo. Possiamo trovare una partizione dei suoi vertici in insiemi 
 	TODO
 	
 	Abbiamo ora tutti gli strumenti necessari per concludere. Poiché \(G\) è perfetto possiamo applicare il teorema \ref{lovasztheorem}; inoltre, essendo \(z\in\text{STAB}(G)\), possiamo scrivere la disugaglianza
-	\begin{eqnarray}
-	  H(G)&=&\log(n)-H(\overline{G}) \nonumber \\
-	      &\ge& \log(n) + \frac{1}{n}\sum_{v\in V}{\log{z_v}}.\nonumber
-	\end{eqnarray}
+	\begin{align}
+	  H(G)&=\log(n)-H(\overline{G}) \nonumber \\
+	      &\ge \log(n) + \frac{1}{n}\sum_{v\in V}{\log{z_v}}.\nonumber
+	\end{align}
 	Con semplici passaggi algebrici otteniamo
-	\begin{eqnarray}
-	     \log(n) + \frac{1}{n}\sum_{v\in V}{\log{z_v}} &=& \log(n) + \frac{1}{n}\sum_{v\in V}{\log\left(\frac{\delta}{n}\left(\frac{1}{x_v}\right)^{1-\delta}\right)} \nonumber \\
-	      &=& - \frac{1-\delta}{n}\sum_{v\in V}{\log(x_v)}-\log{\frac{1}{\delta}} \nonumber \\
-	      &=& (1-\delta)H(x)-\log{\frac{1}{\delta}} \nonumber,
-	\end{eqnarray}
+	\begin{align}
+	     \log(n) + \frac{1}{n}\sum_{v\in V}{\log{z_v}} &= \log(n) + \frac{1}{n}\sum_{v\in V}{\log\left(\frac{\delta}{n}\left(\frac{1}{x_v}\right)^{1-\delta}\right)} \nonumber \\
+	      &= - \frac{1-\delta}{n}\sum_{v\in V}{\log(x_v)}-\log{\frac{1}{\delta}} \nonumber \\
+	      &= (1-\delta)H(x)-\log{\frac{1}{\delta}} \nonumber,
+	\end{align}
 	da cui deduciamo
 	\[H(x)\le\frac{1}{1-\delta}H(G)+\frac{1}{1-\delta}\log{\frac{1}{\delta}}.\]
 	Basta ora porre \(\delta=\frac{\varepsilon}{\varepsilon+1}\) e ricaviamo la tesi.
