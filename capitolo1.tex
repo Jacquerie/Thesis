@@ -1,5 +1,5 @@
-\chapter{Tre definizioni equivalenti di entropia di grafo}
-\section{Tre definizioni di entropia di grafo}
+\chapter{Tre definizioni equivalenti di entropia di grafo} 
+\section{Tre definizioni di entropia di grafo} 
 \subsection{Definizione in termini di Numero Cromatico} \label{codinganalogy} 
 \begin{definition}
 	Chiameremo \emph{grafo probabilistico} una coppia \((G,P)\) dove \(G\) è un grafo e \(P\) una distribuzione di probabilità discreta sui vertici, cioè se \(|V|=n\) allora \(P\) è una \(n-\)upla \((p_1 \dots p_n)\) tale che \(p_1 + \dots + p_n = 1\). 
@@ -34,10 +34,8 @@ La definizione \eqref{eq:entropyzero} non consente però il calcolo dell'entropi
 \end{definition}
 
 In altri termini fra due vertici \(\mathbf{v}\) e \(\mathbf{w}\) di \(G^t\) esiste un arco se e soltanto se le corrispondenti sequenze di lunghezza \(t\) sono distinguibili in almeno un elemento.
-
 \begin{example}
-  Sia \(L\) il grafo su tre vertici con due archi, rappresentato a sinistra. Allora \(L^2\), prodotto normale di \(L\) con se stesso, è rappresentato a destra.
-  TODO: Disegno
+	Sia \(L\) il grafo su tre vertici con due archi, rappresentato a sinistra. Allora \(L^2\), prodotto normale di \(L\) con se stesso, è rappresentato a destra. TODO: Disegno 
 \end{example}
 Osserviamo che la coppia \((G^t, \mathbf{P}^t)\), dove \(\mathbf{P}^t\) è definita da \eqref{eq:probability}, è un grafo probabilistico. Se \(U\subset V^{t}\) possiamo denotare con \(\mathbf{P}^t(U)\) la somma delle probabilità dei vertici in \(U\).
 
@@ -103,7 +101,7 @@ Perché la precedente risulti una buona definizione dovremmo dimostrare che tale
 	\]
 	ed il loro involucro convesso è \(\text{STAB}(G)\).
 	
-  TODO: Disegno 
+	TODO: Disegno 
 \end{example}
 
 Non abbiamo bisogno di altro per enunciare la terza definizione di entropia di grafo. 
@@ -195,9 +193,9 @@ Definendo le variabili aleatorie \(X\sim P\) e \(Y\sim R\) rispettivamente a val
 
 Sia \(\mathcal{A}\) l'insieme di tutte le distribuzioni ammissibili. Osserviamo che si tratta di un insieme chiuso e limitato nello spazio vettoriale delle funzioni di dominio \(V\times \mathcal{N}\). La limitatezza segue dall'essere un insieme di distribuzioni di probabilità, quindi a somma \(1\). La chiusura invece è conseguenza dell'essere preimmagine di un insieme finito di punti tramite le equazioni \eqref{eq:preimage} al variare di \(v\in V\). Inoltre tale spazio vettoriale è di dimensione finita essendo sia \(V\) sia \(\mathcal{N}\) finiti, per cui possiamo applicare il teorema di Heine-Borel e concludere la compattezza di \(\mathcal{A}\). Ma allora la funzione continua \eqref{eq:continuous} possiede minimo per il teorema di Weierstrass, da cui segue la buona definizione della seconda definizione di entropia di grafo. Nel seguito denoteremo con \(H(G,P)\) tale minimo.
 
-Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle prime due definizioni di entropia di grafo. Ne divideremo la dimostrazione nei successivi due teoremi. 
-\begin{theorem}[K\"orner]
-	Sia \((G,P)\) un grafo probabilistico e sia \(\delta>0\). Per ogni \(0<\varepsilon<1\) e per \(t\) abbastanza grande abbiamo
+Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle prime due definizioni di entropia di grafo. Ne divideremo la dimostrazione nei successivi due teoremi, come in \cite{Korner1973}.
+\begin{theorem}
+	[K\"orner] Sia \((G,P)\) un grafo probabilistico e sia \(\delta>0\). Per ogni \(0<\varepsilon<1\) e per \(t\) abbastanza grande abbiamo
 	\[\chi(t,\varepsilon)\ge 2^{t(H(G,P)-\delta)},\]
 	dove \(\chi(t, \varepsilon)\) è il minimo numero di parole necessarie in una codifica propria rispetto al prodotto conormale, tranne per un insieme di probabilità totale \(\varepsilon\). 
 \end{theorem}
@@ -273,8 +271,8 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 	\[ \liminf_{t\to \infty} \frac{1}{t}\log\chi(t,\varepsilon)\ge H(G,P). \]
 	\qed 
 \end{proof}
-\begin{theorem}[K\"orner]
-	Sia \((G,P)\) un grafo probabilistico e sia \(\delta>0\). Per ogni \(0<\varepsilon<1\) e per \(t\) abbastanza grande esiste \(U_{t}\), sottografo di \(G^{t}\) tale che \(\mathbf{P}^t(U_{t})\ge 1-\varepsilon\) ed inoltre
+\begin{theorem}
+	[K\"orner] Sia \((G,P)\) un grafo probabilistico e sia \(\delta>0\). Per ogni \(0<\varepsilon<1\) e per \(t\) abbastanza grande esiste \(U_{t}\), sottografo di \(G^{t}\) tale che \(\mathbf{P}^t(U_{t})\ge 1-\varepsilon\) ed inoltre
 	\[\chi(U_{t})\le 2^{t(H(G,P)+\delta)}\]
 \end{theorem}
 \begin{proof}
@@ -328,8 +326,8 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 \end{proof}
 
 \subsection{Mutua Informazione e Politopo dei Vertici} 
-\begin{theorem}[Simonyi]
-	Sia \(G\) un grafo e siano \(S(G)\) i suoi insiemi indipendenti. Sia \(P\) una densità discreta sui vertici di \(G\). Avremo allora:
+\begin{theorem}
+	[Simonyi] Sia \(G\) un grafo e siano \(S(G)\) i suoi insiemi indipendenti. Sia \(P\) una densità discreta sui vertici di \(G\). Avremo allora:
 	\[\min_{\substack{X\in Y\in S(G) \\
 	X\sim P}} I(X;Y)\ = \min_{\substack{\mathbf{a}\in \text{\text{STAB}}(G) \\
 	\mathbf{a}>0}} \sum_{i=1}^n p_i\log{\frac{1}{a_i}}\]

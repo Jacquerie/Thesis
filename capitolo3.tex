@@ -79,7 +79,7 @@
 	\label{maxchainlemma} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\) e sia \(C\) una catena di lunghezza massima in \(P\). Vale allora \(\left|C\right|\ge n\cdot2^{-H(\overline{P})}\). 
 \end{lemma}
 \begin{proof}
-	È noto che l'entropia di un grafo su \(n\) vertici e dimensione massima di un insieme indipendente \(\alpha\) è maggiore o uguale a \(-\log{\frac{\alpha}{n}}\). La tesi segue applicando questo fatto a \(G=\overline{G}(P)\).\qed 
+	È noto che l'entropia di un grafo su \(n\) vertici e dimensione massima di un insieme indipendente \(\alpha\) è maggiore o uguale a \(-\log{\frac{\alpha}{n}}\) \cite{Cardinal2005}. La tesi segue applicando questo fatto a \(G=\overline{G}(P)\).\qed 
 \end{proof}
 \begin{theorem}
 	Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora l'algoritmo \ref{insertion} risolve il problema dell'ordinamento con informazione parziale in \(O(\log{n}\cdot\log{e(P)})\) confronti. 
@@ -104,14 +104,15 @@
 		[1] \STATE \, \COMMENT Preparazione \STATE trova una decomposizione golosa di \(P\) in catene \(C_1,\dots,C_k\) \STATE \(\mathcal{C}\leftarrow\left\{C_1,\dots,C_k\right\}\) \STATE \, \COMMENT Ordinamento \WHILE{\(|\mathcal{C}|>1\)} \STATE seleziona da \(\mathcal{C}\) due catene di lunghezza minima \(C\) e \(C'\) \STATE fondi \(C\) e \(C'\) in tempo lineare, ottenendo \(C''\) \STATE cancella \(C\) e \(C'\) da \(\mathcal{C}\), aggiungi \(C''\) \ENDWHILE \RETURN l'unica catena di \(\mathcal{C}\) 
 	\end{algorithmic}
 \end{algorithm}
+Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\frac{|C_1|}{n},\dots,\frac{|C_k|}{n}\right\}\). 
 \begin{lemma}
-	TODO 
+	\label{naivemergelemma} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora l'algoritmo \ref{naivemerge} risolve il problema dell'ordinamento parziale compiendo al più \((\tilde{h}+1)n\) confronti.
 \end{lemma}
 \begin{proof}
 	TODO\qed 
 \end{proof}
 \begin{theorem}
-	\label{naivemergetheorem} Per ogni \(\varepsilon>0\) l'algoritmo \ref{naivemerge} compie al più \((1+\varepsilon)\log{e(P)}+(1+\varepsilon)(\log{e}+\log{(1+\frac{1}{\varepsilon})}+1)\cdot n\) confronti. 
+	\label{naivemergetheorem} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora, per ogni \(\varepsilon>0\), l'algoritmo \ref{naivemerge} risolve il problema dell'ordinamento parziale impiegando al più \((1+\varepsilon)\log{e(P)}+(1+\varepsilon)\left(\log{e}+\log{\left(1+\frac{1}{\varepsilon}\right)}+1\right)\cdot n\) confronti. 
 \end{theorem}
 \begin{proof}
 	TODO\qed 
