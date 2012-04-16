@@ -1,7 +1,11 @@
 \chapter{Tre algoritmi per ordinare con informazione parziale}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Ordinamento con informazione parziale} Sia \(V=\left\{v_1,\dots,v_n\right\}\) un insieme dotato di un ordine totale \(\le\) fissato ma ignoto. Supponiamo di conoscere un sottoinsieme delle relazioni del tipo \(v_i\le v_j\). Il problema dell'ordinamento con informazione parziale consiste nel determinare l'ordine totale per mezzo di interrogazioni del tipo ``\(\text{\emph{è vero che}}\;v_i\le v_j\;\text{?}\,\)''.
+\section{Ordinamento con informazione parziale} 
+\begin{definition}
+	Sia \(P\) un insieme parzialmente ordinato di sostegno \(V=\left\{v_1,\dots,v_n\right\}\), a propria volta dotato di un ordine totale \(\le\) fissato ma ignoto. Il \emph{problema dell'ordinamento con informazione parziale} consiste nel determinare l'ordine totale per mezzo di domande del tipo ``\(\text{\emph{è vero che}}\;v_i\le v_j\;\text{?}\,\)''. Chiameremo \emph{estensione lineare} un qualunque ordine totale che sia compatibile con \(P\) e denoteremo con \(e(P)\) il numero di estensioni lineari.
+\end{definition}
+Tale problema fu originariamente posto da Fredman nel 1976 \cite{Fredman1976}. Sempre Fredman dimostrò l'esistenza di un algoritmo che lo risolva compiendo \(\log{e(P)} + 2n\) confronti, il quale tuttavia richiede tempo di esecuzione superpolinomiale. Nel 1984 Kahn e Saks dimostrarono l'esistenza di un algoritmo che compia \(O(\log{e(P)})\) confronti \cite{Kahn1984}. Essi mostrarono che esiste sempre una domanda della forma ``\(\text{\emph{è vero che}}\;v_i\le v_j\;\text{?}\,\)'' tale che le estensioni lineari per cui la risposta sia affermativa siano una parte compresa fra \(3/11\) e \(8/11\) del totale. Questo enunciato è un rilassamento della congettura \(1/3-2/3\), indipendentemente posta da Kislitsyn \cite{Kislitsyn1968}, Fredman e Linial \cite{Linial1984}.
 \begin{theorem}
 	[Kahn, Kim] \label{kktheorem} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
 	\[\log{e(P)}\le nH\left(\overline{P}\right)\le\min\left\{\log{e(P)}+\log{e\cdot n},\; c\log{e(P)}\right\}\]
@@ -106,7 +110,7 @@
 \end{algorithm}
 Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\frac{|C_1|}{n},\dots,\frac{|C_k|}{n}\right\}\). 
 \begin{lemma}
-	\label{naivemergelemma} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora l'algoritmo \ref{naivemerge} risolve il problema dell'ordinamento parziale compiendo al più \((\tilde{h}+1)n\) confronti.
+	\label{naivemergelemma} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora l'algoritmo \ref{naivemerge} risolve il problema dell'ordinamento parziale compiendo al più \((\tilde{h}+1)n\) confronti. 
 \end{lemma}
 \begin{proof}
 	TODO\qed 
@@ -255,7 +259,7 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 \end{theorem}
 \begin{proof}
 	Sia \(g(P)\) il numero di confronti necessario ad ordinare \(P\). Per il lemma \ref{maxchainlemma} abbiamo \(|A|\ge n\cdot 2^{-H(\overline{P})}\), dunque
-	\[|B|=|P-A|\le n(1-2^{-H(\overline{P})})\le\ln{2}\cdot nH(\overline{P}),\]
+	\[|B|=|P-A|\le n\left(1-2^{-H(\overline{P})}\right)\le\ln{2}\cdot nH(\overline{P}),\]
 	in cui abbiamo usato l'ovvia disuguaglianza \(1-2^{x}\le\ln{2}\cdot x\). Grazie ai teoremi \ref{naivemergetheorem} e \ref{mergetheorem} possiamo maggiorare il numero di confronti compiuti con
 	\[g(P)\le(1+\varepsilon)\log{e(P-A)}+\left((1+\varepsilon)\left(\log{e}+\log{\left(1+\frac{1}{\varepsilon}\right)}\right)+1\right)|P-A|+6\log{e(P')}\]
 	e, per la disuguaglianza appena dimostrata,
