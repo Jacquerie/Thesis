@@ -2,7 +2,7 @@
 \section{Proprietà notevoli dell'entropia di grafo}
 \subsection{Monotonia} 
 \begin{lemma}
-	Siano \(F\) e \(G\) grafi tali che \(V(G)=V(F)\) ma \(E(F)\subset E(G)\). Allora comunque scelta \(P\) densità discreta sui vertici avremo \(H(F,P)\le H(G,P)\). 
+	Siano \(F\) e \(G\) grafi tali che \(V(G)=V(F)\) e \(E(F)\subset E(G)\). Allora per ogni scelta di \(P\) densità discreta sui vertici si ha \(H(F,P)\le H(G,P)\). 
 \end{lemma}
 \begin{proof}
 	Osserviamo che se \(E(F)\subset E(G)\) allora \(\text{VP}(G)\subset \text{VP}(F)\). Sfruttando la terza definizione di entropia di grafo abbiamo immediatamente la tesi, infatti stiamo prendendo il minimo della stessa funzione obiettivo su un insieme più grande.\qed 
@@ -10,7 +10,7 @@
 
 \subsection{Subadditività} 
 \begin{lemma}
-	Siano \(F\) e \(G\) grafi di comune insieme dei vertici \(V\). Sia \(F\cup G\) il grafo di vertici \(V\) ed insieme degli archi \(E(F)\cup E(G)\). Comunque scelta \(P\) densità discreta sui vertici avremo
+	Siano \(F\) e \(G\) grafi di comune insieme dei vertici \(V\). Sia \(F\cup G\) il grafo di vertici \(V\) ed insieme degli archi \(E(F)\cup E(G)\). Per ogni scelta di scelta \(P\) densità discreta sui vertici si ha
 	\[H(F\cup G,P)\le H(F,P)+H(G,P)\]
 \end{lemma}
 \begin{proof}
@@ -20,7 +20,7 @@
 \end{proof}
 
 \subsection{Additività per sostituzioni}
-Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice di \(G\). Chiamiamo grafo ottenuto sostituendo \(F\) a \(v\), e scriviamo \(G_{v\leftarrow F}\), il grafo ottenuto da \(G\) cancellando \(v\) e connettendo ogni vertice adiacente a \(v\) con ogni vertice di una copia isomorfa di \(F\). Supponiamo inoltre che \(P\) sia una densità sui vertici di \(G\) e che \(Q\) sia una densità sui vertici di \(F\). Allora possiamo definire una \(P_{v\leftarrow Q}\) in modo che la coppia \((G_{v\leftarrow F}, P_{v\leftarrow Q})\) sia un grafo probabilistico. Per fare questo poniamo
+Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice di \(G\). Chiamiamo grafo ottenuto sostituendo \(F\) a \(v\), e scriviamo \(G_{v\leftarrow F}\), il grafo ottenuto da \(G\) cancellando \(v\) e connettendo ogni vertice adiacente a \(v\) con ciascun vertice di una copia isomorfa di \(F\). Supponiamo inoltre che \(P\) sia una densità sui vertici di \(G\) e che \(Q\) sia una densità sui vertici di \(F\). Allora possiamo definire una \(P_{v\leftarrow Q}\) in modo che la coppia \((G_{v\leftarrow F}, P_{v\leftarrow Q})\) sia un grafo probabilistico. Per fare questo poniamo
 \[P_{v\leftarrow Q}(x)= 
 \begin{cases}
 	P(x) & \text{se}\ x\in V(G)-\{v\}\\
@@ -39,7 +39,7 @@ Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice 
 	\[H(G,P)=\sum_{i=1}^n P(V(G_i))H(G_i,P_i)\]
 \end{corollary}
 \begin{proof}
-	Consideriamo il grafo su \(n\) vertici \(\{v_{1}\dots v_{n}\}\) privo di archi, e sia \(Q\) la densità discreta tale che \(Q(v_{i}) = P(V(G_i))\). Otteniamo la tesi applicando \(n\) volte il lemma precedente, sostituendo ad ogni passo il vertice \(v_i\) con la componente connessa \(G_{i}\).\qed 
+	Consideriamo il grafo su \(n\) vertici \(\{v_{1}\dots v_{n}\}\) privo di archi, e sia \(Q\) la densità discreta definita da \(Q(v_{i}) = P(V(G_i))\). Otteniamo la tesi applicando \(n\) volte il lemma precedente, sostituendo ad ogni passo il vertice \(v_i\) con la componente connessa \(G_{i}\).\qed 
 \end{proof}
 
 \subsection{Entropia di grafo completo} 
@@ -61,7 +61,13 @@ Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice 
 \end{remark}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Entropia e grafi perfetti} Il numero di cricca di un grafo \(G\) fornisce una stima dal basso del numero cromatico. È infatti evidente che \(\omega(G)\le\chi(G)\), poiché avremo bisogno di almeno tanti colori quanti sono i vertici della massima cricca. Possiamo dunque porci il problema di caratterizzare quei grafi per cui tale disuguaglianza sia in realtà una uguaglianza. 
+\section{Entropia e grafi perfetti} 
+
+\begin{definition}
+  Sia \(G\) un grafo. Chiamiamo \emph{cricca} un sottografo completo di \(G\), e chiamiamo \emph{numero di cricca} il massimo numero di vertici \(\omega(G)\) in una cricca di \(G\).
+\end{definition}
+
+Il numero di cricca di un grafo \(G\) fornisce una stima dal basso del numero cromatico. È infatti evidente che \(\omega(G)\le\chi(G)\), poiché sono necessari almeno tanti colori quanti sono i vertici della massima cricca. Possiamo dunque porci il problema di caratterizzare quei grafi per cui tale disuguaglianza sia in realtà una uguaglianza. 
 \begin{definition}
 	Sia \(G\) un grafo. Diciamo che \(G\) è \emph{perfetto} se, per ogni sottografo \(H\), vale
 	\[\omega(H)=\chi(H).\]
@@ -77,7 +83,7 @@ Come corollario del precedente teorema otteniamo che \(G\) è perfetto se e solt
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Grafi associati ad ordini parziali}
 
-Abbiamo finora sviluppato la teoria dell'entropia di grafo per una distribuzione di probabilità \(P\) qualunque sui vertici. Nel seguito sarà sufficiente supporre che tale distribuzione sia la distribuzione uniforme.
+Abbiamo finora sviluppato la teoria dell'entropia di grafo per una distribuzione di probabilità \(P\) qualunque sui vertici. Nel seguito sarà sufficiente considerare il caso in cui tale distribuzione sia uniforme.
 
 \begin{lemma}[Chvatál]
   TODO
@@ -91,7 +97,7 @@ Sia \(G\) un grafo. Possiamo trovare una partizione dei suoi vertici in insiemi 
 	Sia \(G\) un grafo perfetto e sia \(\left\{S_1,\dots,S_k\right\}\) una partizione dei vertici ottenuta con il precedente algoritmo goloso. Chiameremo \emph{punto goloso} il punto \(x\) definito da
 	\[x=\sum_{i=1}^k\frac{|S_i|}{n}\chi^{S_i}\]
 \end{definition}
-È evidente per costruzione che tale punto appartenga a \(\text{STAB}(G)\). Il seguente teorema
+Dalla costruzione è evidente che tale punto appartiene a \(\text{STAB}(G)\). Il seguente teorema TODO
 \begin{theorem}[Cardinal, Fiorini, Joret, Jungers, Munro]
 	Sia \(G\) un grafo perfetto su \(n\) vertici e sia \(x\) un suo punto goloso. Allora, comunque fissato \(\varepsilon>0\), vale
 	\[H(x)\le(1+\varepsilon)H(G)+(1+\varepsilon)\log\left(1+\frac{1}{\varepsilon}\right)\]
