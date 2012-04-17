@@ -42,6 +42,10 @@
 \renewcommand{\algorithmiccomment}[1]{/\(\!\)/ #1}
 \floatname{algorithm}{Algoritmo}
 
+% Pretty bibliography
+\usepackage[style=numeric]{biblatex}
+\bibliography{entropy}
+
 %\newif\ifpdf
 %\ifx\pdfoutput\undefined
 %\pdffalse % we are not running PDFLaTeX
@@ -97,6 +101,5 @@
 \include{appendice}
 \include{ringraziamenti}
 
-\bibliography{entropy}{}
-\bibliographystyle{acm}
+\printbibliography
 \end{document}
