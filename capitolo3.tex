@@ -136,10 +136,10 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 	TODO\qed 
 \end{proof}
 \begin{definition}
-	Diremo che un arco \(uv\) è \emph{stretto} rispetto ad \(x\in\text{STAB}(G)\) se vale \(x_u+x_v=1\). Denoteremo con \(G(x)\) il grafo i cui vertici siano gli stessi di \(G\) e i cui archi siano stretti rispetto ad \(x\). 
+	Diciamo che un arco \(uv\) è \emph{stretto} rispetto ad \(x\in\text{STAB}(G)\) se vale \(x_u+x_v=1\). Denotiamo con \(G(x)\) il grafo i cui vertici siano gli stessi di \(G\) e i cui archi siano stretti rispetto ad \(x\). 
 \end{definition}
 \begin{definition}
-	Siano \(uv\) e \(u'v'\) archi di \(G\) tali che \(u,u'\in A\) e \(v,v'\in B\). Diremo che \emph{si incrociano} se \(u<_{P}u'\) e \(v'<_{P}v\) oppure se \(u'<_{P}u\) e \(v<_{P}v'\). 
+	Siano \(uv\) e \(u'v'\) archi di \(G\) tali che \(u,u'\in A\) e \(v,v'\in B\). Diciamo che \emph{si incrociano} se \(u<_{P}u'\) e \(v'<_{P}v\) oppure se \(u'<_{P}u\) e \(v<_{P}v'\). 
 \end{definition}
 \begin{lemma}
 	\label{crossinglemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Sia \(x\) un punto di \(\text{STAB}(G)\) e siano \(uv\) e \(u'v'\) archi stretti rispetto ad \(x\) tali inoltre che \(u,u'\in A\) e \(v,v'\in B\). Se \(uv\) e \(u'v'\) si incrociano allora sia \(u'v\) sia \(uv'\) sono archi di \(G\), entrambi stretti rispetto ad \(x\). 
@@ -148,15 +148,15 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 	TODO\qed 
 \end{proof}
 \begin{definition}
-	Diremo che \(x\in\text{STAB}(G)\) è \emph{localmente ottimo} se per ogni componente connessa \(K\) di \(G(x)\) valgono
-	\[x_u=\frac{|A\cap K|}{|K|}\;\text{per ogni}\,u\in A\cap K\qquad\text{e}\qquad x_v=\frac{|B\cap K}{|K|}\;\text{per ogni}\,v\in B\cap K.\]
-	Diremo che \(K\) è \emph{bilanciata} se per essa valgono le precedenti condizioni di ottimalità, \emph{sbilanciata} altrimenti. 
+	Diciamo che \(x\in\text{STAB}(G)\) è \emph{localmente ottimo} se per ogni componente connessa \(K\) di \(G(x)\) valgono
+	\[x_u=\frac{|A\cap K|}{|K|}\quad\text{per ogni}\,u\in A\cap K\qquad\text{e}\qquad x_v=\frac{|B\cap K}{|K|}\quad\text{per ogni}\,v\in B\cap K.\]
+	Diciamo che \(K\) è \emph{bilanciata} se per essa valgono le precedenti condizioni di ottimalità, \emph{sbilanciata} altrimenti. 
 \end{definition}
 \begin{definition}
-	Sia \(x\in\text{STAB}^*(G)\). Diremo che una componente connessa \(K\) di \(G(x)\) è \emph{banale} se consiste di un unico vertice, \emph{non banale} altrimenti. Inoltre chiameremo \emph{libera} una componente che sia banale e sbilanciata. 
+	Sia \(x\in\text{STAB}^*(G)\). Una componente connessa \(K\) di \(G(x)\)  è detta banale se consiste di un unico vertice, \emph{non banale} altrimenti. Inoltre chiamiamo \emph{libera} una componente che sia banale e sbilanciata. 
 \end{definition}
 \begin{definition}
-	Sia \(x\in\text{STAB}^{*}(G)\). Diremo che una componente connessa \(L\) di \(G(x)\) è \emph{incastonata} in un'altra componente connessa \(K\) se esistono un vertice \(w\in L\) e due vertici \(u,u^{''}\in K\) tutti appartenenti ad un'unica catena e tali inoltre che \(u\le_{P}w\le_{P}u^{''}\). 
+	Sia \(x\in\text{STAB}^{*}(G)\). Una componente connessa \(L\) di \(G(x)\) è detta \emph{incastonata} in un'altra componente connessa \(K\) se esistono un vertice \(w\in L\) e due vertici \(u,u^{''}\in K\) tutti appartenenti ad un'unica catena e tali inoltre che \(u\le_{P}w\le_{P}u^{''}\). 
 \end{definition}
 \begin{lemma}
 	\label{inlaylemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\), sia inoltre \(G=\overline{G}(P)\). Dato \(x\in\text{STAB}^{*}(G)\) allora 
@@ -210,7 +210,7 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 	Sia \(K\) una componente connessa di \(G(x)\). Se \(K\) è rossa chiamo \(A\cap K\) \emph{catena maggiore} e \(B\cap K\) \emph{catena minore}. Se \(K\) è blu il contrario. 
 \end{definition}
 \begin{definition}
-	Sia \(K\) una componente connessa di \(G(x)\). Dico che \(K\) è \emph{buona} se ogni arco di \(G\) che possiede un estremo nella catena minore di \(K\) ha l'altro estremo nella catena maggiore oppure in una componente connessa di colore opposto. 
+	Sia \(K\) una componente connessa di \(G(x)\). Diciamo che \(K\) è \emph{buona} se ogni arco di \(G\) che possiede un estremo nella catena minore di \(K\) ha l'altro estremo nella catena maggiore oppure in una componente connessa di colore opposto. 
 \end{definition}
 \begin{lemma}
 	\label{goodlemma} Sia \(x\in \text{STAB}(G)\) localmente ottimo. Se \(G(x)\) possiede almeno una componente rossa non banale allora una di esse è buona. 
