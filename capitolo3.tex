@@ -145,7 +145,14 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 	\label{crossinglemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Sia \(x\) un punto di \(\text{STAB}(G)\) e siano \(uv\) e \(u'v'\) archi stretti rispetto ad \(x\) tali inoltre che \(u,u'\in A\) e \(v,v'\in B\). Se \(uv\) e \(u'v'\) si incrociano allora sia \(u'v\) sia \(uv'\) sono archi di \(G\), entrambi stretti rispetto ad \(x\). 
 \end{lemma}
 \begin{proof}
-	TODO\qed 
+	Dal lemma \ref{structurelemma} \((3)\) segue che \(u'v\) e \(uv'\) sono archi di \(G\). Supponiamo per assurdo che \(uv'\) non sia stretto. Avremmo allora:
+	\begin{align}
+		x_v &= 1-x_u &\text{(poich\'e } uv \text{ \`e stretto)}\nonumber \\
+		      &> x_{v'} &\text{(poich\'e } uv' \text{ non \`e stretto)}\nonumber \\
+		      &= 1-x_{u'} &\text{(poich\'e } u'v' \text{ \`e stretto)}\nonumber \\
+		      &\ge x_{v} &\text{(poich\'e } u'v \text{ \`e un arco e per il lemma \ref{chvatallemma}),}\nonumber
+	\end{align}
+	chiaramente un assurdo. Possiamo procedere analogamente per \(u'v\), da cui la tesi.\qed
 \end{proof}
 \begin{definition}
 	Diciamo che \(x\in\text{STAB}(G)\) è \emph{localmente ottimo} se per ogni componente connessa \(K\) di \(G(x)\) valgono
