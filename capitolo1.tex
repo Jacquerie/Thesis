@@ -39,7 +39,7 @@ In altri termini fra due vertici \(\mathbf{v}\) e \(\mathbf{w}\) di \(G^t\) esis
 \end{example}
 Osserviamo che la coppia \((G^t, \mathbf{P}^t)\), dove \(\mathbf{P}^t\) è definita da \eqref{eq:probability}, è un grafo probabilistico. Se \(U\subset V^{t}\) possiamo denotare con \(\mathbf{P}^t(U)\) la somma delle probabilità dei vertici in \(U\).
 
-Volendo codificare propriamente un sottoinsieme \(U\subset V^{t}\) abbiamo bisogno di almeno tante parole quanti insiemi indipendenti servono per partizionare \(U\). Ma questo è proprio il numero cromatico del sottografo indotto da \(G^t\) su \(U\), che denoteremo \(\chi(G^t(U))\). Siamo ora pronti per enunciare la prima definizione di entropia di grafo. 
+Volendo codificare propriamente un sottoinsieme \(U\subset V^{t}\) abbiamo bisogno di almeno tante parole quanti insiemi indipendenti servono per partizionare \(U\). Ma questo è proprio il numero cromatico del sottografo indotto da \(G^t\) su \(U\), che denotiamo \(\chi(G^t(U))\). Siamo ora pronti per enunciare la prima definizione di entropia di grafo. 
 \begin{definition}
 	Sia \((G,P)\) un grafo probabilistico. Chiamiamo \emph{entropia di grafo} il seguente limite: 
 	\begin{equation}
@@ -51,11 +51,12 @@ Affinchè la precedente risulti una buona definizione dovremmo dimostrarne l'ind
 
 \subsection{Definizione in termini di Mutua Informazione} 
 \begin{definition}
-	Sia \(X\) una variabile aleatoria discreta di densità \(P=(p_1\dots p_n)\). Chiameremo \emph{entropia di Shannon di \(X\)} la somma
-	\[H(X)=\sum_{i=1}^n p_i \log{\frac{1}{p_i}}\]
+	Sia \(X\) una variabile aleatoria discreta di densità \(P=(p_1\dots p_n)\). Chiamiamo \emph{entropia di Shannon di \(X\)} la somma
+	\[H(X)=\sum_{i=1}^n p_i \log{\frac{1}{p_i}}.\]
+	Con abuso di notazione scriviamo \(H(P)\) per indicare l'entropia di Shannon di una variabile aleatoria discreta di densit\'a \(P\).
 \end{definition}
 \begin{definition}
-	Siano \(X\) ed \(Y\) due variabili aleatorie discrete. Chiameremo \emph{mutua informazione di \(X\) ed \(Y\)} la quantità
+	Siano \(X\) ed \(Y\) due variabili aleatorie discrete. Chiamiamo \emph{mutua informazione di \(X\) ed \(Y\)} la quantità
 	\[I(X;Y)=H(X)+H(Y)-H((X,Y))\]
 	dove \((X,Y)\) è la variabile aleatoria congiunta. 
 \end{definition}
@@ -136,7 +137,7 @@ Sia \(G\) un grafo. Chiamiamo \emph{nucleo} un insieme indipendente e massimale 
 	Senza perdita di generalità possiamo supporre che \(G\) sia connesso: basta infatti dimostrare il risultato per ogni componente connessa. Supponiamo che \(G\) sia completo. Otteniamo immediatamente che la relazione \(\sim\) sia d'equivalenza: simmetria e riflessività seguono dalla definizione di \(\sim\), la transitività da \(\text{diam}(G)=1\). Supponiamo che \(\sim\) sia d'equivalenza e siano \(v,w\) vertici di \(G\). Poiché \(G\) è connesso esiste un cammino da \(v\) a \(w\), quindi applicando induttivamente la transitività otteniamo che \((v,w)\in E\).\qed 
 \end{proof}
 \begin{definition}
-	Sia \(t\) un intero positivo e \(G\) un grafo. Chiameremo \emph{\(t-\)esima potenza normale} di \(G\) il grafo \(G_t=(V^t, E_t)\), dove \(V^t\) è il prodotto cartesiano di \(t\) copie di \(V\), mentre
+	Sia \(t\) un intero positivo e \(G\) un grafo. Chiamiamo \emph{\(t-\)esima potenza normale} di \(G\) il grafo \(G_t=(V^t, E_t)\), dove \(V^t\) è il prodotto cartesiano di \(t\) copie di \(V\), mentre
 	\[E_t=\{(\mathbf{v},\mathbf{w})\ \vert\ \forall i\ v_i = w_i\vee (v_i, w_i)\in E,\ \exists i\ (v_i,w_i)\in E\}.\]
 \end{definition}
 
@@ -146,16 +147,16 @@ Osserviamo che la coppia \((G_t, \mathbf{P}^t)\), dove \(\mathbf{P}^t\) è defin
 \[\chi_{n}(t,\varepsilon) = \min_{\substack{U\subset V^{t}\\\mathbf{P}^t(U)\ge 1-\varepsilon}} \chi(G_{t}(U))\]
 conta il numero minimo di parole che sono necessarie per dare una codifica propria di quasi tutte le sequenze di lunghezza \(t\), in analogia con quanto discusso nel paragrafo \ref{codinganalogy}.
 
-Enunciamo i seguenti due lemmi omettendone la dimostrazione.
+Enunciamo i seguenti due lemmi omettendone la dimostrazione. TODO: citazione
 \begin{lemma}
-	\label{boundslemma} Sia \(G\) unione di grafi completi a due a due disgiunti e \(\sim\) la relazione d'equivalenza definita nela precedente lemma. Denotiamo con \([v]\) la classe d'equivalenza di \(v\) per tale relazione e definiamo
+	\label{boundslemma} Sia \(G\) unione di grafi completi a due a due disgiunti e \(\sim\) la relazione d'equivalenza definita nel precedente lemma. Denotiamo con \([v]\) la classe d'equivalenza di \(v\) per tale relazione e definiamo
 	\[H(P\mid \sim)=\sum_{v\in V} P(v)\log{\frac{P([v])}{P(v)}}.\]
 	Allora
 	\[2^{tH(P\mid \sim)-K\sqrt{N}}\le \chi_{n}(t,\varepsilon)\le 2^{tH(P\mid \sim)+K\sqrt{N}}\]
 	per una qualche costante \(K\) non dipendente da \(t\) o da \(P\), ma solo da \(|V|\) ed\ \(\varepsilon\). 
 \end{lemma}
 \begin{definition}
-	Siano \(V\) un insieme finito e \(P\) una densità discreta su di esso. Chiameremo \emph{\(P-\)tipica} una sequenza \(\mathbf{v}\) di lunghezza \(t\) se \(\forall w\in V\) il numero \(N(w\vert \mathbf{v})\) di occorrenze di \(w\) nella sequenza soddisfa
+	Siano \(V\) un insieme finito e \(P\) una densità discreta su di esso. Chiamiamo \emph{\(P-\)tipica} una sequenza \(\mathbf{v}\) di lunghezza \(t\) se \(\forall w\in V\) il numero \(N(w\vert \mathbf{v})\) di occorrenze di \(w\) nella sequenza soddisfa
 	\[\Big| N(w\vert\mathbf{v}) - tP(w)\Big|\le K\sqrt{tP(w)}\]
 	per una qualche costante \(K\). 
 \end{definition}

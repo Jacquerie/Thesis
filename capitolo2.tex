@@ -10,7 +10,7 @@
 
 \subsection{Subadditività} 
 \begin{lemma}
-	Siano \(F\) e \(G\) grafi di comune insieme dei vertici \(V\). Sia \(F\cup G\) il grafo di vertici \(V\) ed insieme degli archi \(E(F)\cup E(G)\). Per ogni scelta di scelta \(P\) densità discreta sui vertici si ha
+	Siano \(F\) e \(G\) grafi di comune insieme dei vertici \(V\). Sia \(F\cup G\) il grafo di vertici \(V\) ed insieme degli archi \(E(F)\cup E(G)\). Per ogni scelta di \(P\) densità discreta sui vertici si ha
 	\[H(F\cup G,P)\le H(F,P)+H(G,P)\]
 \end{lemma}
 \begin{proof}
@@ -52,7 +52,7 @@ Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice 
 	\[H(K_n,P)=\sum_{i=1}^n p_i \log{\frac{1}{q_i}}\]
 	per certi \(q_1\dots q_n\) positivi. Osserviamo inoltre che nel grafo completo gli insiemi indipendenti sono soltanto \(\emptyset\) e i singoletti dei vertici. Pertanto il politopo dei vertici è l'\(n-\)simplesso, ma poiché sappiamo che la funzione obiettivo è minima sul bordo deduciamo che
 	\[\sum_{i=1}^n q_i = 1.\]
-	Applichiamo ora la diseguaglianza sulle somme dei logaritmi ed otteniamo che il minimo è realizzato per
+	Applichiamo ora la diseguaglianza sulle somme dei logaritmi (TODO: spiegare) e otteniamo che il minimo è realizzato per
 	\[q_i = p_i\quad \forall i\]
 	\qed 
 \end{proof}
@@ -110,7 +110,7 @@ Dalla costruzione è evidente che tale punto appartiene a \(\text{STAB}(G)\). Il
 	
 	TODO
 	
-	Abbiamo ora tutti gli strumenti necessari per concludere. Poiché \(G\) è perfetto possiamo applicare il teorema \ref{lovasztheorem}; inoltre, essendo \(z\in\text{STAB}(G)\), possiamo scrivere la disugaglianza
+	Abbiamo ora tutti gli strumenti necessari per concludere. Poiché \(G\) è perfetto possiamo applicare il teorema \ref{lovasztheorem}; inoltre, essendo \(z\in\text{STAB}(G)\), possiamo scrivere la disuguaglianza
 	\begin{align}
 	  H(G)&=\log(n)-H(\overline{G}) \nonumber \\
 	      &\ge \log(n) + \frac{1}{n}\sum_{v\in V}{\log{z_v}}.\nonumber

@@ -2,10 +2,10 @@
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Ordinamento con informazione parziale} 
-\begin{definition}
+\begin{definition} TODO: scrivere meglio questa parte!
 	Sia \(P\) un insieme parzialmente ordinato di sostegno \(V=\left\{v_1,\dots,v_n\right\}\), a propria volta dotato di un ordine totale \(\le\) fissato ma ignoto. Il \emph{problema dell'ordinamento con informazione parziale} consiste nel determinare l'ordine totale per mezzo di domande del tipo ``\(\text{\emph{è vero che}}\;v_i\le v_j\;\text{?}\,\)'', detti \emph{confronti}. Chiamiamo \emph{estensione lineare} un qualunque ordine totale che sia compatibile con \(P\) e denotiamo con \(e(P)\) il numero di estensioni lineari.
 \end{definition}
-Tale problema fu originariamente posto da Fredman nel 1976 \cite{Fredman1976}. Sempre Fredman dimostrò l'esistenza di un algoritmo che lo risolva compiendo \(\log{e(P)} + 2n\) confronti, il quale tuttavia richiede tempo di esecuzione superpolinomiale. Nel 1984 Kahn e Saks dimostrarono l'esistenza di un algoritmo che compia \(O(\log{e(P)})\) confronti \cite{Kahn1984}. Essi mostrarono infatti che esiste sempre un confronto tale che le estensioni lineari per cui la risposta sia affermativa siano una parte compresa fra \(3/11\) e \(8/11\) del totale. \footnote{Questo enunciato è un rilassamento della congettura \(1/3-2/3\), indipendentemente posta da Kislitsyn \cite{Kislitsyn1968}, Fredman e Linial \cite{Linial1984}.}
+Tale problema fu originariamente posto da Fredman nel 1976 \cite{Fredman1976}. Sempre Fredman dimostrò l'esistenza di un algoritmo che lo risolva compiendo \(\log{e(P)} + 2n\) confronti, il quale tuttavia richiede tempo di esecuzione superpolinomiale. Nel 1984 Kahn e Saks dimostrarono l'esistenza di un algoritmo che compia \(O(\log{e(P)})\) confronti \cite{Kahn1984}. Essi mostrarono infatti che esiste sempre un confronto tale che le estensioni lineari per cui la risposta sia affermativa siano una parte compresa fra \(3/11\) e \(8/11\) del totale. \footnote{Questo enunciato è un rilassamento della congettura \(1/3-2/3\), indipendentemente posta da Kislitsyn nel 1968 \cite{Kislitsyn1968}, da Fredman nel 1975 e da Linial nel 1984 \cite{Linial1984}.}
 \begin{theorem}
 	[Kahn, Kim] \label{kktheorem} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
 	\[\log{e(P)}\le nH\left(\overline{P}\right)\le\min\left\{\log{e(P)}+\log{e\cdot n},\; c\log{e(P)}\right\}\]
@@ -82,7 +82,7 @@ Tale problema fu originariamente posto da Fredman nel 1976 \cite{Fredman1976}. S
 \begin{lemma}
 	\label{maxchainlemma} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\) e sia \(C\) una catena di lunghezza massima in \(P\). Vale allora \(\left|C\right|\ge n\cdot2^{-H(\overline{P})}\). 
 \end{lemma}
-\begin{proof}
+\begin{proof} (TODO: spiegare un po' meglio)
 	È noto che l'entropia di un grafo su \(n\) vertici e dimensione massima di un insieme indipendente \(\alpha\) è maggiore o uguale a \(-\log{\frac{\alpha}{n}}\) \cite{Cardinal2005}. La tesi segue applicando questo fatto a \(G=\overline{G}(P)\).\qed 
 \end{proof}
 \begin{theorem}
@@ -128,7 +128,7 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 	\label{structurelemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Allora 
 	\begin{itemize}
 		\item \(G\) è bipartito 
-		\item \(G\) è biconvesso 
+		\item \(G\) è biconvesso (TODO: spiegare cosa significhi)
 		\item Siano \(u\) e \(v\) vertici appartenenti alla stessa catena, che supporremo senza perdita di generalità essere \(A\), tali che \(u\le_{P} v\). Siano \([c_u,d_u]\) e \([c_v,d_v]\) gli intervalli dei vertici \(B\) adiacenti rispettivamente a \(u\) e \(v\). Allora \(c_u\le_{P} c_v\) e \(d_u\le_{P} d_v\), e in particolare se \(u\le_{P}w\le_{P}v\) i vertici adiacenti a \(w\) sono un intervallo contenuto in \([c_u,d_v]\). 
 	\end{itemize}
 \end{lemma}
@@ -149,9 +149,10 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 \end{proof}
 \begin{definition}
 	Diciamo che \(x\in\text{STAB}(G)\) è \emph{localmente ottimo} se per ogni componente connessa \(K\) di \(G(x)\) valgono
-	\[x_u=\frac{|A\cap K|}{|K|}\quad\text{per ogni}\,u\in A\cap K\qquad\text{e}\qquad x_v=\frac{|B\cap K}{|K|}\quad\text{per ogni}\,v\in B\cap K.\]
+	\[x_u=\frac{|A\cap K|}{|K|}\quad\text{per ogni}\,u\in A\cap K\qquad\text{e}\qquad x_v=\frac{|B\cap K|}{|K|}\quad\text{per ogni}\,v\in B\cap K.\]
 	Diciamo che \(K\) è \emph{bilanciata} se per essa valgono le precedenti condizioni di ottimalità, \emph{sbilanciata} altrimenti. 
 \end{definition}
+TODO: definizione di \(\text{STAB}^*(G)\)
 \begin{definition}
 	Sia \(x\in\text{STAB}^*(G)\). Una componente connessa \(K\) di \(G(x)\)  è detta banale se consiste di un unico vertice, \emph{non banale} altrimenti. Inoltre chiamiamo \emph{libera} una componente che sia banale e sbilanciata. 
 \end{definition}
@@ -194,7 +195,7 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 	\[|Y|\left(1+\left\lfloor{\log{\frac{X}{Y}}}\right\rfloor\right)+\left\lfloor\frac{|X|}{2^{\left\lfloor\log{\frac{|X|}{|Y|}}\right\rfloor}}\right\rfloor-1\]
 	confronti \cite{Hwang1972}. Sia allora \(\xi\in\left[0,1\right)\) tale che
 	\[\left\lfloor\log{\frac{|X|}{|Y|}}\right\rfloor=\log{\frac{|X|}{|Y|}}-\xi.\]
-	È facile verificare che per \(\xi\in\left[0,1\right)\) valga la disuguaglianza
+	È facile verificare che per \(\xi\in\left[0,1\right)\) vale la disuguaglianza
 	\[1-\xi+2^{\xi}\le 2.\]
 	Semplici passaggi algebrici danno
 	\[\frac{|X|}{2^{\left\lfloor\log{\frac{|X|}{|Y|}}\right\rfloor}}=\frac{|X|}{2^{\log{\frac{|X|}{|Y|}}-\xi}}=\frac{|X|}{2^{\log{\frac{|X|}{|Y|}}}}\cdot 2^{\xi}=|Y|\cdot 2^{\xi}.\]
