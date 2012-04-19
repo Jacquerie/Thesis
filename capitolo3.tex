@@ -2,8 +2,11 @@
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Ordinamento con informazione parziale} 
-\begin{definition} TODO: scrivere meglio questa parte!
-	Sia \(P\) un insieme parzialmente ordinato di sostegno \(V=\left\{v_1,\dots,v_n\right\}\), a propria volta dotato di un ordine totale \(\le\) fissato ma ignoto. Il \emph{problema dell'ordinamento con informazione parziale} consiste nel determinare l'ordine totale per mezzo di domande del tipo ``\(\text{\emph{è vero che}}\;v_i\le v_j\;\text{?}\,\)'', detti \emph{confronti}. Chiamiamo \emph{estensione lineare} un qualunque ordine totale che sia compatibile con \(P\) e denotiamo con \(e(P)\) il numero di estensioni lineari.
+\begin{definition}
+	Sia \(P=(V,\le_{P})\) un insieme parzialmente ordinato di cardinalit\`a \(n\). Diciamo che un ordine totale \(\le\) \`e una \emph{estensione lineare} di \(\le_{P}\) se \((\forall v_i, v_j\in V) v_i\le_{P} v_j\Rightarrow v_i\le v_j\). Denotiamo inoltre con \(e(P\) il numero di estensioni lineari di \(P\).
+\end{definition}
+\begin{definition}
+	Sia \(P=(V,\le_{P})\) un insieme parzialmente ordinato. Il \emph{problema dell'ordinamento con informazione parziale} consiste nel determinare una estensione lineare \(\le\) fissata ma ignota per mezzo di domande del tipo ``\`e vero che \(v_i\le v_j\) ?'', detti \emph{confronti}.
 \end{definition}
 Tale problema fu originariamente posto da Fredman nel 1976 \cite{Fredman1976}. Sempre Fredman dimostrò l'esistenza di un algoritmo che lo risolva compiendo \(\log{e(P)} + 2n\) confronti, il quale tuttavia richiede tempo di esecuzione superpolinomiale. Nel 1984 Kahn e Saks dimostrarono l'esistenza di un algoritmo che compia \(O(\log{e(P)})\) confronti \cite{Kahn1984}. Essi mostrarono infatti che esiste sempre un confronto tale che le estensioni lineari per cui la risposta sia affermativa siano una parte compresa fra \(3/11\) e \(8/11\) del totale. \footnote{Questo enunciato è un rilassamento della congettura \(1/3-2/3\), indipendentemente posta da Kislitsyn nel 1968 \cite{Kislitsyn1968}, da Fredman nel 1975 e da Linial nel 1984 \cite{Linial1984}.}
 \begin{theorem}
