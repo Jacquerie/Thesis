@@ -2,43 +2,37 @@
 \section{Tre definizioni di entropia di grafo} 
 \subsection{Definizione in termini di Numero Cromatico} \label{codinganalogy} 
 \begin{definition}
-	Un \emph{grafo probabilistico} consiste in una coppia \((G,P)\) dove \(G\) è un grafo e \(P\) una distribuzione di probabilità discreta sui vertici, ovvero se \(|V|=n\) allora \(P\) è una \(n-\)upla \((p_1 \dots p_n)\) tale che \(p_1 + \dots + p_n = 1\). 
+	Un \emph{grafo probabilistico} consiste in una coppia \((G,P)\), dove \(G\) è un grafo e \(P\) una distribuzione di probabilità discreta sui vertici, ovvero se \(|V|=n\) allora \(P\) è una \(n-\)upla \((p_1,\dots ,p_n)\) tale che \(p_1 + \dots + p_n = 1\). 
 \end{definition}
+Come accennato nell'introduzione, questo oggetto modella una sorgente priva di memoria e stazionaria che emette ad ogni istante discreto un simbolo \(v_i\) in un insieme finito \(V=\{v_1,\dots ,v_n\}\) con la corrispondente probabilità \(p_i\). Nel nostro caso supponiamo che tali simboli non siano a due a due distinguibili, in particolare lo sono se e solo se \((v_i, v_j) \in E\), insieme degli archi di \(G\).
 
-Come accennato nell'introduzione, questo oggetto modella una sorgente priva di memoria e stazionaria che emette ad ogni istante discreto un simbolo \(v_i\) in un insieme finito \(V=\{v_1 \dots v_n\}\) con la corrispondente probabilità \(p_i\). Nel nostro caso supponiamo che tali simboli non siano a due a due distinguibili, in particolare lo sono se e solo se \((v_i, v_j) \in E\), insieme degli archi di \(G\).
-
-Vogliamo valutare la bontà della migliore codifica possibile dell'informazione emessa dalla sorgente. Per fare questo fissiamo \(t\) un intero positivo e consideriamo tutte le stringhe di simboli in \(V\) di lunghezza \(t\). Poiché la sorgente è priva di memoria, è naturale assegnare alla stringa \(\mathbf{v} = v_{i_1}\dots v_{i_t}\) la probabilità 
+Sia \(t\) un intero positivo fissato, e sia \(V^t\) l'insieme delle stringhe lunghe \(t\) di simboli in \(V\). Poiché la sorgente è priva di memoria, è naturale assegnare alla stringa \(\mathbf{v} = v_{i_1},\dots ,v_{i_t}\) la probabilità 
 \begin{equation}
-	\label{eq:probability}\mathbf{P}^t(\mathbf{v})=\prod_{j=1}^t P(v_{i_j}). 
+	\label{eq:probability}\mathbf{P}^t(\mathbf{v})=\prod_{j=1}^t P(v_{i_j}), 
 \end{equation}
-
-Una \emph{codifica propria dell'informazione} in esse contenute è una mappa dalle stringhe a un insieme finito di simboli tale che a stringhe distinguibili vengano assegnati simboli distinti.
-
-È però tipico dei problemi di codifica trascurare parte delle stringhe possibili, a cui non ci interessa assegnare un significato e quindi un simbolo. Sia quindi \(0<\varepsilon <1\) fissato, ed ammettiamo che la condizione di codifica propria debba essere soddisfatta all'esterno di un insieme di probabilità totale \(\varepsilon\).
-
-Una definizione ragionevole di bontà della codifica è la quantità
-
-\[\frac{\log{M}}{t}\]
-
-dove \(M\) è la cardinalità dell'insieme immagine della codifica. Sia quindi \(R(G,P,t,\varepsilon)\) il minimo di tale frazione al variare delle codifiche. Il limite 
+e al sottoinsieme \(U\subset V^{t}\) la probabilit\`a
+\begin{equation}
+	\mathbf{P}^t(U)=\sum_{v\in U}{\mathbf{P}^t(\mathbf{v)}. \nonumber
+\end{equation}
+Sia \(0<\varepsilon<1\) fissato, e sia \(U\subset V^{t}\) tale che \(\mathbf{P}^t(U)>1-\varepsilon\). Una \emph{codifica propria} \`e una mappa dalle stringhe di \(V^t\) a un insieme di simboli, tale che  stringhe distinguibili di \(U\) vengono mandate in simboli distinti. \`E intuitivamente preferibile una codifica che faccia uso del minor numero possibile di simboli. Cerchiamo dunque di minimizzare la quantit\`a
+\begin{equation}
+	\frac{\log{M}}{t}, \nonumber
+\end{equation}
+dove \(M\) \`e la cardinalit\`a dell'immagine secondo la codifica. Sia quindi \(R(G,P,t,\varepsilon)\) il minimo di tale frazione al variare delle codifiche. Il limite 
 \begin{equation}
 	\label{eq:entropyzero} \liminf_{\varepsilon \to 0} \liminf_{t \to \infty} R(G,P,t,\varepsilon) 
 \end{equation}
-
 misurerà quindi la complessità del grafo.
-
 La definizione \eqref{eq:entropyzero} non consente però il calcolo esplicito dell'entropia del grafo, perché la quantità \(R(G,P,t,\varepsilon)\) è un minimo al variare in un insieme che non sappiamo descrivere esplicitamente. Dobbiamo quindi semplificarla ulteriormente, e per fare questo sfrutteremo la struttura di grafo data.
 \begin{definition}
 	Sia \(t\) un intero positivo e \(G\) un grafo. Chiamiamo \emph{\(t-\)esima potenza conormale} di \(G\) il grafo \(G^t=(V^t, E^t)\), dove \(V^t\) è il prodotto cartesiano di \(t\) copie di \(V\), mentre
 	\[E^t=\{(\mathbf{v},\mathbf{w})\ \vert\ \exists i\ (v_i, w_i)\in E\}.\]
 \end{definition}
-
 In altri termini fra due vertici \(\mathbf{v}\) e \(\mathbf{w}\) di \(G^t\) esiste un arco se e soltanto se le corrispondenti sequenze di lunghezza \(t\) sono distinguibili in almeno un elemento.
 \begin{example}
-	Sia \(L\) il grafo su tre vertici con due archi, rappresentato a sinistra. Allora \(L^2\), prodotto normale di \(L\) con se stesso, è rappresentato a destra. TODO: Disegno 
+	Sia \(L\) il grafo su tre vertici con due archi, rappresentato a sinistra. Allora \(L^2\) è rappresentato a destra. TODO: Disegno 
 \end{example}
-Osserviamo che la coppia \((G^t, \mathbf{P}^t)\), dove \(\mathbf{P}^t\) è definita da \eqref{eq:probability}, è un grafo probabilistico. Se \(U\subset V^{t}\) possiamo denotare con \(\mathbf{P}^t(U)\) la somma delle probabilità dei vertici in \(U\).
-
+Osserviamo che la coppia \((G^t, \mathbf{P}^t)\), dove \(\mathbf{P}^t\) è definita da \eqref{eq:probability}, è ancora un grafo probabilistico. 
 Volendo codificare propriamente un sottoinsieme \(U\subset V^{t}\) abbiamo bisogno di almeno tante parole quanti insiemi indipendenti servono per partizionare \(U\). Ma questo è proprio il numero cromatico del sottografo indotto da \(G^t\) su \(U\), che denotiamo \(\chi(G^t(U))\). Siamo ora pronti per enunciare la prima definizione di entropia di grafo. 
 \begin{definition}
 	Sia \((G,P)\) un grafo probabilistico. Chiamiamo \emph{entropia di grafo} il seguente limite: 
@@ -53,7 +47,7 @@ Affinchè la precedente risulti una buona definizione dovremmo dimostrarne l'ind
 \begin{definition}
 	Sia \(X\) una variabile aleatoria discreta di densità \(P=(p_1\dots p_n)\). Chiamiamo \emph{entropia di Shannon di \(X\)} la somma
 	\[H(X)=\sum_{i=1}^n p_i \log{\frac{1}{p_i}}.\]
-	Con abuso di notazione scriviamo \(H(P)\) per indicare l'entropia di Shannon di una variabile aleatoria discreta di densit\'a \(P\).
+	Con abuso di notazione scriviamo \(H(P)\) per indicare l'entropia di Shannon di una variabile aleatoria discreta di densit\`a \(P\).
 \end{definition}
 \begin{definition}
 	Siano \(X\) ed \(Y\) due variabili aleatorie discrete. Chiamiamo \emph{mutua informazione di \(X\) ed \(Y\)} la quantità
