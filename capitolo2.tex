@@ -11,11 +11,11 @@
 \subsection{Subadditività} 
 \begin{lemma}
 	Siano \(F\) e \(G\) grafi di comune insieme dei vertici \(V\). Sia \(F\cup G\) il grafo di vertici \(V\) ed insieme degli archi \(E(F)\cup E(G)\). Per ogni scelta di \(P\) densità discreta sui vertici si ha
-	\[H(F\cup G,P)\le H(F,P)+H(G,P)\]
+	\[H(F\cup G,P)\le H(F,P)+H(G,P).\]
 \end{lemma}
 \begin{proof}
 	Siano \(\mathbf{a}\in \text{VP}(F)\) e \(\mathbf{b}\in \text{VP}(G)\) i vettori che realizzino il minimo delle rispettive entropie. Osserviamo che l'intersezione di un insieme indipendente di \(F\) e di un insieme indipendente di \(G\) è un insieme indipendente in \(F\cup G\). In altri termini il prodotto scalare dei loro vettori caratteristici è il vettore caratteristico di un insieme indipendente di \(F\cup G\). Pertanto, sfruttando la convessità del politopo dei vertici, il prodotto scalare \(\mathbf{a}\cdot \mathbf{b}\) appartiene a \(\text{VP}(F\cup G)\). Ma allora possiamo scrivere
-	\[H(F,P)+H(G,P)=\sum_{i=1}^n p_i\log{\frac{1}{a_i}}+\sum_{i=1}^n p_i\log{\frac{1}{b_i}}=\sum_{i=1}^n p_i\log{\frac{1}{a_{i}b_{i}}}\ge H(F\cup G,P)\]
+	\[H(F,P)+H(G,P)=\sum_{i=1}^n p_i\log{\frac{1}{a_i}}+\sum_{i=1}^n p_i\log{\frac{1}{b_i}}=\sum_{i=1}^n p_i\log{\frac{1}{a_{i}b_{i}}}\ge H(F\cup G,P).\]
 	\qed 
 \end{proof}
 
@@ -29,14 +29,14 @@ Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice 
 \]
 \begin{lemma}
 	Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice di \(G\). Siano inoltre \(P\) una densità sui vertici di \(G\) e \(Q\) una densità sui vertici di \(F\). Allora abbiamo
-	\[H(G_{v\leftarrow F}, P_{v\leftarrow Q})=H(G,P)+P(v)H(F,Q)\]
+	\[H(G_{v\leftarrow F}, P_{v\leftarrow Q})=H(G,P)+P(v)H(F,Q).\]
 \end{lemma}
 \begin{proof}
 	TODO\qed 
 \end{proof}
 \begin{corollary}
 	Sia \((G,P)\) un grafo probabilistico e siano \(G_{1}\dots G_{n}\) le sue componenti connesse. Poniamo \(P_i(x)=P(x)[P(V(G_i))]^{-1}\) per \(x\in V(G_i)\). Allora abbiamo
-	\[H(G,P)=\sum_{i=1}^n P(V(G_i))H(G_i,P_i)\]
+	\[H(G,P)=\sum_{i=1}^n P(V(G_i))H(G_i,P_i).\]
 \end{corollary}
 \begin{proof}
 	Consideriamo il grafo su \(n\) vertici \(\{v_{1}\dots v_{n}\}\) privo di archi, e sia \(Q\) la densità discreta definita da \(Q(v_{i}) = P(V(G_i))\). Otteniamo la tesi applicando \(n\) volte il lemma precedente, sostituendo ad ogni passo il vertice \(v_i\) con la componente connessa \(G_{i}\).\qed 
@@ -45,7 +45,7 @@ Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice 
 \subsection{Entropia di grafo completo} 
 \begin{proposition}
 	Sia \(K_n\) il grafo completo su \(n\) vertici. Comunque scelta \(P\) densità discreta sui vertici avremo
-	\[H(K_n,P)=H(P)\]
+	\[H(K_n,P)=H(P).\]
 \end{proposition}
 \begin{proof}
 	Sfruttando la terza definizione di entropia di grafo sappiamo che
@@ -53,7 +53,7 @@ Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice 
 	per certi \(q_1\dots q_n\) positivi. Osserviamo inoltre che nel grafo completo gli insiemi indipendenti sono soltanto \(\emptyset\) e i singoletti dei vertici. Pertanto il politopo dei vertici è l'\(n-\)simplesso, ma poiché sappiamo che la funzione obiettivo è minima sul bordo deduciamo che
 	\[\sum_{i=1}^n q_i = 1.\]
 	Applichiamo ora la diseguaglianza sulle somme dei logaritmi (TODO: spiegare) e otteniamo che il minimo è realizzato per
-	\[q_i = p_i\quad \forall i\]
+	\[q_i = p_i\quad \forall i.\]
 	\qed 
 \end{proof}
 \begin{remark}
@@ -95,7 +95,7 @@ Abbiamo finora sviluppato la teoria dell'entropia di grafo per una distribuzione
 Sia \(G\) un grafo. Possiamo trovare una partizione dei suoi vertici in insiemi indipendenti con l'algoritmo goloso che ad ogni passo trova un insieme indipendente e massimale e procede ricorsivamente sul complementare.
 \begin{definition}
 	Sia \(G\) un grafo perfetto e sia \(\left\{S_1,\dots,S_k\right\}\) una partizione dei vertici ottenuta con il precedente algoritmo goloso. Chiameremo \emph{punto goloso} il punto \(x\) definito da
-	\[x=\sum_{i=1}^k\frac{|S_i|}{n}\chi^{S_i}\]
+	\[x=\sum_{i=1}^k\frac{|S_i|}{n}\chi^{S_i}.\]
 \end{definition}
 Dalla costruzione è evidente che tale punto appartiene a \(\text{STAB}(G)\). Il seguente teorema TODO
 \begin{theorem}[Cardinal, Fiorini, Joret, Jungers, Munro]
@@ -106,7 +106,7 @@ Dalla costruzione è evidente che tale punto appartiene a \(\text{STAB}(G)\). Il
 	Sia \(S_1,\dots,S_k\) la sequenza di insiemi indipendenti prodotta dall'algoritmo goloso. In altri termini \(S_1\) è un insieme indipendente e massimale in \(G\), mentre \(S_2\) è indipendente e massimale in \(G-S_1\) e così via. Sia \(\delta>0\) fissato. Per ogni vertice \(v\in V\) denotiamo con \(m(v)\) l'unico indice in \(\left\{1,\dots,k\right\}\) tale che \(v\in S_{m(v)}\). Definiamo allora un punto \(z\) di componenti date da
 	\[z_v=\frac{\delta}{n}\left(\frac{1}{x_v}\right)^{1-\delta}=\frac{\delta}{n}\left(\frac{n}{|S_{m(v)}|}\right)^{1-\delta}=\frac{\delta}{n^{\delta}}\left(\frac{1}{|S_{m(v)}|}\right)^{1-\delta}\]
 	e dimostriamo che \(z\in\text{STAB}(G)\). A tale scopo mostreremo che, per ogni insieme indipendente \(S\), vale
-	\[\sum_{v\in S}{z_v}\le 1\]
+	\[\sum_{v\in S}{z_v}\le 1.\]
 	
 	TODO
 	
