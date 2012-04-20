@@ -35,19 +35,15 @@
 \usepackage{tikz}
 
 % Algorithms
-\usepackage{algorithm}
+\usepackage{algorithm} 
 \usepackage{algorithmic}
 
 % Hacks needed to get the algorithm package to work.
-\renewcommand{\algorithmiccomment}[1]{/\(\!\)/ #1}
-\floatname{algorithm}{Algoritmo}
+\renewcommand{\algorithmiccomment}[1]{/\(\!\)/ #1} \floatname{algorithm}{Algoritmo}
 
 % Pretty bibliography with biblatex
-\usepackage[style=numeric]{biblatex}
+\usepackage[style=numeric]{biblatex} 
 \bibliography{entropy}
-
-% Pretty references to items
-\usepackage{enumitem}
 
 %\newif\ifpdf
 %\ifx\pdfoutput\undefined
@@ -94,15 +90,13 @@
 
 \ifpdf \DeclareGraphicsExtensions{.pdf, .jpg, .tif} \else \DeclareGraphicsExtensions{.eps, .jpg} \fi
 
-\maketitle
-\setcounter{chapter}{-1}
+\maketitle \setcounter{chapter}{-1}
 
-\include{introduzione}
-\include{capitolo1}
-\include{capitolo2}
-\include{capitolo3}
-\include{appendice}
+\include{introduzione} 
+\include{capitolo1} 
+\include{capitolo2} 
+\include{capitolo3} 
+\include{appendice} 
 \include{ringraziamenti}
 
-\printbibliography
-\end{document}
+\printbibliography \end{document} 

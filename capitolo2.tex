@@ -1,5 +1,5 @@
-\chapter{Proprietà e teoremi notevoli}
-\section{Proprietà notevoli dell'entropia di grafo}
+\chapter{Proprietà e teoremi notevoli} 
+\section{Proprietà notevoli dell'entropia di grafo} 
 \subsection{Monotonia} 
 \begin{lemma}
 	Siano \(F\) e \(G\) grafi tali che \(V(G)=V(F)\) e \(E(F)\subset E(G)\). Allora per ogni scelta di \(P\) densità discreta sui vertici si ha \(H(F,P)\le H(G,P)\). 
@@ -19,8 +19,7 @@
 	\qed 
 \end{proof}
 
-\subsection{Additività per sostituzioni}
-Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice di \(G\). Chiamiamo grafo ottenuto sostituendo \(F\) a \(v\), e scriviamo \(G_{v\leftarrow F}\), il grafo ottenuto da \(G\) cancellando \(v\) e connettendo ogni vertice adiacente a \(v\) con ciascun vertice di una copia isomorfa di \(F\). Supponiamo inoltre che \(P\) sia una densità sui vertici di \(G\) e che \(Q\) sia una densità sui vertici di \(F\). Allora possiamo definire una \(P_{v\leftarrow Q}\) in modo che la coppia \((G_{v\leftarrow F}, P_{v\leftarrow Q})\) sia un grafo probabilistico. Per fare questo poniamo
+\subsection{Additività per sostituzioni} Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice di \(G\). Chiamiamo grafo ottenuto sostituendo \(F\) a \(v\), e scriviamo \(G_{v\leftarrow F}\), il grafo ottenuto da \(G\) cancellando \(v\) e connettendo ogni vertice adiacente a \(v\) con ciascun vertice di una copia isomorfa di \(F\). Supponiamo inoltre che \(P\) sia una densità sui vertici di \(G\) e che \(Q\) sia una densità sui vertici di \(F\). Allora possiamo definire una \(P_{v\leftarrow Q}\) in modo che la coppia \((G_{v\leftarrow F}, P_{v\leftarrow Q})\) sia un grafo probabilistico. Per fare questo poniamo
 \[P_{v\leftarrow Q}(x)= 
 \begin{cases}
 	P(x) & \text{se}\ x\in V(G)-\{v\}\\
@@ -62,9 +61,8 @@ Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice 
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Entropia e grafi perfetti} 
-
 \begin{definition}
-  Sia \(G\) un grafo. Chiamiamo \emph{cricca} un sottografo completo di \(G\), e chiamiamo \emph{numero di cricca} il massimo numero di vertici \(\omega(G)\) in una cricca di \(G\).
+	Sia \(G\) un grafo. Chiamiamo \emph{cricca} un sottografo completo di \(G\), e chiamiamo \emph{numero di cricca} il massimo numero di vertici \(\omega(G)\) in una cricca di \(G\). 
 \end{definition}
 
 Il numero di cricca di un grafo \(G\) fornisce una stima dal basso del numero cromatico. È infatti evidente che \(\omega(G)\le\chi(G)\), poiché sono necessari almeno tanti colori quanti sono i vertici della massima cricca. Possiamo dunque porci il problema di caratterizzare quei grafi per cui tale disuguaglianza sia in realtà una uguaglianza. 
@@ -76,7 +74,7 @@ Nella precedente definizione abbiamo richiesto che l'uguaglianza valga per ogni 
 \begin{theorem}
 	[Csiszár, K\"orner, Lovász, Marton, Simonyi] Sia \(G\) un grafo. \(G\) è perfetto se e soltanto se, per ogni distribuzione di probabilità \(P\) sui vertici, vale
 	\[H\left(G,P\right)+H\left(\overline{G},P\right)=H(P).\]
-	\label{lovasztheorem}
+	\label{lovasztheorem} 
 \end{theorem}
 Come corollario del precedente teorema otteniamo che \(G\) è perfetto se e soltanto se \(\overline{G}\) è perfetto.
 
@@ -84,22 +82,21 @@ Come corollario del precedente teorema otteniamo che \(G\) è perfetto se e solt
 \section{Grafi associati ad ordini parziali}
 
 Abbiamo finora sviluppato la teoria dell'entropia di grafo per una distribuzione di probabilità \(P\) qualunque sui vertici. Nel seguito sarà sufficiente considerare il caso in cui tale distribuzione sia uniforme.
-
-\begin{lemma}[Chvatál] \label{chvatallemma}
-  TODO
+\begin{lemma}
+	[Chvatál] \label{chvatallemma} TODO 
 \end{lemma}
 \begin{proof}
-  TODO\qed
+	TODO\qed 
 \end{proof}
 
-Sia \(G\) un grafo. Possiamo trovare una partizione dei suoi vertici in insiemi indipendenti con l'algoritmo goloso che ad ogni passo trova un insieme indipendente e massimale e procede ricorsivamente sul complementare.
+Sia \(G\) un grafo. Possiamo trovare una partizione dei suoi vertici in insiemi indipendenti con l'algoritmo goloso che ad ogni passo trova un insieme indipendente e massimale e procede ricorsivamente sul complementare. 
 \begin{definition}
 	Sia \(G\) un grafo perfetto e sia \(\left\{S_1,\dots,S_k\right\}\) una partizione dei vertici ottenuta con il precedente algoritmo goloso. Chiameremo \emph{punto goloso} il punto \(x\) definito da
 	\[x=\sum_{i=1}^k\frac{|S_i|}{n}\chi^{S_i}\]
 \end{definition}
-Dalla costruzione è evidente che tale punto appartiene a \(\text{STAB}(G)\). Il seguente teorema TODO
-\begin{theorem}[Cardinal, Fiorini, Joret, Jungers, Munro]
-	Sia \(G\) un grafo perfetto su \(n\) vertici e sia \(x\) un suo punto goloso. Allora, comunque fissato \(\varepsilon>0\), vale
+Dalla costruzione è evidente che tale punto appartiene a \(\text{STAB}(G)\). Il seguente teorema TODO 
+\begin{theorem}
+	[Cardinal, Fiorini, Joret, Jungers, Munro] Sia \(G\) un grafo perfetto su \(n\) vertici e sia \(x\) un suo punto goloso. Allora, comunque fissato \(\varepsilon>0\), vale
 	\[H(x)\le(1+\varepsilon)H(G)+(1+\varepsilon)\log\left(1+\frac{1}{\varepsilon}\right)\]
 \end{theorem}
 \begin{proof}
@@ -110,18 +107,18 @@ Dalla costruzione è evidente che tale punto appartiene a \(\text{STAB}(G)\). Il
 	
 	TODO
 	
-	Abbiamo ora tutti gli strumenti necessari per concludere. Poiché \(G\) è perfetto possiamo applicare il teorema \ref{lovasztheorem}; inoltre, essendo \(z\in\text{STAB}(G)\), possiamo scrivere la disuguaglianza
+	Abbiamo ora tutti gli strumenti necessari per concludere. Poiché \(G\) è perfetto possiamo applicare il teorema \ref{lovasztheorem}; inoltre, essendo \(z\in\text{STAB}(G)\), possiamo scrivere la disuguaglianza 
 	\begin{align}
-	  H(G)&=\log(n)-H(\overline{G}) \nonumber \\
-	      &\ge \log(n) + \frac{1}{n}\sum_{v\in V}{\log{z_v}}.\nonumber
+		H(G)&=\log(n)-H(\overline{G}) \nonumber \\
+		&\ge \log(n) + \frac{1}{n}\sum_{v\in V}{\log{z_v}}.\nonumber 
 	\end{align}
-	Con semplici passaggi algebrici otteniamo
+	Con semplici passaggi algebrici otteniamo 
 	\begin{align}
-	     \log(n) + \frac{1}{n}\sum_{v\in V}{\log{z_v}} &= \log(n) + \frac{1}{n}\sum_{v\in V}{\log\left(\frac{\delta}{n}\left(\frac{1}{x_v}\right)^{1-\delta}\right)} \nonumber \\
-	      &= - \frac{1-\delta}{n}\sum_{v\in V}{\log(x_v)}-\log{\frac{1}{\delta}} \nonumber \\
-	      &= (1-\delta)H(x)-\log{\frac{1}{\delta}} \nonumber,
+		\log(n) + \frac{1}{n}\sum_{v\in V}{\log{z_v}} &= \log(n) + \frac{1}{n}\sum_{v\in V}{\log\left(\frac{\delta}{n}\left(\frac{1}{x_v}\right)^{1-\delta}\right)} \nonumber \\
+		&= - \frac{1-\delta}{n}\sum_{v\in V}{\log(x_v)}-\log{\frac{1}{\delta}} \nonumber \\
+		&= (1-\delta)H(x)-\log{\frac{1}{\delta}} \nonumber, 
 	\end{align}
 	da cui deduciamo
 	\[H(x)\le\frac{1}{1-\delta}H(G)+\frac{1}{1-\delta}\log{\frac{1}{\delta}}.\]
-	Basta ora porre \(\delta=\frac{\varepsilon}{\varepsilon+1}\) e ricaviamo la tesi.
+	Basta ora porre \(\delta=\frac{\varepsilon}{\varepsilon+1}\) e ricaviamo la tesi. 
 \end{proof}

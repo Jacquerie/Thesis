@@ -1,14 +1,14 @@
 \chapter{Tre algoritmi per ordinare con informazione parziale}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Ordinamento con informazione parziale}
+\section{Ordinamento con informazione parziale} 
 \begin{definition}
-	Sia \(P=\left(V,\le_{P}\right)\) un insieme parzialmente ordinato di cardinalit\`a \(n\). Diciamo che un ordine totale \(\le\) \`e una \emph{estensione lineare} di \(\le_{P}\) se \((\forall v_i, v_j\in V)\;v_i\le_{P} v_j\Rightarrow v_i\le v_j\). Denotiamo inoltre con \(e(P)\) il numero di estensioni lineari di \(P\).
+	Sia \(P=\left(V,\le_{P}\right)\) un insieme parzialmente ordinato di cardinalit\`a \(n\). Diciamo che un ordine totale \(\le\) \`e una \emph{estensione lineare} di \(\le_{P}\) se \((\forall v_i, v_j\in V)\;v_i\le_{P} v_j\Rightarrow v_i\le v_j\). Denotiamo inoltre con \(e(P)\) il numero di estensioni lineari di \(P\). 
 \end{definition}
 \begin{definition}
-	Sia \(P=(V,\le_{P})\) un insieme parzialmente ordinato di cardinalit\`a \(n\). Il \emph{problema dell'ordinamento con informazione parziale} consiste nel determinare una estensione lineare \(\le\) fissata ma ignota per mezzo di domande del tipo ``\`e vero che \(v_i\le v_j\) ?'', detti \emph{confronti}.
+	Sia \(P=(V,\le_{P})\) un insieme parzialmente ordinato di cardinalit\`a \(n\). Il \emph{problema dell'ordinamento con informazione parziale} consiste nel determinare una estensione lineare \(\le\) fissata ma ignota per mezzo di domande del tipo ``\`e vero che \(v_i\le v_j\) ?'', detti \emph{confronti}. 
 \end{definition}
-Tale problema fu originariamente posto da Fredman nel 1976 \cite{Fredman1976}. Sempre Fredman dimostrò l'esistenza di un algoritmo che lo risolva compiendo \(\log{e(P)} + 2n\) confronti, il quale tuttavia richiede tempo di esecuzione superpolinomiale. Nel 1984 Kahn e Saks dimostrarono l'esistenza di un algoritmo che compia \(O(\log{e(P)})\) confronti \cite{Kahn1984}. Essi mostrarono infatti che esiste sempre un confronto tale che le estensioni lineari per cui la risposta sia affermativa siano una parte compresa fra \(3/11\) e \(8/11\) del totale. \footnote{Questo enunciato è un rilassamento della congettura \(1/3-2/3\), indipendentemente posta da Kislitsyn nel 1968 \cite{Kislitsyn1968}, da Fredman nel 1975 e da Linial nel 1984 \cite{Linial1984}.}
+Tale problema fu originariamente posto da Fredman nel 1976 \cite{Fredman1976}. Sempre Fredman dimostrò l'esistenza di un algoritmo che lo risolva compiendo \(\log{e(P)} + 2n\) confronti, il quale tuttavia richiede tempo di esecuzione superpolinomiale. Nel 1984 Kahn e Saks dimostrarono l'esistenza di un algoritmo che compia \(O(\log{e(P)})\) confronti \cite{Kahn1984}. Essi mostrarono infatti che esiste sempre un confronto tale che le estensioni lineari per cui la risposta sia affermativa siano una parte compresa fra \(3/11\) e \(8/11\) del totale. \footnote{Questo enunciato è un rilassamento della congettura \(1/3-2/3\), indipendentemente posta da Kislitsyn nel 1968 \cite{Kislitsyn1968}, da Fredman nel 1975 e da Linial nel 1984 \cite{Linial1984}.} 
 \begin{theorem}
 	[Kahn, Kim] \label{kktheorem} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
 	\[\log{e(P)}\le nH\left(\overline{P}\right)\le\min\left\{\log{e(P)}+\log{e\cdot n},\; c\log{e(P)}\right\},\]
@@ -85,8 +85,8 @@ Tale problema fu originariamente posto da Fredman nel 1976 \cite{Fredman1976}. S
 \begin{lemma}
 	\label{maxchainlemma} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\) e sia \(C\) una catena di lunghezza massima in \(P\). Vale allora \(\left|C\right|\ge n\cdot2^{-H(\overline{P})}\). 
 \end{lemma}
-\begin{proof} (TODO: spiegare un po' meglio)
-	È noto che l'entropia di un grafo su \(n\) vertici e dimensione massima di un insieme indipendente \(\alpha\) è maggiore o uguale a \(-\log{\frac{\alpha}{n}}\) \cite{Cardinal2005}. La tesi segue applicando questo fatto a \(G=\overline{G}(P)\).\qed 
+\begin{proof}
+	(TODO: spiegare un po' meglio) È noto che l'entropia di un grafo su \(n\) vertici e dimensione massima di un insieme indipendente \(\alpha\) è maggiore o uguale a \(-\log{\frac{\alpha}{n}}\) \cite{Cardinal2005}. La tesi segue applicando questo fatto a \(G=\overline{G}(P)\).\qed 
 \end{proof}
 \begin{theorem}
 	Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora l'algoritmo \ref{insertion} risolve il problema dell'ordinamento con informazione parziale in \(O(\log{n}\cdot\log{e(P)})\) confronti. 
@@ -130,9 +130,9 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 \begin{lemma}
 	\label{structurelemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Allora 
 	\begin{enumerate}
-		\item \(G\) è bipartito.
-		\item \(G\) è biconvesso (TODO: spiegare cosa significhi).
-		\item Siano \(u\) e \(v\) vertici appartenenti alla stessa catena, che supporremo senza perdita di generalità essere \(A\), tali che \(u\le_{P} v\). Siano \([c_u,d_u]\) e \([c_v,d_v]\) gli intervalli dei vertici \(B\) adiacenti rispettivamente a \(u\) e \(v\). Allora \(c_u\le_{P} c_v\) e \(d_u\le_{P} d_v\), e in particolare se \(u\le_{P}w\le_{P}v\) i vertici adiacenti a \(w\) sono un intervallo contenuto in \([c_u,d_v]\).
+		\item \(G\) è bipartito. 
+		\item \(G\) è biconvesso (TODO: spiegare cosa significhi). 
+		\item Siano \(u\) e \(v\) vertici appartenenti alla stessa catena, che supporremo senza perdita di generalità essere \(A\), tali che \(u\le_{P} v\). Siano \([c_u,d_u]\) e \([c_v,d_v]\) gli intervalli dei vertici \(B\) adiacenti rispettivamente a \(u\) e \(v\). Allora \(c_u\le_{P} c_v\) e \(d_u\le_{P} d_v\), e in particolare se \(u\le_{P}w\le_{P}v\) i vertici adiacenti a \(w\) sono un intervallo contenuto in \([c_u,d_v]\). 
 	\end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -148,23 +148,23 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 	\label{crossinglemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Sia \(x\) un punto di \(\text{STAB}(G)\) e siano \(uv\) e \(u'v'\) archi stretti rispetto ad \(x\) tali inoltre che \(u,u'\in A\) e \(v,v'\in B\). Se \(uv\) e \(u'v'\) si incrociano allora sia \(u'v\) sia \(uv'\) sono archi di \(G\), entrambi stretti rispetto ad \(x\). 
 \end{lemma}
 \begin{proof}
-	Dal lemma \ref{structurelemma} \((3)\) segue che \(u'v\) e \(uv'\) sono archi di \(G\). Supponiamo per assurdo che \(uv'\) non sia stretto. Avremmo allora:
+	Dal lemma \ref{structurelemma} \((3)\) segue che \(u'v\) e \(uv'\) sono archi di \(G\). Supponiamo per assurdo che \(uv'\) non sia stretto. Avremmo allora: 
 	\begin{align}
 		x_v &= 1-x_u &\text{(poich\'e } uv \text{ \`e stretto)}\nonumber \\
-		      &> x_{v'} &\text{(poich\'e } uv' \text{ non \`e stretto)}\nonumber \\
-		      &= 1-x_{u'} &\text{(poich\'e } u'v' \text{ \`e stretto)}\nonumber \\
-		      &\ge x_{v}, &\text{(poich\'e } u'v \text{ \`e un arco e per il lemma \ref{chvatallemma})}\nonumber
+		&> x_{v'} &\text{(poich\'e } uv' \text{ non \`e stretto)}\nonumber \\
+		&= 1-x_{u'} &\text{(poich\'e } u'v' \text{ \`e stretto)}\nonumber \\
+		&\ge x_{v}, &\text{(poich\'e } u'v \text{ \`e un arco e per il lemma \ref{chvatallemma})}\nonumber 
 	\end{align}
-	chiaramente un assurdo. Possiamo procedere analogamente per \(u'v\), da cui la tesi.\qed
+	chiaramente un assurdo. Possiamo procedere analogamente per \(u'v\), da cui la tesi.\qed 
 \end{proof}
 \begin{definition}
 	Diciamo che \(x\in\text{STAB}(G)\) è \emph{localmente ottimo} se per ogni componente connessa \(K\) di \(G(x)\) valgono
 	\[x_u=\frac{|A\cap K|}{|K|}\quad\text{per ogni}\,u\in A\cap K\qquad\text{e}\qquad x_v=\frac{|B\cap K|}{|K|}\quad\text{per ogni}\,v\in B\cap K.\]
 	Diciamo che \(K\) è \emph{bilanciata} se per essa valgono le precedenti condizioni di ottimalità, \emph{sbilanciata} altrimenti. 
 \end{definition}
-TODO: definizione di \(\text{STAB}^*(G)\)
+TODO: definizione di \(\text{STAB}^*(G)\) 
 \begin{definition}
-	Sia \(x\in\text{STAB}^*(G)\). Una componente connessa \(K\) di \(G(x)\)  è detta banale se consiste di un unico vertice, \emph{non banale} altrimenti. Inoltre chiamiamo \emph{libera} una componente che sia banale e sbilanciata. 
+	Sia \(x\in\text{STAB}^*(G)\). Una componente connessa \(K\) di \(G(x)\) è detta banale se consiste di un unico vertice, \emph{non banale} altrimenti. Inoltre chiamiamo \emph{libera} una componente che sia banale e sbilanciata. 
 \end{definition}
 \begin{definition}
 	Sia \(x\in\text{STAB}^{*}(G)\). Una componente connessa \(L\) di \(G(x)\) è detta \emph{incastonata} in un'altra componente connessa \(K\) se esistono un vertice \(w\in L\) e due vertici \(u,u^{''}\in K\) tutti appartenenti ad un'unica catena e tali inoltre che \(u\le_{P}w\le_{P}u^{''}\). 
@@ -178,22 +178,21 @@ TODO: definizione di \(\text{STAB}^*(G)\)
 \end{lemma}
 \begin{proof}
 	\begin{enumerate}
-		\item Supponiamo per assurdo che \(L\) non sia libera ma sia incastonata in \(K\). Siano allora \(w\in L\) e \(u,u^{''}\in K\) come nella definizione. Senza perdita di generalità possiamo assumere \(w,u',u^{''}\in A\) e che \(u'\not\in K\) se \(u\le_{P}u'\le_{P}u^{''}\). \(K\) \`e una componente connessa che contiene sia \(u\) sia \(u^{''}\), dunque esiste \(v\in K\cap B\) adiacente ad entrambi. Per il lemma \ref{structurelemma} \((3)\) abbiamo che \(vw\) \`e un arco di \(G\), ma poich\'e \(K\) ed \(L\) sono componenti connesse distinte \(vw\) non \`e un arco di \(G(x)\). Se \(L\) non fosse banale allora esisterebbe un arco di \(L\) incidente in \(w\) che incrocia \(uv\) o \(u^{''}v\), dunque per il lemma \ref{crossinglemma} avremmo che \(vw\) \`e stretto, assurdo. Se invece \(L\) fosse bilanciata avremmo \(x_w+x_v=1+x_v>1\), contro il lemma \ref{chvatallemma}.
+		\item Supponiamo per assurdo che \(L\) non sia libera ma sia incastonata in \(K\). Siano allora \(w\in L\) e \(u,u^{''}\in K\) come nella definizione. Senza perdita di generalità possiamo assumere \(w,u',u^{''}\in A\) e che \(u'\not\in K\) se \(u\le_{P}u'\le_{P}u^{''}\). \(K\) \`e una componente connessa che contiene sia \(u\) sia \(u^{''}\), dunque esiste \(v\in K\cap B\) adiacente ad entrambi. Per il lemma \ref{structurelemma} \((3)\) abbiamo che \(vw\) \`e un arco di \(G\), ma poich\'e \(K\) ed \(L\) sono componenti connesse distinte \(vw\) non \`e un arco di \(G(x)\). Se \(L\) non fosse banale allora esisterebbe un arco di \(L\) incidente in \(w\) che incrocia \(uv\) o \(u^{''}v\), dunque per il lemma \ref{crossinglemma} avremmo che \(vw\) \`e stretto, assurdo. Se invece \(L\) fosse bilanciata avremmo \(x_w+x_v=1+x_v>1\), contro il lemma \ref{chvatallemma}. 
 		\item TODO\qed 
 	\end{enumerate}
 \end{proof}
 \begin{definition}
-	Sia \(x\in \text{STAB}^*(G)\) e sia \(K\) una componente connessa di \(G(x)\). Chiamiamo \emph{scarto} di \(K\) il reale \(\sigma\) che renda minimo \[\left|x_v+\sigma-\frac{|A\cap K|}{|K|}\right|\] per ogni \(v\in A\cap K\), e tale inoltre che, se
+	Sia \(x\in \text{STAB}^*(G)\) e sia \(K\) una componente connessa di \(G(x)\). Chiamiamo \emph{scarto} di \(K\) il reale \(\sigma\) che renda minimo
+	\[\left|x_v+\sigma-\frac{|A\cap K|}{|K|}\right|\]
+	per ogni \(v\in A\cap K\), e tale inoltre che, se 
 	\begin{cases}
 	\end{cases}
 \end{definition}
 \begin{algorithm}
-	\caption{Ribilanciamento} \label{rebalance}
-	\begin{algorithmic}[1]
-		\WHILE{}
-			\STATE TODO
-		\ENDWHILE
-		\RETURN \(x'\)
+	\caption{Ribilanciamento} \label{rebalance} 
+	\begin{algorithmic}
+		[1] \WHILE{} \STATE TODO \ENDWHILE \RETURN \(x'\) 
 	\end{algorithmic}
 \end{algorithm}
 \begin{lemma}
