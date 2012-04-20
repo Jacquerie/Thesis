@@ -6,38 +6,36 @@
 \end{definition}
 Come accennato nell'introduzione, questo oggetto modella una sorgente priva di memoria e stazionaria che emette ad ogni istante discreto un simbolo \(v_i\) in un insieme finito \(V=\{v_1,\dots ,v_n\}\) con la corrispondente probabilità \(p_i\). Nel nostro caso supponiamo che tali simboli non siano a due a due distinguibili, in particolare lo sono se e solo se \((v_i, v_j) \in E\), insieme degli archi di \(G\).
 
-Sia \(t\) un intero positivo fissato, e sia \(V^t\) l'insieme delle stringhe lunghe \(t\) di simboli in \(V\). Poiché la sorgente è priva di memoria, è naturale assegnare alla stringa \(\mathbf{v} = v_{i_1},\dots ,v_{i_t}\) la probabilità 
+Sia \(t\) un intero positivo fissato, e sia \(V^t\) l'insieme delle stringhe lunghe \(t\) di simboli in \(V\). Poiché la sorgente è priva di memoria, è naturale assegnare alla stringa \(\mathbf{v} = v_{i_1}\dots v_{i_t}\) la probabilità 
 \begin{equation}
 	\label{eq:probability}\mathbf{P}^t(\mathbf{v})=\prod_{j=1}^t P(v_{i_j}), 
 \end{equation}
-e al sottoinsieme \(U\subset V^{t}\) la probabilit\`a
+e al sottoinsieme \(U\subset V^{t}\) la probabilit\`a 
 \begin{equation}
-	\mathbf{P}^t(U)=\sum_{v\in U}{\mathbf{P}^t(\mathbf{v)}. \nonumber
+	\mathbf{P}^t(U)=\sum_{v\in U} {\mathbf{P}^t(\mathbf{v})}. \nonumber 
 \end{equation}
-Sia \(0<\varepsilon<1\) fissato, e sia \(U\subset V^{t}\) tale che \(\mathbf{P}^t(U)>1-\varepsilon\). Una \emph{codifica propria} \`e una mappa dalle stringhe di \(V^t\) a un insieme di simboli, tale che  stringhe distinguibili di \(U\) vengono mandate in simboli distinti. \`E intuitivamente preferibile una codifica che faccia uso del minor numero possibile di simboli. Cerchiamo dunque di minimizzare la quantit\`a
+Sia \(0<\varepsilon<1\) fissato, e sia \(U\subset V^{t}\) tale che \(\mathbf{P}^t(U)>1-\varepsilon\). Una \emph{codifica propria} \`e una mappa dalle stringhe di \(V^t\) a un insieme di simboli, tale che stringhe distinguibili di \(U\) vengono mandate in simboli distinti. \`E intuitivamente preferibile una codifica che faccia uso del minor numero possibile di simboli. Cerchiamo dunque di minimizzare la quantit\`a 
 \begin{equation}
-	\frac{\log{M}}{t}, \nonumber
+	\frac{\log{M}}{t}, \nonumber 
 \end{equation}
 dove \(M\) \`e la cardinalit\`a dell'immagine secondo la codifica. Sia quindi \(R(G,P,t,\varepsilon)\) il minimo di tale frazione al variare delle codifiche. Il limite 
 \begin{equation}
 	\label{eq:entropyzero} \liminf_{\varepsilon \to 0} \liminf_{t \to \infty} R(G,P,t,\varepsilon) 
 \end{equation}
-misurerà quindi la complessità del grafo.
-La definizione \eqref{eq:entropyzero} non consente però il calcolo esplicito dell'entropia del grafo, perché la quantità \(R(G,P,t,\varepsilon)\) è un minimo al variare in un insieme che non sappiamo descrivere esplicitamente. Dobbiamo quindi semplificarla ulteriormente, e per fare questo sfrutteremo la struttura di grafo data.
+misurerà quindi la complessità del grafo. La definizione \eqref{eq:entropyzero} non consente però il calcolo esplicito dell'entropia del grafo, perché la quantità \(R(G,P,t,\varepsilon)\) è un minimo al variare in un insieme che non sappiamo descrivere esplicitamente. Dobbiamo quindi semplificarla ulteriormente, e per fare questo sfrutteremo la struttura di grafo data. 
 \begin{definition}
 	Sia \(t\) un intero positivo e \(G\) un grafo. Chiamiamo \emph{\(t-\)esima potenza conormale} di \(G\) il grafo \(G^t=(V^t, E^t)\), dove \(V^t\) è il prodotto cartesiano di \(t\) copie di \(V\), mentre
 	\[E^t=\{(\mathbf{v},\mathbf{w})\ \vert\ \exists i\ (v_i, w_i)\in E\}.\]
 \end{definition}
-In altri termini fra due vertici \(\mathbf{v}\) e \(\mathbf{w}\) di \(G^t\) esiste un arco se e soltanto se le corrispondenti sequenze di lunghezza \(t\) sono distinguibili in almeno un elemento.
+In altri termini fra due vertici \(\mathbf{v}\) e \(\mathbf{w}\) di \(G^t\) esiste un arco se e soltanto se le corrispondenti sequenze di lunghezza \(t\) sono distinguibili in almeno un elemento. 
 \begin{example}
 	Sia \(L\) il grafo su tre vertici con due archi, rappresentato a sinistra. Allora \(L^2\) è rappresentato a destra. TODO: Disegno 
 \end{example}
-Osserviamo che la coppia \((G^t, \mathbf{P}^t)\), dove \(\mathbf{P}^t\) è definita da \eqref{eq:probability}, è ancora un grafo probabilistico. 
-Volendo codificare propriamente un sottoinsieme \(U\subset V^{t}\) abbiamo bisogno di almeno tante parole quanti insiemi indipendenti servono per partizionare \(U\). Ma questo è proprio il numero cromatico del sottografo indotto da \(G^t\) su \(U\), che denotiamo \(\chi(G^t(U))\). Siamo ora pronti per enunciare la prima definizione di entropia di grafo. 
+Osserviamo che la coppia \((G^t, \mathbf{P}^t)\), dove \(\mathbf{P}^t\) è definita da \eqref{eq:probability}, è ancora un grafo probabilistico. Volendo codificare propriamente un sottoinsieme \(U\subset V^{t}\) abbiamo bisogno di almeno tante parole quanti insiemi indipendenti servono per partizionare \(U\). Ma questo è proprio il numero cromatico del sottografo indotto da \(G^t\) su \(U\), che denotiamo \(\chi(G^t(U))\). Siamo ora pronti per enunciare la prima definizione di entropia di grafo. 
 \begin{definition}
 	Sia \((G,P)\) un grafo probabilistico. Chiamiamo \emph{entropia di grafo} il seguente limite: 
 	\begin{equation}
-		\label{eq:entropyone} H(G,P)=\lim_{t\to \infty} \min_{\substack{ U\subset V^t\\\mathbf{P}^t(U)>1-\varepsilon}} \frac{1}{t}\log{\chi(G^t(U))}.
+		\label{eq:entropyone} H(G,P)=\lim_{t\to \infty} \min_{\substack{ U\subset V^t\\\mathbf{P}^t(U)>1-\varepsilon}} \frac{1}{t}\log{\chi(G^t(U))}. 
 	\end{equation}
 \end{definition}
 
@@ -47,7 +45,7 @@ Affinchè la precedente risulti una buona definizione dovremmo dimostrarne l'ind
 \begin{definition}
 	Sia \(X\) una variabile aleatoria discreta di densità \(P=(p_1\dots p_n)\). Chiamiamo \emph{entropia di Shannon di \(X\)} la somma
 	\[H(X)=\sum_{i=1}^n p_i \log{\frac{1}{p_i}}.\]
-	Con abuso di notazione scriviamo \(H(P)\) per indicare l'entropia di Shannon di una variabile aleatoria discreta di densit\`a \(P\).
+	Con abuso di notazione scriviamo \(H(P)\) per indicare l'entropia di Shannon di una variabile aleatoria discreta di densit\`a \(P\). 
 \end{definition}
 \begin{definition}
 	Siano \(X\) ed \(Y\) due variabili aleatorie discrete. Chiamiamo \emph{mutua informazione di \(X\) ed \(Y\)} la quantità
@@ -103,7 +101,7 @@ Non abbiamo bisogno di altro per enunciare la terza definizione di entropia di g
 	Sia \((G,P)\) un grafo probabilistico. Chiamiamo \emph{entropia di grafo} minimo: 
 	\begin{equation}
 		\label{eq:entropythree} H(G,P)=\min_{\substack{\mathbf{a}\in \text{STAB}(G) \\
-		\mathbf{a} > 0}} \sum_{i=1}^n p_i \log{\frac{1}{a_i}}.
+		\mathbf{a} > 0}} \sum_{i=1}^n p_i \log{\frac{1}{a_i}}. 
 	\end{equation}
 \end{definition}
 \begin{remark}
@@ -141,7 +139,7 @@ Osserviamo che la coppia \((G_t, \mathbf{P}^t)\), dove \(\mathbf{P}^t\) è defin
 \[\chi_{n}(t,\varepsilon) = \min_{\substack{U\subset V^{t}\\\mathbf{P}^t(U)\ge 1-\varepsilon}} \chi(G_{t}(U))\]
 conta il numero minimo di parole che sono necessarie per dare una codifica propria di quasi tutte le sequenze di lunghezza \(t\), in analogia con quanto discusso nel paragrafo \ref{codinganalogy}.
 
-Enunciamo i seguenti due lemmi omettendone la dimostrazione. TODO: citazione
+Enunciamo i seguenti due lemmi omettendone la dimostrazione. TODO: citazione 
 \begin{lemma}
 	\label{boundslemma} Sia \(G\) unione di grafi completi a due a due disgiunti e \(\sim\) la relazione d'equivalenza definita nel precedente lemma. Denotiamo con \([v]\) la classe d'equivalenza di \(v\) per tale relazione e definiamo
 	\[H(P\mid \sim)=\sum_{v\in V} P(v)\log{\frac{P([v])}{P(v)}}.\]
@@ -187,7 +185,7 @@ Definendo le variabili aleatorie \(X\sim P\) e \(Y\sim R\) rispettivamente a val
 
 Sia \(\mathcal{A}\) l'insieme di tutte le distribuzioni ammissibili. Osserviamo che si tratta di un insieme chiuso e limitato nello spazio vettoriale delle funzioni di dominio \(V\times \mathcal{N}\). La limitatezza segue dall'essere un insieme di distribuzioni di probabilità, quindi a somma \(1\). La chiusura invece è conseguenza dell'essere preimmagine di un insieme finito di punti tramite le equazioni \eqref{eq:preimage} al variare di \(v\in V\). Inoltre tale spazio vettoriale è di dimensione finita essendo sia \(V\) sia \(\mathcal{N}\) finiti, per cui possiamo applicare il teorema di Heine-Borel e concludere la compattezza di \(\mathcal{A}\). Ma allora la funzione continua \eqref{eq:continuous} possiede minimo per il teorema di Weierstrass, da cui segue la buona definizione della seconda definizione di entropia di grafo. Nel seguito denoteremo con \(H(G,P)\) tale minimo.
 
-Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle prime due definizioni di entropia di grafo. Ne divideremo la dimostrazione nei successivi due teoremi, come in \cite{Korner1973}.
+Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle prime due definizioni di entropia di grafo. Ne divideremo la dimostrazione nei successivi due teoremi, come in \cite{Korner1973}. 
 \begin{theorem}
 	[K\"orner] Sia \((G,P)\) un grafo probabilistico e sia \(\delta>0\). Per ogni \(0<\varepsilon<1\) e per \(t\) abbastanza grande abbiamo
 	\[\chi(t,\varepsilon)\ge 2^{t(H(G,P)-\delta)},\]
