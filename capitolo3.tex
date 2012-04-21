@@ -228,14 +228,20 @@ La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi
 		\STATE poni \(x'_v := x_v+\sigma\) per \(v\in A\cap K\), \(x'_v := x_v-\sigma\) per \(v\in B\cap K\)\ENDWHILE \RETURN \(x'\) 
 	\end{algorithmic}
 \end{algorithm}
+\begin{definition}
+  Sia \(x\in\text{STAB}(G)\). Diciamo che due componenti connesse \(K\) ed \(L\) di \(G(x)\) si \emph{toccano} se sono collegate da un arco di \(G\) e se non esiste una componente connessa non banale \(M\) diversa da \(K\) ed \(L\) tale che un arco \(uv\) di \(M\) sia compreso fra \(K\) ed \(L\). In altri termini, supposto \(u\in A\) e \(v\in B\), non devono valere \(K\cap A\le_{P}\{u\}\le_{P}L\cap A\) e \(K\cap B\le_{P}\{v\}\le_{P}L\cap B\), oppure \(L\cap A\le_{P}\{u\}\le_{P}K\cap A\) e \(L\cap B\le_{P}\{v\}\le_{P}K\cap B\).
+\end{definition}
 \begin{lemma}
-	\label{touchinglemma} TODO 
+	\label{touchinglemma} Sia \(x\in\text{STAB}^{*}(G)\), e sia \(x'\) il punto ottenuto ribilanciando \(x\). Se la componente connessa \(K\) si fonde con la componente connessa \(L\) di \(G(x)\) allora \(K\) ed \(L\) si toccano.
 \end{lemma}
 \begin{proof}
 	TODO\qed 
 \end{proof}
 \begin{definition}
 	Sia \(x\in\text{STAB}^{*}(G)\). Diciamo che una componente connessa \(K\) di \(G(x)\) è \emph{rossa} se si ha \(|A\cap K|\ge|B\cap K|\), altrimenti diciamo che \(K\) è \emph{blu}. 
+\end{definition}
+\begin{definition}
+  TODO
 \end{definition}
 \begin{lemma}
 	\label{consistentlemma} TODO 
