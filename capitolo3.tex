@@ -318,9 +318,9 @@ La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi
 \begin{algorithm}
 	\caption{``Merge'' con informazione parziale} \label{merge} 
 	\begin{algorithmic}
-		[1] \STATE Calcola \(x\in\text{STAB}(G)\) che realizzi il minimo dell'entropia con l'algoritmo di K\"orner e Marton
-		    \IF{Il contributo delle componenti rosse ad \(H(x)\) supera quelle delle componenti blu} scambia le catene \(A\) e \(B\).
-		    \ENDIF
+		[1] \STATE calcola \(x\in\text{STAB}(G)\) che realizzi il minimo dell'entropia con l'algoritmo di K\"orner e Marton
+		    \IF{il contributo delle componenti rosse ad \(H(x)\) supera quelle delle componenti blu} scambia le catene \(A\) e \(B\). \ENDIF
+		    \FOR{\(v\in A\cup B\)} \IF{\(v\) \`e un taglio} \ENDFOR
 	\end{algorithmic}
 \end{algorithm}
 \begin{theorem}
