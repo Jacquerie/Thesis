@@ -146,7 +146,7 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 \end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Merge con informazione parziale} 
+\section{Merge con informazione parziale}
 \begin{lemma}
 	\label{structurelemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Allora 
 	\begin{enumerate}
@@ -223,14 +223,15 @@ La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi
 \end{proof}
 \begin{definition}
 	Sia \(x\in \text{STAB}^*(G)\) e sia \(K\) una componente connessa di \(G(x)\). Chiamiamo \emph{scarto} di \(K\) il reale \(\sigma\) che renda minimo
-	\[\left|x_v+\sigma-\frac{|A\cap K|}{|K|}\right|\]
-	per ogni \(v\in A\cap K\), e tale inoltre che, se
-	\[ x' = 
+	\[\argmin_{\sigma}\max_{v\in K}\left|x_v+\sigma-\frac{|A\cap K|}{|K|}\right|,\]
+	e tale inoltre che, se
+	\[ x'_v = 
 	\begin{cases}
-		x_v + \sigma \\
-		x_v - \sigma 
+		x_v + \sigma \text{ per } v\in A\cap K\\
+		x_v - \sigma \text{ per } v\in B\cap K, 
 	\end{cases}
 	\]
+	allora \(x'\in \text{STAB}^*(G)\).
 \end{definition}
 \begin{algorithm}
 	\caption{Ribilanciamento} \label{rebalance} 
@@ -297,7 +298,7 @@ La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi
 \end{proof}
 È immediato osservare che la precedente dimostrazione si applica, \emph{mutatis mutandis}, all'insieme delle componenti blu non banali. Pertanto in analoghe ipotesi esiste una componente blu che sia buona.
 \begin{algorithm}
-	\caption{TODO}
+	\caption{Parte essenziale del ``merge'' con informazione parziale} \label{essentialmerge}
 	\begin{algorithmic}
 		[1] \STATE TODO 
 	\end{algorithmic}
@@ -317,7 +318,9 @@ La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi
 \begin{algorithm}
 	\caption{``Merge'' con informazione parziale} \label{merge} 
 	\begin{algorithmic}
-		[1] \STATE TODO 
+		[1] \STATE Calcola \(x\in\text{STAB}(G)\) che realizzi il minimo dell'entropia con l'algoritmo di K\"orner e Marton
+		    \IF{Il contributo delle componenti rosse ad \(H(x)\) supera quelle delle componenti blu} scambia le catene \(A\) e \(B\).
+		    \ENDIF
 	\end{algorithmic}
 \end{algorithm}
 \begin{theorem}
@@ -328,7 +331,8 @@ La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi
 \end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Merge sort} 
+\section{Merge sort}
+Abbiamo definito ``naive'' l'algoritmo \ref{naivemerge} poich\'e, ogni volta che effettua una fusione fra due catene, non fa uso dell'informazione contenuta nell'insieme parzialmente ordinato. In questa sezione dimostreremo che \`e sufficiente compiere con cautela solo l'ultima di queste fusioni per ottenere un algoritmo che ordini in \(O(\log{e(P)}\) confronti.
 \begin{algorithm}
 	\caption{``Merge sort'' con informazione parziale} \label{mergesort} 
 	\begin{algorithmic}
