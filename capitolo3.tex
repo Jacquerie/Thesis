@@ -300,11 +300,24 @@ La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi
 \begin{algorithm}
 	\caption{Parte essenziale del ``merge'' con informazione parziale} \label{essentialmerge}
 	\begin{algorithmic}
-		[1] \STATE TODO 
+		[1] \WHILE{\(G(x)\) possiede una componente connessa non banale}
+		        \STATE scegli una componente buona \(K\), con precedenza a quelle rosse
+		        \STATE fondi le catene \(X=A\cap K\) e \(Y=B\cap K\) con l'algoritmo di Hwang-Lin
+                \FOR{\(v\in K\)}
+                    \STATE \(x_v=\max{\left\{x_v, \frac{1}{2}\right\}}\) se \(v\in A\), \(x_v=\max{\left\{x_v, \frac{1}{2}+\frac{1}{2n}\right\}}\) se \(v\in B\)
+                \ENDFOR
+                \STATE ribilancia \(x\) con l'algoritmo \ref{rebalancing}
+                \FOR{\(v\in K\)}
+                    \IF{\(x_v = 1\)}
+                        \STATE copia \(v\) alla sua posizione finale in \(C\)
+                    \ENDIF
+                \ENDFOR
+		    \ENDWHILE
+            \RETURN \(C\)
 	\end{algorithmic}
 \end{algorithm}
 \begin{lemma}
-	\label{evolutionlemma} TODO 
+	\label{evolutionlemma} TODO
 \end{lemma}
 \begin{proof}
 	TODO\qed 
