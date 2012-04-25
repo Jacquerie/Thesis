@@ -241,23 +241,28 @@ La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi
 		\STATE poni \(x'_v := x_v+\sigma\) per \(v\in A\cap K\), \(x'_v := x_v-\sigma\) per \(v\in B\cap K\)\ENDWHILE \RETURN \(x'\) 
 	\end{algorithmic}
 \end{algorithm}
+Quando una componente connessa \(K\) viene ribilanciata pu\`o accadere che un arco non stretto di \(G(x)\) diventi stretto in \(G(x')\). In questo caso diciamo che \(K\) \emph{si fonde} con un'altra componente connessa di \(G(x')\). Possiamo dare una condizione necessaria affinch\'e ci\`o accada in termini della seguente definizione.
 \begin{definition}
-  Sia \(x\in\text{STAB}(G)\). Diciamo che due componenti connesse \(K\) ed \(L\) di \(G(x)\) si \emph{toccano} se sono collegate da un arco di \(G\) e se non esiste una componente connessa non banale \(M\) diversa da \(K\) ed \(L\) tale che un arco \(uv\) di \(M\) sia compreso fra \(K\) ed \(L\). In altri termini, supposto \(u\in A\) e \(v\in B\), non devono valere \(K\cap A\le_{P}\{u\}\le_{P}L\cap A\) e \(K\cap B\le_{P}\{v\}\le_{P}L\cap B\), oppure \(L\cap A\le_{P}\{u\}\le_{P}K\cap A\) e \(L\cap B\le_{P}\{v\}\le_{P}K\cap B\).
+    Sia \(x\in\text{STAB}(G)\). Diciamo che due componenti connesse \(K\) ed \(L\) di \(G(x)\) si \emph{toccano} se sono collegate da un arco di \(G\) e se non esiste una componente connessa non banale \(M\) diversa da \(K\) ed \(L\) tale che un arco \(uv\) di \(M\) sia compreso fra \(K\) ed \(L\). In altri termini, supposto \(u\in A\) e \(v\in B\), non devono valere \(K\cap A\le_{P}\{u\}\le_{P}L\cap A\) e \(K\cap B\le_{P}\{v\}\le_{P}L\cap B\), oppure \(L\cap A\le_{P}\{u\}\le_{P}K\cap A\) e \(L\cap B\le_{P}\{v\}\le_{P}K\cap B\).
 \end{definition}
 \begin{lemma}
 	\label{touchinglemma} Sia \(x\in\text{STAB}^{*}(G)\), e sia \(x'\) il punto ottenuto ribilanciando \(x\). Se la componente connessa \(K\) si fonde con la componente connessa \(L\) di \(G(x)\) allora \(K\) ed \(L\) si toccano.
 \end{lemma}
 \begin{proof}
-	Supponiamo per assurdo che \(K\) ed \(L\) non si toccano. Siano allora \(M\) una componente connessa e \(uv\) un suo arco come nella precedente definizione. Sia inoltre \(u'v'\) l'arco di estremi rispettivamente in \(K\) ed \(L\) che sia diventato stretto in \(G(x')\). Possiamo allora applicare il lemma \ref{crossinglemma} e concludere che \(uv'\) \`e un arco di \(G(x')\), quindi  \(M\) ed \(L\) sono contenuti in una stessa componente connessa di \(G(x')\). Ma l'algoritmo \ref{rebalance} non altera i pesi dei vertici non appartenenti a \(K\), pertanto \(M\) ed \(L\) sono contenuti in una stessa componente connessa di \(G(x)\), una contraddizione.\qed 
+	Supponiamo per assurdo che \(K\) ed \(L\) non si tocchino. Siano allora \(M\) una componente connessa e \(uv\) un suo arco come nella precedente definizione. Sia inoltre \(u'v'\) l'arco di estremi rispettivamente in \(K\) ed \(L\) che sia diventato stretto in \(G(x')\). Gli archi \(uv\) e \(u'v'\) si incrociano: possiamo allora applicare il lemma \ref{crossinglemma} e concludere che \(uv'\) \`e un arco di \(G(x')\), quindi  \(M\) ed \(L\) sono contenuti in una stessa componente connessa di \(G(x')\). Ma l'algoritmo \ref{rebalance} non altera i pesi dei vertici non appartenenti a \(K\), pertanto \(M\) ed \(L\) sono contenuti in una stessa componente connessa di \(G(x)\), una contraddizione.\qed 
 \end{proof}
 \begin{definition}
 	Sia \(x\in\text{STAB}^{*}(G)\). Diciamo che una componente connessa \(K\) di \(G(x)\) è \emph{rossa} se si ha \(|A\cap K|\ge|B\cap K|\), altrimenti diciamo che \(K\) è \emph{blu}. 
 \end{definition}
 \begin{definition}
-    TODO
+    Sia \(x\in\text{STAB}^{*}(G)\). Diciamo che \emph{rispetta i colori} se per ogni componente connessa \(K\) di \(G(x)\) e per ogni scelta di \(u\in A\cap K\) e \(v\in B\cap K\) abbiamo
+    \begin{align}
+        x_u\ge\frac{1}{2}&\text{ e }&x_v\le\frac{1}{2}\text{ se }\(K\)\text{\`e rossa,} \nonumber \\
+        x_u<\frac{1}{2}&\text{ e }&x_v>\frac{1}{2}\text{ se }\(K\)\text{\`e blu.} \nonumber
+    \end{align}
 \end{definition}
 \begin{lemma}
-	\label{consistentlemma} TODO 
+	\label{consistentlemma} Sia \(x\in\text{STAB}^{*}(G)\) e sia \(x'\) ottenuto ribilanciando \(x\). 
 \end{lemma}
 \begin{proof}
 	TODO\qed 
