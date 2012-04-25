@@ -310,7 +310,7 @@ La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi
 	TODO\qed 
 \end{proof}
 \begin{lemma}
-	\label{finallemma} TODO 
+	\label{finallemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Supponiamo che \(x\in\text{STAB}(G)\) sia localmente ottimo e tale che il contributo ad \(H(x)\) delle componenti rosse superi quello delle componenti blu. Allora l'algoritmo \ref{essentialmerge} fonde \(A\) e \(B\) impiegando al pi\`u \(3nH(x)\) confronti.
 \end{lemma}
 \begin{proof}
 	TODO\qed 
@@ -319,20 +319,24 @@ La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi
 	\caption{``Merge'' con informazione parziale} \label{merge} 
 	\begin{algorithmic}
 		[1] \STATE calcola \(x\in\text{STAB}(G)\) che realizzi il minimo dell'entropia con l'algoritmo di K\"orner e Marton
-		    \IF{il contributo delle componenti rosse ad \(H(x)\) supera quelle delle componenti blu} scambia le catene \(A\) e \(B\). \ENDIF
-		    \FOR{\(v\in A\cup B\)} \IF{\(v\) \`e un taglio} \ENDFOR
+		    \IF{il contributo delle componenti rosse ad \(H(x)\) supera quelle delle componenti blu} \STATE scambia le catene \(A\) e \(B\). \ENDIF
+		    \FOR{\(v\in A\cup B\)} \IF{\(v\) \`e un taglio} \STATE copia \(v\) alla sua posizione finale in \(C\) \ENDIF \ENDFOR
+		    \STATE invoca l'algoritmo \ref{essentialmerge}
+		    \RETURN \(C\)
 	\end{algorithmic}
 \end{algorithm}
 \begin{theorem}
 	\label{mergetheorem} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Allora l'algoritmo \ref{merge} fonde \(A\) e \(B\) impiegando al più \(6\log{e(P)}\) confronti. 
 \end{theorem}
 \begin{proof}
-	TODO\qed 
+	Sia \(g(P)\) il numero di confronti necessario a fondere \(A\) e \(B\). Il calcolo dell'entropia alla riga \(1\) non comporta alcun confronto. Nelle righe da \(2\) a \(9\) ci assicuriamo di essere nelle condizioni di applicare il lemma \ref{finallemma}, e poter quindi dedurre che, eseguendo la riga \(10\), vengano compiuti al pi\`u \(3nH(x)\) confronti. Per il teorema \ref{cfjjmtheorem} abbiamo allora
+    \[g(P)\le 3nH(x)\le 6\log{e(P)},\]
+    cio\`e la tesi.\qed 
 \end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Merge sort}
-Abbiamo definito ``naive'' l'algoritmo \ref{naivemerge} poich\'e, ogni volta che effettua una fusione fra due catene, non fa uso dell'informazione contenuta nell'insieme parzialmente ordinato. In questa sezione dimostreremo che \`e sufficiente compiere con cautela solo l'ultima di queste fusioni per ottenere un algoritmo che ordini in \(O(\log{e(P)}\) confronti.
+Abbiamo definito ``naive'' l'algoritmo \ref{naivemerge} poich\'e, ogni volta che effettua una fusione fra due catene, non fa uso dell'informazione contenuta nell'insieme parzialmente ordinato. In questa sezione dimostreremo che \`e sufficiente compiere con cautela solo l'ultima di queste fusioni per ottenere un algoritmo che ordini compiendo \(O(\log{e(P)}\) confronti. Per fare questo sfrutteremo l'algoritmo \ref{merge} della precedente sezione.
 \begin{algorithm}
 	\caption{``Merge sort'' con informazione parziale} \label{mergesort} 
 	\begin{algorithmic}
