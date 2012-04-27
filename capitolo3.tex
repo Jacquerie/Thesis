@@ -151,7 +151,7 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 	\label{structurelemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Allora 
 	\begin{enumerate}
 		\item \(G\) è bipartito. 
-		\item \(G\) è biconvesso. 
+		\item \(G\) è biconvesso, cio\`e i vertici adiacenti ad un vertice di una catena formano un intervallo nella catena opposta.
 		\item Siano \(u\) e \(v\) vertici appartenenti alla stessa catena, che supporremo senza perdita di generalità essere \(A\), tali che \(u\le_{P} v\). Siano \([c_u,d_u]\) e \([c_v,d_v]\) gli intervalli dei vertici \(B\) adiacenti rispettivamente a \(u\) e \(v\). Allora \(c_u\le_{P} c_v\) e \(d_u\le_{P} d_v\), e in particolare se \(u\le_{P}w\le_{P}v\) i vertici adiacenti a \(w\) sono un intervallo contenuto in \([c_u,d_v]\). 
 	\end{enumerate}
 \end{lemma}
@@ -167,8 +167,8 @@ Sia \(h(x)=-x\log{x}-(1-x)\log{(1-x)}\) l'entropia binaria, in cui per convenzio
 \end{theorem}
 
 Possiamo costruire tali partizioni iterativamente. Dato \(S\subset V\) sottoinsieme dei vertici, denotiamo con \(N_G(S)\) l'insieme dei vertici adiacenti ad almeno un vertice di \(S\). Sia allora \(A_i\) un sottoinsieme di \(A'=A-(A_1\cup\dots\cup A_{i-1})\) che renda massimo
-\[\frac{|A_i|}{|N_{G'}(A_i)},\]
-dove \(G'\) \`e ottenuto da \(G\) rimuovendo tutti i vertici contenuti in un qualche \(A_j\) o \(B_j\) per \(j<i\), e \(B_i=N_{G'}(A_i)\). Se esiste un vertice isolato \(u\) in \(A'\) allora poniamo \(A_i=\{u\}\) e \(B_i=\emptyset\). Se invece \(A'\) \`e vuoto e \(B'=B-(B_1\cup\dots\cup B_{i-1})\) non lo \`e allora scegliamo \(v\in B'\) e poniamo \(A_i=\emptyset\) e \(B_i\{v\}\).
+\[\frac{|A_i|}{|N_{G'}(A_i)|},\]
+dove \(G'\) \`e ottenuto da \(G\) rimuovendo tutti i vertici contenuti in un qualche \(A_j\) o \(B_j\) per \(j<i\), e \(B_i=N_{G'}(A_i)\). Se esiste un vertice isolato \(u\) in \(A'\) allora poniamo \(A_i=\{u\}\) e \(B_i=\emptyset\). Se invece \(A'\) \`e vuoto e \(B'=B-(B_1\cup\dots\cup B_{i-1})\) non lo \`e allora scegliamo \(v\in B'\) e poniamo \(A_i=\emptyset\) e \(B_i=\{v\}\).
 
 Per evitare casi degeneri denoteremo nel seguito con \(\text{STAB}^{*}(G)\) i punti di \(\text{STAB}(G)\) di coordinate tutte positive. Infatti se così non fosse la funzione obiettivo dell'equazione \ref{eq:entropythree} non sarebbe definita.
 
