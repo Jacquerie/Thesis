@@ -1,13 +1,36 @@
 \appendix
-\chapter{Dimostrazione di \ref{appendixlemma}}
-
 \begin{theorem}
     Esiste un indice \(i\in\{1,2\}\) tale che \[\frac{e(P_i)}{e(P)}\le\frac{1}{\sqrt{\alpha_i\beta_i}}.\]
 \end{theorem}
 \begin{proof}
     Dimostreremo che
     \begin{align}
-        \frac{e(P_1)}{e(P)}+\frac{e(P_2)}{e(P)}&\le 1 \nonumber \\
-        \frac{1}{\sqrt{\alpha_1\beta_1}}+\frac{1}{\sqrt{\alpha_2\beta_2}}&\ge 1. \nonumber
+        \frac{e(P_1)}{e(P)}+\frac{e(P_2)}{e(P)}&\le 1 \label{eq:extensions} \\
+        \frac{1}{\sqrt{\alpha_1\beta_1}}+\frac{1}{\sqrt{\alpha_2\beta_2}}&\ge 1. \label{eq:inverseroots}
     \end{align}
+    Per dimostrare \eqref{eq:extensions} \`e sufficiente dimostrare che \(a<_{P_1} b\) e \(a>_{P_2} b\). Sfruttando le definizioni di \(\alpha_1\) e \(\beta_1\) abbiamo
+    \[
+        y_{a^+}^1 = y_a+\frac{x_a}{\alpha_1} = 
+        \begin{cases}
+            y_{a^-}+x_a-x_b &\text{se}\quad\lambda\le\frac{1}{2}\\
+            y_{a^-}+\frac{x_a}{2} &\text{altrimenti}
+        \end{cases}
+    \]
+    e
+    \[
+        y_{b^-}^1 = y_{b^+}-\frac{x_b}{\beta_1} = y_a+x_a-\frac{x_b}{\beta_1} =
+        \begin{cases}
+            y_{a^-}+x_a-x_b &\text{se}\quad\lambda\le\frac{1}{2}\\
+            y_{a^-}+\frac{x_a}{2} &\text{altrimenti,}
+        \end{cases}
+    \]
+    cio\`e \(a<_{P_1} b\). Per le analoghe definizioni di \(\alpha_2\) e \(\beta_2\) abbiamo
+    \[
+        y_{a^-}^2 = y_{a^+}-\frac{x_a}{\alpha_2} = y_{a^+} - \frac{x_b}{2}
+    \]
+    e
+    \[
+        y_{b^+}^2 = y_{b^-}+\frac{x_b}{\beta_2} = y_{a^+}-x_b+\frac{x_b}{\beta_2} = y_{a^+}-\frac{x_b}{2},
+    \]
+    cio\`e \(a>_{P_2} b\).
 \end{proof}
