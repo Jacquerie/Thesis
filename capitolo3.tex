@@ -21,7 +21,7 @@ La questione dell'esistenza di un algoritmo che compia \(O(\log{e(P)})\) confron
 \end{theorem}
 L'algoritmo di Kahn e Kim calcola inizialmente l'entropia del grafo associato a \(P\). Successivamente stima la variazione dell'entropia dei grafi associati agli ordini parziali \(P'\), ottenuti da \(P\) aggiungendo il risultato di un confronto. Viene quindi selezionato quel confronto che avvicini maggiormente l'entropia a \(\log{n}\), entropia del grafo completo, associato all'insieme totalmente ordinato. Ad ogni passo è dunque necessario il calcolo dell'entropia di un grafo, un problema di minimizzazione su un insieme convesso per l'equazione \ref{eq:entropythree}. Possiamo quindi applicare il metodo dell'ellissoide, ottenendo un algoritmo polinomiale ma non utile nella pratica.
 
-In un recente articolo Cardinal et al. hanno proposto tre algoritmi che non richiedono il calcolo esatto dell'entropia di alcun grafo, ma sfruttano la versione approssimata presentata nel teorema \ref{greedypoint} \cite{Cardinal2010}. Questo consente di ottenere algoritmi che richiedono \(O(\log{e(P)})\) confronti e che sono contemporaneamente polinomiali e pratici. In questo capitolo andremo ad esporre tali algoritmi.
+In un recente articolo Cardinal et al. hanno proposto tre algoritmi che non richiedono il calcolo esatto dell'entropia, ma sfruttano la versione approssimata presentata nel teorema \ref{greedypoint} \cite{Cardinal2010}. Questo consente di ottenere algoritmi che richiedono \(O(\log{e(P)})\) confronti e che sono contemporaneamente polinomiali e pratici. In questo capitolo andremo ad esporre tali algoritmi.
 
 Concludiamo questa sezione con una versione più precisa della stima superiore del teorema \ref{kktheorem}, un risultato che sarà utile nel seguito. 
 \begin{theorem}
@@ -146,7 +146,8 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 \end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Merge con informazione parziale} 
+\section{Merge con informazione parziale}
+Scopo di questa sezione \`e risolvere il problema dell'ordinamento con informazione parziale per un insieme partizionabile in due catene disgiunte. Tale caso particolare \`e noto come \emph{problema della fusione con informazione parziale} e fu studiato da Linial nel 1984 \cite{Linial1984}. Egli propose un algoritmo che richiede al pi\`u \(C\log{e(P)}\) confronti con \(C=\left(\log{\frac{1+\sqrt{5}}{2}}\right)^{-1}\) e dimostr\`o l'ottimalit\`a di tale costante. Il suo algoritmo necessita per\`o del calcolo di \(n\) determinanti di matrici \(n\times n\). In questa sezione proporremo un algoritmo che risolva tale problema e dimostreremo che richiede al pi\`u \(6\log{e(P)}\) confronti. \`E possibile inoltre dimostrare che questo algoritmo necessita di \(O(n^2\log{n})\) operazioni elementari.
 \begin{lemma}
 	\label{structurelemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Allora 
 	\begin{enumerate}
