@@ -147,7 +147,7 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Merge con informazione parziale}
-Scopo di questa sezione \`e risolvere il problema dell'ordinamento con informazione parziale per un insieme partizionabile in due catene disgiunte. Tale caso particolare \`e noto come \emph{problema della fusione con informazione parziale} e fu studiato da Linial nel 1984 \cite{Linial1984}. Egli propose un algoritmo che richiede al pi\`u \(C\log{e(P)}\) confronti con \(C=\left(\log{\frac{1+\sqrt{5}}{2}}\right)^{-1}\) e dimostr\`o l'ottimalit\`a di tale costante. Il suo algoritmo necessita per\`o del calcolo di \(n\) determinanti di matrici \(n\times n\). In questa sezione proporremo un algoritmo che risolva tale problema e dimostreremo che richiede al pi\`u \(6\log{e(P)}\) confronti. \`E possibile inoltre dimostrare che questo algoritmo necessita di \(O(n^2\log{n})\) operazioni elementari.
+Scopo di questa sezione \`e risolvere il problema dell'ordinamento con informazione parziale per un insieme partizionabile in due catene disgiunte. Tale caso particolare \`e noto come \emph{problema della fusione con informazione parziale} e fu studiato da Linial nel 1984 \cite{Linial1984}. Egli propose un algoritmo che richiede al pi\`u \(C\log{e(P)}\) confronti con \(C=\left(\log{\frac{1+\sqrt{5}}{2}}\right)^{-1}\) e dimostr\`o l'ottimalit\`a di tale costante. Il suo algoritmo necessita per\`o del calcolo di \(n\) determinanti di matrici \(n\times n\). In questa sezione proporremo un algoritmo basato sull'entropia di grafo che risolva tale problema, e dimostreremo che richiede al pi\`u \(6\log{e(P)}\) confronti. \`E possibile inoltre dimostrare che questo algoritmo necessita di \(O(n^2\log{n})\) operazioni elementari.
 \begin{lemma}
 	\label{structurelemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Allora 
 	\begin{enumerate}
@@ -314,10 +314,25 @@ Quando una componente connessa \(K\) viene ribilanciata pu\`o accadere che un ar
 	\end{algorithmic}
 \end{algorithm}
 \begin{lemma}
-	\label{evolutionlemma} Denotiamo con \(G\) e \(x\) rispettivamente il grafo e il punto all'inizio di un ciclo while. Denotiamo invece con \(G'\) e \(x'\) gli stessi oggetti alla fine di una iterazione del ciclo. Allora \(x'\) appartiene a \(\text{STAB}(G')\) e rispetta i colori.
+	\label{evolutionlemma} Denotiamo con \(G\) e \(x\) rispettivamente il grafo e il punto all'inizio di un ciclo while. Denotiamo invece con \(G'\) e \(x'\) il grafo e il punto appena eseguita la riga \(6\) dell'algoritmo \ref{essentialmerge}. Allora \(x'\) appartiene a \(\text{STAB}(G')\) e rispetta i colori.
 \end{lemma}
 \begin{proof}
-	Osserviamo che se \(v\in K\) allora \(\{v\}\) \`e una componente libera di \(G'(x)\). Il nostro obiettivo \`e dimostrare che questo sia vero anche in \(G'(x')\).\qed 
+	Osserviamo che se \(v\in K\) allora \(\{v\}\) \`e una componente libera di \(G'(x)\). Il nostro obiettivo \`e dimostrare che questo \`e vero anche in \(G'(x')\). Possiamo distinguere quattro casi:
+    \begin{itemize}
+        \item \(v\in A\) e \(K\) \`e rossa. Allora \(x_v\ge\frac{1}{2}\), quindi \(x'_v=x_v\). Pertanto \(\{v\}\) rimane libera in \(G'(x')\).
+        \item \(v\in B\) e \(K\) \`e rossa. Allora \(x_v\le\frac{1}{2}\), quindi \(x'_v=\frac{1}{2}+\frac{1}{2n}\). Poich\'e \(K\) \`e buona un vertice \(w\) che sia adiacente a \(v\) in \(G'\) apparteneva ad una componente connessa blu di \(G(x)\), dunque \(x_w<\frac{1}{2}\). Essendo \(x\) localmente ottimo deve essere \(x_w\le\frac{1}{2}-\frac{1}{n}\), e da questo segue
+            \[
+                \begin{align}
+                    x'_v+x'_w &= (\frac{1}{2} + \frac{1}{2n}) + x_w \le \nonumber \\
+                              &\le (\frac{1}{2} + \frac{1}{2n}) + (\frac{1}{2} - \frac{1}{n}) \le \nonumber \\
+                              &\le 1\text{,} \nonumber
+                \end{align}
+            \]
+        cio\`e \(vw\) non \`e stretto in \(G'(x')\), quindi \(\{v\}\) \`e libera in \(G'(x')\).
+        \item \(v\in B\) e \(K\) \`e blu. Allora \(x_v>\frac{1}{2}\), quindi, poich\'e \(x\) \`e localmente ottimo, \(x'_v=x_v\ge\frac{1}{2}+\frac{1}{n}\).
+        \item \(v\in A\) e \(K\) \`e blu. Allora \(x_v<\frac{1}{2}\), quindi \(x'_v=\frac{1}{2}\). Se stiamo considerando una componente blu allora tutte le componenti rosse di \(G(x)\) sono banali. Inoltre, poich\'e \(x\) \`e localmente ottimo, nessuna di esse pu\`o essere libera. Essendo \(K\) buona \(v\) \`e adiacente in \(G\) soltanto a vertici della catena opposta, dunque a nessun vertice in \(G'\). Di conseguenza \(\{v\}\) \`e libera in \(G'(x')\).
+    \end{itemize}
+    TODO\qed 
 \end{proof}
 \begin{lemma}
 	\label{finallemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Supponiamo che \(x\in\text{STAB}(G)\) sia localmente ottimo e tale che il contributo ad \(H(x)\) delle componenti rosse superi quello delle componenti blu. Allora l'algoritmo \ref{essentialmerge} fonde \(A\) e \(B\) impiegando al pi\`u \(3nH(x)\) confronti. 
