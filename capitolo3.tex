@@ -146,13 +146,12 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 \end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Merge con informazione parziale}
-Scopo di questa sezione \`e risolvere il problema dell'ordinamento con informazione parziale per un insieme partizionabile in due catene disgiunte. Tale caso particolare \`e noto come \emph{problema della fusione con informazione parziale} e fu studiato da Linial nel 1984 \cite{Linial1984}. Egli propose un algoritmo che richiede al pi\`u \(C\log{e(P)}\) confronti con \(C=\left(\log{\frac{1+\sqrt{5}}{2}}\right)^{-1}\) e dimostr\`o l'ottimalit\`a di tale costante. Il suo algoritmo necessita per\`o del calcolo di \(n\) determinanti di matrici \(n\times n\). In questa sezione proporremo un algoritmo basato sull'entropia di grafo che risolva tale problema, e dimostreremo che richiede al pi\`u \(6\log{e(P)}\) confronti. \`E possibile inoltre dimostrare che questo algoritmo necessita di \(O(n^2\log{n})\) operazioni elementari.
+\section{Merge con informazione parziale} Scopo di questa sezione \`e risolvere il problema dell'ordinamento con informazione parziale per un insieme partizionabile in due catene disgiunte. Tale caso particolare \`e noto come \emph{problema della fusione con informazione parziale} e fu studiato da Linial nel 1984 \cite{Linial1984}. Egli propose un algoritmo che richiede al pi\`u \(C\log{e(P)}\) confronti con \(C=\left(\log{\frac{1+\sqrt{5}}{2}}\right)^{-1}\) e dimostr\`o l'ottimalit\`a di tale costante. Il suo algoritmo necessita per\`o del calcolo di \(n\) determinanti di matrici \(n\times n\). In questa sezione proporremo un algoritmo basato sull'entropia di grafo che risolva tale problema, e dimostreremo che richiede al pi\`u \(6\log{e(P)}\) confronti. \`E possibile inoltre dimostrare che questo algoritmo necessita di \(O(n^2\log{n})\) operazioni elementari. 
 \begin{lemma}
 	\label{structurelemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Allora 
 	\begin{enumerate}
 		\item \(G\) è bipartito. 
-		\item \(G\) è biconvesso, cio\`e i vertici adiacenti ad un vertice di una catena formano un intervallo nella catena opposta.
+		\item \(G\) è biconvesso, cio\`e i vertici adiacenti ad un vertice di una catena formano un intervallo nella catena opposta. 
 		\item Siano \(u\) e \(v\) vertici appartenenti alla stessa catena, che supporremo senza perdita di generalità essere \(A\), tali che \(u\le_{P} v\). Siano \([c_u,d_u]\) e \([c_v,d_v]\) gli intervalli dei vertici \(B\) adiacenti rispettivamente a \(u\) e \(v\). Allora \(c_u\le_{P} c_v\) e \(d_u\le_{P} d_v\), e in particolare se \(u\le_{P}w\le_{P}v\) i vertici adiacenti a \(w\) sono un intervallo contenuto in \([c_u,d_v]\). 
 	\end{enumerate}
 \end{lemma}
@@ -260,17 +259,17 @@ Quando una componente connessa \(K\) viene ribilanciata pu\`o accadere che un ar
 	\end{align}
 \end{definition}
 \begin{lemma}
-	\label{consistentlemma} Sia \(x\in\text{STAB}^{*}(G)\) e sia \(x'\) ottenuto ribilanciando \(x\). Sia poi \(K\) una componente connessa di \(G(x)\). Allora se \(x\) rispetta i colori anche \(x'\) rispetta i colori. Inoltre non è possibile che \(K\) si sia fusa con componenti connesse di colore diverso, perciò la componente di \(G(x')\) contenente \(K\) è dello stesso colore.
+	\label{consistentlemma} Sia \(x\in\text{STAB}^{*}(G)\) e sia \(x'\) ottenuto ribilanciando \(x\). Sia poi \(K\) una componente connessa di \(G(x)\). Allora se \(x\) rispetta i colori anche \(x'\) rispetta i colori. Inoltre non è possibile che \(K\) si sia fusa con componenti connesse di colore diverso, perciò la componente di \(G(x')\) contenente \(K\) è dello stesso colore. 
 \end{lemma}
 \begin{proof}
-	Poich\'e \(x\) rispetta i colori lo scarto \(\sigma\) \`e non negativo, dunque per \(v\in A\cap K\) abbiamo \(x'_v\ge \frac{1}{2}\) se e solo se \(x_v\ge \frac{1}{2}\), mentre per \(v\in B\cap K\) abbiamo \(x'_v>\frac{1}{2}\) se e solo se \(x_v>\frac{1}{2}\). Pertanto se \(K\) non si fonde con altre componenti connesse allora anche \(x'\) rispetta i colori. Supponiamo invece che \(K\) si fonda con una componente \(L\), e sia \(vw\) un arco di \(G(x)\) che sia diventato stretto rispetto a \(x'\), e tale inoltre che \(v\in K\) e \(w\in L\). Da \(x'_w=x_w\) e \(x_v+x_w < x'_v+x'_w = 1\) segue che \(x'_v > x_v\). Abbiamo quattro casi:
-    \begin{itemize}
-        \item \(v\in A\) e \(K\) \`e rossa in \(G(x)\). Allora \(x'_v>x_v\ge\frac{1}{2}\) e \(x_w=x'_w<\frac{1}{2}\).
-        \item \(v\in A\) e \(K\) \`e blu in \(G(x)\). Allora \(x_v<\frac{1}{2}\), quindi \(x'_v<\frac{1}{2}\) e \(x_w=x'_w>\frac{1}{2}\).
-        \item \(v\in B\) e \(K\) \`e rossa in \(G(x)\). Allora \(x_v\le\frac{1}{2}\), quindi \(x'_v\le\frac{1}{2}\) e \(x_w=x'_w\ge\frac{1}{2}\).
-        \item \(v\in B\) e \(K\) \`e blu in \(G(x)\). Allora \(x'_v>x_v>\frac{1}{2}\) e \(x'_w=x_w<\frac{1}{2}\).
-    \end{itemize}
-    In tutti i casi concludiamo che \(L\) abbia lo stesso colore di \(K\), quindi a maggior ragione la componente connessa di \(G(x')\) contenente \(K\) avr\`a lo stesso colore di \(K\).\qed 
+	Poich\'e \(x\) rispetta i colori lo scarto \(\sigma\) \`e non negativo, dunque per \(v\in A\cap K\) abbiamo \(x'_v\ge \frac{1}{2}\) se e solo se \(x_v\ge \frac{1}{2}\), mentre per \(v\in B\cap K\) abbiamo \(x'_v>\frac{1}{2}\) se e solo se \(x_v>\frac{1}{2}\). Pertanto se \(K\) non si fonde con altre componenti connesse allora anche \(x'\) rispetta i colori. Supponiamo invece che \(K\) si fonda con una componente \(L\), e sia \(vw\) un arco di \(G(x)\) che sia diventato stretto rispetto a \(x'\), e tale inoltre che \(v\in K\) e \(w\in L\). Da \(x'_w=x_w\) e \(x_v+x_w < x'_v+x'_w = 1\) segue che \(x'_v > x_v\). Abbiamo quattro casi: 
+	\begin{itemize}
+		\item \(v\in A\) e \(K\) \`e rossa in \(G(x)\). Allora \(x'_v>x_v\ge\frac{1}{2}\) e \(x_w=x'_w<\frac{1}{2}\). 
+		\item \(v\in A\) e \(K\) \`e blu in \(G(x)\). Allora \(x_v<\frac{1}{2}\), quindi \(x'_v<\frac{1}{2}\) e \(x_w=x'_w>\frac{1}{2}\). 
+		\item \(v\in B\) e \(K\) \`e rossa in \(G(x)\). Allora \(x_v\le\frac{1}{2}\), quindi \(x'_v\le\frac{1}{2}\) e \(x_w=x'_w\ge\frac{1}{2}\). 
+		\item \(v\in B\) e \(K\) \`e blu in \(G(x)\). Allora \(x'_v>x_v>\frac{1}{2}\) e \(x'_w=x_w<\frac{1}{2}\). 
+	\end{itemize}
+	In tutti i casi concludiamo che \(L\) abbia lo stesso colore di \(K\), quindi a maggior ragione la componente connessa di \(G(x')\) contenente \(K\) avr\`a lo stesso colore di \(K\).\qed 
 \end{proof}
 \begin{lemma}
 	\label{hwanglinlemma} Siano \(X\) e \(Y\) due catene disgiunte. Supponiamo che \(|X|\ge|Y|\). Allora il numero di confronti richiesto dall'algoritmo di Hwang-Lin è maggiorato da \(|Y|\log(\frac{4|X|}{|Y|})\). 
@@ -314,25 +313,23 @@ Quando una componente connessa \(K\) viene ribilanciata pu\`o accadere che un ar
 	\end{algorithmic}
 \end{algorithm}
 \begin{lemma}
-	\label{evolutionlemma} Denotiamo con \(G\) e \(x\) rispettivamente il grafo e il punto all'inizio di un ciclo while. Denotiamo invece con \(G'\) e \(x'\) il grafo e il punto appena eseguita la riga \(6\) dell'algoritmo \ref{essentialmerge}. Allora \(x'\) appartiene a \(\text{STAB}(G')\) e rispetta i colori.
+	\label{evolutionlemma} Denotiamo con \(G\) e \(x\) rispettivamente il grafo e il punto all'inizio di un ciclo while. Denotiamo invece con \(G'\) e \(x'\) il grafo e il punto appena eseguita la riga \(6\) dell'algoritmo \ref{essentialmerge}. Allora \(x'\) appartiene a \(\text{STAB}(G')\) e rispetta i colori. 
 \end{lemma}
 \begin{proof}
-	Osserviamo che se \(v\in K\) allora \(\{v\}\) \`e una componente libera di \(G'(x)\). Il nostro obiettivo \`e dimostrare che questo \`e vero anche in \(G'(x')\). Possiamo distinguere quattro casi:
-    \begin{itemize}
-        \item \(v\in A\) e \(K\) \`e rossa. Allora \(x_v\ge\frac{1}{2}\), quindi \(x'_v=x_v\). Pertanto \(\{v\}\) rimane libera in \(G'(x')\).
-        \item \(v\in B\) e \(K\) \`e rossa. Allora \(x_v\le\frac{1}{2}\), quindi \(x'_v=\frac{1}{2}+\frac{1}{2n}\). Poich\'e \(K\) \`e buona un vertice \(w\) che sia adiacente a \(v\) in \(G'\) apparteneva ad una componente connessa blu di \(G(x)\), dunque \(x_w<\frac{1}{2}\). Essendo \(x\) localmente ottimo deve essere \(x_w\le\frac{1}{2}-\frac{1}{n}\), e da questo segue
-            \[
-                \begin{align}
-                    x'_v+x'_w &= (\frac{1}{2} + \frac{1}{2n}) + x_w \le \nonumber \\
-                              &\le (\frac{1}{2} + \frac{1}{2n}) + (\frac{1}{2} - \frac{1}{n}) \le \nonumber \\
-                              &\le 1\text{,} \nonumber
-                \end{align}
-            \]
-        cio\`e \(vw\) non \`e stretto in \(G'(x')\), quindi \(\{v\}\) \`e libera in \(G'(x')\).
-        \item \(v\in B\) e \(K\) \`e blu. Allora \(x_v>\frac{1}{2}\), quindi, poich\'e \(x\) \`e localmente ottimo, \(x'_v=x_v\ge\frac{1}{2}+\frac{1}{n}\).
-        \item \(v\in A\) e \(K\) \`e blu. Allora \(x_v<\frac{1}{2}\), quindi \(x'_v=\frac{1}{2}\). Se stiamo considerando una componente blu allora tutte le componenti rosse di \(G(x)\) sono banali. Inoltre, poich\'e \(x\) \`e localmente ottimo, nessuna di esse pu\`o essere libera. Essendo \(K\) buona \(v\) \`e adiacente in \(G\) soltanto a vertici della catena opposta, dunque a nessun vertice in \(G'\). Di conseguenza \(\{v\}\) \`e libera in \(G'(x')\).
-    \end{itemize}
-    TODO\qed 
+	Osserviamo che se \(v\in K\) allora \(\{v\}\) \`e una componente libera di \(G'(x)\). Il nostro obiettivo \`e dimostrare che questo \`e vero anche in \(G'(x')\). Possiamo distinguere quattro casi: 
+	\begin{itemize}
+		\item \(v\in A\) e \(K\) \`e rossa. Allora \(x_v\ge\frac{1}{2}\), quindi \(x'_v=x_v\). Pertanto \(\{v\}\) rimane libera in \(G'(x')\). 
+		\item \(v\in B\) e \(K\) \`e rossa. Allora \(x_v\le\frac{1}{2}\), quindi \(x'_v=\frac{1}{2}+\frac{1}{2n}\). Poich\'e \(K\) \`e buona un vertice \(w\) che sia adiacente a \(v\) in \(G'\) apparteneva ad una componente connessa blu di \(G(x)\), dunque \(x_w<\frac{1}{2}\). Essendo \(x\) localmente ottimo deve essere \(x_w\le\frac{1}{2}-\frac{1}{n}\), e da questo segue 
+		\begin{align}
+			x'_v+x'_w &= (\frac{1}{2} + \frac{1}{2n}) + x_w \le \nonumber \\
+			&\le (\frac{1}{2} + \frac{1}{2n}) + (\frac{1}{2} - \frac{1}{n}) \le \nonumber \\
+			&\le 1\text{,} \nonumber 
+		\end{align}
+		cio\`e \(vw\) non \`e stretto in \(G'(x')\), quindi \(\{v\}\) \`e libera in \(G'(x')\). 
+		\item \(v\in B\) e \(K\) \`e blu. Allora \(x_v>\frac{1}{2}\), quindi, poich\'e \(x\) \`e localmente ottimo, \(x'_v=x_v\ge\frac{1}{2}+\frac{1}{n}\). 
+		\item \(v\in A\) e \(K\) \`e blu. Allora \(x_v<\frac{1}{2}\), quindi \(x'_v=\frac{1}{2}\). Se stiamo considerando una componente blu allora tutte le componenti rosse di \(G(x)\) sono banali. Inoltre, poich\'e \(x\) \`e localmente ottimo, nessuna di esse pu\`o essere libera. Essendo \(K\) buona \(v\) \`e adiacente in \(G\) soltanto a vertici della catena opposta, dunque a nessun vertice in \(G'\). Di conseguenza \(\{v\}\) \`e libera in \(G'(x')\). 
+	\end{itemize}
+	TODO\qed 
 \end{proof}
 \begin{lemma}
 	\label{finallemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Supponiamo che \(x\in\text{STAB}(G)\) sia localmente ottimo e tale che il contributo ad \(H(x)\) delle componenti rosse superi quello delle componenti blu. Allora l'algoritmo \ref{essentialmerge} fonde \(A\) e \(B\) impiegando al pi\`u \(3nH(x)\) confronti. 
