@@ -271,6 +271,8 @@ Quando una componente connessa \(K\) viene ribilanciata pu\`o accadere che un ar
 	\end{itemize}
 	In tutti i casi concludiamo che \(L\) abbia lo stesso colore di \(K\), quindi a maggior ragione la componente connessa di \(G(x')\) contenente \(K\) avr\`a lo stesso colore di \(K\).\qed 
 \end{proof}
+\begin{remark}
+\end{remark}
 La fusione di catene verr\`a effettuata con l'algoritmo di Hwang-Lin. Date due catene \(X\) e \(Y\) con \(|X|\ge|Y|\), tale algoritmo divide la catena maggiore in blocchi di grandezza \(2^{\lfloor\log{\frac{|X|}{|Y|}}\rfloor}\). Ogni vertice di \(Y)\) \`e inserito eseguendo prima una scansione lineare fra i blocchi e poi per bisezione all'interno del blocco. Osserviamo che, poich\'e gli elementi di \(Y\) sono ordinati, una volta scartato un blocco questo non dovr\`a essere considerato per i successivi elementi. Avremo bisogno della successiva stima sul numero di confronti effettuato da tale algoritmo.
 \begin{lemma}
 	\label{hwanglinlemma} Siano \(X\) e \(Y\) due catene disgiunte. Supponiamo che \(|X|\ge|Y|\). Allora il numero di confronti richiesto dall'algoritmo di Hwang-Lin è maggiorato da \(|Y|\log(\frac{4|X|}{|Y|})\). 
@@ -344,7 +346,7 @@ La fusione di catene verr\`a effettuata con l'algoritmo di Hwang-Lin. Date due c
 
     TODO
 
-    Il numero \(r_1\) di vertici nella catena minore di qualche componente rossa in \(G\) \`e uguale a \(nH(\tilde{x})\), dove \(\tilde{x}\) \`e definito ponendo \(x_v=\frac{1}{2}\) per i \(v\) nella catena minore di qualche componente rossa di \(G\) ed \(1\) altrimenti. L'entropia di \(H(\tilde{x})\) \`e maggiorata dal contributo delle componenti rosse all'entropia del grafo, dunque da \(\frac{H(x)}{2}\) per ipotesi. Abbiamo dunque
+    Osserviamo che \(r_1\) \`e uguale a \(nH(\tilde{x})\), dove \(\tilde{x}\) \`e definito ponendo \(x_v=\frac{1}{2}\) per i \(v\) nella catena minore di qualche componente rossa di \(G\) ed \(1\) altrimenti. L'entropia di \(H(\tilde{x})\) \`e maggiorata dal contributo delle componenti rosse all'entropia del grafo, dunque da \(\frac{H(x)}{2}\) per ipotesi. Perci\`o abbiamo
     \[
         g(P)\le 2nH(x) + 2r_1 = 2nH(x) + 2nH(\tilde{x}) \le 3nH(x)\text{,}
     \]
