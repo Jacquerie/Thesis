@@ -271,6 +271,7 @@ Quando una componente connessa \(K\) viene ribilanciata pu\`o accadere che un ar
 	\end{itemize}
 	In tutti i casi concludiamo che \(L\) abbia lo stesso colore di \(K\), quindi a maggior ragione la componente connessa di \(G(x')\) contenente \(K\) avr\`a lo stesso colore di \(K\).\qed 
 \end{proof}
+La fusione di catene verr\`a effettuata con l'algoritmo di Hwang-Lin. Date due catene \(X\) e \(Y\) con \(|X|\ge|Y|\), tale algoritmo divide la catena maggiore in blocchi di grandezza \(2^{\lfloor\log{\frac{|X|}{|Y|}}\rfloor}\). Ogni vertice di \(Y)\) \`e inserito eseguendo prima una scansione lineare fra i blocchi e poi per bisezione all'interno del blocco. Osserviamo che, poich\'e gli elementi di \(Y\) sono ordinati, una volta scartato un blocco questo non dovr\`a essere considerato per i successivi elementi. Avremo bisogno della successiva stima sul numero di confronti effettuato da tale algoritmo.
 \begin{lemma}
 	\label{hwanglinlemma} Siano \(X\) e \(Y\) due catene disgiunte. Supponiamo che \(|X|\ge|Y|\). Allora il numero di confronti richiesto dall'algoritmo di Hwang-Lin è maggiorato da \(|Y|\log(\frac{4|X|}{|Y|})\). 
 \end{lemma}
@@ -335,7 +336,19 @@ Quando una componente connessa \(K\) viene ribilanciata pu\`o accadere che un ar
 	\label{finallemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Supponiamo che \(x\in\text{STAB}(G)\) sia localmente ottimo e tale che il contributo ad \(H(x)\) delle componenti rosse superi quello delle componenti blu. Allora l'algoritmo \ref{essentialmerge} fonde \(A\) e \(B\) impiegando al pi\`u \(3nH(x)\) confronti. 
 \end{lemma}
 \begin{proof}
-	Sia \(k\) il numero di esecuzioni del corpo del while, e fissiamo \(j\) compreso fra \(1\) e \(k\). Siano poi \(G_j\) e \(x'\) rispettivamente il grafo e il punto all'inizio della \(j-\)esima esecuzione, e siano \(x''\) il punto dopo la riga \(6\) e \(x'''\) alla fine dell'esecuzione. Siano inoltre \(K\) la componente buona scelta a tale passo, \(s_j\) e \(t_j\) rispettivamente il numero di elementi nella catena minore e maggiore. Denotiamo infine con \(r_j\) il numero di vertici... TODO\qed 
+	Sia \(k\) il numero di esecuzioni del corpo del while, e fissiamo \(j\) compreso fra \(1\) e \(k\). Siano poi \(G_j\) e \(x'\) rispettivamente il grafo e il punto all'inizio della \(j-\)esima esecuzione, e siano \(x''\) il punto dopo la riga \(6\) e \(x'''\) alla fine dell'esecuzione. Siano inoltre \(K\) la componente buona scelta a tale passo, \(s_j\) e \(t_j\) rispettivamente il numero di elementi nella catena minore e maggiore. Denotiamo infine con \(r_j\) il numero di vertici nella catena minore di qualche componente rossa in \(G_j(x')\), e definiamo \(\phi_j=nH(x')+r_j\), dove abbiamo posto \(r_{k+1}=0\) e \(\phi_{k+1}=0\).
+
+    Supponiamo che \(K\) sia rossa in \(G_j(x')\). TODO
+
+    Supponiamo che \(K\) sia blu in \(G_j(x')\). TODO
+
+    TODO
+
+    Il numero \(r_1\) di vertici nella catena minore di qualche componente rossa in \(G\) \`e uguale a \(nH(\tilde{x})\), dove \(\tilde{x}\) \`e definito ponendo \(x_v=\frac{1}{2}\) per i \(v\) nella catena minore di qualche componente rossa di \(G\) ed \(1\) altrimenti. L'entropia di \(H(\tilde{x})\) \`e maggiorata dal contributo delle componenti rosse all'entropia del grafo, dunque da \(\frac{H(x)}{2}\) per ipotesi. Abbiamo dunque
+    \[
+        g(P)\le 2nH(x) + 2r_1 = 2nH(x) + 2nH(\tilde{x}) \le 3nH(x)\text{,}
+    \]
+    cio\`e la tesi.\qed 
 \end{proof}
 \begin{algorithm}
 	\caption{``Merge'' con informazione parziale} \label{merge} 
