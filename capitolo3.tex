@@ -347,18 +347,30 @@ La fusione di catene verr\`a effettuata con l'algoritmo di Hwang-Lin. Date due c
 	               &=   \frac{s_j}{n}\log{\frac{s_j+t_j}{s_j}} - \frac{s_j}{n}\text{.} \nonumber
 	\end{align}
 	Abbiamo in precedenza osservato che il ribilanciamento incrementa l'entropia, dunque vale la stima
-	\begin{equation}
+	\begin{equation} \label{eq:redentropy}
 	  H(x')-H(x''') \ge \frac{s_j}{n}\log{\frac{s_j+t_j}{s_j}} - \frac{s_j}{n}\text{.}
 	\end{equation}
 	Osserviamo inoltre che vale
-	\begin{equation}
+	\begin{equation} \label{eq:redvertices}
 	  r_j-r_{j+1} \ge s_j\text{,} 
 	\end{equation}
 	poich\'e dopo il passo \(j\) non avremo pi\`u almeno i vertici rossi nella catena minore di \(K\).
 	
 	Supponiamo invece che \(K\) sia blu in \(G_j(x')\). TODO
+	\begin{equation} \label{eq:blueentropy}
+	\end{equation}
+	\begin{equation} \label{eq:bluevertices}
+	\end{equation}
 	
+	Dalle equazioni \eqref{eq:redentropy}, \eqref{eq:redvertices} nel caso di componente rossa e \eqref{eq:blueentropy}, \eqref{eq:bluevertices} nel caso di componente blu otteniamo
+	\[
+	  \phi_j - \phi_{j+1} \ge s_j\log{\frac{s_j+t_j}{s_j}}\text{.}
+	\]
 	TODO
+	Abbiamo dunque
+	\begin{equation}
+	  g(P) \le 2\phi_1 = 2nH(x) + 2r_1\text{.}
+	\end{equation}
 	
 	Osserviamo che \(r_1\) \`e uguale a \(nH(\tilde{x})\), dove \(\tilde{x}\) \`e definito ponendo \(x_v=\frac{1}{2}\) per i \(v\) nella catena minore di qualche componente rossa di \(G\) ed \(1\) altrimenti. L'entropia di \(H(\tilde{x})\) \`e maggiorata dal contributo delle componenti rosse all'entropia del grafo, dunque da \(\frac{H(x)}{2}\) per ipotesi. Perci\`o abbiamo
 	\[ g(P)\le 2nH(x) + 2r_1 = 2nH(x) + 2nH(\tilde{x}) \le 3nH(x)\text{,} \]
