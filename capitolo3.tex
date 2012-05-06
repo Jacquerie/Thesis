@@ -356,10 +356,13 @@ La fusione di catene verr\`a effettuata con l'algoritmo di Hwang-Lin. Date due c
 	\end{equation}
 	poich\'e dopo il passo \(j\) non avremo pi\`u almeno i vertici rossi nella catena minore di \(K\).
 	
-	Supponiamo invece che \(K\) sia blu in \(G_j(x')\). Allora non possono esistere componenti connesse rosse, altrimenti una di esse sarebbe buona per il Lemma \ref{goodlemma} e l'algoritmo avrebbe dato precedenza a questa.
+	Supponiamo invece che \(K\) sia blu in \(G_j(x')\). Allora non possono esistere componenti connesse rosse, altrimenti una di esse sarebbe buona per il Lemma \ref{goodlemma} e l'algoritmo avrebbe dato precedenza a questa. TODO
 	\begin{equation} \label{eq:blueentropy}
+	  H(x')-H(x''') \ge \frac{s_j}{n}\log{\frac{s_j+t_j}{s_j}}
 	\end{equation}
+	Infine, poich\'e non ci sono pi\`u componenti rosse, deve valere
 	\begin{equation} \label{eq:bluevertices}
+	  r_j - r_{j+1} = 0\text{.}
 	\end{equation}
 	
 	Dalle equazioni \eqref{eq:redentropy}, \eqref{eq:redvertices} nel caso di componente rossa e \eqref{eq:blueentropy}, \eqref{eq:bluevertices} nel caso di componente blu otteniamo
@@ -374,7 +377,11 @@ La fusione di catene verr\`a effettuata con l'algoritmo di Hwang-Lin. Date due c
 	\[
 	  \left(\frac{s_j+t_j}{s_j}\right)^2 = \frac{(s_j-t_j)^2}{s_j^2} + \frac{4t_{j}s_{j}}{s_j} \ge \frac{4t_j}{s_j}\text{.}
 	\]
-	Abbiamo dunque
+	Sia \(g(P)\) il numero di confronti necessario per ordinare \(P\). Dal Lemma \ref{hwanglinlemma} otteniamo
+	\[
+	  \frac{1}{2}\sum_{j=1}^k{s_j\log{\frac{4t_j}{s_j}}} \ge \frac{1}{2}g(P)\text{,}
+	\]
+	da cui segue
 	\begin{equation}
 	  g(P) \le 2\phi_1 = 2nH(x) + 2r_1\text{.}
 	\end{equation}
