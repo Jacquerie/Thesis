@@ -235,7 +235,7 @@ La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi
 \begin{algorithm}
 	\caption{Ribilanciamento} \label{rebalance} 
 	\begin{algorithmic}
-		[1] \WHILE{esiste una componente sbilanciata \(K\) di \(G(x)\)} \STATE calcola lo scarto \(\sigma\) di \(K\) \STATE poni \(x'_v := x_v+\sigma\) per \(v\in A\cap K\), \(x'_v := x_v-\sigma\) per \(v\in B\cap K\)\ENDWHILE \RETURN \(x'\) 
+		[1] \WHILE{esiste una componente sbilanciata \(K\) di \(G(x)\)} \STATE calcola lo scarto \(\sigma\) di \(K\) \STATE poni \(x_v := x_v+\sigma\) per \(v\in A\cap K\), \(x_v := x_v-\sigma\) per \(v\in B\cap K\)\ENDWHILE
 	\end{algorithmic}
 \end{algorithm}
 Quando una componente connessa \(K\) viene ribilanciata pu\`o accadere che un arco non stretto di \(G(x)\) diventi stretto in \(G(x')\). In questo caso diciamo che \(K\) \emph{si fonde} con un'altra componente connessa di \(G(x')\). Possiamo dare una condizione necessaria affinch\'e ci\`o accada in termini della seguente definizione. 
@@ -356,7 +356,7 @@ La fusione di catene verr\`a effettuata con l'algoritmo di Hwang-Lin. Date due c
 	\end{equation}
 	poich\'e dopo il passo \(j\) non avremo pi\`u almeno i vertici rossi nella catena minore di \(K\).
 	
-	Supponiamo invece che \(K\) sia blu in \(G_j(x')\). Allora non possono esistere componenti connesse rosse, altrimenti una di esse sarebbe buona per il Lemma \ref{goodlemma} e l'algoritmo avrebbe dato precedenza a questa. TODO
+	Supponiamo invece che \(K\) sia blu in \(G_j(x')\). Allora non possono esistere componenti connesse rosse, altrimenti una di esse sarebbe buona per il Lemma \ref{goodlemma} e l'algoritmo avrebbe dato precedenza a questa.
 	\begin{equation} \label{eq:blueentropy}
 	  H(x')-H(x''') \ge \frac{s_j}{n}\log{\frac{s_j+t_j}{s_j}}
 	\end{equation}
