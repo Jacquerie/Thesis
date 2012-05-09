@@ -342,10 +342,9 @@ La fusione di catene verr\`a effettuata con l'algoritmo di Hwang-Lin. Date due c
 	Sia \(k\) il numero di esecuzioni del corpo del while, e fissiamo \(j\) compreso fra \(1\) e \(k\). Siano poi \(G_j\) e \(x'\) rispettivamente il grafo e il punto all'inizio della \(j-\)esima esecuzione, e siano \(x''\) il punto dopo la riga \(6\) e \(x'''\) alla fine dell'esecuzione. Siano inoltre \(K\) la componente buona scelta a tale passo, \(s_j\) e \(t_j\) rispettivamente il numero di elementi nella catena minore e maggiore. Denotiamo infine con \(r_j\) il numero di vertici nella catena minore di qualche componente rossa in \(G_j(x')\), e definiamo \(\phi_j=nH(x')+r_j\), dove abbiamo posto \(r_{k+1}=0\) e \(\phi_{k+1}=0\).
 	
 	Supponiamo che \(K\) sia rossa in \(G_j(x')\) e sia \(v\) un vertice della catena minore di \(K\). Il contributo a \(H(x')\) corrispondente a tale vertice \`e \(x'_v = -\frac{1}{n}\log{\frac{s_j}{s_j+t_j}}\). Dopo la riga \(6\), poich\'e \(x''_v\) \`e diventato almeno \(\frac{1}{2}\), il contributo a \(H(x'')\) \`e al pi\`u \(x''_v = -\frac{1}{n}\log{\frac{1}{2}} = \frac{1}{n}\). Pertanto, sommando su tutti i vertici della catena minore di \(K\), abbiamo:
-	\begin{align}
-	  H(x')-H(x'') &\ge -\frac{s_j}{n}\log{\frac{s_j}{s_j+t_j}} - \frac{s_j}{n} \nonumber \\
-	               &=   \frac{s_j}{n}\log{\frac{s_j+t_j}{s_j}} - \frac{s_j}{n}\text{.} \nonumber
-	\end{align}
+	\[
+	  H(x')-H(x'') \ge -\frac{s_j}{n}\log{\frac{s_j}{s_j+t_j}} - \frac{s_j}{n} = \frac{s_j}{n}\log{\frac{s_j+t_j}{s_j}} - \frac{s_j}{n}\text{.}
+	\]
 	Abbiamo in precedenza osservato che il ribilanciamento incrementa l'entropia, dunque vale la stima
 	\begin{equation} \label{eq:redentropy}
 	  H(x')-H(x''') \ge \frac{s_j}{n}\log{\frac{s_j+t_j}{s_j}} - \frac{s_j}{n}\text{.}
