@@ -12,9 +12,9 @@ Sia \(t\) un intero positivo fissato, e sia \(V^t\) l'insieme delle stringhe lun
 \end{equation}
 e al sottoinsieme \(U\subset V^{t}\) la probabilit\`a 
 \begin{equation}
-	\mathbf{P}^t(U)=\sum_{v\in U} {\mathbf{P}^t(\mathbf{v})}. \nonumber 
+	\mathbf{P}^t(U)=\sum_{\mathbf{v}\in U} {\mathbf{P}^t(\mathbf{v})}. \nonumber 
 \end{equation}
-Sia \(0<\varepsilon<1\) fissato, e sia \(U\subset V^{t}\) tale che \(\mathbf{P}^t(U)>1-\varepsilon\). Una \emph{codifica propria} \`e una mappa dalle stringhe di \(V^t\) a un insieme di simboli, tale che stringhe distinguibili di \(U\) vengono mandate in simboli distinti. \`E intuitivamente preferibile una codifica che faccia uso del minor numero possibile di simboli. Cerchiamo dunque di minimizzare la quantit\`a 
+Sia \(0<\varepsilon<1\) fissato, e sia \(U\subset V^{t}\) tale che \(\mathbf{P}^t(U)>1-\varepsilon\). Una \emph{codifica propria} \`e una mappa dalle stringhe di \(V^t\) a un insieme di simboli, tale che stringhe distinguibili di \(U\) vengono mandate in simboli distinti.\footnote{Trascuriamo parte delle stringhe perché ad esse non ci interessa assegnare un significato e dunque un simbolo.} \`E intuitivamente preferibile una codifica che faccia uso del minor numero possibile di simboli. Cerchiamo dunque di minimizzare la quantit\`a 
 \begin{equation}
 	\frac{\log{M}}{t}, \nonumber 
 \end{equation}
@@ -319,10 +319,10 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 
 \subsection{Mutua Informazione e Politopo dei Vertici} 
 \begin{theorem}
-	[Simonyi] Sia \(G\) un grafo e siano \(S(G)\) i suoi insiemi indipendenti. Sia \(P\) una densità discreta sui vertici di \(G\). Avremo allora:
+	[Csiszár, K\"orner, Lovász, Marton, Simonyi] Sia \(G\) un grafo e siano \(S(G)\) i suoi insiemi indipendenti. Sia \(P\) una densità discreta sui vertici di \(G\). Allora abbiamo:
 	\[\min_{\substack{X\in Y\in S(G) \\
 	X\sim P}} I(X;Y)\ = \min_{\substack{\mathbf{a}\in \text{\text{STAB}}(G) \\
-	\mathbf{a}>0}} \sum_{i=1}^n p_i\log{\frac{1}{a_i}}\]
+	\mathbf{a}>0}} \sum_{i=1}^n p_i\log{\frac{1}{a_i}}\text{.}\]
 \end{theorem}
 \begin{proof}
 	Siano \(X,Y\) variabili aleatorie che realizzino il minimo del membro di sinistra, e sia \(Q\) la distribuzione marginale di \(Y\). Denotiamo con \(R\) la distribuzione condizionale di \(Y\) nota \(X\). Abbiamo

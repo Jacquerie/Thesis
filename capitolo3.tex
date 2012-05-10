@@ -149,7 +149,7 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 \section{Merge con informazione parziale} Scopo di questa sezione \`e risolvere il problema dell'ordinamento con informazione parziale per un insieme partizionabile in due catene disgiunte. Tale caso particolare \`e noto come \emph{problema della fusione con informazione parziale} e fu studiato da Linial nel 1984 \cite{Linial1984}. Egli propose un algoritmo che richiede al pi\`u \(C\log{e(P)}\) confronti con \(C=\left(\log{\frac{1+\sqrt{5}}{2}}\right)^{-1}\) e dimostr\`o l'ottimalit\`a di tale costante. Il suo algoritmo necessita per\`o del calcolo di \(n\) determinanti di matrici \(n\times n\). In questa sezione proporremo un algoritmo basato sull'entropia di grafo che risolva tale problema, e dimostreremo che richiede al pi\`u \(6\log{e(P)}\) confronti. \`E possibile inoltre dimostrare che questo algoritmo necessita di \(O(n^2\log{n})\) operazioni elementari. 
 \begin{lemma}
 	\label{structurelemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Allora 
-	\begin{enumerate}
+	\begin{enumerate}[(i)]
 		\item \(G\) è bipartito. 
 		\item \(G\) è biconvesso, cio\`e i vertici adiacenti ad un vertice di una catena formano un intervallo nella catena opposta. 
 		\item Siano \(u\) e \(v\) vertici appartenenti alla stessa catena, che supporremo senza perdita di generalità essere \(A\), tali che \(u\le_{P} v\). Siano \([c_u,d_u]\) e \([c_v,d_v]\) gli intervalli dei vertici \(B\) adiacenti rispettivamente a \(u\) e \(v\). Allora \(c_u\le_{P} c_v\) e \(d_u\le_{P} d_v\), e in particolare se \(u\le_{P}w\le_{P}v\) i vertici adiacenti a \(w\) sono un intervallo contenuto in \([c_u,d_v]\). 
@@ -158,7 +158,7 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 \begin{proof}
 	TODO\qed 
 \end{proof}
-Sia \(h(x)=-x\log{x}-(1-x)\log{(1-x)}\) l'entropia binaria, in cui per convenzione poniamo \(h(0)=h(1)=0\). 
+Sia \(h(x)=-x\log{x}-(1-x)\log{(1-x)}\) la funzione di entropia binaria, nella quale per convenzione poniamo \(h(0)=h(1)=0\). 
 \begin{theorem}
 	[K\"orner, Marton] Sia \(G\) un grafo bipartito di ordine \(n\), di bipartizione \(A\) e \(B\). Allora possiamo trovare partizioni
 	\[A=A_1\cup\dots\cup A_k\qquad\text{ e }\qquad B=B_1\cup\dots\cup B_k\]
@@ -207,13 +207,13 @@ Nel caso di grafi bipartiti possiamo semplificare il lemma \ref{chvatallemma}. A
 La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi dell'insieme di sostegno. Diciamo che \(S\le_{P}T\) se \(S\) e \(T\) sono sottoinsiemi tali che \(u\le_{P}v\) per ogni \(u\in S\) e per ogni \(v\in T\). 
 \begin{lemma}
 	\label{inlaylemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Dato \(x\in\text{STAB}^{*}(G)\) allora 
-	\begin{enumerate}
+	\begin{enumerate}[(i)]
 		\item se in \(G(x)\) una componente connessa \(L\) è incastonata in \(K\) allora \(L\) è libera. 
 		\item se \(K\) ed \(L\) sono componenti connesse non banali di \(G(x)\) allora vale \(K\le_{P}L\) oppure \(L\le_{P}K\). 
 	\end{enumerate}
 \end{lemma}
 \begin{proof}
-	\begin{enumerate}
+	\begin{enumerate}[(i)]
 		\item Supponiamo per assurdo che \(L\) non sia libera ma sia incastonata in \(K\). Siano allora \(w\in L\) e \(u,u''\in K\) come nella definizione. Senza perdita di generalità possiamo assumere \(w,u',u''\in A\) e che \(u'\not\in K\) se \(u\le_{P}u'\le_{P}u''\). \(K\) \`e una componente connessa che contiene sia \(u\) sia \(u''\), dunque esiste \(v\in K\cap B\) adiacente ad entrambi. Per il lemma \ref{structurelemma} \((3)\) abbiamo che \(vw\) \`e un arco di \(G\), ma poich\'e \(K\) ed \(L\) sono componenti connesse distinte \(vw\) non \`e un arco di \(G(x)\). Se \(L\) non fosse banale allora esisterebbe un arco di \(L\) incidente in \(w\) che incrocia \(uv\) o \(u''v\), dunque per il lemma \ref{crossinglemma} avremmo che \(vw\) \`e stretto, assurdo. Se invece \(L\) fosse bilanciata avremmo \(x_w+x_v=1+x_v>1\), contro il lemma \ref{chvatallemma}. 
 		\item Supponiamo per assurdo che siano false entrambe le disuguaglianze. Per il punto precedente \(K\) e \(L\), essendo non banali, non possono essere incastonate l'una nell'altra. Senza perdita di generalità possiamo allora assumere che valgano
 		\[K\cap A\le_{P}L\cap A\qquad\text{ e }\qquad L\cap B\le_{P}K\cap B.\]
@@ -222,7 +222,7 @@ La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi
 \end{proof}
 \begin{definition}
 	Sia \(x\in \text{STAB}^*(G)\) e sia \(K\) una componente connessa di \(G(x)\). Chiamiamo \emph{scarto} di \(K\) il reale \(\sigma\) che renda minimo
-	\[\argmin_{\sigma}\max_{v\in K}\left|x_v+\sigma-\frac{|A\cap K|}{|K|}\right|,\]
+	\[\argmin_{\sigma}\max_{v\in A\cap K}\left|x_v+\sigma-\frac{|A\cap K|}{|K|}\right|,\]
 	e tale inoltre che, se
 	\[ x'_v = 
 	\begin{cases}
@@ -238,15 +238,16 @@ La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi
 		[1] \WHILE{esiste una componente sbilanciata \(K\) di \(G(x)\)} \STATE calcola lo scarto \(\sigma\) di \(K\) \STATE poni \(x_v := x_v+\sigma\) per \(v\in A\cap K\), \(x_v := x_v-\sigma\) per \(v\in B\cap K\)\ENDWHILE
 	\end{algorithmic}
 \end{algorithm}
+Denotiamo con \(x'\) il vettore \(x\) dopo una esecuzione del corpo del while.
 Quando una componente connessa \(K\) viene ribilanciata pu\`o accadere che un arco non stretto di \(G(x)\) diventi stretto in \(G(x')\). In questo caso diciamo che \(K\) \emph{si fonde} con un'altra componente connessa di \(G(x')\). Possiamo dare una condizione necessaria affinch\'e ci\`o accada in termini della seguente definizione. 
 \begin{definition}
-	Sia \(x\in\text{STAB}(G)\). Diciamo che due componenti connesse \(K\) ed \(L\) di \(G(x)\) si \emph{toccano} se sono collegate da un arco di \(G\) e se non esiste una componente connessa non banale \(M\) diversa da \(K\) ed \(L\) tale che un arco \(uv\) di \(M\) sia compreso fra \(K\) ed \(L\). In altri termini, supposto \(u\in A\) e \(v\in B\), non devono valere \(K\cap A\le_{P}\{u\}\le_{P}L\cap A\) e \(K\cap B\le_{P}\{v\}\le_{P}L\cap B\), oppure \(L\cap A\le_{P}\{u\}\le_{P}K\cap A\) e \(L\cap B\le_{P}\{v\}\le_{P}K\cap B\). 
+	Sia \(x\in\text{STAB}(G)\). Diciamo che due componenti connesse \(K\) ed \(L\) di \(G(x)\) \emph{sono a contatto} se sono collegate da un arco di \(G\) e se non esiste una componente connessa non banale \(M\) diversa da \(K\) ed \(L\) tale che un arco \(uv\) di \(M\) sia compreso fra \(K\) ed \(L\). In altri termini, supposto \(u\in A\) e \(v\in B\), non devono valere \(K\cap A\le_{P}\{u\}\le_{P}L\cap A\) e \(K\cap B\le_{P}\{v\}\le_{P}L\cap B\), oppure \(L\cap A\le_{P}\{u\}\le_{P}K\cap A\) e \(L\cap B\le_{P}\{v\}\le_{P}K\cap B\). 
 \end{definition}
 \begin{lemma}
-	\label{touchinglemma} Sia \(x\in\text{STAB}^{*}(G)\), e sia \(x'\) il punto ottenuto ribilanciando \(x\). Se la componente connessa \(K\) si fonde con la componente connessa \(L\) di \(G(x)\) allora \(K\) ed \(L\) si toccano. 
+	\label{touchinglemma} Sia \(x\in\text{STAB}^{*}(G)\), e sia \(x'\) il punto ottenuto ribilanciando \(x\). Se la componente connessa \(K\) si fonde con la componente connessa \(L\) di \(G(x)\) allora \(K\) ed \(L\) sono a contatto. 
 \end{lemma}
 \begin{proof}
-	Supponiamo per assurdo che \(K\) ed \(L\) non si toccano. Siano allora \(M\) una componente connessa e \(uv\) un suo arco come nella precedente definizione. Sia inoltre \(u'v'\) l'arco di estremi rispettivamente in \(K\) ed \(L\) che sia diventato stretto in \(G(x')\). Gli archi \(uv\) e \(u'v'\) si incrociano: possiamo allora applicare il lemma \ref{crossinglemma} e concludere che \(uv'\) \`e un arco di \(G(x')\), quindi \(M\) ed \(L\) sono contenuti in una stessa componente connessa di \(G(x')\). Ma l'algoritmo \ref{rebalance} non altera i pesi dei vertici non appartenenti a \(K\), pertanto \(M\) ed \(L\) sono contenuti in una stessa componente connessa di \(G(x)\), una contraddizione.\qed 
+	Supponiamo per assurdo che \(K\) ed \(L\) non siano a contatto. Siano allora \(M\) una componente connessa e \(uv\) un suo arco come nella precedente definizione. Sia inoltre \(u'v'\) l'arco di estremi rispettivamente in \(K\) ed \(L\) che sia diventato stretto in \(G(x')\). Gli archi \(uv\) e \(u'v'\) si incrociano: possiamo allora applicare il lemma \ref{crossinglemma} e concludere che \(uv'\) \`e un arco di \(G(x')\), quindi \(M\) ed \(L\) sono contenuti in una stessa componente connessa di \(G(x')\). Ma l'algoritmo \ref{rebalance} non altera i pesi dei vertici non appartenenti a \(K\), pertanto \(M\) ed \(L\) sono contenuti in una stessa componente connessa di \(G(x)\), una contraddizione.\qed 
 \end{proof}
 \begin{definition}
 	Sia \(x\in\text{STAB}^{*}(G)\). Diciamo che una componente connessa \(K\) di \(G(x)\) è \emph{rossa} se si ha \(|A\cap K|\ge|B\cap K|\), altrimenti diciamo che \(K\) è \emph{blu}. 
@@ -258,6 +259,7 @@ Quando una componente connessa \(K\) viene ribilanciata pu\`o accadere che un ar
 		x_u<\frac{1}{2}&\quad\text{ e }\quad x_v>\frac{1}{2}\qquad\text{ se }K\text{ \`e blu.} \nonumber 
 	\end{align}
 \end{definition}
+Osserviamo che la precedente definizione è un rilassamento della definizione di componente connessa bilanciata.
 \begin{lemma}
 	\label{consistentlemma} Sia \(x\in\text{STAB}^{*}(G)\) e sia \(x'\) ottenuto ribilanciando \(x\). Sia poi \(K\) una componente connessa di \(G(x)\). Allora se \(x\) rispetta i colori anche \(x'\) rispetta i colori. Inoltre non è possibile che \(K\) si sia fusa con componenti connesse di colore diverso, perciò la componente di \(G(x')\) contenente \(K\) è dello stesso colore. 
 \end{lemma}
@@ -355,7 +357,7 @@ La fusione di catene verr\`a effettuata con l'algoritmo di Hwang-Lin. Date due c
 	\end{equation}
 	poich\'e dopo il passo \(j\) non avremo pi\`u almeno i vertici rossi nella catena minore di \(K\).
 	
-	Supponiamo invece che \(K\) sia blu in \(G_j(x')\). Allora non possono esistere componenti connesse rosse, altrimenti una di esse sarebbe buona per il Lemma \ref{goodlemma} e l'algoritmo avrebbe dato precedenza a questa.
+	Supponiamo invece che \(K\) sia blu in \(G_j(x')\). Allora non possono esistere componenti connesse rosse, altrimenti una di esse sarebbe buona per il Lemma \ref{goodlemma} e l'algoritmo avrebbe dato precedenza a questa. TODO
 	\begin{equation} \label{eq:blueentropy}
 	  H(x')-H(x''') \ge \frac{s_j}{n}\log{\frac{s_j+t_j}{s_j}}
 	\end{equation}
@@ -392,7 +394,7 @@ La fusione di catene verr\`a effettuata con l'algoritmo di Hwang-Lin. Date due c
 \begin{algorithm}
 	\caption{``Merge'' con informazione parziale} \label{merge} 
 	\begin{algorithmic}
-		[1] \STATE calcola \(x\in\text{STAB}(G)\) che realizzi il minimo dell'entropia con l'algoritmo di K\"orner e Marton \IF{il contributo delle componenti rosse ad \(H(x)\) supera quelle delle componenti blu} \STATE scambia le catene \(A\) e \(B\). \ENDIF \FOR{\(v\in A\cup B\)} \IF{\(v\) \`e un taglio} \STATE copia \(v\) alla sua posizione finale in \(C\) \ENDIF \ENDFOR \STATE invoca l'algoritmo \ref{essentialmerge} \RETURN \(C\) 
+		[1] \STATE calcola \(x\in\text{STAB}(G)\) che realizzi il minimo dell'entropia con l'algoritmo di K\"orner e Marton \IF{il contributo delle componenti rosse ad \(H(x)\) supera quelle delle componenti blu} \STATE scambia le catene \(A\) e \(B\) \ENDIF \FOR{\(v\in A\cup B\)} \IF{\(v\) \`e un taglio} \STATE copia \(v\) alla sua posizione finale in \(C\) \ENDIF \ENDFOR \STATE invoca l'algoritmo \ref{essentialmerge} \RETURN \(C\) 
 	\end{algorithmic}
 \end{algorithm}
 \begin{theorem}
