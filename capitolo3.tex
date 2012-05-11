@@ -279,7 +279,7 @@ Osserviamo che la precedente definizione è un rilassamento della definizione di
   \[
     \xi \mapsto \frac{|A\cap K|}{|K|}\log{\xi} + \frac{|B\cap K|}{|K|}\log{(1-\xi)}
   \]
-  \`e convessa sull'intervallo \((0,1)\) con minimo in \(\xi = \frac{|A\cap K|}{|K|\).
+  \`e convessa sull'intervallo \((0,1)\) con minimo in \(\xi = \frac{|A\cap K|}{|K|}\).
 \end{remark}
 La fusione di catene verr\`a effettuata con l'algoritmo di Hwang-Lin. Date due catene \(X\) e \(Y\) con \(|X|\ge|Y|\), tale algoritmo divide la catena maggiore in blocchi di grandezza \(2^{\lfloor\log{\frac{|X|}{|Y|}}\rfloor}\). Ogni vertice di \(Y)\) \`e inserito eseguendo prima una scansione lineare fra i blocchi e poi per bisezione all'interno del blocco. Osserviamo che, poich\'e gli elementi di \(Y\) sono ordinati, una volta scartato un blocco questo non dovr\`a essere considerato per i successivi elementi. Avremo bisogno della seguente stima sul numero di confronti effettuato da tale algoritmo. 
 \begin{lemma}
