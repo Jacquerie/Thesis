@@ -146,7 +146,7 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 \end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Merge con informazione parziale} Scopo di questa sezione \`e risolvere il problema dell'ordinamento con informazione parziale per un insieme partizionabile in due catene disgiunte. Tale caso particolare \`e noto come \emph{problema della fusione con informazione parziale} e fu studiato da Linial nel 1984 \cite{Linial1984}. Egli propose un algoritmo che richiede al pi\`u \(C\log{e(P)}\) confronti con \(C=\left(\log{\frac{1+\sqrt{5}}{2}}\right)^{-1}\) e dimostr\`o l'ottimalit\`a di tale costante. Il suo algoritmo necessita per\`o del calcolo di \(n\) determinanti di matrici \(n\times n\). In questa sezione proporremo un algoritmo basato sull'entropia di grafo che risolva tale problema, e dimostreremo che richiede al pi\`u \(6\log{e(P)}\) confronti. \`E possibile inoltre dimostrare che questo algoritmo necessita di \(O(n^2\log{n})\) operazioni elementari. 
+\section{Merge con informazione parziale} Scopo di questa sezione \`e risolvere il problema dell'ordinamento con informazione parziale per un insieme partizionabile in due catene disgiunte. Tale caso particolare \`e noto come \emph{problema della fusione con informazione parziale} e fu studiato da Linial nel 1984 \cite{Linial1984}. Egli propose un algoritmo che richiede al pi\`u \(C\log{e(P)}\) confronti con \(C=\left(\log{\frac{1+\sqrt{5}}{2}}\right)^{-1}\) e dimostr\`o l'ottimalit\`a di tale costante. Il suo algoritmo necessita per\`o del calcolo di \(n\) determinanti di matrici \(n\times n\). In questa sezione proporremo un algoritmo basato sull'entropia di grafo che risolva tale problema, e dimostreremo che richiede al pi\`u \(6\log{e(P)}\) confronti. \`E possibile inoltre dimostrare che questo algoritmo necessita di \(O(n^2\log{n})\) operazioni elementari.
 \begin{lemma}
 	\label{structurelemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Allora 
 	\begin{enumerate}[(i)]
@@ -238,8 +238,9 @@ La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi
 		[1] \WHILE{esiste una componente sbilanciata \(K\) di \(G(x)\)} \STATE calcola lo scarto \(\sigma\) di \(K\) \STATE poni \(x_v := x_v+\sigma\) per \(v\in A\cap K\), \(x_v := x_v-\sigma\) per \(v\in B\cap K\)\ENDWHILE
 	\end{algorithmic}
 \end{algorithm}
-Denotiamo con \(x'\) il vettore \(x\) dopo una esecuzione del corpo del while.
-Quando una componente connessa \(K\) viene ribilanciata pu\`o accadere che un arco non stretto di \(G(x)\) diventi stretto in \(G(x')\). In questo caso diciamo che \(K\) \emph{si fonde} con un'altra componente connessa di \(G(x')\). Possiamo dare una condizione necessaria affinch\'e ci\`o accada in termini della seguente definizione. 
+Denotiamo con \(x'\) il vettore \(x\) dopo una esecuzione del corpo del while. Ad ogni esecuzione accade che o una componente risulta bilanciata o un arco di \(G\) fra componenti connesse distinte diviene stretto. In entrambi i casi il numero di componenti sbilanciate diminuisce, perci\`o l'algoritmo termina.
+
+Nel secondo caso diciamo che \(K\) \emph{si fonde} con un'altra componente connessa di \(G(x')\). Possiamo dare una condizione necessaria affinch\'e ci\`o accada in termini della seguente definizione. 
 \begin{definition}
 	Sia \(x\in\text{STAB}(G)\). Diciamo che due componenti connesse \(K\) ed \(L\) di \(G(x)\) \emph{sono a contatto} se sono collegate da un arco di \(G\) e se non esiste una componente connessa non banale \(M\) diversa da \(K\) ed \(L\) tale che un arco \(uv\) di \(M\) sia compreso fra \(K\) ed \(L\). In altri termini, supposto \(u\in A\) e \(v\in B\), non devono valere \(K\cap A\le_{P}\{u\}\le_{P}L\cap A\) e \(K\cap B\le_{P}\{v\}\le_{P}L\cap B\), oppure \(L\cap A\le_{P}\{u\}\le_{P}K\cap A\) e \(L\cap B\le_{P}\{v\}\le_{P}K\cap B\). 
 \end{definition}
