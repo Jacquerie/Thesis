@@ -274,7 +274,11 @@ Osserviamo che la precedente definizione è un rilassamento della definizione di
 	In tutti i casi concludiamo che \(L\) abbia lo stesso colore di \(K\), quindi a maggior ragione la componente connessa di \(G(x')\) contenente \(K\) avr\`a lo stesso colore di \(K\).\qed 
 \end{proof}
 \begin{remark}
-  TODO
+  Ad ogni passo dell'algoritmo l'entropia di \(x'\) \`e minore dell'entropia di \(x\). Infatti la funzione
+  \[
+    \xi \mapsto \frac{|A\cap K|}{|K|}\log{\xi} + \frac{|B\cap K|}{|K|}\log{(1-\xi)}
+  \]
+  \`e convessa sull'intervallo \((0,1)\) con minimo in \(\xi = \frac{|A\cap K|}{|K|\).
 \end{remark}
 La fusione di catene verr\`a effettuata con l'algoritmo di Hwang-Lin. Date due catene \(X\) e \(Y\) con \(|X|\ge|Y|\), tale algoritmo divide la catena maggiore in blocchi di grandezza \(2^{\lfloor\log{\frac{|X|}{|Y|}}\rfloor}\). Ogni vertice di \(Y)\) \`e inserito eseguendo prima una scansione lineare fra i blocchi e poi per bisezione all'interno del blocco. Osserviamo che, poich\'e gli elementi di \(Y\) sono ordinati, una volta scartato un blocco questo non dovr\`a essere considerato per i successivi elementi. Avremo bisogno della seguente stima sul numero di confronti effettuato da tale algoritmo. 
 \begin{lemma}
@@ -357,9 +361,9 @@ La fusione di catene verr\`a effettuata con l'algoritmo di Hwang-Lin. Date due c
 	\end{equation}
 	poich\'e dopo il passo \(j\) non avremo pi\`u almeno i vertici rossi nella catena minore di \(K\).
 	
-	Supponiamo invece che \(K\) sia blu in \(G_j(x')\). Allora non possono esistere componenti connesse rosse, altrimenti una di esse sarebbe buona per il Lemma \ref{goodlemma} e l'algoritmo avrebbe dato precedenza a questa. TODO
+	Supponiamo invece che \(K\) sia blu in \(G_j(x')\). Allora non possono esistere componenti connesse rosse, altrimenti una di esse sarebbe buona per il Lemma \ref{goodlemma} e l'algoritmo avrebbe dato precedenza a questa. Poich\'e \(K\) \`e buona non pu\`o accadere che \(K\) si fonda con un'altra componente blu, pertanto durante il ribilanciamento ogni componente \(x_v\) corrispondente a un elemento della catena minore \`e diventato almeno \(1\). Il contributo a \(H(x''')\) diventa quindi nullo e, sommando su tutti i vertici della catena minore di \(K\), abbiamo
 	\begin{equation} \label{eq:blueentropy}
-	  H(x')-H(x''') \ge \frac{s_j}{n}\log{\frac{s_j+t_j}{s_j}}
+	  H(x')-H(x''') \ge \frac{s_j}{n}\log{\frac{s_j+t_j}{s_j}}\text{.}
 	\end{equation}
 	Infine, poich\'e non ci sono pi\`u componenti rosse, deve valere
 	\begin{equation} \label{eq:bluevertices}
