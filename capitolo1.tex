@@ -183,7 +183,7 @@ Definendo le variabili aleatorie \(X\sim P\) e \(Y\sim R\) rispettivamente a val
 	\label{eq:continuous} I(Q)=I(X;Y)=\sum_{v\in V}\sum_{A\in \mathcal{N}} Q(v,A)\log{\frac{Q(v,A)}{P(v)R(A)}}. 
 \end{equation}
 
-Sia \(\mathcal{A}\) l'insieme di tutte le distribuzioni ammissibili. Osserviamo che si tratta di un insieme chiuso e limitato nello spazio vettoriale delle funzioni di dominio \(V\times \mathcal{N}\). La limitatezza segue dall'essere un insieme di distribuzioni di probabilità, quindi a somma \(1\). La chiusura invece è conseguenza dell'essere preimmagine di un insieme finito di punti tramite le equazioni \eqref{eq:preimage} al variare di \(v\in V\). Inoltre tale spazio vettoriale è di dimensione finita essendo sia \(V\) sia \(\mathcal{N}\) finiti, per cui possiamo applicare il teorema di Heine-Borel e concludere la compattezza di \(\mathcal{A}\). Ma allora la funzione continua \eqref{eq:continuous} possiede minimo per il teorema di Weierstrass, da cui segue la buona definizione della seconda definizione di entropia di grafo. Nel seguito denoteremo con \(H(G,P)\) tale minimo.
+Sia \(\mathcal{A}\) l'insieme di tutte le distribuzioni ammissibili. Osserviamo che si tratta di un insieme chiuso e limitato nello spazio vettoriale delle funzioni di dominio \(V\times \mathcal{N}\). La limitatezza segue dall'essere un insieme di distribuzioni di probabilità, quindi a somma \(1\). La chiusura invece è conseguenza dell'essere preimmagine di un insieme finito di punti tramite le equazioni \eqref{eq:preimage} al variare di \(v\in V\). Inoltre tale spazio vettoriale è di dimensione finita essendo sia \(V\) sia \(\mathcal{N}\) finiti, per cui possiamo applicare il Teorema di Heine-Borel e concludere la compattezza di \(\mathcal{A}\). Ma allora la funzione continua \eqref{eq:continuous} possiede minimo per il Teorema di Weierstrass, da cui segue la buona definizione della seconda definizione di entropia di grafo. Nel seguito denoteremo con \(H(G,P)\) tale minimo.
 
 Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle prime due definizioni di entropia di grafo. Ne divideremo la dimostrazione nei successivi due teoremi, come in \cite{Korner1973}. 
 \begin{theorem}
@@ -192,7 +192,7 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 	dove \(\chi(t, \varepsilon)\) è il minimo numero di parole necessarie ad una codifica che sia propria rispetto alla potenza conormale, tranne per un insieme di probabilità totale \(\varepsilon\). 
 \end{theorem}
 \begin{proof}
-	Per il lemma \ref{ptyplemma} \((1)\), per ogni \(\lambda>0\) esiste \(K\) tale che, per \(t\) sufficientemente grande, \(\mathbf{P}^t(T^t(P))\ge 1-\lambda\). Per un tale \(t\) sia \(U_{t}\) un sottoinsieme di \(V^t\) tale che \(\mathbf{P}^t(U_{t})\ge 1-\varepsilon\). Ne deriva allora che 
+	Per il Lemma \ref{ptyplemma} \((i)\), per ogni \(\lambda>0\) esiste \(K\) tale che, per \(t\) sufficientemente grande, \(\mathbf{P}^t(T^t(P))\ge 1-\lambda\). Per un tale \(t\) sia \(U_{t}\) un sottoinsieme di \(V^t\) tale che \(\mathbf{P}^t(U_{t})\ge 1-\varepsilon\). Ne deriva allora che 
 	\begin{equation}
 		\label{eq:epsilonlambda} 1-\varepsilon-\lambda\le \mathbf{P}^t(U_{t}\cap T^t(P)). 
 	\end{equation}
@@ -230,9 +230,9 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 	\[\big\vert N(M\mid \mathbf{N})-tR(M) \big\vert\le \sum_{w\in V} K\sqrt{tQ(w,M)}\le K_{1}\sqrt{t\sum_{w\in V} Q(w,M)}=K_{1}\sqrt{tR(M)},\]
 	dove la diseguaglianza centrale segue dalla concavità della radice.
 	
-	Nel corso della dimostrazione del lemma \ref{boundslemma} viene dimostrato che una sequenza tipica di classi d'equivalenza per \(\sim\) contiene \(T\) sequenze \(P-\)tipiche di \(G^t\), dove \(T\) soddisfa
+	Nel corso della dimostrazione del Lemma \ref{boundslemma} viene dimostrato che una sequenza tipica di classi d'equivalenza per \(\sim\) contiene \(T\) sequenze \(P-\)tipiche di \(G^t\), dove \(T\) soddisfa
 	\[2^{tH(P\mid\sim)-C\sqrt{t}}\le T\le 2^{tH(P\mid\sim)+C\sqrt{t}}.\]
-	Osserviamo che \((v,A)\sim (w,B) \iff ((v,A),(w,B))\not\in E(\Gamma)\) è una relazione d'equivalenza, infatti è l'eguaglianza della seconda coordinata. Quindi per il lemma \ref{releqlemma} il grafo complementare \(\overline{\Gamma}\) è unione di grafi completi a due a due disgiunti, e le sue componenti connesse sono i nuclei di \(G\). Osserviamo inoltre che la coppia \((\overline{\Gamma}, Q)\), dove \(Q\) è definita dall'equazione \eqref{eq:probdist}, è un grafo probabilistico. Perciò siamo nelle condizioni di applicare il lemma \ref{boundslemma} e ottenere che il numero di sequenze \(Q-\)tipiche in ogni nucleo è compreso nell'intervallo 
+	Osserviamo che \((v,A)\sim (w,B) \iff ((v,A),(w,B))\not\in E(\Gamma)\) è una relazione d'equivalenza, infatti è l'eguaglianza della seconda coordinata. Quindi per il Lemma \ref{releqlemma} il grafo complementare \(\overline{\Gamma}\) è unione di grafi completi a due a due disgiunti, e le sue componenti connesse sono i nuclei di \(G\). Osserviamo inoltre che la coppia \((\overline{\Gamma}, Q)\), dove \(Q\) è definita dall'equazione \eqref{eq:probdist}, è un grafo probabilistico. Perciò siamo nelle condizioni di applicare il Lemma \ref{boundslemma} e ottenere che il numero di sequenze \(Q-\)tipiche in ogni nucleo è compreso nell'intervallo 
 	\begin{equation}
 		\label{eq:bounds} \Big[2^{tH(Q\mid\sim)-K_{2}\sqrt{t}},\ 2^{tH(Q\mid\sim)+K_{2}\sqrt{t}}\Big]. 
 	\end{equation}
@@ -244,7 +244,7 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 	perché le \(Q\) sono distribuzioni ammissibili nel senso della definizione \eqref{eq:preimage}, infatti
 	\[\sum_{M:\ w\in M} Q(w, M)=\frac{P(w)}{N(w\mid \mathbf{v})}\cdot \sum_{M:\ w\in M} N(w,M\mid \mathbf{v}, \mathbf{A})=P(w).\]
 	
-	Ricordando inoltre il lemma \ref{ptyplemma} \((2)\)abbiamo 
+	Ricordando inoltre il Lemma \ref{ptyplemma} \((ii)\)abbiamo 
 	\begin{equation}
 		\label{eq:finalestimate} \max_{\mathbf{v}\in T^{t}(P)} \mathbf{P}^t(\mathbf{v}) \le 2^{-tH(P)-C\sqrt{t}}. 
 	\end{equation}
@@ -280,13 +280,13 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 	\begin{equation}
 		\label{eq:objective} \sum_{\mathbf{v}\in V^{t}} R_{M}^{*}(C_{\mathbf{v}})\cdot \mathbf{P}^t(\mathbf{v}) = \sum_{\mathbf{v}\in T^{t}(P)} R_{M}^{*}(C_{\mathbf{v}})\cdot \mathbf{P}^t(\mathbf{v})\ + \sum_{\mathbf{v}\in \overline{T^{t}(P)}} R_{M}^{*}(C_{\mathbf{v}})\cdot \mathbf{P}^t(\mathbf{v}) 
 	\end{equation}
-	ed osservare che il secondo termine è maggiorato da \(\mathbf{P}^t\Big(\overline{T^{t}(P)}\Big)\), che per il lemma \ref{ptyplemma} \((1)\) possiamo supporre essere più piccolo di \(\varepsilon/2\). Per stimare il primo termine osserviamo innanzitutto che
+	ed osservare che il secondo termine è maggiorato da \(\mathbf{P}^t\Big(\overline{T^{t}(P)}\Big)\), che per il Lemma \ref{ptyplemma} \((i)\) possiamo supporre essere più piccolo di \(\varepsilon/2\). Per stimare il primo termine osserviamo innanzitutto che
 	\[\sum_{\mathbf{v}\in T^t(P)} R_M^{*}(C_{\mathbf{v}})\cdot \mathbf{P}^t(\mathbf{v})\le \mathbf{P}^t\big(T^t(P)\big)\cdot \max_{\mathbf{v}\in T^t(P)} R_{M}^{*}(C_{\mathbf{v}})\le \max_{\mathbf{v}\in T^t(P)} R_{M}^{*}(C_{\mathbf{v}})\]
 	maggiorando con il massimo e sfruttando il fatto che hanno massa totale \(1\). Possiamo maggiorare ulteriormente questo termine con
 	\[\max_{\mathbf{v}\in T^t(P)} R_{M}^{*}(C_{\mathbf{v}})\le \max_{\mathbf{v}\in T^t(P)} (1-R^{*}(\mathcal{N}_{\mathbf{v}}))^{M},\]
 	dove \(\mathcal{N}_{\mathbf{v}}\) indica l'insieme dei nuclei che contengono \(\mathbf{v}\), infatti ognuno degli \(M\) termini della produttoria \(R_{M}^{*}(C_{\mathbf{v}})\) è maggiorato da \(1-R^{*}(\mathcal{N}_{\mathbf{v}})\). Vogliamo ora stimare \(R^{*}(\mathcal{N}_{\mathbf{v}})\).
 	
-	Ricordiamo che \(Q\) è la distribuzione su \(V(\Gamma)\) che realizza il minimo \(H(G,P)\), e che se \(\mathbf{v}\) è \(P-\)tipica allora \((\mathbf{v}, \mathbf{N})\) è \(Q-\)tipica. Osserviamo che l'uguaglianza della prima coordinata è una relazione d'equivalenza su \(V(\Gamma)\), quindi applicando il lemma \ref{boundslemma} il numero di sequenze \(Q-\)tipiche soddisfa 
+	Ricordiamo che \(Q\) è la distribuzione su \(V(\Gamma)\) che realizza il minimo \(H(G,P)\), e che se \(\mathbf{v}\) è \(P-\)tipica allora \((\mathbf{v}, \mathbf{N})\) è \(Q-\)tipica. Osserviamo che l'uguaglianza della prima coordinata è una relazione d'equivalenza su \(V(\Gamma)\), quindi applicando il Lemma \ref{boundslemma} il numero di sequenze \(Q-\)tipiche soddisfa 
 	\begin{equation}
 		\label{eq:qtypnumber} \left\vert T^{t}(Q)\right\vert \ge 2^{tH(Q\mid\sim)-K_{3}\sqrt{t}}. 
 	\end{equation}
@@ -294,7 +294,7 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 	\begin{equation}
 		\label{eq:condentropy} H(Q\mid\sim)=\sum_{v\in V} \sum_{A\in \mathcal{N}} Q(v,A)\log{\frac{P(v)}{Q(v,A)}}. 
 	\end{equation}
-	Inoltre il lemma \ref{ptyplemma} \((2)\) implica che se \(\mathbf{A}\) è una sequenza di nuclei \(R-\)tipica allora 
+	Inoltre il Lemma \ref{ptyplemma} \((ii)\) implica che se \(\mathbf{A}\) è una sequenza di nuclei \(R-\)tipica allora 
 	\begin{equation}
 		\label{eq:rtypprob} R^{*}(\mathbf{A})\ge 2^{-tH(R)-K_{4}\sqrt{t}}. 
 	\end{equation}
@@ -309,7 +309,7 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 	e inoltre applicare la diseguaglianza di Bernoulli per ottenere
 	\[\max_{\mathbf{v}\in T^t(P)} R_{M}^{*}(C_{\mathbf{v}})\le \exp_{2}\left(-M\cdot 2^{-tH(G,P) - K_{5}\sqrt{t}}\right).\]
 	
-	Poniamo \(M=\left\lfloor 2^{tH(G,P)+\delta}\right\rfloor\). È immediato allora che il primo termine del membro di destra di \eqref{eq:objective} sia infinitesimo per \(t\to \infty\). Quindi per ogni \(\varepsilon\) e \(\delta\) esistono \(M\) nuclei che ricoprono un sottografo di probabilità almeno \(1-\varepsilon\). Ma per il lemma \ref{minkernellemma} il numero cromatico di un grafo è uguale al minimo numero di nuclei che lo ricoprono, quindi per ogni \(\delta>0\)
+	Poniamo \(M=\left\lfloor 2^{tH(G,P)+\delta}\right\rfloor\). È immediato allora che il primo termine del membro di destra di \eqref{eq:objective} sia infinitesimo per \(t\to \infty\). Quindi per ogni \(\varepsilon\) e \(\delta\) esistono \(M\) nuclei che ricoprono un sottografo di probabilità almeno \(1-\varepsilon\). Ma per il Lemma \ref{minkernellemma} il numero cromatico di un grafo è uguale al minimo numero di nuclei che lo ricoprono, quindi per ogni \(\delta>0\)
 	\[\min_{\substack{U_{t}\subset V^{t}\\
 	\mathbf{P}^t(U_{t})\ge 1-\varepsilon}} \chi(U_{t})\le 2^{tH(G,P)+\delta}\]
 	o equivalentemente

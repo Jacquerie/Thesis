@@ -21,9 +21,9 @@ La questione dell'esistenza di un algoritmo che compia \(O(\log{e(P)})\) confron
 \end{theorem}
 L'algoritmo di Kahn e Kim calcola inizialmente l'entropia del grafo associato a \(P\). Successivamente stima la variazione dell'entropia dei grafi associati agli ordini parziali \(P'\), ottenuti da \(P\) aggiungendo il risultato di un confronto. Viene quindi selezionato quel confronto che avvicini maggiormente l'entropia a \(\log{n}\), entropia del grafo completo, associato all'insieme totalmente ordinato. Ad ogni passo è dunque necessario il calcolo dell'entropia di un grafo, un problema di minimizzazione su un insieme convesso per l'equazione \ref{eq:entropythree}. Possiamo quindi applicare il metodo dell'ellissoide, ottenendo un algoritmo polinomiale ma non utile nella pratica.
 
-In un recente articolo Cardinal et al. hanno proposto tre algoritmi che non richiedono il calcolo esatto dell'entropia, ma sfruttano la versione approssimata presentata nel teorema \ref{greedypoint} \cite{Cardinal2010}. Questo consente di ottenere algoritmi che richiedono \(O(\log{e(P)})\) confronti e che sono contemporaneamente polinomiali e pratici. In questo capitolo andremo ad esporre tali algoritmi.
+In un recente articolo Cardinal et al. hanno proposto tre algoritmi che non richiedono il calcolo esatto dell'entropia, ma sfruttano la versione approssimata presentata nel Teorema \ref{greedypoint} \cite{Cardinal2010}. Questo consente di ottenere algoritmi che richiedono \(O(\log{e(P)})\) confronti e che sono contemporaneamente polinomiali e pratici. In questo capitolo andremo ad esporre tali algoritmi.
 
-Concludiamo questa sezione con una versione più precisa della stima superiore del teorema \ref{kktheorem}, un risultato che sarà utile nel seguito. 
+Concludiamo questa sezione con una versione più precisa della stima superiore del Teorema \ref{kktheorem}, un risultato che sarà utile nel seguito. 
 \begin{theorem}
 	[Cardinal, Fiorini, Joret, Jungers, Munro] \label{cfjjmtheorem} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
 	\[nH\left(\overline{P}\right)\le 2\log{e(P)}.\]
@@ -69,7 +69,7 @@ Concludiamo questa sezione con una versione più precisa della stima superiore d
 	\[H(P_i)\le-\frac{1}{n}\sum_{v\in V}{\log{x'_v}=-\frac{1}{n}\sum_{v\in V}{\log{x_v}}+\frac{1}{n}\log{\alpha_i}+\frac{1}{n}\log{\beta_i}},\]
 	dunque
 	\[nH(P_i)\le nH(P)+\log{\alpha_i\beta_i}.\]
-	Possiamo ora concludere. Per il teorema \ref{lovasztheorem} e per la disuguaglianza appena dimostrata possiamo scrivere 
+	Possiamo ora concludere. Per il Teorema \ref{lovasztheorem} e per la disuguaglianza appena dimostrata possiamo scrivere 
 	\begin{align}
 		nH(\overline{P}) &= n\log{n}-nH(P) \nonumber \\
 		&\le n\log{n}-nH(P_i)+\log{\alpha_i\beta_i} \nonumber \\
@@ -104,11 +104,11 @@ Concludiamo questa sezione con una versione più precisa della stima superiore d
 \begin{proof}
 	Sia \(g(P)\) il numero di confronti necessario per ordinare \(P\). È chiaro che
 	\[g(P)\le \log{n}\cdot(n-|C|),\]
-	inoltre per il lemma \ref{maxchainlemma}
+	inoltre per il Lemma \ref{maxchainlemma}
 	\[g(P)\le\log{n}\cdot(n-2^{-H(\overline{P})}n).\]
 	Usando l'ovvia disuguaglianza \(1-2^{x}\le\ln{2}\cdot x\) deduciamo
 	\[g(P)\le\log{n}\cdot\ln{2}\cdot nH(\overline{P}),\]
-	e applicando il teorema \ref{cfjjmtheorem} abbiamo
+	e applicando il Teorema \ref{cfjjmtheorem} abbiamo
 	\[g(P)=O(\log{n}\cdot\log{e(P)}),\]
 	cioè la tesi.\qed 
 \end{proof}
@@ -172,7 +172,7 @@ dove \(G'\) \`e ottenuto da \(G\) rimuovendo tutti i vertici contenuti in un qua
 
 Per evitare casi degeneri denoteremo nel seguito con \(\text{STAB}^{*}(G)\) i punti di \(\text{STAB}(G)\) di coordinate tutte positive. Infatti se così non fosse la funzione obiettivo dell'equazione \ref{eq:entropythree} non sarebbe definita.
 
-Nel caso di grafi bipartiti possiamo semplificare il lemma \ref{chvatallemma}. Abbiamo allora che
+Nel caso di grafi bipartiti possiamo semplificare il Lemma \ref{chvatallemma}. Abbiamo allora che
 \[\text{STAB}(G)=\left\{x\in \mathbb{R}^V:\quad x_u + x_v\le 1 \text{ per ogni } uv\in E,\quad 0\le x_v\le 1 \text{ per ogni } v\in V\right\}.\]
 \begin{definition}
 	Diciamo che un arco \(uv\) è \emph{stretto} rispetto ad \(x\in\text{STAB}(G)\) se vale \(x_u+x_v=1\). Denotiamo con \(G(x)\) il grafo i cui vertici siano gli stessi di \(G\) e i cui archi siano stretti rispetto ad \(x\). 
@@ -184,12 +184,12 @@ Nel caso di grafi bipartiti possiamo semplificare il lemma \ref{chvatallemma}. A
 	\label{crossinglemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Sia \(x\) un punto di \(\text{STAB}(G)\) e siano \(uv\) e \(u'v'\) archi stretti rispetto ad \(x\) tali inoltre che \(u,u'\in A\) e \(v,v'\in B\). Se \(uv\) e \(u'v'\) si incrociano allora sia \(u'v\) sia \(uv'\) sono archi di \(G\), entrambi stretti rispetto ad \(x\). 
 \end{lemma}
 \begin{proof}
-	Dal lemma \ref{structurelemma} \((3)\) segue che \(u'v\) e \(uv'\) sono archi di \(G\). Supponiamo per assurdo che \(uv'\) non sia stretto. Avremmo allora: 
+	Dal Lemma \ref{structurelemma} \((iii)\) segue che \(u'v\) e \(uv'\) sono archi di \(G\). Supponiamo per assurdo che \(uv'\) non sia stretto. Avremmo allora: 
 	\begin{align}
 		x_v &= 1-x_u &\text{(poich\'e } uv \text{ \`e stretto)}\nonumber \\
 		&> x_{v'} &\text{(poich\'e } uv' \text{ non \`e stretto)}\nonumber \\
 		&= 1-x_{u'} &\text{(poich\'e } u'v' \text{ \`e stretto)}\nonumber \\
-		&\ge x_{v}, &\text{(poich\'e } u'v \text{ \`e un arco e per il lemma \ref{chvatallemma})}\nonumber 
+		&\ge x_{v}, &\text{(poich\'e } u'v \text{ \`e un arco e per il Lemma \ref{chvatallemma})}\nonumber 
 	\end{align}
 	chiaramente un assurdo. Possiamo procedere analogamente per \(u'v\), da cui la tesi.\qed 
 \end{proof}
@@ -214,7 +214,7 @@ La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi
 \end{lemma}
 \begin{proof}
 	\begin{enumerate}[(i)]
-		\item Supponiamo per assurdo che \(L\) non sia libera ma sia incastonata in \(K\). Siano allora \(w\in L\) e \(u,u''\in K\) come nella definizione. Senza perdita di generalità possiamo assumere \(w,u',u''\in A\) e che \(u'\not\in K\) se \(u\le_{P}u'\le_{P}u''\). \(K\) \`e una componente connessa che contiene sia \(u\) sia \(u''\), dunque esiste \(v\in K\cap B\) adiacente ad entrambi. Per il lemma \ref{structurelemma} \((3)\) abbiamo che \(vw\) \`e un arco di \(G\), ma poich\'e \(K\) ed \(L\) sono componenti connesse distinte \(vw\) non \`e un arco di \(G(x)\). Se \(L\) non fosse banale allora esisterebbe un arco di \(L\) incidente in \(w\) che incrocia \(uv\) o \(u''v\), dunque per il lemma \ref{crossinglemma} avremmo che \(vw\) \`e stretto, assurdo. Se invece \(L\) fosse bilanciata avremmo \(x_w+x_v=1+x_v>1\), contro il lemma \ref{chvatallemma}. 
+		\item Supponiamo per assurdo che \(L\) non sia libera ma sia incastonata in \(K\). Siano allora \(w\in L\) e \(u,u''\in K\) come nella definizione. Senza perdita di generalità possiamo assumere \(w,u',u''\in A\) e che \(u'\not\in K\) se \(u\le_{P}u'\le_{P}u''\). \(K\) \`e una componente connessa che contiene sia \(u\) sia \(u''\), dunque esiste \(v\in K\cap B\) adiacente ad entrambi. Per il Lemma \ref{structurelemma} \((iii)\) abbiamo che \(vw\) \`e un arco di \(G\), ma poich\'e \(K\) ed \(L\) sono componenti connesse distinte \(vw\) non \`e un arco di \(G(x)\). Se \(L\) non fosse banale allora esisterebbe un arco di \(L\) incidente in \(w\) che incrocia \(uv\) o \(u''v\), dunque per il Lemma \ref{crossinglemma} avremmo che \(vw\) \`e stretto, assurdo. Se invece \(L\) fosse bilanciata avremmo \(x_w+x_v=1+x_v>1\), contro il Lemma \ref{chvatallemma}. 
 		\item Supponiamo per assurdo che siano false entrambe le disuguaglianze. Per il punto precedente \(K\) e \(L\), essendo non banali, non possono essere incastonate l'una nell'altra. Senza perdita di generalità possiamo allora assumere che valgano
 		\[K\cap A\le_{P}L\cap A\qquad\text{ e }\qquad L\cap B\le_{P}K\cap B.\]
 		Siano quindi \(u,u'\in A\) e \(v,v'\in B\) tali che \(uv\) e \(u'v'\) siano archi di \(G\). Dunque tali archi si incrociano, perciò in particolare \(uv'\) è un arco di \(G\). Ma allora \(K\) ed \(L\) sarebbero la stessa componente connessa, una contraddizione.\qed 
@@ -248,7 +248,7 @@ Nel secondo caso diciamo che \(K\) \emph{si fonde} con un'altra componente conne
 	\label{touchinglemma} Sia \(x\in\text{STAB}^{*}(G)\), e sia \(x'\) il punto ottenuto ribilanciando \(x\). Se la componente connessa \(K\) si fonde con la componente connessa \(L\) di \(G(x)\) allora \(K\) ed \(L\) sono a contatto. 
 \end{lemma}
 \begin{proof}
-	Supponiamo per assurdo che \(K\) ed \(L\) non siano a contatto. Siano allora \(M\) una componente connessa e \(uv\) un suo arco come nella precedente definizione. Sia inoltre \(u'v'\) l'arco di estremi rispettivamente in \(K\) ed \(L\) che sia diventato stretto in \(G(x')\). Gli archi \(uv\) e \(u'v'\) si incrociano: possiamo allora applicare il lemma \ref{crossinglemma} e concludere che \(uv'\) \`e un arco di \(G(x')\), quindi \(M\) ed \(L\) sono contenuti in una stessa componente connessa di \(G(x')\). Ma l'algoritmo \ref{rebalance} non altera i pesi dei vertici non appartenenti a \(K\), pertanto \(M\) ed \(L\) sono contenuti in una stessa componente connessa di \(G(x)\), una contraddizione.\qed 
+	Supponiamo per assurdo che \(K\) ed \(L\) non siano a contatto. Siano allora \(M\) una componente connessa e \(uv\) un suo arco come nella precedente definizione. Sia inoltre \(u'v'\) l'arco di estremi rispettivamente in \(K\) ed \(L\) che sia diventato stretto in \(G(x')\). Gli archi \(uv\) e \(u'v'\) si incrociano: possiamo allora applicare il Lemma \ref{crossinglemma} e concludere che \(uv'\) \`e un arco di \(G(x')\), quindi \(M\) ed \(L\) sono contenuti in una stessa componente connessa di \(G(x')\). Ma l'algoritmo \ref{rebalance} non altera i pesi dei vertici non appartenenti a \(K\), pertanto \(M\) ed \(L\) sono contenuti in una stessa componente connessa di \(G(x)\), una contraddizione.\qed 
 \end{proof}
 \begin{definition}
 	Sia \(x\in\text{STAB}^{*}(G)\). Diciamo che una componente connessa \(K\) di \(G(x)\) è \emph{rossa} se si ha \(|A\cap K|\ge|B\cap K|\), altrimenti diciamo che \(K\) è \emph{blu}. 
@@ -406,7 +406,7 @@ La fusione di catene verr\`a effettuata con l'algoritmo di Hwang-Lin. Date due c
 	\label{mergetheorem} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Allora l'algoritmo \ref{merge} fonde \(A\) e \(B\) impiegando al più \(6\log{e(P)}\) confronti. 
 \end{theorem}
 \begin{proof}
-	Sia \(g(P)\) il numero di confronti necessario a fondere \(A\) e \(B\). Il calcolo dell'entropia alla riga \(1\) non comporta alcun confronto. Nelle righe da \(2\) a \(9\) ci assicuriamo di essere nelle condizioni di applicare il lemma \ref{finallemma}, e poter quindi dedurre che, eseguendo la riga \(10\), vengano compiuti al pi\`u \(3nH(x)\) confronti. Per il teorema \ref{cfjjmtheorem} abbiamo allora
+	Sia \(g(P)\) il numero di confronti necessario a fondere \(A\) e \(B\). Il calcolo dell'entropia alla riga \(1\) non comporta alcun confronto. Nelle righe da \(2\) a \(9\) ci assicuriamo di essere nelle condizioni di applicare il Lemma \ref{finallemma}, e poter quindi dedurre che, eseguendo la riga \(10\), vengano compiuti al pi\`u \(3nH(x)\) confronti. Per il Teorema \ref{cfjjmtheorem} abbiamo allora
 	\[g(P)\le 3nH(x)\le 6\log{e(P)},\]
 	cio\`e la tesi.\qed 
 \end{proof}
@@ -423,13 +423,13 @@ La fusione di catene verr\`a effettuata con l'algoritmo di Hwang-Lin. Date due c
 	\label{mergesorttheorem} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora l'algoritmo \ref{mergesort} risolve il problema dell'ordinamento con informazione parziale impiegando al più \(c \log{e(P)}\) confronti, dove \(c\approx 15.08\). 
 \end{theorem}
 \begin{proof}
-	Sia \(g(P)\) il numero di confronti necessario ad ordinare \(P\). Per il lemma \ref{maxchainlemma} abbiamo \(|A|\ge n\cdot 2^{-H(\overline{P})}\), dunque
+	Sia \(g(P)\) il numero di confronti necessario ad ordinare \(P\). Per il Lemma \ref{maxchainlemma} abbiamo \(|A|\ge n\cdot 2^{-H(\overline{P})}\), dunque
 	\[|B|=|P-A|\le n\left(1-2^{-H(\overline{P})}\right)\le\ln{2}\cdot nH(\overline{P}),\]
 	in cui abbiamo usato l'ovvia disuguaglianza \(1-2^{x}\le\ln{2}\cdot x\). Grazie ai teoremi \ref{naivemergetheorem} e \ref{mergetheorem} possiamo maggiorare il numero di confronti compiuti con
 	\[g(P)\le(1+\varepsilon)\log{e(P-A)}+\left((1+\varepsilon)\left(\log{e}+\log{\left(1+\frac{1}{\varepsilon}\right)}\right)+1\right)|P-A|+6\log{e(P')}\]
 	e, per la disuguaglianza appena dimostrata,
 	\[ g(P)\le(1+\varepsilon)\log{e(P)}+\left((1+\varepsilon)\left(1+\ln{\left(1+\frac{1}{\varepsilon}\right)}\right)+\ln{2}\right)nH(\overline{P})+6\log{e(P')}.\]
-	Possiamo quindi applicare il teorema \ref{cfjjmtheorem} ed ottenere la stima
+	Possiamo quindi applicare il Teorema \ref{cfjjmtheorem} ed ottenere la stima
 	\[g(P)\le\left(1+\varepsilon+2\left((1+\varepsilon)\left(1+\ln{\left(1+\frac{1}{\varepsilon}\right)}\right)+\ln{2}\right)+6\right)\log{e(P)}.\]
 	Infine, ponendo \(\varepsilon\approx 0.351198\), abbiamo
 	\[g(P)\le c\log{e(P)}\nonumber\]
