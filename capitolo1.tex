@@ -29,7 +29,16 @@ misurerà quindi la complessità del grafo. La definizione \eqref{eq:entropyzero
 \end{definition}
 In altri termini fra due vertici \(\mathbf{v}\) e \(\mathbf{w}\) di \(G^t\) esiste un arco se e soltanto se le corrispondenti sequenze di lunghezza \(t\) sono distinguibili in almeno un elemento. 
 \begin{example}
-	Sia \(L\) il grafo su tre vertici con due archi, rappresentato a sinistra. Allora \(L^2\) è rappresentato a destra. TODO: Disegno 
+	Sia \(L\) il grafo su tre vertici con due archi, rappresentato a sinistra. Allora \(L^2\) è rappresentato a destra.
+    \begin{figure}
+        \tikzstyle{vertex}=[circle,draw=black!100,thick,minimum size=1cm]
+        \begin{tikzpicture}[scale=2]
+            \node (b) at (1,0) [vertex] {b};
+            \node (a) at (3,0) [vertex] {a};
+            \node (c) at (2,1.732) [vertex] {c};
+            \draw (b.east) -- (a.west) [thick];
+        \end{tikzpicture}
+    \end{figure}
 \end{example}
 Osserviamo che la coppia \((G^t, \mathbf{P}^t)\), dove \(\mathbf{P}^t\) è definita da \eqref{eq:probability}, è ancora un grafo probabilistico. Volendo codificare propriamente un sottoinsieme \(U\subset V^{t}\) abbiamo bisogno di almeno tante parole quanti insiemi indipendenti servono per partizionare \(U\). Ma questo è proprio il numero cromatico del sottografo indotto da \(G^t\) su \(U\), che denotiamo \(\chi(G^t(U))\). Siamo ora pronti per enunciare la prima definizione di entropia di grafo. 
 \begin{definition}
