@@ -33,10 +33,53 @@ In altri termini fra due vertici \(\mathbf{v}\) e \(\mathbf{w}\) di \(G^t\) esis
     \begin{figure}
         \tikzstyle{vertex}=[circle,draw=black!100,thick,minimum size=1cm]
         \begin{tikzpicture}[scale=2]
-            \node (b) at (1,0) [vertex] {b};
-            \node (a) at (3,0) [vertex] {a};
-            \node (c) at (2,1.732) [vertex] {c};
-            \draw (b.east) -- (a.west) [thick];
+            \node (b) at (0,0) [vertex] {b};
+            \node (a) at (2,0) [vertex] {a};
+            \node (c) at (1,1.732) [vertex] {c};
+            \draw (b.0) -- (a.180) [thick];
+            \draw (b.60) -- (c.240) [thick];
+            
+            \node (aa) at (5,0) [vertex] {aa};
+            \node (ab) at (6,0) [vertex] {ab};
+            \node (ac) at (7,0) [vertex] {ac};
+
+            \node (ba) at (5,1) [vertex] {ba};
+            \node (bb) at (6,1) [vertex] {bb};
+            \node (bc) at (7,1) [vertex] {bc};
+
+            \node (ca) at (5,2) [vertex] {ca};
+            \node (cb) at (6,2) [vertex] {cb};
+            \node (cc) at (7,2) [vertex] {cc};
+
+            \draw (aa.0) -- (ab.180) [thick];
+            \draw (ab.0) -- (ac.180) [thick];
+
+            \draw (ba.0) -- (bb.180) [thick];
+            \draw (bb.0) -- (bc.180) [thick];
+
+            \draw (ca.0) -- (cb.180) [thick];
+            \draw (cb.0) -- (cc.180) [thick];
+
+            \draw (aa.90) -- (ba.270) [thick];
+            \draw (ba.90) -- (ca.270) [thick];
+
+            \draw (ab.90) -- (bb.270) [thick];
+            \draw (bb.90) -- (cb.270) [thick];
+
+            \draw (ac.90) -- (bc.270) [thick];
+            \draw (bc.90) -- (cc.270) [thick];
+
+            \draw (aa.45) -- (bb.225) [thick];
+            \draw (ba.315) -- (ab.135) [thick];
+
+            \draw (ab.45) -- (bc.225) [thick];
+            \draw (bb.315) -- (ac.135) [thick];
+
+            \draw (ba.45) -- (cb.225) [thick];
+            \draw (ca.315) -- (bb.135) [thick];
+
+            \draw (bb.45) -- (cc.225) [thick];
+            \draw (cb.315) -- (bc.135) [thick];
         \end{tikzpicture}
     \end{figure}
 \end{example}
