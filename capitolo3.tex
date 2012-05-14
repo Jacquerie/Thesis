@@ -63,7 +63,7 @@ Concludiamo questa sezione con una versione più precisa della stima superiore d
 	\end{align}
 	Siano rispettivamente \(P_1\) e \(P_2\) gli insiemi parzialmente ordinati definiti dalla prima e dalla seconda famiglia di intervalli. Allora esiste un indice \(i\in\left\{1,2\right\}\) tale che 
 	\begin{equation}
-		\label{appendixlemma} \frac{e(P_i)}{e(P)}\le\frac{1}{\sqrt{\alpha_i\beta_i}}. 
+		\label{eq:appendixlemma} \frac{e(P_i)}{e(P)}\le\frac{1}{\sqrt{\alpha_i\beta_i}}. 
 	\end{equation}
 	Questo fatto verrà dimostrato in appendice. Assumendo che esista un tale \(i\) sia \(x'\in\mathbb{R}_{+}^V\) il vettore definito dalla corrispondente famiglia di intervalli. Abbiamo allora che
 	\[H(P_i)\le-\frac{1}{n}\sum_{v\in V}{\log{x'_v}=-\frac{1}{n}\sum_{v\in V}{\log{x_v}}+\frac{1}{n}\log{\alpha_i}+\frac{1}{n}\log{\beta_i}},\]
@@ -75,7 +75,7 @@ Concludiamo questa sezione con una versione più precisa della stima superiore d
 		&\le n\log{n}-nH(P_i)+\log{\alpha_i\beta_i} \nonumber \\
 		&= nH(\overline{P_i})+\log{\alpha_i\beta_i}, \nonumber 
 	\end{align}
-	mentre per ipotesi induttiva e per la disuguaglianza \ref{appendixlemma} abbiamo 
+	mentre per ipotesi induttiva e per la disuguaglianza \eqref{eq:appendixlemma} abbiamo 
 	\begin{align}
 		nH(\overline{P_i})+\log{\alpha_i\beta_i} &\le 2\log{e(P_i)}+\log{\alpha_i\beta_i} \nonumber \\
 		&\le 2\log{\frac{e(P)}{\sqrt{\alpha_i\beta_i}}}+\log{\alpha_i\beta_i} \nonumber \\
