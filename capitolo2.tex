@@ -70,13 +70,15 @@ Il numero di cricca di un grafo \(G\) fornisce una stima dal basso del numero cr
 	Sia \(G\) un grafo. Diciamo che \(G\) è \emph{perfetto} se, per ogni sottografo \(H\), vale
 	\[\omega(H)=\chi(H).\]
 \end{definition}
-Nella precedente definizione abbiamo richiesto che l'uguaglianza valga per ogni sottografo al fine di non considerare perfette le unioni disgiunte di componenti per cui valga l'uguaglianza e componenti per cui non valga. Esiste un sorprendente collegamento fra l'entropia di grafo e i grafi perfetti \cite{Csiszar1990}. 
+Nella precedente definizione, dovuta a Berge, abbiamo richiesto che l'uguaglianza valga per ogni sottografo al fine di non considerare perfette le unioni disgiunte di componenti per cui valga l'uguaglianza e componenti per cui non valga. I grafi perfetti hanno interesse combinatorico e algoritmico poich\'e per essi \`e possibile esibire algoritmi polinomiali per problemi NP-completi nel caso generale. La loro caratterizzazione \`e stata oggetto di pi\`u congetture, la pi\`u importante delle quali dimostrata nel 2002. 
+
+Esiste un sorprendente collegamento fra l'entropia di grafo e i grafi perfetti \cite{Csiszar1990}. 
 \begin{theorem}
 	[Csiszár, K\"orner, Lovász, Marton, Simonyi] Sia \(G\) un grafo. \(G\) è perfetto se e soltanto se, per ogni distribuzione di probabilità \(P\) sui vertici, vale
 	\[H\left(G,P\right)+H\left(\overline{G},P\right)=H(P).\]
 	\label{lovasztheorem} 
 \end{theorem}
-Come corollario del precedente teorema otteniamo che \(G\) è perfetto se e soltanto se \(\overline{G}\) è perfetto.
+Come corollario del precedente teorema otteniamo che \(G\) è perfetto se e soltanto se \(\overline{G}\) è perfetto. Questo enunciato, un tempo noto come congettura debole dei grafi perfetti, \`e anche noto come Teorema di Lovász.
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Grafi associati ad ordini parziali}
