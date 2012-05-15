@@ -272,10 +272,18 @@ Nel secondo caso diciamo che \(K\) \emph{si fonde} con un'altra componente conne
 \begin{example}
     \begin{figure}
         \centering
-        \begin{tikzpicture}
-            TODO
+        \begin{tikzpicture}[scale=2]
+            \node (a1) at (0, 0) [vertex] {};
+            \node (a2) at (0, 1) [vertex] {};
+            \node (a3) at (0, 2) [vertex] {};
+            \node (b1) at (2, 0.5) [vertex] {};
+            \node (b2) at (2, 1.5) [vertex] {};
+
+            \draw (a1) -- (b1) [thick];
+            \draw (a2) -- (b2) [thick];
+            \draw (a3) -- (b2) [thick];
         \end{tikzpicture}
-        \caption{Esempio di componenti connesse a contatto}
+        \caption{Esempio di componenti connesse a contatto e non a contatto.}
         \label{touchingexample}
     \end{figure}
 \end{example}
