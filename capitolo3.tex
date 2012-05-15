@@ -270,13 +270,13 @@ Nel secondo caso diciamo che \(K\) \emph{si fonde} con un'altra componente conne
 	Sia \(x\in\text{STAB}(G)\). Diciamo che due componenti connesse \(K\) ed \(L\) di \(G(x)\) \emph{sono a contatto} se sono collegate da un arco di \(G\) e se non esiste una componente connessa non banale \(M\) diversa da \(K\) ed \(L\) tale che un arco \(uv\) di \(M\) sia compreso fra \(K\) ed \(L\). In altri termini, supposto \(u\in A\) e \(v\in B\), non devono valere \(K\cap A\le_{P}\{u\}\le_{P}L\cap A\) e \(K\cap B\le_{P}\{v\}\le_{P}L\cap B\), oppure \(L\cap A\le_{P}\{u\}\le_{P}K\cap A\) e \(L\cap B\le_{P}\{v\}\le_{P}K\cap B\). 
 \end{definition}
 \begin{example}
-    
+    Nella figura \ref{touchingexample} le componenti \(K\) ed \(L\) sono a contatto. Invece le componenti \(K'\) e \(L'\) non lo sono per via della componente \(M\) e dell'arco \(uv\).
     \begin{figure}
         \centering
         \begin{tikzpicture}[scale=2]
-            \node (a1) at (0, 0.5) [vertex] {};
+            \node (a1) at (0, 0.5) [vertex, label=180:\(L\)] {};
             \node (a2) at (0, 1.5) [vertex] {};
-            \node (a3) at (0, 2.5) [vertex] {};
+            \node (a3) at (0, 2.5) [vertex, label=180:\(K\)] {};
             \node (b1) at (2, 0) [vertex] {};
             \node (b2) at (2, 1) [vertex] {};
             \node (b3) at (2, 2) [vertex] {};
@@ -287,12 +287,12 @@ Nel secondo caso diciamo che \(K\) \emph{si fonde} con un'altra componente conne
             \draw (a3) -- (b3) [thick];
 
             \node (a4) at (5, 0) [vertex] {};
-            \node (a5) at (5, 1) [vertex] {};
+            \node (a5) at (5, 1) [vertex] {u};
             \node (a6) at (5, 2) [vertex] {};
             \node (a7) at (5, 3) [vertex] {};
-            \node (b4) at (7, 0.5) [vertex] {};
-            \node (b5) at (7, 1.5) [vertex] {};
-            \node (b6) at (7, 2.5) [vertex] {};
+            \node (b4) at (7, 0.5) [vertex, label=0:\(L'\)] {};
+            \node (b5) at (7, 1.5) [vertex, label=0:\(M\)] {v};
+            \node (b6) at (7, 2.5) [vertex, label=0:\(K'\)] {};
 
             \draw (a4) -- (b4) [thick];
             \draw (a5) -- (b5) [thick];
@@ -367,6 +367,16 @@ La fusione di catene verr\`a effettuata con l'Algoritmo di Hwang-Lin. Date due c
 \begin{definition}
 	Sia \(K\) una componente connessa di \(G(x)\). Diciamo che \(K\) è \emph{buona} se ogni arco di \(G\) che possiede un estremo nella catena minore di \(K\) ha l'altro estremo nella catena maggiore oppure in una componente connessa di colore opposto. 
 \end{definition}
+\begin{example}
+    \begin{figure}
+    \centering
+    \begin{tikzpicture}
+        TODO
+    \end{tikzpicture}
+    \end{figure}
+    \caption{Un esempio di componente connessa buona.}
+    \ref{goodexample}
+\end{example}
 \begin{lemma}
 	\label{goodlemma} Sia \(x\in \text{STAB}(G)\) localmente ottimo. Se \(G(x)\) possiede almeno una componente rossa non banale allora una di esse è buona. 
 \end{lemma}
