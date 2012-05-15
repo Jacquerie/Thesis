@@ -155,14 +155,11 @@ Affinchè la precedente risulti una buona definizione occorre dimostrare che tal
             \draw [->] (0,0) -- (0,5,0) node [above] {$y$};
             \draw [->] (0,0) -- (0,0,6) node [below left] {$z$};
 
-            \node (0) at (0,0) {};
-            \node (1) at (4,0,0) {};
-            \node (2) at (0,4,0) {};
-            \node (3) at (0,0,5) {};
-            \node (23) at (0,4,5) {};
-
-            \draw (1) -- (2) [thick];
-            \draw (2) -- (3) [thick]; 
+            \draw (4,0,0) -- (0,4,5) [thick];
+            \draw (0,4,0) -- (0,4,5) [thick];
+            \draw (0,0,5) -- (0,4,5) [thick];
+            \draw (4,0,0) -- (0,0,5) [thick];
+            \draw (4,0,0) -- (0,4,0) [thick];
         \end{tikzpicture}
         \caption{Esempio di \(\text{STAB}(G)\).}
         \label{stabexample}
@@ -178,7 +175,7 @@ Non abbiamo bisogno di altro per enunciare la terza definizione di entropia di g
 	\end{equation}
 \end{definition}
 \begin{remark}
-	La funzione obiettivo di cui cerchiamo il minimo in \eqref{eq:entropythree} è convessa, tende ad \(\infty\) quando una delle coordinate di \(\mathbf{a}\) tende a \(0\), tende monotonamente a \(-\infty\) lungo le rette per l'origine. Ne deriva che tale minimo esiste finito sul bordo di \(\text{STAB}(G)\) e che il vettore che lo realizza il minimo ha tutte le coordinate maggiori di \(0\). 
+	La funzione obiettivo di cui cerchiamo il minimo in \eqref{eq:entropythree} è convessa, tende ad \(\infty\) quando una delle coordinate di \(\mathbf{a}\) tende a \(0\), tende monotonamente a \(-\infty\) lungo le rette per l'origine. Ne deriva che tale minimo esiste finito sul bordo di \(\text{STAB}(G)\) e che il vettore che lo realizza ha tutte le coordinate maggiori di \(0\). 
 \end{remark}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
