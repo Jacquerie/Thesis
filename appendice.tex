@@ -1,53 +1,46 @@
-\appendix
-\chapter{Fine della dimostrazione del Teorema \ref{cfjjmtheorem}}
+\appendix 
+\chapter{Fine della dimostrazione del Teorema \ref{cfjjmtheorem}} 
 \begin{proof}
-    Resta da dimostrare la disuguaglianza \eqref{eq:appendixlemma}, cio\`e l'esistenza di un indice \(i\in\{1,2\}\) tale che \[\frac{e(P_i)}{e(P)}\le\frac{1}{\sqrt{\alpha_i\beta_i}}.\]
-    Dimostreremo che
-    \begin{align}
-        \frac{e(P_1)}{e(P)}+\frac{e(P_2)}{e(P)}&\le 1 \label{eq:extensions} \\
-        \frac{1}{\sqrt{\alpha_1\beta_1}}+\frac{1}{\sqrt{\alpha_2\beta_2}}&\ge 1. \label{eq:inverseroots}
-    \end{align}
-    Per dimostrare \eqref{eq:extensions} \`e sufficiente dimostrare che \(a<_{P_1} b\) e \(a>_{P_2} b\). Sfruttando le definizioni di \(\alpha_1\) e \(\beta_1\) abbiamo
-    \[
-        y_{a^+}^1 = y_a+\frac{x_a}{\alpha_1} = 
-        \begin{cases}
-            y_{a^-}+x_a-x_b &\text{se}\quad\lambda\le\frac{1}{2}\\
-            y_{a^-}+\frac{x_a}{2} &\text{altrimenti}
-        \end{cases}
-    \]
-    e
-    \[
-        y_{b^-}^1 = y_{b^+}-\frac{x_b}{\beta_1} = y_a+x_a-\frac{x_b}{\beta_1} =
-        \begin{cases}
-            y_{a^-}+x_a-x_b &\text{se}\quad\lambda\le\frac{1}{2} \\
-            y_{a^-}+\frac{x_a}{2} &\text{altrimenti,}
-        \end{cases}
-    \]
-    cio\`e \(a<_{P_1} b\). Per le analoghe definizioni di \(\alpha_2\) e \(\beta_2\) abbiamo
-    \[
-        y_{a^-}^2 = y_{a^+}-\frac{x_a}{\alpha_2} = y_{a^+} - \frac{x_b}{2}
-    \]
-    e
-    \[
-        y_{b^+}^2 = y_{b^-}+\frac{x_b}{\beta_2} = y_{a^+}-x_b+\frac{x_b}{\beta_2} = y_{a^+}-\frac{x_b}{2},
-    \]
-    cio\`e \(a>_{P_2} b\). Poich\'e \(P_1\) e \(P_2\) sono estensioni di \(P\) otteniamo la tesi.
-
-    Per dimostrare \eqref{eq:inverseroots} basta studiare la funzione di \(\lambda\) definita dal membro sinistro. Abbiamo infatti
-    \[
-        f(\lambda) = 
-        \begin{cases}
-            \sqrt{1-\lambda}+\frac{\sqrt{\lambda}}{2} &\text{se}\quad\lambda\le\frac{1}{2} \\
-            \frac{1}{2\sqrt{\lambda}}+\frac{\sqrt{\lambda}}{2} &\text{altrimenti,}
-        \end{cases}
-    \]
-    la cui derivata \`e
-    \[
-        f'(\lambda) = 
-        \begin{cases}
-            \frac{1}{4\sqrt{\lambda}}-\frac{1}{2\sqrt{1-\lambda}} &\text{se}\quad\lambda\le\frac{1}{2} \\
-            \frac{1}{4\sqrt{\lambda}}-\frac{1}{4\lambda^{\frac{3}{2}}} &\text{altrimenti.}
-        \end{cases}
-    \]
-    \`E facile inoltre verificare che la derivata sia positiva per \(\lambda < \frac{1}{5}\) e negativa altrimenti. Poich\'e \(f(0)=f(1)=1\) possiamo dedurre che \(f\) \`e maggiore di \(1\) per ogni \(\lambda\in [0,1]\), cio\`e la tesi.\qed
+	Resta da dimostrare la disuguaglianza \eqref{eq:appendixlemma}, cio\`e l'esistenza di un indice \(i\in\{1,2\}\) tale che
+	\[\frac{e(P_i)}{e(P)}\le\frac{1}{\sqrt{\alpha_i\beta_i}}.\]
+	Dimostreremo che 
+	\begin{align}
+		\frac{e(P_1)}{e(P)}+\frac{e(P_2)}{e(P)}&\le 1 \label{eq:extensions} \\
+		\frac{1}{\sqrt{\alpha_1\beta_1}}+\frac{1}{\sqrt{\alpha_2\beta_2}}&\ge 1. \label{eq:inverseroots} 
+	\end{align}
+	Per dimostrare \eqref{eq:extensions} \`e sufficiente dimostrare che \(a<_{P_1} b\) e \(a>_{P_2} b\). Sfruttando le definizioni di \(\alpha_1\) e \(\beta_1\) abbiamo
+	\[ y_{a^+}^1 = y_a+\frac{x_a}{\alpha_1} = 
+	\begin{cases}
+		y_{a^-}+x_a-x_b &\text{se}\quad\lambda\le\frac{1}{2}\\
+		y_{a^-}+\frac{x_a}{2} &\text{altrimenti} 
+	\end{cases}
+	\]
+	e
+	\[ y_{b^-}^1 = y_{b^+}-\frac{x_b}{\beta_1} = y_a+x_a-\frac{x_b}{\beta_1} = 
+	\begin{cases}
+		y_{a^-}+x_a-x_b &\text{se}\quad\lambda\le\frac{1}{2} \\
+		y_{a^-}+\frac{x_a}{2} &\text{altrimenti,} 
+	\end{cases}
+	\]
+	cio\`e \(a<_{P_1} b\). Per le analoghe definizioni di \(\alpha_2\) e \(\beta_2\) abbiamo
+	\[ y_{a^-}^2 = y_{a^+}-\frac{x_a}{\alpha_2} = y_{a^+} - \frac{x_b}{2} \]
+	e
+	\[ y_{b^+}^2 = y_{b^-}+\frac{x_b}{\beta_2} = y_{a^+}-x_b+\frac{x_b}{\beta_2} = y_{a^+}-\frac{x_b}{2}, \]
+	cio\`e \(a>_{P_2} b\). Poich\'e \(P_1\) e \(P_2\) sono estensioni di \(P\) otteniamo la tesi.
+	
+	Per dimostrare \eqref{eq:inverseroots} basta studiare la funzione di \(\lambda\) definita dal membro sinistro. Abbiamo infatti
+	\[ f(\lambda) = 
+	\begin{cases}
+		\sqrt{1-\lambda}+\frac{\sqrt{\lambda}}{2} &\text{se}\quad\lambda\le\frac{1}{2} \\
+		\frac{1}{2\sqrt{\lambda}}+\frac{\sqrt{\lambda}}{2} &\text{altrimenti,} 
+	\end{cases}
+	\]
+	la cui derivata \`e
+	\[ f'(\lambda) = 
+	\begin{cases}
+		\frac{1}{4\sqrt{\lambda}}-\frac{1}{2\sqrt{1-\lambda}} &\text{se}\quad\lambda\le\frac{1}{2} \\
+		\frac{1}{4\sqrt{\lambda}}-\frac{1}{4\lambda^{\frac{3}{2}}} &\text{altrimenti.} 
+	\end{cases}
+	\]
+	\`E facile inoltre verificare che la derivata sia positiva per \(\lambda < \frac{1}{5}\) e negativa altrimenti. Poich\'e \(f(0)=f(1)=1\) possiamo dedurre che \(f\) \`e maggiore di \(1\) per ogni \(\lambda\in [0,1]\), cio\`e la tesi.\qed 
 \end{proof}

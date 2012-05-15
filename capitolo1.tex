@@ -29,62 +29,40 @@ misurerà quindi la complessità del grafo. La definizione \eqref{eq:entropyzero
 \end{definition}
 In altri termini fra due vertici \(\mathbf{v}\) e \(\mathbf{w}\) di \(G^t\) esiste un arco se e soltanto se le corrispondenti sequenze di lunghezza \(t\) sono distinguibili in almeno un elemento. 
 \begin{example}
-	Sia \(L\) il grafo su tre vertici con due archi, rappresentato a sinistra nella figura \ref{conormalexample}. Allora \(L^2\) è rappresentato a destra.
-    \begin{figure}
-        \centering
-        \tikzstyle{vertex}=[circle,draw=black!100,thick,minimum size=1cm]
-        \begin{tikzpicture}[scale=2]
-            \node (b) at (0,0) [vertex] {b};
-            \node (a) at (2,0) [vertex] {a};
-            \node (c) at (1,1.732) [vertex] {c};
-            \draw (b.0) -- (a.180) [thick];
-            \draw (b.60) -- (c.240) [thick];
-            
-            \node (aa) at (5,0) [vertex] {aa};
-            \node (ab) at (6,0) [vertex] {ab};
-            \node (ac) at (7,0) [vertex] {ac};
-
-            \node (ba) at (5,1) [vertex] {ba};
-            \node (bb) at (6,1) [vertex] {bb};
-            \node (bc) at (7,1) [vertex] {bc};
-
-            \node (ca) at (5,2) [vertex] {ca};
-            \node (cb) at (6,2) [vertex] {cb};
-            \node (cc) at (7,2) [vertex] {cc};
-
-            \draw (aa.0) -- (ab.180) [thick];
-            \draw (ab.0) -- (ac.180) [thick];
-
-            \draw (ba.0) -- (bb.180) [thick];
-            \draw (bb.0) -- (bc.180) [thick];
-
-            \draw (ca.0) -- (cb.180) [thick];
-            \draw (cb.0) -- (cc.180) [thick];
-
-            \draw (aa.90) -- (ba.270) [thick];
-            \draw (ba.90) -- (ca.270) [thick];
-
-            \draw (ab.90) -- (bb.270) [thick];
-            \draw (bb.90) -- (cb.270) [thick];
-
-            \draw (ac.90) -- (bc.270) [thick];
-            \draw (bc.90) -- (cc.270) [thick];
-
-            \draw (aa.45) -- (bb.225) [thick];
-            \draw (ba.315) -- (ab.135) [thick];
-
-            \draw (ab.45) -- (bc.225) [thick];
-            \draw (bb.315) -- (ac.135) [thick];
-
-            \draw (ba.45) -- (cb.225) [thick];
-            \draw (ca.315) -- (bb.135) [thick];
-
-            \draw (bb.45) -- (cc.225) [thick];
-            \draw (cb.315) -- (bc.135) [thick];
-        \end{tikzpicture}
-        \caption{Esempio di prodotto conormale.}
-        \label{conormalexample}
-    \end{figure}
+	Sia \(L\) il grafo su tre vertici con due archi, rappresentato a sinistra nella figura \ref{conormalexample}. Allora \(L^2\) è rappresentato a destra. 
+	\begin{figure}
+		\centering \tikzstyle{vertex}=[circle,draw=black!100,thick,minimum size=1cm] 
+		\begin{tikzpicture}
+			[scale=2] \node (b) at (0,0) [vertex] {b}; \node (a) at (2,0) [vertex] {a}; \node (c) at (1,1.732) [vertex] {c}; \draw (b.0) -- (a.180) [thick]; \draw (b.60) -- (c.240) [thick];
+			
+			\node (aa) at (5,0) [vertex] {aa}; \node (ab) at (6,0) [vertex] {ab}; \node (ac) at (7,0) [vertex] {ac};
+			
+			\node (ba) at (5,1) [vertex] {ba}; \node (bb) at (6,1) [vertex] {bb}; \node (bc) at (7,1) [vertex] {bc};
+			
+			\node (ca) at (5,2) [vertex] {ca}; \node (cb) at (6,2) [vertex] {cb}; \node (cc) at (7,2) [vertex] {cc};
+			
+			\draw (aa.0) -- (ab.180) [thick]; \draw (ab.0) -- (ac.180) [thick];
+			
+			\draw (ba.0) -- (bb.180) [thick]; \draw (bb.0) -- (bc.180) [thick];
+			
+			\draw (ca.0) -- (cb.180) [thick]; \draw (cb.0) -- (cc.180) [thick];
+			
+			\draw (aa.90) -- (ba.270) [thick]; \draw (ba.90) -- (ca.270) [thick];
+			
+			\draw (ab.90) -- (bb.270) [thick]; \draw (bb.90) -- (cb.270) [thick];
+			
+			\draw (ac.90) -- (bc.270) [thick]; \draw (bc.90) -- (cc.270) [thick];
+			
+			\draw (aa.45) -- (bb.225) [thick]; \draw (ba.315) -- (ab.135) [thick];
+			
+			\draw (ab.45) -- (bc.225) [thick]; \draw (bb.315) -- (ac.135) [thick];
+			
+			\draw (ba.45) -- (cb.225) [thick]; \draw (ca.315) -- (bb.135) [thick];
+			
+			\draw (bb.45) -- (cc.225) [thick]; \draw (cb.315) -- (bc.135) [thick]; 
+		\end{tikzpicture}
+		\caption{Esempio di prodotto conormale.} \label{conormalexample} 
+	\end{figure}
 \end{example}
 Osserviamo che la coppia \((G^t, \mathbf{P}^t)\), dove \(\mathbf{P}^t\) è definita da \eqref{eq:probability}, è ancora un grafo probabilistico. Volendo codificare propriamente un sottoinsieme \(U\subset V^{t}\) abbiamo bisogno di almeno tante parole quanti insiemi indipendenti servono per partizionare \(U\). Ma questo è proprio il numero cromatico del sottografo indotto da \(G^t\) su \(U\), che denotiamo \(\chi(G^t(U))\). Siamo ora pronti per enunciare la prima definizione di entropia di grafo. 
 \begin{definition}
@@ -125,45 +103,37 @@ Affinchè la precedente risulti una buona definizione occorre dimostrare che tal
 \end{definition}
 \begin{example}
 	Sia \(G\) il grafo semplice non diretto su \(3\) vertici con \(2\) archi. A meno di isomorfismo possiamo supporre \(V=\{1,2,3\}\) ed \(E=\{(1,2),(1,3)\}\). Gli insiemi indipendenti di \(G\) sono allora \(\{\emptyset , \{1\}, \{2\}, \{3\}, \{2,3\}\}\). I loro vettori caratteristici sono quindi
-	\[ 
-	\begin{pmatrix}
+	\[ \left( 
+	\begin{array}{c}
 		0\\0\\0 
-	\end{pmatrix}
-	, 
-	\begin{pmatrix}
+	\end{array}
+	\right) , \left( 
+	\begin{array}{c}
 		1\\0\\0 
-	\end{pmatrix}
-	, 
-	\begin{pmatrix}
+	\end{array}
+	\right) , \left( 
+	\begin{array}{c}
 		0\\1\\0 
-	\end{pmatrix}
-	, 
-	\begin{pmatrix}
+	\end{array}
+	\right) , \left( 
+	\begin{array}{c}
 		0\\0\\1 
-	\end{pmatrix}
-	, 
-	\begin{pmatrix}
+	\end{array}
+	\right) , \left( 
+	\begin{array}{c}
 		0\\1\\1 
-	\end{pmatrix}
-	\]
-	ed il loro involucro convesso è rappresentato nella figura \ref{stabexample}.
-	
+	\end{array}
+	\right) \]
+	ed il loro involucro convesso è rappresentato nella figura \ref{stabexample}. 
 	\begin{figure}
-        \centering
-        \begin{tikzpicture}
-            \draw [->] (0,0) -- (5,0,0) node [right] {$x$};
-            \draw [->] (0,0) -- (0,5,0) node [above] {$y$};
-            \draw [->] (0,0) -- (0,0,6) node [below left] {$z$};
-
-            \draw (4,0,0) -- (0,4,5) [thick];
-            \draw (0,4,0) -- (0,4,5) [thick];
-            \draw (0,0,5) -- (0,4,5) [thick];
-            \draw (4,0,0) -- (0,0,5) [thick];
-            \draw (4,0,0) -- (0,4,0) [thick];
-        \end{tikzpicture}
-        \caption{Esempio di \(\text{STAB}(G)\).}
-        \label{stabexample}
-    \end{figure}
+		\centering 
+		\begin{tikzpicture}
+			\draw [->] (4,0,0) -- (5,0,0) node [right] {$x$}; \draw [->] (0,4,0) -- (0,5,0) node [above] {$y$}; \draw [->] (0,0,5) -- (0,0,6) node [below left] {$z$};
+			
+			\draw (4,0,0) -- (0,4,5) [thick]; \draw (0,4,0) -- (0,4,5) [thick]; \draw (0,0,5) -- (0,4,5) [thick]; \draw (4,0,0) -- (0,0,5) [thick]; \draw (4,0,0) -- (0,4,0) [thick]; \draw (0,0) -- (4,0,0) [thick, dashed]; \draw (0,0) -- (0,4,0) [thick, dashed]; \draw (0,0) -- (0,0,5) [thick, dashed]; 
+		\end{tikzpicture}
+		\caption{Esempio di \(\text{STAB}(G)\).} \label{stabexample} 
+	\end{figure}
 \end{example}
 
 Non abbiamo bisogno di altro per enunciare la terza definizione di entropia di grafo. 
