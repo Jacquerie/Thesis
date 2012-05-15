@@ -3,7 +3,7 @@
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Ordinamento con informazione parziale} 
 \begin{definition}
-	Sia \(P=\left(V,\le_{P}\right)\) un insieme parzialmente ordinato di cardinalit\`a \(n\). Diciamo che un ordine totale \(\le\) \`e una \emph{estensione lineare} di \(\le_{P}\) se \((\forall v_i, v_j\in V)\;v_i\le_{P} v_j\Rightarrow v_i\le v_j\). Denotiamo inoltre con \(e(P)\) il numero di estensioni lineari di \(P\). 
+	Sia \(P=\left(V,\le_{P}\right)\) un insieme parzialmente ordinato. Diciamo che un ordine totale \(\le\) \`e una \emph{estensione lineare} di \(\le_{P}\) se \((\forall v_i, v_j\in V)\;v_i\le_{P} v_j\Rightarrow v_i\le v_j\). Denotiamo inoltre con \(e(P)\) il numero di estensioni lineari di \(P\). 
 \end{definition}
 \begin{definition}
 	Sia \(P=(V,\le_{P})\) un insieme parzialmente ordinato di cardinalit\`a \(n\). Il \emph{problema dell'ordinamento con informazione parziale} consiste nel determinare una estensione lineare \(\le\) fissata ma ignota per mezzo di domande del tipo ``\`e vero che \(v_i\le v_j\) ?'', detti \emph{confronti}. 
@@ -19,7 +19,7 @@ La questione dell'esistenza di un algoritmo che compia \(O(\log{e(P)})\) confron
 	\[\log{e(P)}\le nH\left(\overline{P}\right)\le\min\left\{\log{e(P)}+\log{e\cdot n},\; c\log{e(P)}\right\},\]
 	dove \(c=1+7\log{e}\approx 11.1\). 
 \end{theorem}
-L'Algoritmo di Kahn e Kim calcola inizialmente l'entropia del grafo associato a \(P\). Successivamente stima la variazione dell'entropia dei grafi associati agli ordini parziali \(P'\), ottenuti da \(P\) aggiungendo il risultato di un confronto. Viene quindi selezionato quel confronto che avvicini maggiormente l'entropia a \(\log{n}\), entropia del grafo completo, associato all'insieme totalmente ordinato. Ad ogni passo è dunque necessario il calcolo dell'entropia di un grafo, un problema di minimizzazione su un insieme convesso per l'equazione \ref{eq:entropythree}. Possiamo quindi applicare il metodo dell'ellissoide, ottenendo un algoritmo polinomiale ma non utile nella pratica.
+L'Algoritmo di Kahn e Kim calcola inizialmente l'entropia del grafo associato a \(P\). Successivamente stima la variazione dell'entropia dei grafi associati agli ordini parziali \(P'\), ottenuti da \(P\) aggiungendo il risultato di un confronto. Viene quindi selezionato quel confronto che avvicini maggiormente l'entropia a \(\log{n}\), entropia del grafo completo, associato all'insieme totalmente ordinato. Ad ogni passo è dunque necessario il calcolo dell'entropia di un grafo, un problema di minimizzazione su un insieme convesso per l'equazione \eqref{eq:entropythree}. Possiamo quindi applicare il metodo dell'ellissoide, ottenendo un algoritmo polinomiale ma non utile nella pratica.
 
 In un recente articolo Cardinal et al. hanno proposto tre algoritmi che non richiedono il calcolo esatto dell'entropia, ma sfruttano la versione approssimata presentata nel Teorema \ref{greedypoint} \cite{Cardinal2010}. Questo consente di ottenere algoritmi che richiedono \(O(\log{e(P)})\) confronti e che sono contemporaneamente polinomiali e pratici. In questo capitolo andremo ad esporre tali algoritmi.
 
@@ -121,7 +121,7 @@ Concludiamo questa sezione con una versione più precisa della stima superiore d
 		[1] \STATE \, \COMMENT Preparazione \STATE trova una decomposizione golosa di \(P\) in catene \(C_1,\dots,C_k\) \STATE \(\mathcal{C}\leftarrow\left\{C_1,\dots,C_k\right\}\) \STATE \, \COMMENT Ordinamento \WHILE{\(|\mathcal{C}|>1\)} \STATE seleziona da \(\mathcal{C}\) due catene di lunghezza minima \(C\) e \(C'\) \STATE fondi \(C\) e \(C'\) in tempo lineare, ottenendo \(C''\) \STATE cancella \(C\) e \(C'\) da \(\mathcal{C}\), aggiungi \(C''\) \ENDWHILE \RETURN l'unica catena di \(\mathcal{C}\) 
 	\end{algorithmic}
 \end{algorithm}
-Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\frac{|C_1|}{n},\dots,\frac{|C_k|}{n}\right\}\). 
+Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\frac{|C_1|}{n},\dots,\frac{|C_k|}{n}\right\}\). TODO
 \begin{lemma}
 	\label{naivemergelemma} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora l'Algoritmo \ref{naivemerge} risolve il problema dell'ordinamento parziale compiendo al più \((\tilde{h}+1)n\) confronti. 
 \end{lemma}
@@ -166,12 +166,15 @@ Sia \(h(x)=-x\log{x}-(1-x)\log{(1-x)}\) la funzione di entropia binaria, nella q
 	tali che
 	\[H(G)=\sum_{i=1}^k{\frac{|A_i|+|B_i|}{n}h\left(\frac{|A_i|}{|A_i|+|B_i|}\right)}.\]
 \end{theorem}
+\begin{proof}
+    TODO\qed
+\end{proof}
 
 Possiamo costruire tali partizioni iterativamente. Dato \(S\subset V\) sottoinsieme dei vertici, denotiamo con \(N_G(S)\) l'insieme dei vertici adiacenti ad almeno un vertice di \(S\). Sia allora \(A_i\) un sottoinsieme di \(A'=A-(A_1\cup\dots\cup A_{i-1})\) che renda massimo
 \[\frac{|A_i|}{|N_{G'}(A_i)|},\]
 dove \(G'\) \`e ottenuto da \(G\) rimuovendo tutti i vertici contenuti in un qualche \(A_j\) o \(B_j\) per \(j<i\), e \(B_i=N_{G'}(A_i)\). Se esiste un vertice isolato \(u\) in \(A'\) allora poniamo \(A_i=\{u\}\) e \(B_i=\emptyset\). Se invece \(A'\) \`e vuoto e \(B'=B-(B_1\cup\dots\cup B_{i-1})\) non lo \`e allora scegliamo \(v\in B'\) e poniamo \(A_i=\emptyset\) e \(B_i=\{v\}\).
 
-Per evitare casi degeneri denoteremo nel seguito con \(\text{STAB}^{*}(G)\) i punti di \(\text{STAB}(G)\) di coordinate tutte positive. Infatti se così non fosse la funzione obiettivo dell'equazione \ref{eq:entropythree} non sarebbe definita.
+Per evitare casi degeneri denoteremo nel seguito con \(\text{STAB}^{*}(G)\) i punti di \(\text{STAB}(G)\) di coordinate tutte positive. Infatti se così non fosse la funzione obiettivo dell'equazione \eqref{eq:entropythree} non sarebbe definita.
 
 Nel caso di grafi bipartiti possiamo semplificare il Lemma \ref{chvatallemma}. Abbiamo allora che
 \[\text{STAB}(G)=\left\{x\in \mathbb{R}^V:\quad x_u + x_v\le 1 \text{ per ogni } uv\in E,\quad 0\le x_v\le 1 \text{ per ogni } v\in V\right\}.\]
@@ -207,11 +210,11 @@ Nel caso di grafi bipartiti possiamo semplificare il Lemma \ref{chvatallemma}. A
 \end{definition}
 La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi dell'insieme di sostegno. Diciamo che \(S\le_{P}T\) se \(S\) e \(T\) sono sottoinsiemi tali che \(u\le_{P}v\) per ogni \(u\in S\) e per ogni \(v\in T\). 
 \begin{lemma}
-	\label{inlaylemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Dato \(x\in\text{STAB}^{*}(G)\) allora 
+	\label{inlaylemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Dato \(x\in\text{STAB}^{*}(G)\) allora:
 	\begin{enumerate}
 		[(i)] 
-		\item se in \(G(x)\) una componente connessa \(L\) è incastonata in \(K\) allora \(L\) è libera. 
-		\item se \(K\) ed \(L\) sono componenti connesse non banali di \(G(x)\) allora vale \(K\le_{P}L\) oppure \(L\le_{P}K\). 
+		\item Se in \(G(x)\) una componente connessa \(L\) è incastonata in \(K\) allora \(L\) è libera. 
+		\item Se \(K\) ed \(L\) sono componenti connesse non banali di \(G(x)\) allora vale \(K\le_{P}L\) oppure \(L\le_{P}K\). 
 	\end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -251,7 +254,7 @@ Nel secondo caso diciamo che \(K\) \emph{si fonde} con un'altra componente conne
 	\label{touchinglemma} Sia \(x\in\text{STAB}^{*}(G)\), e sia \(x'\) il punto ottenuto ribilanciando \(x\). Se la componente connessa \(K\) si fonde con la componente connessa \(L\) di \(G(x)\) allora \(K\) ed \(L\) sono a contatto. 
 \end{lemma}
 \begin{proof}
-	Supponiamo per assurdo che \(K\) ed \(L\) non siano a contatto. Siano allora \(M\) una componente connessa e \(uv\) un suo arco come nella precedente definizione. Sia inoltre \(u'v'\) l'arco di estremi rispettivamente in \(K\) ed \(L\) che sia diventato stretto in \(G(x')\). Gli archi \(uv\) e \(u'v'\) si incrociano: possiamo allora applicare il Lemma \ref{crossinglemma} e concludere che \(uv'\) \`e un arco di \(G(x')\), quindi \(M\) ed \(L\) sono contenuti in una stessa componente connessa di \(G(x')\). Ma l'Algoritmo \ref{rebalance} non altera i pesi dei vertici non appartenenti a \(K\), pertanto \(M\) ed \(L\) sono contenuti in una stessa componente connessa di \(G(x)\), una contraddizione.\qed 
+	Supponiamo per assurdo che \(K\) ed \(L\) non siano a contatto. Siano allora \(M\) una componente connessa e \(uv\) un suo arco come nella precedente definizione. Sia inoltre \(u'v'\) l'arco di estremi rispettivamente in \(K\) ed \(L\) che sia diventato stretto in \(G(x')\). Gli archi \(uv\) e \(u'v'\) si incrociano: possiamo allora applicare il Lemma \ref{crossinglemma} e concludere che \(uv'\) \`e un arco di \(G(x')\), quindi \(M\) ed \(L\) sono contenuti in una stessa componente connessa di \(G(x')\). Ma l'Algoritmo \ref{rebalance} non altera i pesi dei vertici non appartenenti a \(K\), pertanto \(M\) ed \(L\) erano contenuti in una stessa componente connessa di \(G(x)\), una contraddizione.\qed 
 \end{proof}
 \begin{definition}
 	Sia \(x\in\text{STAB}^{*}(G)\). Diciamo che una componente connessa \(K\) di \(G(x)\) è \emph{rossa} se si ha \(|A\cap K|\ge|B\cap K|\), altrimenti diciamo che \(K\) è \emph{blu}. 
@@ -282,7 +285,7 @@ Osserviamo che la precedente definizione è un rilassamento della definizione di
 	\[ \xi \mapsto \frac{|A\cap K|}{|K|}\log{\xi} + \frac{|B\cap K|}{|K|}\log{(1-\xi)} \]
 	\`e convessa sull'intervallo \((0,1)\) con minimo in \(\xi = \frac{|A\cap K|}{|K|}\). 
 \end{remark}
-La fusione di catene verr\`a effettuata con l'Algoritmo di Hwang-Lin. Date due catene \(X\) e \(Y\) con \(|X|\ge|Y|\), tale algoritmo divide la catena maggiore in blocchi di grandezza \(2^{\lfloor\log{\frac{|X|}{|Y|}}\rfloor}\). Ogni vertice di \(Y)\) \`e inserito eseguendo prima una scansione lineare fra i blocchi e poi per bisezione all'interno del blocco. Osserviamo che, poich\'e gli elementi di \(Y\) sono ordinati, una volta scartato un blocco questo non dovr\`a essere considerato per i successivi elementi. Avremo bisogno della seguente stima sul numero di confronti effettuato da tale algoritmo. 
+La fusione di catene verr\`a effettuata con l'Algoritmo di Hwang-Lin. Date due catene \(X\) e \(Y\) con \(|X|\ge|Y|\), tale algoritmo divide la catena maggiore in blocchi di grandezza \(2^{\lfloor\log{\frac{|X|}{|Y|}}\rfloor}\). Ogni vertice di \(Y\) \`e inserito eseguendo prima una scansione lineare fra i blocchi e poi per bisezione all'interno del blocco. Osserviamo che, poich\'e gli elementi di \(Y\) sono ordinati, una volta scartato un blocco questo non dovr\`a essere considerato per i successivi elementi. Avremo bisogno della seguente stima sul numero di confronti effettuato da tale algoritmo. 
 \begin{lemma}
 	\label{hwanglinlemma} Siano \(X\) e \(Y\) due catene disgiunte. Supponiamo che \(|X|\ge|Y|\). Allora il numero di confronti richiesto dall'Algoritmo di Hwang-Lin è maggiorato da \(|Y|\log(\frac{4|X|}{|Y|})\). 
 \end{lemma}
@@ -351,7 +354,7 @@ La fusione di catene verr\`a effettuata con l'Algoritmo di Hwang-Lin. Date due c
 	
 	Supponiamo che \(K\) sia rossa in \(G_j(x')\) e sia \(v\) un vertice della catena minore di \(K\). Il contributo a \(H(x')\) corrispondente a tale vertice \`e \(x'_v = -\frac{1}{n}\log{\frac{s_j}{s_j+t_j}}\). Dopo la riga \(6\), poich\'e \(x''_v\) \`e diventato almeno \(\frac{1}{2}\), il contributo a \(H(x'')\) \`e al pi\`u \(x''_v = -\frac{1}{n}\log{\frac{1}{2}} = \frac{1}{n}\). Pertanto, sommando su tutti i vertici della catena minore di \(K\), abbiamo:
 	\[ H(x')-H(x'') \ge -\frac{s_j}{n}\log{\frac{s_j}{s_j+t_j}} - \frac{s_j}{n} = \frac{s_j}{n}\log{\frac{s_j+t_j}{s_j}} - \frac{s_j}{n}\text{.} \]
-	Abbiamo in precedenza osservato che il ribilanciamento incrementa l'entropia, dunque vale la stima 
+	Abbiamo in precedenza osservato che il ribilanciamento diminuisce l'entropia, dunque vale la stima 
 	\begin{equation}
 		\label{eq:redentropy} H(x')-H(x''') \ge \frac{s_j}{n}\log{\frac{s_j+t_j}{s_j}} - \frac{s_j}{n}\text{.} 
 	\end{equation}
@@ -403,7 +406,7 @@ La fusione di catene verr\`a effettuata con l'Algoritmo di Hwang-Lin. Date due c
 \end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Merge sort} Abbiamo definito ``naive'' l'Algoritmo \ref{naivemerge} poich\'e, ogni volta che effettua una fusione fra due catene, non fa uso dell'informazione contenuta nell'insieme parzialmente ordinato. In questa sezione dimostreremo che \`e sufficiente compiere con cautela solo l'ultima di queste fusioni per ottenere un algoritmo che ordini compiendo \(O(\log{e(P)}\) confronti. Per fare questo sfrutteremo l'Algoritmo \ref{merge} della precedente sezione. 
+\section{Merge sort} Abbiamo definito ``naive'' l'Algoritmo \ref{naivemerge} poich\'e, ogni volta che effettua una fusione fra due catene, non fa uso dell'informazione contenuta nell'insieme parzialmente ordinato. In questa sezione dimostreremo che \`e sufficiente compiere con cautela solo l'ultima di queste fusioni per ottenere un algoritmo che ordini compiendo \(O(\log{e(P)})\) confronti. Per fare questo sfrutteremo l'Algoritmo \ref{merge} della precedente sezione. 
 \begin{algorithm}
 	\caption{``Merge sort'' con informazione parziale} \label{mergesort} 
 	\begin{algorithmic}
