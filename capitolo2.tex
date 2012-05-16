@@ -19,7 +19,7 @@
 	\qed 
 \end{proof}
 
-\subsection{Additività per sostituzioni} Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice di \(G\). Chiamiamo grafo ottenuto sostituendo \(F\) a \(v\), e scriviamo \(G_{v\leftarrow F}\), il grafo ottenuto da \(G\) cancellando \(v\) e connettendo ogni vertice adiacente a \(v\) con ciascun vertice di una copia isomorfa di \(F\). Supponiamo inoltre che \(P\) sia una densità sui vertici di \(G\) e che \(Q\) sia una densità sui vertici di \(F\). Allora possiamo definire una \(P_{v\leftarrow Q}\) in modo che la coppia \((G_{v\leftarrow F}, P_{v\leftarrow Q})\) sia un grafo probabilistico. Per fare questo poniamo
+\subsection{Additività per sostituzioni} Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice di \(G\). Chiamiamo grafo ottenuto sostituendo \(F\) a \(v\), e scriviamo \(G_{v\leftarrow F}\), il grafo ottenuto da \(G\) cancellando \(v\) e connettendo ogni vertice adiacente a \(v\) con ciascun vertice di una copia isomorfa di \(F\). Supponiamo inoltre che \(P\) sia una densità sui vertici di \(G\) e che \(Q\) sia una densità sui vertici di \(F\). Allora possiamo definire una densit\'a \(P_{v\leftarrow Q}\) in modo che la coppia \((G_{v\leftarrow F}, P_{v\leftarrow Q})\) sia un grafo probabilistico. Per fare questo poniamo
 \[P_{v\leftarrow Q}(x)= 
 \begin{cases}
 	P(x) & \text{se}\ x\in V(G)-\{v\}\\
@@ -27,19 +27,26 @@
 \end{cases}
 \]
 \begin{lemma}
-	Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice di \(G\). Siano inoltre \(P\) una densità sui vertici di \(G\) e \(Q\) una densità sui vertici di \(F\). Allora abbiamo
+	Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, e sia \(v\) un vertice di \(G\). Siano inoltre \(P\) una densità sui vertici di \(G\) e \(Q\) una densità sui vertici di \(F\). Allora abbiamo
 	\[H(G_{v\leftarrow F}, P_{v\leftarrow Q})=H(G,P)+P(v)H(F,Q).\]
 \end{lemma}
 \begin{proof}
 	TODO\qed 
 \end{proof}
 \begin{corollary}
-	Sia \((G,P)\) un grafo probabilistico e siano \(G_{1}\dots G_{n}\) le sue componenti connesse. Poniamo \(P_i(x)=P(x)[P(V(G_i))]^{-1}\) per \(x\in V(G_i)\). Allora abbiamo
-	\[H(G,P)=\sum_{i=1}^n P(V(G_i))H(G_i,P_i).\]
+	Sia \((G,P)\) un grafo probabilistico e siano \(G_{1}\dots G_{k}\) le sue componenti connesse. Poniamo \(P_i(x)=P(x)[P(V(G_i))]^{-1}\) per \(x\in V(G_i)\). Allora abbiamo
+	\[H(G,P)=\sum_{i=1}^k P(V(G_i))H(G_i,P_i).\]
 \end{corollary}
 \begin{proof}
-	Consideriamo il grafo su \(n\) vertici \(\{v_{1}\dots v_{n}\}\) privo di archi, e sia \(Q\) la densità discreta definita da \(Q(v_{i}) = P(V(G_i))\). Otteniamo la tesi applicando \(n\) volte il lemma precedente, sostituendo ad ogni passo il vertice \(v_i\) con la componente connessa \(G_{i}\).\qed 
+	Consideriamo il grafo su \(k\) vertici \(\{v_{1}\dots v_{k}\}\) privo di archi, e sia \(Q\) la densità discreta definita da \(Q(v_{i}) = P(V(G_i))\). Allora otteniamo la tesi applicando \(k\) volte il lemma precedente, sostituendo ad ogni passo il vertice \(v_i\) con la componente connessa \(G_{i}\).\qed 
 \end{proof}
+
+\subsection{Decomposizione split}
+
+
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+\section{Entropia di grafi notevoli}
+\subsection{Entropia di grafo vuoto}
 
 \subsection{Entropia di grafo completo} 
 \begin{proposition}
@@ -59,6 +66,9 @@
 	Come anticipato nell'introduzione abbiamo riottenuto l'entropia di Shannon come caso particolare dell'entropia di grafo. 
 \end{remark}
 
+\subsection{Entropia di grafo bipartito completo}
+
+
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Entropia e grafi perfetti} 
 \begin{definition}
@@ -70,14 +80,13 @@ Il numero di cricca di un grafo \(G\) fornisce una stima dal basso del numero cr
 	Sia \(G\) un grafo. Diciamo che \(G\) è \emph{perfetto} se, per ogni sottografo \(H\), vale
 	\[\omega(H)=\chi(H).\]
 \end{definition}
-Nella precedente definizione, dovuta a Berge, abbiamo richiesto che l'uguaglianza valga per ogni sottografo al fine di non considerare perfette le unioni disgiunte di componenti per cui valga l'uguaglianza e componenti per cui non valga. I grafi perfetti hanno interesse combinatorico e algoritmico poich\'e per essi \`e possibile esibire algoritmi polinomiali per problemi NP-completi nel caso generale. La loro caratterizzazione \`e stata oggetto di pi\`u congetture, la pi\`u importante delle quali dimostrata nel 2002. 
-
-Esiste un sorprendente collegamento fra l'entropia di grafo e i grafi perfetti \cite{Csiszar1990}. 
+Nella precedente definizione, dovuta a Berge, abbiamo richiesto che l'uguaglianza valga per ogni sottografo al fine di non considerare perfette le unioni disgiunte di componenti per cui valga l'uguaglianza e componenti per cui non valga. I grafi perfetti hanno interesse combinatorico e algoritmico poich\'e per essi \`e possibile esibire algoritmi polinomiali per problemi NP-completi nel caso generale. La loro caratterizzazione \`e stata oggetto di pi\`u congetture, la pi\`u importante delle quali dimostrata nel 2002. Esiste un sorprendente collegamento fra l'entropia di grafo e i grafi perfetti \cite{Csiszar1990}. 
 \begin{theorem}
 	[Csiszár, K\"orner, Lovász, Marton, Simonyi] \label{lovasztheorem} Sia \(G\) un grafo. \(G\) è perfetto se e soltanto se, per ogni distribuzione di probabilità \(P\) sui vertici, vale
 	\[H\left(G,P\right)+H\left(\overline{G},P\right)=H(P).\]
 \end{theorem}
 Come corollario del precedente teorema otteniamo che \(G\) è perfetto se e soltanto se \(\overline{G}\) è perfetto. Questo enunciato, un tempo noto come congettura debole dei grafi perfetti, \`e anche noto come Teorema di Lovász.
+
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Grafi associati ad ordini parziali}
@@ -89,6 +98,10 @@ Abbiamo finora sviluppato la teoria dell'entropia di grafo per una distribuzione
 \begin{proof}
 	TODO\qed 
 \end{proof}
+
+
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+\section{Entropia approssimata}
 
 Sia \(G\) un grafo. Possiamo trovare una partizione dei suoi vertici in insiemi indipendenti con l'algoritmo goloso che ad ogni passo trova un insieme indipendente e massimale e procede ricorsivamente sul complementare. 
 \begin{definition}
