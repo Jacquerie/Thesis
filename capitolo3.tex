@@ -122,7 +122,7 @@ Concludiamo questa sezione con una versione più precisa della stima superiore d
 	\end{algorithmic}
 \end{algorithm}
 \begin{lemma}
-	\label{naivemergelemma} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora l'Algoritmo \ref{naivemerge} risolve il problema dell'ordinamento parziale compiendo al più \((\tilde{h}+1)n\) confronti, dove \(\tilde{h}\) è l'entropia di Shannon della probabilità discreta \(\left\{\frac{|C_1|}{n},\dots,\frac{|C_k|}{n}\right\}\).
+	\label{naivemergelemma} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora l'Algoritmo \ref{naivemerge} risolve il problema dell'ordinamento parziale compiendo al più \((\tilde{h}+1)n\) confronti, dove \(\tilde{h}\) è l'entropia di Shannon della probabilità discreta \(\left\{\frac{|C_1|}{n},\dots,\frac{|C_k|}{n}\right\}\). 
 \end{lemma}
 \begin{proof}
 	Per fondere due catene useremo l'ovvio algoritmo lineare che a ogni passo rimuove e copia nell'output l'elemento minore fra i minimi delle catene. Nel caso peggiore tale algoritmo richiede tanti confronti quanti sono gli elementi della catena di lunghezza maggiore. La sequenza di fusioni delle catene forma un albero, detto di Huffman. È noto che l'altezza media di tale albero è maggiorata da \(\tilde{h}+1\) \cite{Cover2006}. Denotata con \(t_i\) l'altezza della catena \(C_i\), le precedenti osservazioni permettono di stimare il numero di confronti con
@@ -147,7 +147,7 @@ Concludiamo questa sezione con una versione più precisa della stima superiore d
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Merge con informazione parziale} Scopo di questa sezione \`e risolvere il problema dell'ordinamento con informazione parziale per un insieme partizionabile in due catene disgiunte. Tale caso particolare \`e noto come \emph{problema della fusione con informazione parziale} e fu studiato da Linial nel 1984 \cite{Linial1984}. Egli propose un algoritmo che richiede al pi\`u \(C\log{e(P)}\) confronti con \(C=\left(\log{\frac{1+\sqrt{5}}{2}}\right)^{-1}\) e dimostr\`o l'ottimalit\`a di tale costante. Il suo algoritmo necessita per\`o del calcolo di \(n\) determinanti di matrici \(n\times n\). In questa sezione proporremo un algoritmo basato sull'entropia di grafo che risolva tale problema, e dimostreremo che richiede al pi\`u \(6\log{e(P)}\) confronti. \`E possibile inoltre dimostrare che questo algoritmo necessita di \(O(n^2\log{n})\) operazioni elementari.
 
-Il seguente risultato descrive la struttura dei grafi associati agli insiemi parzialmente ordinati partizionabili in due catene disgiunte. La dimostrazione è immediata e quindi omessa.
+Il seguente risultato descrive la struttura dei grafi associati agli insiemi parzialmente ordinati partizionabili in due catene disgiunte. La dimostrazione è immediata e quindi omessa. 
 \begin{lemma}
 	\label{structurelemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Allora 
 	\begin{enumerate}
@@ -158,13 +158,13 @@ Il seguente risultato descrive la struttura dei grafi associati agli insiemi par
 	\end{enumerate}
 \end{lemma}
 
-Nel caso di grafi bipartiti è possibile calcolare esattamente l'entropia. Vale infatti il seguente teorema dovuto a K\"orner e Marton, di cui omettiamo la dimostrazione.
+Nel caso di grafi bipartiti è possibile calcolare esattamente l'entropia. Vale infatti il seguente teorema dovuto a K\"orner e Marton, di cui omettiamo la dimostrazione. 
 \begin{theorem}
 	[K\"orner, Marton] Sia \(G\) un grafo bipartito di ordine \(n\), di bipartizione \(A\) e \(B\). Allora possiamo trovare partizioni
 	\[A=A_1\cup\dots\cup A_k\qquad\text{ e }\qquad B=B_1\cup\dots\cup B_k\]
 	tali che
 	\[H(G)=\sum_{i=1}^k{\frac{|A_i|+|B_i|}{n}h\left(\frac{|A_i|}{|A_i|+|B_i|}\right)}\text{,}\]
-	dove \(h(x)=-x\log{x}-(1-x)\log{(1-x)}\) è la funzione di entropia binaria, nella quale per convenzione poniamo \(h(0)=h(1)=0\).
+	dove \(h(x)=-x\log{x}-(1-x)\log{(1-x)}\) è la funzione di entropia binaria, nella quale per convenzione poniamo \(h(0)=h(1)=0\). 
 \end{theorem}
 
 Possiamo costruire tali partizioni iterativamente. Dato \(S\subset V\) sottoinsieme dei vertici, denotiamo con \(N_G(S)\) l'insieme dei vertici adiacenti ad almeno un vertice di \(S\). Sia allora \(A_i\) un sottoinsieme di \(A'=A-(A_1\cup\dots\cup A_{i-1})\) che renda massimo
@@ -176,8 +176,7 @@ Al fine di evitare casi degeneri denotiamo nel seguito con \(\text{STAB}^{*}(G)\
 Nel caso di grafi bipartiti possiamo semplificare il Lemma \ref{chvatallemma}. Abbiamo allora che
 \[\text{STAB}(G)=\left\{x\in \mathbb{R}^V:\quad x_u + x_v\le 1 \text{ per ogni } uv\in E,\quad 0\le x_v\le 1 \text{ per ogni } v\in V\right\}.\]
 \begin{definition}
-	Diciamo che un arco \(uv\) è \emph{stretto} rispetto ad \(x\in\text{STAB}(G)\) se vale \(x_u+x_v=1\). Denotiamo con \(G(x)\) il grafo i cui vertici siano gli stessi di \(G\) e i cui archi siano gli archi di 
-\(G\) stretti rispetto ad \(x\). 
+	Diciamo che un arco \(uv\) è \emph{stretto} rispetto ad \(x\in\text{STAB}(G)\) se vale \(x_u+x_v=1\). Denotiamo con \(G(x)\) il grafo i cui vertici siano gli stessi di \(G\) e i cui archi siano gli archi di \(G\) stretti rispetto ad \(x\). 
 \end{definition}
 \begin{definition}
 	Siano \(uv\) e \(u'v'\) archi di \(G\) tali che \(u,u'\in A\) e \(v,v'\in B\). Diciamo che \emph{si incrociano} se \(u<_{P}u'\) e \(v'<_{P}v\) oppure se \(u'<_{P}u\) e \(v<_{P}v'\). 
@@ -339,27 +338,20 @@ La fusione di catene verr\`a effettuata con l'Algoritmo di Hwang-Lin. Date due c
 	Sia \(K\) una componente connessa di \(G(x)\). Diciamo che \(K\) è \emph{buona} se ogni arco di \(G\) che possiede un estremo nella catena minore di \(K\) ha l'altro estremo nella catena maggiore oppure in una componente connessa di colore opposto. 
 \end{definition}
 \begin{example}
-  Nella figura \ref{goodexample} sia la componente rossa sia la componente blu sono buone.
+	Nella figura \ref{goodexample} sia la componente rossa sia la componente blu sono buone. 
 	\begin{figure}
 		\centering 
-		\begin{tikzpicture}[scale = 2]
-			\node (a1_red) at (0,0) [red_vertex] {};
-			\node (a2_red) at (0,1) [red_vertex] {};
-			\node (a3_blue) at (0,2) [blue_vertex] {};
-			\node (b1_red) at (2,0.5) [red_vertex] {};
-			\node (b2_blue) at (2,1.5) [blue_vertex] {};
-			\node (b3_blue) at (2,2.5) [blue_vertex] {};
+		\begin{tikzpicture}
+			[scale = 2] \node (a1_red) at (0,0) [red_vertex] {}; \node (a2_red) at (0,1) [red_vertex] {}; \node (a3_blue) at (0,2) [blue_vertex] {}; \node (b1_red) at (2,0.5) [red_vertex] {}; \node (b2_blue) at (2,1.5) [blue_vertex] {}; \node (b3_blue) at (2,2.5) [blue_vertex] {};
 			
-			\draw (a1_red) -- (b1_red) [red_edge];
-			\draw (a2_red) -- (b1_red) [red_edge];
+			\draw (a1_red) -- (b1_red) [red_edge]; \draw (a2_red) -- (b1_red) [red_edge];
 			
-			\draw (a3_blue) -- (b2_blue) [blue_edge];
-			\draw (a3_blue) -- (b3_blue) [blue_edge];
+			\draw (a3_blue) -- (b2_blue) [blue_edge]; \draw (a3_blue) -- (b3_blue) [blue_edge];
 			
-			\draw (a3_blue) -- (b1_red) [dashed_edge];
+			\draw (a3_blue) -- (b1_red) [dashed_edge]; 
 		\end{tikzpicture}
-		\caption{Un esempio di componente connessa buona.} \label{goodexample}
-	\end{figure} 
+		\caption{Un esempio di componente connessa buona.} \label{goodexample} 
+	\end{figure}
 \end{example}
 \begin{lemma}
 	\label{goodlemma} Sia \(x\in \text{STAB}(G)\) localmente ottimo. Se \(G(x)\) possiede almeno una componente rossa non banale allora una di esse è buona. 
