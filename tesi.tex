@@ -19,6 +19,7 @@
 \usepackage{amssymb} 
 \usepackage{latexsym} 
 \usepackage{enumerate}
+\usepackage{csquotes}
 
 % Surround parts of graphics with box
 \usepackage{boxedminipage}
@@ -43,12 +44,15 @@
 \tikzstyle{vertex}=[circle,draw=black!100,thick,minimum size=1cm]
 \tikzstyle{red_vertex}=[circle,draw=red!100,thick,minimum size=1cm]
 \tikzstyle{blue_vertex}=[circle,draw=blue!100,thick,minimum size=1cm]
+\tikzstyle{red_edge}=[red, thick]
+\tikzstyle{blue_edge}=[blue, thick]
+\tikzstyle{dashed_edge}=[dashed, thick]
 
 % Hacks needed to get the algorithm package to work.
 \renewcommand{\algorithmiccomment}[1]{/\(\!\)/ #1} \floatname{algorithm}{Algoritmo}
 
 % Pretty bibliography with biblatex
-\usepackage[style=numeric]{biblatex} 
+\usepackage[style=numeric, backend=biber]{biblatex} 
 \bibliography{entropy}
 
 %\newif\ifpdf

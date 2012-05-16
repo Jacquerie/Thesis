@@ -121,9 +121,8 @@ Concludiamo questa sezione con una versione più precisa della stima superiore d
 		[1] \STATE \, \COMMENT Preparazione \STATE trova una decomposizione golosa di \(P\) in catene \(C_1,\dots,C_k\) \STATE \(\mathcal{C}\leftarrow\left\{C_1,\dots,C_k\right\}\) \STATE \, \COMMENT Ordinamento \WHILE{\(|\mathcal{C}|>1\)} \STATE seleziona da \(\mathcal{C}\) due catene di lunghezza minima \(C\) e \(C'\) \STATE fondi \(C\) e \(C'\) in tempo lineare, ottenendo \(C''\) \STATE cancella \(C\) e \(C'\) da \(\mathcal{C}\), aggiungi \(C''\) \ENDWHILE \RETURN l'unica catena di \(\mathcal{C}\) 
 	\end{algorithmic}
 \end{algorithm}
-Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\frac{|C_1|}{n},\dots,\frac{|C_k|}{n}\right\}\). TODO
 \begin{lemma}
-	\label{naivemergelemma} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora l'Algoritmo \ref{naivemerge} risolve il problema dell'ordinamento parziale compiendo al più \((\tilde{h}+1)n\) confronti. 
+	\label{naivemergelemma} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora l'Algoritmo \ref{naivemerge} risolve il problema dell'ordinamento parziale compiendo al più \((\tilde{h}+1)n\) confronti, dove \(\tilde{h}\) è l'entropia di Shannon della probabilità discreta \(\left\{\frac{|C_1|}{n},\dots,\frac{|C_k|}{n}\right\}\).
 \end{lemma}
 \begin{proof}
 	Per fondere due catene useremo l'ovvio algoritmo lineare che a ogni passo rimuove e copia nell'output l'elemento minore fra i minimi delle catene. Nel caso peggiore tale algoritmo richiede tanti confronti quanti sono gli elementi della catena di lunghezza maggiore. La sequenza di fusioni delle catene forma un albero, detto di Huffman. È noto che l'altezza media di tale albero è maggiorata da \(\tilde{h}+1\) \cite{Cover2006}. Denotata con \(t_i\) l'altezza della catena \(C_i\), le precedenti osservazioni permettono di stimare il numero di confronti con
@@ -146,7 +145,9 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 \end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Merge con informazione parziale} Scopo di questa sezione \`e risolvere il problema dell'ordinamento con informazione parziale per un insieme partizionabile in due catene disgiunte. Tale caso particolare \`e noto come \emph{problema della fusione con informazione parziale} e fu studiato da Linial nel 1984 \cite{Linial1984}. Egli propose un algoritmo che richiede al pi\`u \(C\log{e(P)}\) confronti con \(C=\left(\log{\frac{1+\sqrt{5}}{2}}\right)^{-1}\) e dimostr\`o l'ottimalit\`a di tale costante. Il suo algoritmo necessita per\`o del calcolo di \(n\) determinanti di matrici \(n\times n\). In questa sezione proporremo un algoritmo basato sull'entropia di grafo che risolva tale problema, e dimostreremo che richiede al pi\`u \(6\log{e(P)}\) confronti. \`E possibile inoltre dimostrare che questo algoritmo necessita di \(O(n^2\log{n})\) operazioni elementari. 
+\section{Merge con informazione parziale} Scopo di questa sezione \`e risolvere il problema dell'ordinamento con informazione parziale per un insieme partizionabile in due catene disgiunte. Tale caso particolare \`e noto come \emph{problema della fusione con informazione parziale} e fu studiato da Linial nel 1984 \cite{Linial1984}. Egli propose un algoritmo che richiede al pi\`u \(C\log{e(P)}\) confronti con \(C=\left(\log{\frac{1+\sqrt{5}}{2}}\right)^{-1}\) e dimostr\`o l'ottimalit\`a di tale costante. Il suo algoritmo necessita per\`o del calcolo di \(n\) determinanti di matrici \(n\times n\). In questa sezione proporremo un algoritmo basato sull'entropia di grafo che risolva tale problema, e dimostreremo che richiede al pi\`u \(6\log{e(P)}\) confronti. \`E possibile inoltre dimostrare che questo algoritmo necessita di \(O(n^2\log{n})\) operazioni elementari.
+
+Il seguente risultato descrive la struttura dei grafi associati agli insiemi parzialmente ordinati partizionabili in due catene disgiunte. La dimostrazione è immediata e quindi omessa.
 \begin{lemma}
 	\label{structurelemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Allora 
 	\begin{enumerate}
@@ -156,30 +157,27 @@ Sia \(\tilde{h}\) l'entropia di Shannon della probabilità discreta \(\left\{\fr
 		\item Siano \(u\) e \(v\) vertici appartenenti alla stessa catena, che supporremo senza perdita di generalità essere \(A\), tali che \(u\le_{P} v\). Siano \([c_u,d_u]\) e \([c_v,d_v]\) gli intervalli dei vertici \(B\) adiacenti rispettivamente a \(u\) e \(v\). Allora \(c_u\le_{P} c_v\) e \(d_u\le_{P} d_v\), e in particolare se \(u\le_{P}w\le_{P}v\) i vertici adiacenti a \(w\) sono un intervallo contenuto in \([c_u,d_v]\). 
 	\end{enumerate}
 \end{lemma}
-\begin{proof}
-	TODO\qed 
-\end{proof}
-Sia \(h(x)=-x\log{x}-(1-x)\log{(1-x)}\) la funzione di entropia binaria, nella quale per convenzione poniamo \(h(0)=h(1)=0\). 
+
+Nel caso di grafi bipartiti è possibile calcolare esattamente l'entropia. Vale infatti il seguente teorema dovuto a K\"orner e Marton, di cui omettiamo la dimostrazione.
 \begin{theorem}
 	[K\"orner, Marton] Sia \(G\) un grafo bipartito di ordine \(n\), di bipartizione \(A\) e \(B\). Allora possiamo trovare partizioni
 	\[A=A_1\cup\dots\cup A_k\qquad\text{ e }\qquad B=B_1\cup\dots\cup B_k\]
 	tali che
-	\[H(G)=\sum_{i=1}^k{\frac{|A_i|+|B_i|}{n}h\left(\frac{|A_i|}{|A_i|+|B_i|}\right)}.\]
+	\[H(G)=\sum_{i=1}^k{\frac{|A_i|+|B_i|}{n}h\left(\frac{|A_i|}{|A_i|+|B_i|}\right)}\text{,}\]
+	dove \(h(x)=-x\log{x}-(1-x)\log{(1-x)}\) è la funzione di entropia binaria, nella quale per convenzione poniamo \(h(0)=h(1)=0\).
 \end{theorem}
-\begin{proof}
-    TODO\qed
-\end{proof}
 
 Possiamo costruire tali partizioni iterativamente. Dato \(S\subset V\) sottoinsieme dei vertici, denotiamo con \(N_G(S)\) l'insieme dei vertici adiacenti ad almeno un vertice di \(S\). Sia allora \(A_i\) un sottoinsieme di \(A'=A-(A_1\cup\dots\cup A_{i-1})\) che renda massimo
 \[\frac{|A_i|}{|N_{G'}(A_i)|},\]
 dove \(G'\) \`e ottenuto da \(G\) rimuovendo tutti i vertici contenuti in un qualche \(A_j\) o \(B_j\) per \(j<i\), e \(B_i=N_{G'}(A_i)\). Se esiste un vertice isolato \(u\) in \(A'\) allora poniamo \(A_i=\{u\}\) e \(B_i=\emptyset\). Se invece \(A'\) \`e vuoto e \(B'=B-(B_1\cup\dots\cup B_{i-1})\) non lo \`e allora scegliamo \(v\in B'\) e poniamo \(A_i=\emptyset\) e \(B_i=\{v\}\).
 
-Per evitare casi degeneri denoteremo nel seguito con \(\text{STAB}^{*}(G)\) i punti di \(\text{STAB}(G)\) di coordinate tutte positive. Infatti se così non fosse la funzione obiettivo dell'equazione \eqref{eq:entropythree} non sarebbe definita.
+Al fine di evitare casi degeneri denotiamo nel seguito con \(\text{STAB}^{*}(G)\) i punti di \(\text{STAB}(G)\) di coordinate tutte positive. Se infatti così non fosse la funzione obiettivo dell'equazione \eqref{eq:entropythree} non sarebbe definita.
 
 Nel caso di grafi bipartiti possiamo semplificare il Lemma \ref{chvatallemma}. Abbiamo allora che
 \[\text{STAB}(G)=\left\{x\in \mathbb{R}^V:\quad x_u + x_v\le 1 \text{ per ogni } uv\in E,\quad 0\le x_v\le 1 \text{ per ogni } v\in V\right\}.\]
 \begin{definition}
-	Diciamo che un arco \(uv\) è \emph{stretto} rispetto ad \(x\in\text{STAB}(G)\) se vale \(x_u+x_v=1\). Denotiamo con \(G(x)\) il grafo i cui vertici siano gli stessi di \(G\) e i cui archi siano stretti rispetto ad \(x\). 
+	Diciamo che un arco \(uv\) è \emph{stretto} rispetto ad \(x\in\text{STAB}(G)\) se vale \(x_u+x_v=1\). Denotiamo con \(G(x)\) il grafo i cui vertici siano gli stessi di \(G\) e i cui archi siano gli archi di 
+\(G\) stretti rispetto ad \(x\). 
 \end{definition}
 \begin{definition}
 	Siano \(uv\) e \(u'v'\) archi di \(G\) tali che \(u,u'\in A\) e \(v,v'\in B\). Diciamo che \emph{si incrociano} se \(u<_{P}u'\) e \(v'<_{P}v\) oppure se \(u'<_{P}u\) e \(v<_{P}v'\). 
@@ -209,27 +207,20 @@ Nel caso di grafi bipartiti possiamo semplificare il Lemma \ref{chvatallemma}. A
 	Sia \(x\in\text{STAB}^{*}(G)\). Una componente connessa \(L\) di \(G(x)\) è detta \emph{incastonata} in un'altra componente connessa \(K\) se esistono un vertice \(w\in L\) e due vertici \(u,u''\in K\) tutti appartenenti ad un'unica catena e tali inoltre che \(u\le_{P}w\le_{P}u''\). 
 \end{definition}
 \begin{example}
-    Nella figura \ref{inlayexample} la componente connessa \(L\) \`e incastonata in \(K\).
-    \begin{figure}
-        \centering
-        \begin{tikzpicture}[scale=2]
-            \node (u) at (0, 2) [vertex] {\(u\)};
-            \node (w) at (0, 1) [vertex] {\(w\)};
-            \node (u'') at (0, 0) [vertex] {\(u''\)};
-            \node (K) at (1.5, 1.5) [vertex,label=0:\(K\)] {};
-            \node (L) at (1.5, 0.5) [vertex,label=0:\(L\)] {};
-
-            \draw (u) -- (K) [thick];
-            \draw (u'') -- (K) [thick];
-            \draw (w) -- (L) [thick];
-        \end{tikzpicture}
-        \caption{Esempio di componenti connesse incastonate.}
-        \label{inlayexample}
-    \end{figure}
+	Nella figura \ref{inlayexample} la componente connessa \(L\) \`e incastonata in \(K\). 
+	\begin{figure}
+		\centering 
+		\begin{tikzpicture}
+			[scale=2] \node (u) at (0, 2) [vertex] {\(u\)}; \node (w) at (0, 1) [vertex] {\(w\)}; \node (u'') at (0, 0) [vertex] {\(u''\)}; \node (K) at (1.5, 1.5) [vertex,label=0:\(K\)] {}; \node (L) at (1.5, 0.5) [vertex,label=0:\(L\)] {};
+			
+			\draw (u) -- (K) [thick]; \draw (u'') -- (K) [thick]; \draw (w) -- (L) [thick]; 
+		\end{tikzpicture}
+		\caption{Esempio di componenti connesse incastonate.} \label{inlayexample} 
+	\end{figure}
 \end{example}
 La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi dell'insieme di sostegno. Diciamo che \(S\le_{P}T\) se \(S\) e \(T\) sono sottoinsiemi tali che \(u\le_{P}v\) per ogni \(u\in S\) e per ogni \(v\in T\). 
 \begin{lemma}
-	\label{inlaylemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Dato \(x\in\text{STAB}^{*}(G)\) allora:
+	\label{inlaylemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Dato \(x\in\text{STAB}^{*}(G)\) allora: 
 	\begin{enumerate}
 		[(i)] 
 		\item Se in \(G(x)\) una componente connessa \(L\) è incastonata in \(K\) allora \(L\) è libera. 
@@ -270,40 +261,20 @@ Nel secondo caso diciamo che \(K\) \emph{si fonde} con un'altra componente conne
 	Sia \(x\in\text{STAB}(G)\). Diciamo che due componenti connesse \(K\) ed \(L\) di \(G(x)\) \emph{sono a contatto} se sono collegate da un arco di \(G\) e se non esiste una componente connessa non banale \(M\) diversa da \(K\) ed \(L\) tale che un arco \(uv\) di \(M\) sia compreso fra \(K\) ed \(L\). In altri termini, supposto \(u\in A\) e \(v\in B\), non devono valere \(K\cap A\le_{P}\{u\}\le_{P}L\cap A\) e \(K\cap B\le_{P}\{v\}\le_{P}L\cap B\), oppure \(L\cap A\le_{P}\{u\}\le_{P}K\cap A\) e \(L\cap B\le_{P}\{v\}\le_{P}K\cap B\). 
 \end{definition}
 \begin{example}
-    Nella figura \ref{touchingexample} le componenti \(K\) ed \(L\) sono a contatto. Invece le componenti \(K'\) e \(L'\) non lo sono per via della componente \(M\) e dell'arco \(uv\).
-    \begin{figure}
-        \centering
-        \begin{tikzpicture}[scale=2]
-            \node (a1) at (0, 0.5) [vertex, label=180:\(L\)] {};
-            \node (a2) at (0, 1.5) [vertex] {};
-            \node (a3) at (0, 2.5) [vertex, label=180:\(K\)] {};
-            \node (b1) at (2, 0) [vertex] {};
-            \node (b2) at (2, 1) [vertex] {};
-            \node (b3) at (2, 2) [vertex] {};
-
-            \draw (a1) -- (b1) [thick];
-            \draw (a1) -- (b2) [thick];
-            \draw (a2) -- (b3) [thick];
-            \draw (a3) -- (b3) [thick];
-
-            \node (a4) at (5, 0) [vertex] {};
-            \node (a5) at (5, 1) [vertex] {u};
-            \node (a6) at (5, 2) [vertex] {};
-            \node (a7) at (5, 3) [vertex] {};
-            \node (b4) at (7, 0.5) [vertex, label=0:\(L'\)] {};
-            \node (b5) at (7, 1.5) [vertex, label=0:\(M\)] {v};
-            \node (b6) at (7, 2.5) [vertex, label=0:\(K'\)] {};
-
-            \draw (a4) -- (b4) [thick];
-            \draw (a5) -- (b5) [thick];
-            \draw (a6) -- (b4) [dashed];
-            \draw (a6) -- (b5) [dashed];
-            \draw (a6) -- (b6) [thick];
-            \draw (a7) -- (b6) [thick];
-        \end{tikzpicture}
-        \caption{Esempio di componenti connesse a contatto e non a contatto.}
-        \label{touchingexample}
-    \end{figure}
+	Nella figura \ref{touchingexample} le componenti \(K\) ed \(L\) sono a contatto. Invece le componenti \(K'\) e \(L'\) non lo sono per via della componente \(M\) e dell'arco \(uv\). 
+	\begin{figure}
+		\centering 
+		\begin{tikzpicture}
+			[scale=2] \node (a1) at (0, 0.5) [vertex, label=180:\(L\)] {}; \node (a2) at (0, 1.5) [vertex] {}; \node (a3) at (0, 2.5) [vertex, label=180:\(K\)] {}; \node (b1) at (2, 0) [vertex] {}; \node (b2) at (2, 1) [vertex] {}; \node (b3) at (2, 2) [vertex] {};
+			
+			\draw (a1) -- (b1) [thick]; \draw (a1) -- (b2) [thick]; \draw (a2) -- (b3) [thick]; \draw (a3) -- (b3) [thick];
+			
+			\node (a4) at (5, 0) [vertex] {}; \node (a5) at (5, 1) [vertex] {u}; \node (a6) at (5, 2) [vertex] {}; \node (a7) at (5, 3) [vertex] {}; \node (b4) at (7, 0.5) [vertex, label=0:\(L'\)] {}; \node (b5) at (7, 1.5) [vertex, label=0:\(M\)] {v}; \node (b6) at (7, 2.5) [vertex, label=0:\(K'\)] {};
+			
+			\draw (a4) -- (b4) [thick]; \draw (a5) -- (b5) [thick]; \draw (a6) -- (b4) [dashed_edge]; \draw (a6) -- (b5) [dashed_edge]; \draw (a6) -- (b6) [thick]; \draw (a7) -- (b6) [thick]; 
+		\end{tikzpicture}
+		\caption{Esempio di componenti connesse a contatto e non a contatto.} \label{touchingexample} 
+	\end{figure}
 \end{example}
 \begin{lemma}
 	\label{touchinglemma} Sia \(x\in\text{STAB}^{*}(G)\), e sia \(x'\) il punto ottenuto ribilanciando \(x\). Se la componente connessa \(K\) si fonde con la componente connessa \(L\) di \(G(x)\) allora \(K\) ed \(L\) sono a contatto. 
@@ -368,14 +339,27 @@ La fusione di catene verr\`a effettuata con l'Algoritmo di Hwang-Lin. Date due c
 	Sia \(K\) una componente connessa di \(G(x)\). Diciamo che \(K\) è \emph{buona} se ogni arco di \(G\) che possiede un estremo nella catena minore di \(K\) ha l'altro estremo nella catena maggiore oppure in una componente connessa di colore opposto. 
 \end{definition}
 \begin{example}
-    \begin{figure}
-    \centering
-    \begin{tikzpicture}
-        TODO
-    \end{tikzpicture}
-    \end{figure}
-    \caption{Un esempio di componente connessa buona.}
-    \ref{goodexample}
+  Nella figura \ref{goodexample} sia la componente rossa sia la componente blu sono buone.
+	\begin{figure}
+		\centering 
+		\begin{tikzpicture}[scale = 2]
+			\node (a1_red) at (0,0) [red_vertex] {};
+			\node (a2_red) at (0,1) [red_vertex] {};
+			\node (a3_blue) at (0,2) [blue_vertex] {};
+			\node (b1_red) at (2,0.5) [red_vertex] {};
+			\node (b2_blue) at (2,1.5) [blue_vertex] {};
+			\node (b3_blue) at (2,2.5) [blue_vertex] {};
+			
+			\draw (a1_red) -- (b1_red) [red_edge];
+			\draw (a2_red) -- (b1_red) [red_edge];
+			
+			\draw (a3_blue) -- (b2_blue) [blue_edge];
+			\draw (a3_blue) -- (b3_blue) [blue_edge];
+			
+			\draw (a3_blue) -- (b1_red) [dashed_edge];
+		\end{tikzpicture}
+		\caption{Un esempio di componente connessa buona.} \label{goodexample}
+	\end{figure} 
 \end{example}
 \begin{lemma}
 	\label{goodlemma} Sia \(x\in \text{STAB}(G)\) localmente ottimo. Se \(G(x)\) possiede almeno una componente rossa non banale allora una di esse è buona. 
@@ -409,7 +393,7 @@ La fusione di catene verr\`a effettuata con l'Algoritmo di Hwang-Lin. Date due c
 		\item \(v\in B\) e \(K\) \`e blu. Allora \(x_v>\frac{1}{2}\), quindi, poich\'e \(x\) \`e localmente ottimo, \(x'_v=x_v\ge\frac{1}{2}+\frac{1}{n}\). 
 		\item \(v\in A\) e \(K\) \`e blu. Allora \(x_v<\frac{1}{2}\), quindi \(x'_v=\frac{1}{2}\). Se stiamo considerando una componente blu allora tutte le componenti rosse di \(G(x)\) sono banali. Inoltre, poich\'e \(x\) \`e localmente ottimo, nessuna di esse pu\`o essere libera. Essendo \(K\) buona \(v\) \`e adiacente in \(G\) soltanto a vertici della catena opposta, dunque a nessun vertice in \(G'\). Di conseguenza \(\{v\}\) \`e libera in \(G'(x')\). 
 	\end{itemize}
-	TODO\qed 
+	In tutti i casi abbiamo ottenuto che \(\{v\}\) è libera in \(G'(x')\), dunque la tesi.\qed 
 \end{proof}
 \begin{lemma}
 	\label{finallemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Supponiamo che \(x\in\text{STAB}(G)\) sia localmente ottimo e tale che il contributo ad \(H(x)\) delle componenti rosse superi quello delle componenti blu. Allora l'Algoritmo \ref{essentialmerge} fonde \(A\) e \(B\) impiegando al pi\`u \(3nH(x)\) confronti. 
