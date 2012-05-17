@@ -209,7 +209,15 @@ e insieme delle frecce
   Sia \(P=(V,\le_{P})\) un insieme parzialmente ordinato e siano \(G=G(P)\) e \(D=D(P)\) rispettivamente il grafo e il grafo diretto ad esso associato. Allora \(x\in\mathbb{R}^V\) appartiene a \(\text{STAB}(G)\) se e solo se esiste un vettore \(y\in \mathbb{R}^{N(D)}\) tale che \(y_s=0\), \(y_t=1\), \(y\) non diminuisce lungo gli archi di \(D\) e \(y_{v^+}-y{v^-}=x_v\) per ogni \(v\in V\).
 \end{lemma}
 \begin{proof}
-  TODO\qed
+  Supponiamo che esista un tale \(y\in\mathbb{R}^{N(D)}\). Sia \(v_1\le_{P} v_2\le_{P}\dots\le_{P}v_c\) una catena di \(P\). Abbiamo allora
+  \begin{align}
+    \sum_{i=1}^{c}{x_v} &= (y_{v_{1}^+} - y_{v_{1}^-}) + \dots + (y_{v_{c}^+} - y_{v_{c}^-}) \nonumber \\
+    &\le (y_{v_{1}^-} - y_s) + (y_{v_{1}^+} - y_{v_{1}^-}) + \dots + (y_{v_{c}^+} - y_{v_{c}^-}) + (y_t - y_{v_{c}^+})\nonumber \\
+    &= y_t - y_s = 1\text{,}\nonumber
+  \end{align}
+  dunque dal Lemma \ref{chvatallemma} segue che \(x\in\text{STAB}(G)\).
+  
+  Sia invece \(x\in\text{STAB}(G)\). Per ogni vertice \(v\in V\) poniamo \(y_{v^+}\) il massimo peso totale di una catena di \(P\) il cui massimo sia \(v\), dove abbiamo assegnato al vertice \(w\) il peso \(x_w\). Poniamo inoltre \(y_{v^-} = y_{v^+} - x_v\), e infine \(y_s = 0\) e \(y_t = 1\). È immediato verificare che un tale \(y\) soddisfa la tesi.\qed
 \end{proof}
 
 In conclusione abbiamo ottenuto che \(H(P)\) è la soluzione del seguente problema di ottimizzazione convessa:
