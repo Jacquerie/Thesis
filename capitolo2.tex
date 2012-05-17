@@ -197,12 +197,13 @@ Siano \(v,w\in V\). Diciamo che \(v\) \emph{ricopre} \(w\) se \(v\le_{P} w\), \(
 
 Costruiamo ora un grafo diretto \(D=D(P)\) di insieme dei nodi
 \[
-  N(D) = \{s,t\}\cup\{v^-:v\in V\}\cup\{v^+:v\in V\}
+  N(D)\;=\;\{s,t\}\cup\{v^-:v\in V\}\cup\{v^+:v\in V\}
 \]
 e insieme delle frecce
-\[
-  A(D) = TODO
-\]
+\begin{align}
+  A(D)\;=\;&\{(s,v^-):v\in V\text{,}\;v\;\text{è minimale in}\; P\}\cup\{(v^-,v^+):v\in V\}\;\cup \nonumber \\
+  &\{(v^+,w^-):v\;\text{è ricoperto da}\;w\;\text{in}\;P\}\cup\{(v^+,t):v\in V\text{,}\;v\;\text{è massimale in}\;P\}\text{.} \nonumber
+\end{align}
 
 \begin{lemma}
   Sia \(P=(V,\le_{P})\) un insieme parzialmente ordinato e siano \(G=G(P)\) e \(D=D(P)\) rispettivamente il grafo e il grafo diretto ad esso associato. Allora \(x\in\mathbb{R}^V\) appartiene a \(\text{STAB}(G)\) se e solo se esiste un vettore \(y\in \mathbb{R}^{N(D)}\) tale che \(y_s=0\), \(y_t=1\), \(y\) non diminuisce lungo gli archi di \(D\) e \(y_{v^+}-y{v^-}=x_v\) per ogni \(v\in V\).
