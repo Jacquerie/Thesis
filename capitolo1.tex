@@ -14,11 +14,11 @@ e al sottoinsieme \(U\subset V^{t}\) la probabilit\`a
 \begin{equation}
 	\mathbf{P}^t(U)=\sum_{\mathbf{v}\in U} {\mathbf{P}^t(\mathbf{v})}. \nonumber 
 \end{equation}
-Sia \(0<\varepsilon<1\) fissato, e sia \(U\subset V^{t}\) tale che \(\mathbf{P}^t(U)>1-\varepsilon\). Una \emph{codifica propria} \`e una mappa dalle stringhe di \(V^t\) a un insieme di simboli, tale che stringhe distinguibili di \(U\) vengono mandate in simboli distinti.\footnote{Trascuriamo parte delle stringhe perché ad esse non ci interessa assegnare un significato e dunque un simbolo.} \`E intuitivamente preferibile una codifica che faccia uso del minor numero possibile di simboli. Cerchiamo dunque di minimizzare la quantit\`a 
+Sia \(0<\varepsilon<1\) fissato, e sia \(U\subset V^{t}\) tale che \(\mathbf{P}^t(U)>1-\varepsilon\). Una \emph{codifica propria} \`e una mappa dalle stringhe di \(V^t\) a un insieme di simboli, tale che stringhe distinguibili di \(U\) vengono mandate in simboli distinti.\footnote{Trascuriamo parte delle stringhe, come tipico in teoria dei codici, perché ad esse non ci interessa assegnare un significato e dunque un simbolo.} È intuitivamente preferibile una codifica che faccia uso del minor numero possibile di simboli. Cerchiamo dunque di minimizzare la quantità
 \begin{equation}
 	\frac{\log{M}}{t}, \nonumber 
 \end{equation}
-dove \(M\) \`e la cardinalit\`a dell'immagine secondo la codifica. Sia quindi \(R(G,P,t,\varepsilon)\) il minimo di tale frazione al variare delle codifiche. Il limite 
+dove \(M\) è la cardinalità dell'immagine secondo la codifica. Sia quindi \(R(G,P,t,\varepsilon)\) il minimo di tale frazione al variare delle codifiche. Il limite 
 \begin{equation}
 	\label{eq:entropyzero} \liminf_{\varepsilon \to 0} \liminf_{t \to \infty} R(G,P,t,\varepsilon) 
 \end{equation}
@@ -78,7 +78,7 @@ Affinchè la precedente risulti una buona definizione dovremmo dimostrarne l'ind
 \begin{definition}
 	Sia \(X\) una variabile aleatoria discreta di densità \(P=(p_1\dots p_n)\). Chiamiamo \emph{entropia di Shannon di \(X\)} la somma
 	\[H(X)=\sum_{i=1}^n p_i \log{\frac{1}{p_i}}.\]
-	Con abuso di notazione scriviamo \(H(P)\) per indicare l'entropia di Shannon di una variabile aleatoria discreta di densit\`a \(P\). 
+	Con abuso di notazione scriveremo talvolta \(H(P)\) per indicare l'entropia di Shannon di una variabile aleatoria discreta di densit\`a \(P\). 
 \end{definition}
 \begin{definition}
 	Siano \(X\) ed \(Y\) due variabili aleatorie discrete. Chiamiamo \emph{mutua informazione di \(X\) ed \(Y\)} la quantità

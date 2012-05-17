@@ -19,20 +19,20 @@
 	\qed 
 \end{proof}
 
-\subsection{Additività per sostituzioni} Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice di \(G\). Chiamiamo grafo ottenuto sostituendo \(F\) a \(v\), e scriviamo \(G_{v\leftarrow F}\), il grafo ottenuto da \(G\) cancellando \(v\) e connettendo ogni vertice adiacente a \(v\) con ciascun vertice di una copia isomorfa di \(F\). Supponiamo inoltre che \(P\) sia una densità sui vertici di \(G\) e che \(Q\) sia una densità sui vertici di \(F\). Allora possiamo definire una densit\'a \(P_{v\leftarrow Q}\) in modo che la coppia \((G_{v\leftarrow F}, P_{v\leftarrow Q})\) sia un grafo probabilistico. Per fare questo poniamo
+\subsection{Additività per sostituzioni}
+Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice di \(G\). Chiamiamo grafo ottenuto sostituendo \(F\) a \(v\), e scriviamo \(G_{v\leftarrow F}\), il grafo ottenuto da \(G\) cancellando \(v\) e connettendo ogni vertice adiacente a \(v\) con ciascun vertice di una copia isomorfa di \(F\). Supponiamo inoltre che \(P\) sia una densità sui vertici di \(G\) e che \(Q\) sia una densità sui vertici di \(F\). Allora possiamo definire una densità \(P_{v\leftarrow Q}\) in modo che la coppia \((G_{v\leftarrow F}, P_{v\leftarrow Q})\) sia un grafo probabilistico. Per fare questo poniamo
 \[P_{v\leftarrow Q}(x)= 
 \begin{cases}
 	P(x) & \text{se}\ x\in V(G)-\{v\}\\
-	P(v)Q(x) & \text{se}\ x\in V(F) 
+	P(v)Q(x) & \text{se}\ x\in V(F)\text{.}
 \end{cases}
 \]
+Vale allora il seguente lemma sull'entropia di grafi della forma \(G_{v\leftarrow F}\) per certi grafi \(F\) e \(G\), di cui omettiamo la dimostrazione \cite{Korner1992}.
 \begin{lemma}
 	Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, e sia \(v\) un vertice di \(G\). Siano inoltre \(P\) una densità sui vertici di \(G\) e \(Q\) una densità sui vertici di \(F\). Allora abbiamo
 	\[H(G_{v\leftarrow F}, P_{v\leftarrow Q})=H(G,P)+P(v)H(F,Q).\]
 \end{lemma}
-\begin{proof}
-	TODO\qed 
-\end{proof}
+Il precedente lemma consente inoltre di ricondurre il calcolo dell'entropia di un grafo al calcolo delle entropie delle componenti connesse.
 \begin{corollary}
 	Sia \((G,P)\) un grafo probabilistico e siano \(G_{1}\dots G_{k}\) le sue componenti connesse. Poniamo \(P_i(x)=P(x)[P(V(G_i))]^{-1}\) per \(x\in V(G_i)\). Allora abbiamo
 	\[H(G,P)=\sum_{i=1}^k P(V(G_i))H(G_i,P_i).\]
@@ -40,12 +40,6 @@
 \begin{proof}
 	Consideriamo il grafo su \(k\) vertici \(\{v_{1}\dots v_{k}\}\) privo di archi, e sia \(Q\) la densità discreta definita da \(Q(v_{i}) = P(V(G_i))\). Allora otteniamo la tesi applicando \(k\) volte il lemma precedente, sostituendo ad ogni passo il vertice \(v_i\) con la componente connessa \(G_{i}\).\qed 
 \end{proof}
-
-\subsection{Decomposizione split}
-
-% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Entropia di grafi notevoli} 
-\subsection{Entropia di grafo vuoto}
 
 \subsection{Entropia di grafo completo} 
 \begin{proposition}
@@ -55,17 +49,33 @@
 \begin{proof}
 	Sfruttando la terza definizione di entropia di grafo sappiamo che
 	\[H(K_n,P)=\sum_{i=1}^n p_i \log{\frac{1}{q_i}}\]
-	per certi \(q_1\dots q_n\) positivi. Osserviamo inoltre che nel grafo completo gli insiemi indipendenti sono soltanto \(\emptyset\) e i singoletti dei vertici. Pertanto il politopo dei vertici è l'\(n-\)simplesso, ma poiché sappiamo che la funzione obiettivo è minima sul bordo deduciamo che
-	\[\sum_{i=1}^n q_i = 1.\]
-	Applichiamo ora la diseguaglianza sulle somme dei logaritmi (TODO: spiegare) e otteniamo che il minimo è realizzato per
-	\[q_i = p_i\quad \forall i.\]
-	\qed 
+	per certi \(q_1\dots q_n\) positivi. Osserviamo inoltre che nel grafo completo gli insiemi indipendenti sono soltanto \(\emptyset\) e i singoletti dei vertici. Pertanto il politopo dei vertici è l'\(n\)-simplesso, ma poiché sappiamo che la funzione obiettivo è minima sul bordo deduciamo che
+	\begin{equation} \label{eq:convexfunction}
+	  \sum_{i=1}^n q_i = 1.
+	\end{equation}
+  Dalla disuguaglianza di Jensen segue la ben nota ``Log sum inequality'', cioè la disuguaglianza
+  \[
+    \sum_{i=1}^n{\left(a_i\log{\frac{a_i}{b_i}}\right)} \ge \sum_{i=1}^n{a_i}\cdot\log{\frac{\sum_{i=1}^n{a_i}}{\sum_{i=1}^n{b_i}}}
+  \]
+  per due \(n\)-uple di numeri non negativi \(a_1,\dots,a_n\) e \(b_1,\dots,b_n\).
+  Ponendo allora \(p_i = a_i\) e \(b_i = q_i\;\) per \(1\le i\le n\) otteniamo
+  \[
+    \sum_{i=1}^n{\left(p_i\log{\frac{p_i}{q_i}}\right)} \le \log{\sum_{i=1}^n{q_i}} = 0\text{,}
+  \]
+  dove nell'ultimo passaggio abbiamo sfruttato l'equazione \eqref{eq:convexfunction}.
+  Ma allora deduciamo
+  \[
+    \sum_{i=1}^n{p_i\log{q_i}} - \sum_{i=1}{p_i\log{p_i}} \le 0\text{,}
+  \]
+  cioè
+  \[
+    \sum_{i=1}^n{\left(p_i\log{\frac{1}{q_i}}\right)} \ge \sum_{i=1}^n{\left(p_i\log{\frac{1}{p_i}}\right)}\text{.}
+  \]
+  Osserviamo infine che tale minimo viene realizzato ponendo \(p_i = q_i\;\) per \(1\le i\le n\), da cui la tesi.\qed
 \end{proof}
 \begin{remark}
 	Come anticipato nell'introduzione abbiamo riottenuto l'entropia di Shannon come caso particolare dell'entropia di grafo. 
 \end{remark}
-
-\subsection{Entropia di grafo bipartito completo}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Entropia e grafi perfetti} 
@@ -78,57 +88,94 @@ Il numero di cricca di un grafo \(G\) fornisce una stima dal basso del numero cr
 	Sia \(G\) un grafo. Diciamo che \(G\) è \emph{perfetto} se, per ogni sottografo \(H\), vale
 	\[\omega(H)=\chi(H).\]
 \end{definition}
-Nella precedente definizione, dovuta a Berge \cite{Berge1960}, abbiamo richiesto che l'uguaglianza valga per ogni sottografo al fine di non considerare perfette le unioni disgiunte di componenti per cui valga l'uguaglianza e componenti per cui non valga. I grafi perfetti hanno interesse combinatorico e algoritmico poich\'e per essi \`e possibile esibire algoritmi polinomiali per problemi NP-completi nel caso generale \cite{Golumbic2004}. La loro caratterizzazione \`e stata oggetto di pi\`u congetture, la pi\`u importante delle quali dimostrata nel 2002 \cite{Chudnovsky2006}. Esiste un sorprendente collegamento fra l'entropia di grafo e i grafi perfetti \cite{Csiszar1990}. 
+Nella precedente definizione, dovuta a Berge \cite{Berge1960}, abbiamo richiesto che l'uguaglianza valga per ogni sottografo al fine di non considerare perfette le unioni disgiunte di componenti per cui valga l'uguaglianza e componenti per cui non valga. I grafi perfetti hanno interesse combinatorico e algoritmico poiché per essi è possibile esibire algoritmi polinomiali per problemi NP-completi nel caso generale \cite{Golumbic2004}. La loro caratterizzazione è stata oggetto di più congetture, la più importante delle quali dimostrata nel 2002 \cite{Chudnovsky2006}. Esiste un sorprendente collegamento fra l'entropia di grafo e i grafi perfetti \cite{Csiszar1990}. 
 \begin{theorem}
 	[Csiszár, K\"orner, Lovász, Marton, Simonyi] \label{lovasztheorem} Sia \(G\) un grafo. \(G\) è perfetto se e soltanto se, per ogni distribuzione di probabilità \(P\) sui vertici, vale
 	\[H\left(G,P\right)+H\left(\overline{G},P\right)=H(P).\]
 \end{theorem}
-Come corollario del precedente teorema otteniamo che \(G\) è perfetto se e soltanto se \(\overline{G}\) è perfetto. Questo enunciato, un tempo noto come congettura debole dei grafi perfetti, \`e anche noto come Teorema di Lovász \cite{Lovasz1972}.
+Come corollario del precedente teorema otteniamo che \(G\) è perfetto se e soltanto se \(\overline{G}\) è perfetto. Questo enunciato, un tempo noto come congettura debole dei grafi perfetti, è noto anche come Teorema di Lovász \cite{Lovasz1972}.
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Grafi associati ad ordini parziali}
 
-Abbiamo finora sviluppato la teoria dell'entropia di grafo per una distribuzione di probabilità \(P\) qualunque sui vertici. Nel seguito sarà sufficiente considerare il caso in cui tale distribuzione sia uniforme. 
-\begin{lemma}
-	[Chvatál] \label{chvatallemma} TODO 
-\end{lemma}
+\begin{definition}
+  Chiamiamo \emph{ordine parziale} una relazione binaria \(\le\) che sia riflessiva, antisimmetrica e transitiva. Inoltre chiamiamo \emph{insieme parzialmente ordinato} la coppia di un insieme e un ordine parziale su di esso.
+\end{definition}
+
+Siano \(P\) insieme parzialmente ordinato e \(a\), \(b\) due suoi elementi. Diciamo che \(a\) e \(b\) sono \emph{confrontabili} se \(a\le b\) oppure \(b\le a\), \emph{inconfrontabili} altrimenti. Chiamiamo \emph{catena} un sottoinsieme di elementi a due a due confrontabili, e \emph{anticatena} un sottoinsieme di elementi a due a due inconfrontabili.
+
+Associamo a \(P\) un grafo di vertici gli elementi di \(P\) e un arco fra \(a\text{,}\,b\in P\) se e soltanto se \(a\) e \(b\) sono confrontabili, che denotiamo \(G(P)\). Nel seguito faremo uso anche del grafo complementare, che denoteremo invece \(\overline{G}(P)\).
+
+I grafi associati agli ordini parziali godono di interessanti proprietà. Il seguente teorema fornisce condizioni sufficienti perchè un tale grafo sia partizionabile in insiemi indipendenti \cite{Mirsky1971}.
+\begin{theorem}
+  [Mirsky] \label{mirskytheorem} Siano \(P\) un insieme parzialmente ordinato ed \(m\) un intero positivo. Se \(P\) non possiede alcuna catena di lunghezza \(m+1\) allora può essere scritto come unione disgiunta di \(m\) anticatene. 
+\end{theorem}
 \begin{proof}
-	TODO\qed 
+  Dimostriamo l'enunciato per induzione su \(m\). Se \(m=1\) non c'è niente da dimostrare: in tal caso infatti non esistono catene di lunghezza \(2\), quindi tutti gli elementi sono fra loro inconfrontabili, perciò \(P\) è una anticatena. 
+  
+  Sia allora \(m\ge 2\) e supponiamo la tesi vera per ogni intero positivo minore di \(m\). Sia \(P\) un insieme parzialmente ordinato privo di una catena di lunghezza \(m+1\), sia \(M\) l'anticatena di \(P\) degli elementi massimali. \(M\) è non vuota perché contiene almeno i massimi delle catene di lunghezza massima di \(P\). Inoltre \(P-M\) non contiene alcuna catena di cardinalità \(m\). Se infatti così non fosse allora esisterebbe una catena
+  \[
+    x_1 < x_2 < \dots < x_m,  \qquad\text{con}\quad x_k \in P-M\quad\text{per}\quad 1\le k \le m\text{,}
+  \]
+  di cardinalità \(m\) e quindi massimale, perciò deve essere \(x_k\in M\), contro l'ipotesi. Possiamo dunque applicare l'ipotesi induttiva a \(P-M\), che può quindi essere scritto come unione disgiunta di \(m-1\) anticatene. Ma allora abbiamo scritto \(P\) come unione di \(m\) anticatene: le precedenti \(m-1\) ed \(M\).\qed
 \end{proof}
+
+In termini di teoria dei grafi il precedente teorema afferma che, per i grafi associati agli ordini parziali, il numero cromatico e il numero di cricca coincidono. I sottografi indotti dai sottoinsiemi dell'insieme di sostegno dell'ordine parziale sono ancora grafi associati ad ordini parziali. Ma allora deduciamo che i grafi associati agli ordini parziali sono perfetti.
+
+È infine possibile dare una caratterizzazione più precisa di \(\text{STAB}(G)\) quando \(G\) è un grafo perfetto. Vale infatti il seguente lemma, di cui omettiamo la dimostrazione \cite{Chvatal1975}.
+
+\begin{lemma}
+	[Chvatál] \label{chvatallemma} Sia \(G\) un grafo perfetto di insieme di vertici \(V\). Allora
+	\[
+	  \text{STAB}(G) = \left\{x\in \mathbb{R}_{+}^V\;:\;\sum_{v\in K}{x_v}\le 1\quad \forall K\;\text{cricca di}\;G\right\}\text{.}
+	\]
+\end{lemma}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Entropia approssimata}
 
-Sia \(G\) un grafo. Possiamo trovare una partizione dei suoi vertici in insiemi indipendenti con l'algoritmo goloso che ad ogni passo trova un insieme indipendente e massimale e procede ricorsivamente sul complementare. 
-\begin{definition}
-	Sia \(G\) un grafo perfetto e sia \(\left\{S_1,\dots,S_k\right\}\) una partizione dei vertici ottenuta con il precedente algoritmo goloso. Chiameremo \emph{punto goloso} il punto \(x\) definito da
-	\[x=\sum_{i=1}^k\frac{|S_i|}{n}\chi^{S_i}.\]
-\end{definition}
-Dalla costruzione è evidente che tale punto appartiene a \(\text{STAB}(G)\). Il seguente teorema TODO 
+Abbiamo finora sviluppato la teoria dell'entropia di grafo per una distribuzione di probabilità qualunque sui vertici. Nel seguito sarà sufficiente considerare il caso in cui tale distribuzione sia uniforme. Sia dunque \(G\) un grafo di insieme dei vertici \(V\). Allora definiamo
+\[
+  H(x) = -\frac{1}{n}\sum_{v\in V}{\log{x_v}}
+\]
+per \(x\in\mathbb{R}^V\), e denotiamo con \(H(G)\) l'entropia rispetto alla distribuzione uniforme, cioè
+\[
+  H(G) = \min_{x\in \text{STAB}(G)}{-\frac{1}{n}\sum_{v\in V}{\log{x_v}}} = \min_{x\in \text{STAB}(G)}{H(x)}\text{.}
+\]
+
+Questa forma semplificata permette di darne più facilmente stime. Consideriamo infatti l'algoritmo goloso che ad ogni passo sceglie un insieme indipendente e massimale e procede ricorsivamente sul complementare, e sia \(\left\{S_1,\dots,S_k\right\}\) una partizione dei vertici in insiemi indipendenti ottenuta con tale algoritmo. Allora chiamiamo \emph{punto goloso} il punto \(\tilde{x}\) definito da
+\[
+  \tilde{x}=\sum_{i=1}^k\frac{|S_i|}{n}\chi^{S_i}\text{.}
+\]
+Dalla costruzione è evidente che tale punto appartenga a \(\text{STAB}(G)\), e dunque valga \(H(G)\le H(\tilde{x})\). Nel prossimo teorema viene invece dimostrata una stima superiore \cite{Cardinal2009}.
 \begin{theorem}
-	[Cardinal, Fiorini, Joret, Jungers, Munro] \label{greedypoint} Sia \(G\) un grafo perfetto su \(n\) vertici e sia \(x\) un suo punto goloso. Allora, comunque fissato \(\varepsilon>0\), vale
-	\[H(x)\le(1+\varepsilon)H(G)+(1+\varepsilon)\log\left(1+\frac{1}{\varepsilon}\right).\]
+  [Cardinal, Fiorini, Joret, Jungers, Munro] \label{greedypoint} Sia \(G\) un grafo perfetto su \(n\) vertici e sia \(\tilde{x}\) un suo punto goloso. Allora, comunque fissato \(\varepsilon>0\), vale
+\[H(\tilde{x})\le(1+\varepsilon)H(G)+(1+\varepsilon)\log\left(1+\frac{1}{\varepsilon}\right).\]
 \end{theorem}
 \begin{proof}
-	Sia \(S_1,\dots,S_k\) la sequenza di insiemi indipendenti prodotta dall'algoritmo goloso. In altri termini \(S_1\) è un insieme indipendente e massimale in \(G\), mentre \(S_2\) è indipendente e massimale in \(G-S_1\) e così via. Sia \(\delta>0\) fissato. Per ogni vertice \(v\in V\) denotiamo con \(m(v)\) l'unico indice in \(\left\{1,\dots,k\right\}\) tale che \(v\in S_{m(v)}\). Definiamo allora un punto \(z\) di componenti date da
-	\[z_v=\frac{\delta}{n}\left(\frac{1}{x_v}\right)^{1-\delta}=\frac{\delta}{n}\left(\frac{n}{|S_{m(v)}|}\right)^{1-\delta}=\frac{\delta}{n^{\delta}}\left(\frac{1}{|S_{m(v)}|}\right)^{1-\delta}\]
-	e dimostriamo che \(z\in\text{STAB}(G)\). A tale scopo mostreremo che, per ogni insieme indipendente \(S\), vale
-	\[\sum_{v\in S}{z_v}\le 1.\]
-	
-	TODO
-	
-	Abbiamo ora tutti gli strumenti necessari per concludere. Poiché \(G\) è perfetto possiamo applicare il Teorema \ref{lovasztheorem}; inoltre, essendo \(z\in\text{STAB}(G)\), possiamo scrivere la disuguaglianza 
-	\begin{align}
-		H(G)&=\log(n)-H(\overline{G}) \nonumber \\
-		&\ge \log(n) + \frac{1}{n}\sum_{v\in V}{\log{z_v}}.\nonumber 
-	\end{align}
-	Con semplici passaggi algebrici otteniamo 
-	\begin{align}
-		\log(n) + \frac{1}{n}\sum_{v\in V}{\log{z_v}} &= \log(n) + \frac{1}{n}\sum_{v\in V}{\log\left(\frac{\delta}{n}\left(\frac{1}{x_v}\right)^{1-\delta}\right)} \nonumber \\
-		&= - \frac{1-\delta}{n}\sum_{v\in V}{\log(x_v)}-\log{\frac{1}{\delta}} \nonumber \\
-		&= (1-\delta)H(x)-\log{\frac{1}{\delta}} \nonumber, 
-	\end{align}
-	da cui deduciamo
-	\[H(x)\le\frac{1}{1-\delta}H(G)+\frac{1}{1-\delta}\log{\frac{1}{\delta}}.\]
-	Basta ora porre \(\delta=\frac{\varepsilon}{\varepsilon+1}\) e ricaviamo la tesi. 
+  Sia \(S_1,\dots,S_k\) la sequenza di insiemi indipendenti prodotta dall'algoritmo goloso. In altri termini \(S_1\) è un insieme indipendente e massimale in \(G\), mentre \(S_2\) è indipendente e massimale in \(G-S_1\) e così via. Sia \(\delta>0\) fissato. Per ogni vertice \(v\in V\) denotiamo con \(m(v)\) l'unico indice in \(\left\{1,\dots,k\right\}\) tale che \(v\in S_{m(v)}\). Definiamo allora un punto \(z\) di componenti date da
+  \[z_v=\frac{\delta}{n}\left(\frac{1}{\tilde{x}_v}\right)^{1-\delta}=\frac{\delta}{n}\left(\frac{n}{|S_{m(v)}|}\right)^{1-\delta}=\frac{\delta}{n^{\delta}}\left(\frac{1}{|S_{m(v)}|}\right)^{1-\delta}\]
+  e dimostriamo che \(z\in\text{STAB}(\overline{G})\). A tale scopo mostreremo che, per ogni insieme indipendente \(S\), vale
+  \[\sum_{v\in S}{z_v}\le 1\text{;}\]
+  infatti segue immediatamente dal Lemma \ref{chvatallemma} che
+  \[
+    \text{STAB}(\overline{G}) = \left\{x\in \mathbb{R}_{+}^V\;:\;\sum_{v\in K}{x_v}\le 1\quad \forall K\;\text{insieme indipendente e massimale di}\;G\right\}\text{.}
+  \]
+  
+  TODO
+  
+  Possiamo ora concludere. Poiché \(G\) è perfetto possiamo applicare il Teorema \ref{lovasztheorem}; inoltre, essendo \(z\in\text{STAB}(G)\), possiamo scrivere la disuguaglianza 
+  \begin{align}
+    H(G)&=\log(n)-H(\overline{G}) \nonumber \\
+    &\ge \log(n) + \frac{1}{n}\sum_{v\in V}{\log{z_v}}.\nonumber 
+  \end{align}
+  Con semplici passaggi algebrici otteniamo 
+  \begin{align}
+    \log(n) + \frac{1}{n}\sum_{v\in V}{\log{z_v}} &= \log(n) + \frac{1}{n}\sum_{v\in V}{\log\left(\frac{\delta}{n}\left(\frac{1}{x_v}\right)^{1-\delta}\right)} \nonumber \\
+    &= - \frac{1-\delta}{n}\sum_{v\in V}{\log(x_v)}-\log{\frac{1}{\delta}} \nonumber \\
+    &= (1-\delta)H(x)-\log{\frac{1}{\delta}} \nonumber, 
+  \end{align}
+  da cui deduciamo
+  \[H(x)\le\frac{1}{1-\delta}H(G)+\frac{1}{1-\delta}\log{\frac{1}{\delta}}.\]
+  Basta ora porre \(\delta=\frac{\varepsilon}{\varepsilon+1}\) e ricaviamo la tesi.\qed
 \end{proof}
