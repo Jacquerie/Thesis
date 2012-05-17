@@ -191,5 +191,31 @@ Dalla costruzione è evidente che tale punto appartenga a \(\text{STAB}(G)\), e 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Formulazione per intervalli}
 
-Sia \(P=(V, \le_{P})\) un insieme parzialmente ordinato. Diciamo che \(v\) \emph{ricopre} \(w\) se \(v\le_{P} w\), \(v\neq w\) e \(v\le_{P}z\le_{P}w\) implica \(z=v\) oppure \(z=w\). Chiamiamo \emph{diagramma di Hasse} il grafo diretto di insieme dei vertici \(V\) e insieme degli archi \(\{(v,w):v \text{è ricoperto da }w \text{in} P\}\).
+Sia \(P=(V, \le_{P})\) un insieme parzialmente ordinato e sia \(G=G(P)\) il grafo ad esso associato. Nel seguito scriveremo \(H(P)\) e \(H(\overline{P})\)   invece di \(H(G(P))\) e \(H(\overline{G}(P))\).
 
+Siano \(v,w\in V\). Diciamo che \(v\) \emph{ricopre} \(w\) se \(v\le_{P} w\), \(v\neq w\) e \(v\le_{P}z\le_{P}w\) implica \(z=v\) oppure \(z=w\). Chiamiamo \emph{diagramma di Hasse} il grafo diretto di insieme dei nodi \(V\) e insieme delle frecce \(\{(v,w):v\;\text{è ricoperto da }w\;\text{in}\;P\}\).
+
+Costruiamo ora un grafo diretto \(D=D(P)\) di insieme dei nodi
+\[
+  N(D) = \{s,t\}\cup\{v^-:v\in V\}\cup\{v^+:v\in V\}
+\]
+e insieme delle frecce
+\[
+  A(D) = TODO
+\]
+
+\begin{lemma}
+  Sia \(P=(V,\le_{P})\) un insieme parzialmente ordinato e siano \(G=G(P)\) e \(D=D(P)\) rispettivamente il grafo e il grafo diretto ad esso associato. Allora \(x\in\mathbb{R}^V\) appartiene a \(\text{STAB}(G)\) se e solo se esiste un vettore \(y\in \mathbb{R}^{N(D)}\) tale che \(y_s=0\), \(y_t=1\), \(y\) non diminuisce lungo gli archi di \(D\) e \(y_{v^+}-y{v^-}=x_v\) per ogni \(v\in V\).
+\end{lemma}
+\begin{proof}
+  TODO\qed
+\end{proof}
+
+In conclusione abbiamo ottenuto che \(H(P)\) è la soluzione del seguente problema di ottimizzazione convessa:
+\begin{align}
+  \min\;\,-\frac{1}{n}&\sum_{v\in V}{\log{x_v}} \nonumber \\
+  \text{tale che}\quad x_v\quad &=\quad y_{v^+} - y_{v^-}\qquad\forall v\in V\nonumber \\
+  y_p\quad &\le\quad y_q \qquad\qquad\quad\;\forall (p,q)\in A(D)\nonumber \\
+  y_s\quad &=\quad 0 \nonumber \\
+  y_t\quad &=\quad 1\text{.} \nonumber
+\end{align}
