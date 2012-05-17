@@ -102,7 +102,7 @@ Come corollario del precedente teorema otteniamo che \(G\) è perfetto se e solt
   Chiamiamo \emph{ordine parziale} una relazione binaria \(\le\) che sia riflessiva, antisimmetrica e transitiva. Inoltre chiamiamo \emph{insieme parzialmente ordinato} la coppia di un insieme e un ordine parziale su di esso.
 \end{definition}
 
-Siano \(P\) insieme parzialmente ordinato e \(a\), \(b\) due suoi elementi. Diciamo che \(a\) e \(b\) sono \emph{confrontabili} se \(a\le b\) oppure \(b\le a\), \emph{inconfrontabili} altrimenti. Chiamiamo \emph{catena} un sottoinsieme di elementi a due a due confrontabili, e \emph{anticatena} un sottoinsieme di elementi a due a due inconfrontabili.
+Siano \(P\) insieme parzialmente ordinato e \(a\), \(b\) due suoi elementi. Diciamo che \(a\) e \(b\) sono \emph{confrontabili} se \(a\le b\) oppure \(b\le a\), \emph{inconfrontabili} altrimenti. Chiamiamo \emph{catena} un sottoinsieme di elementi a due a due confrontabili, e \emph{anticatena} un sottoinsieme di elementi a due a due inconfrontabili. Infine diciamo che \(b\) è \emph{massimale} se vale \(a\le b\) per ogni \(b\) confrontabile con \(a\), e definiamo in modo analogo gli elementi \emph{minimali}. È immediato osservare che gli elementi massimali e gli elementi minimali formano anticatene.
 
 Associamo a \(P\) un grafo di vertici gli elementi di \(P\) e un arco fra \(a\text{,}\,b\in P\) se e soltanto se \(a\) e \(b\) sono confrontabili, che denotiamo \(G(P)\). Nel seguito faremo uso anche del grafo complementare, che denoteremo invece \(\overline{G}(P)\).
 
@@ -187,3 +187,9 @@ Dalla costruzione è evidente che tale punto appartenga a \(\text{STAB}(G)\), e 
   \[H(\tilde{x})\le\frac{1}{1-\delta}H(G)+\frac{1}{1-\delta}\log{\frac{1}{\delta}}.\]
   Basta ora porre \(\delta=\frac{\varepsilon}{\varepsilon+1}\) e ricaviamo la tesi.\qed
 \end{proof}
+
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+\section{Formulazione per intervalli}
+
+Sia \(P=(V, \le_{P})\) un insieme parzialmente ordinato. Diciamo che \(v\) \emph{ricopre} \(w\) se \(v\le_{P} w\), \(v\neq w\) e \(v\le_{P}z\le_{P}w\) implica \(z=v\) oppure \(z=w\). Chiamiamo \emph{diagramma di Hasse} il grafo diretto di insieme dei vertici \(V\) e insieme degli archi \(\{(v,w):v \text{è ricoperto da }w \text{in} P\}\).
+
