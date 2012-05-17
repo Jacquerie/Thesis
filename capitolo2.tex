@@ -96,7 +96,7 @@ Nella precedente definizione, dovuta a Berge \cite{Berge1960}, abbiamo richiesto
 Come corollario del precedente teorema otteniamo che \(G\) è perfetto se e soltanto se \(\overline{G}\) è perfetto. Questo enunciato, un tempo noto come congettura debole dei grafi perfetti, è noto anche come Teorema di Lovász \cite{Lovasz1972}.
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Grafi associati ad ordini parziali}
+\section{Grafi associati a ordini parziali}
 
 \begin{definition}
   Chiamiamo \emph{ordine parziale} una relazione binaria \(\le\) che sia riflessiva, antisimmetrica e transitiva. Inoltre chiamiamo \emph{insieme parzialmente ordinato} la coppia di un insieme e un ordine parziale su di esso.
@@ -106,7 +106,7 @@ Siano \(P\) insieme parzialmente ordinato e \(a\), \(b\) due suoi elementi. Dici
 
 Associamo a \(P\) un grafo di vertici gli elementi di \(P\) e un arco fra \(a\text{,}\,b\in P\) se e soltanto se \(a\) e \(b\) sono confrontabili, che denotiamo \(G(P)\). Nel seguito faremo uso anche del grafo complementare, che denoteremo invece \(\overline{G}(P)\).
 
-I grafi associati agli ordini parziali godono di interessanti proprietà. Il seguente teorema fornisce condizioni sufficienti perchè un tale grafo sia partizionabile in insiemi indipendenti \cite{Mirsky1971}.
+I grafi associati agli ordini parziali godono di interessanti proprietà. Ad esempio il seguente teorema fornisce condizioni sufficienti perchè un tale grafo sia partizionabile in insiemi indipendenti \cite{Mirsky1971}.
 \begin{theorem}
   [Mirsky] \label{mirskytheorem} Siano \(P\) un insieme parzialmente ordinato ed \(m\) un intero positivo. Se \(P\) non possiede alcuna catena di lunghezza \(m+1\) allora può essere scritto come unione disgiunta di \(m\) anticatene. 
 \end{theorem}
@@ -161,8 +161,16 @@ Dalla costruzione è evidente che tale punto appartenga a \(\text{STAB}(G)\), e 
   \[
     \text{STAB}(\overline{G}) = \left\{x\in \mathbb{R}_{+}^V\;:\;\sum_{v\in K}{x_v}\le 1\quad \forall K\;\text{insieme indipendente e massimale di}\;G\right\}\text{.}
   \]
-  
-  TODO
+  L'insieme indipendente \(S\) è ricoperto da \(l\) insiemi fra gli \(S_1,\dots,S_k\). Senza perdita di generalità possiamo assumere che questi siano i primi \(l\). Scriviamo allora \(S=T_1\cup T_2\cup\dots\cup T_l\), dove \(T_i\) è l'intersezione fra \(S_i\) ed \(S\). Per ogni \(v\in T_1\) abbiamo \(S_{m(v)}=S_1\), dunque \(|S_{m(v)}|>|S|\), altrimenti l'algoritmo goloso avrebbe selezionato \(S\) al posto di \(S_{m(v)}\). Analogamente otteniamo che per \(1\le i\le l\) e \(v\in T_i\) abbiamo \(|S_{m(v)}|\ge |S|-\sum_{j=1}^{i-1}{|T_j|}\). In particolare, poiché i \(T_i\) sono non vuoti, possiamo numerare i punti di \(S\) in modo che
+  \[
+    |S_{m(v_i)}| \ge |S| - i + 1\qquad\forall i\in\left\{1,2,\dots,s\right\}\text{.}
+  \]
+  Ma allora abbiamo
+  \begin{align}
+    \sum_{v\in S}{z_v} &\le \frac{\delta}{n^{\delta}}\left(\left(\frac{1}{|S|}\right)^{1-\delta}+\left(\frac{1}{|S|-1}\right)^{1-\delta}+\dots+1\right) \nonumber \\
+    &\le \frac{\delta}{n^{\delta}}\left(\int_{0}^{|S|}{\frac{1}{x^{1-\delta}}\,\mathrm{d}x}\right) \nonumber \\
+    &\le 1\text{.} \nonumber
+  \end{align}
   
   Possiamo ora concludere. Poiché \(G\) è perfetto possiamo applicare il Teorema \ref{lovasztheorem}; inoltre, essendo \(z\in\text{STAB}(G)\), possiamo scrivere la disuguaglianza 
   \begin{align}
@@ -171,11 +179,11 @@ Dalla costruzione è evidente che tale punto appartenga a \(\text{STAB}(G)\), e 
   \end{align}
   Con semplici passaggi algebrici otteniamo 
   \begin{align}
-    \log(n) + \frac{1}{n}\sum_{v\in V}{\log{z_v}} &= \log(n) + \frac{1}{n}\sum_{v\in V}{\log\left(\frac{\delta}{n}\left(\frac{1}{x_v}\right)^{1-\delta}\right)} \nonumber \\
-    &= - \frac{1-\delta}{n}\sum_{v\in V}{\log(x_v)}-\log{\frac{1}{\delta}} \nonumber \\
-    &= (1-\delta)H(x)-\log{\frac{1}{\delta}} \nonumber, 
+    \log(n) + \frac{1}{n}\sum_{v\in V}{\log{z_v}} &= \log(n) + \frac{1}{n}\sum_{v\in V}{\log\left(\frac{\delta}{n}\left(\frac{1}{\tilde{x}_v}\right)^{1-\delta}\right)} \nonumber \\
+    &= - \frac{1-\delta}{n}\sum_{v\in V}{\log(\tilde{x}_v)}-\log{\frac{1}{\delta}} \nonumber \\
+    &= (1-\delta)H(\tilde{x})-\log{\frac{1}{\delta}} \nonumber, 
   \end{align}
   da cui deduciamo
-  \[H(x)\le\frac{1}{1-\delta}H(G)+\frac{1}{1-\delta}\log{\frac{1}{\delta}}.\]
+  \[H(\tilde{x})\le\frac{1}{1-\delta}H(G)+\frac{1}{1-\delta}\log{\frac{1}{\delta}}.\]
   Basta ora porre \(\delta=\frac{\varepsilon}{\varepsilon+1}\) e ricaviamo la tesi.\qed
 \end{proof}
