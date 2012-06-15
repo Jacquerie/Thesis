@@ -14,7 +14,7 @@ e al sottoinsieme \(U\subset V^{t}\) la probabilit\`a
 \begin{equation}
 	\mathbf{P}^t(U)=\sum_{\mathbf{v}\in U} {\mathbf{P}^t(\mathbf{v})}. \nonumber 
 \end{equation}
-Sia \(0<\varepsilon<1\) fissato, e sia \(U\subset V^{t}\) tale che \(\mathbf{P}^t(U)>1-\varepsilon\). Una \emph{codifica propria} \`e una mappa dalle stringhe di \(V^t\) a un insieme di simboli, tale che stringhe distinguibili di \(U\) vengono mandate in simboli distinti.\footnote{Trascuriamo parte delle stringhe, come tipico in teoria dei codici, perché ad esse non ci interessa assegnare un significato e dunque un simbolo.} È intuitivamente preferibile una codifica che faccia uso del minor numero possibile di simboli. Cerchiamo dunque di minimizzare la quantità
+Sia \(0<\varepsilon<1\) fissato, e sia \(U\subset V^{t}\) tale che \(\mathbf{P}^t(U)>1-\varepsilon\). Una \emph{codifica propria} \`e una mappa dalle stringhe di \(V^t\) a un insieme di simboli, tale che stringhe distinguibili di \(U\), cio\`e distinguibili in almeno un elemento, vengono mandate in simboli distinti.\footnote{Trascuriamo parte delle stringhe, come tipico in teoria dei codici, perché ad esse non ci interessa assegnare un significato e dunque un simbolo.} È intuitivamente preferibile una codifica che faccia uso del minor numero possibile di simboli. Cerchiamo dunque di minimizzare la quantità
 \begin{equation}
 	\frac{\log{M}}{t}, \nonumber 
 \end{equation}
@@ -29,7 +29,7 @@ misurerà quindi la complessità del grafo. La definizione \eqref{eq:entropyzero
 \end{definition}
 In altri termini fra due vertici \(\mathbf{v}\) e \(\mathbf{w}\) di \(G^t\) esiste un arco se e soltanto se le corrispondenti sequenze di lunghezza \(t\) sono distinguibili in almeno un elemento. 
 \begin{example}
-	Sia \(L\) il grafo su tre vertici con due archi, rappresentato a sinistra nella figura \ref{conormalexample}. Allora \(L^2\) è rappresentato a destra. 
+	Sia \(L\) il grafo su tre vertici con due archi, rappresentato a sinistra nella Figura \ref{conormalexample}. Allora \(L^2\) è rappresentato a destra. 
 	\begin{figure}
 		\centering 
 		\begin{tikzpicture}
@@ -124,7 +124,7 @@ Affinchè la precedente risulti una buona definizione occorre dimostrare che tal
 		0\\1\\1 
 	\end{array}
 	\right) \]
-	ed il loro involucro convesso è rappresentato nella figura \ref{stabexample}. 
+	e il loro involucro convesso è rappresentato nella figura \ref{stabexample}. 
 	\begin{figure}
 		\centering 
 		\begin{tikzpicture}
@@ -138,7 +138,7 @@ Affinchè la precedente risulti una buona definizione occorre dimostrare che tal
 
 Non abbiamo bisogno di altro per enunciare la terza definizione di entropia di grafo. 
 \begin{definition}
-	Sia \((G,P)\) un grafo probabilistico. Chiamiamo \emph{entropia di grafo} minimo: 
+	Sia \((G,P)\) un grafo probabilistico. Chiamiamo \emph{entropia di grafo} il seguente minimo: 
 	\begin{equation}
 		\label{eq:entropythree} H(G,P)=\min_{\substack{\mathbf{a}\in \text{STAB}(G) \\
 		\mathbf{a} > 0}} \sum_{i=1}^n p_i \log{\frac{1}{a_i}}. 
@@ -153,7 +153,7 @@ Non abbiamo bisogno di altro per enunciare la terza definizione di entropia di g
 
 \subsection{Numero Cromatico e Mutua Informazione}
 
-Sia \(G\) un grafo. Chiamiamo \emph{nucleo} un insieme indipendente e massimale per l'inclusione. Avremo bisogno di due lemmi di teoria dei grafi e di una seconda nozione di potenza di grafo. 
+Sia \(G\) un grafo. Chiamiamo \emph{nucleo} un sottoinsieme dei vertici indipendente e massimale per l'inclusione. Avremo bisogno di due lemmi di teoria dei grafi e di una seconda nozione di potenza di grafo. 
 \begin{lemma}
 	\label{minkernellemma} Il minimo numero di nuclei necessari a ricoprire \(V\) coincide con il numero cromatico \(\chi(G)\). 
 \end{lemma}
@@ -166,7 +166,7 @@ Sia \(G\) un grafo. Chiamiamo \emph{nucleo} un insieme indipendente e massimale 
 	Allora \(\sim\) è una relazione d'equivalenza su \(V\) se e soltanto se \(G\) è unione di grafi completi a due a due disgiunti. 
 \end{lemma}
 \begin{proof}
-	Senza perdita di generalità possiamo supporre che \(G\) sia connesso: basta infatti dimostrare il risultato per ogni componente connessa. Supponiamo che \(G\) sia completo. Otteniamo immediatamente che la relazione \(\sim\) sia d'equivalenza: simmetria e riflessività seguono dalla definizione di \(\sim\), la transitività da \(\text{diam}(G)=1\). Supponiamo che \(\sim\) sia d'equivalenza e siano \(v,w\) vertici di \(G\). Poiché \(G\) è connesso esiste un cammino da \(v\) a \(w\), quindi applicando induttivamente la transitività otteniamo che \((v,w)\in E\).\qed 
+	Senza perdita di generalità possiamo supporre che \(G\) sia connesso: basta infatti dimostrare il risultato per ogni componente connessa. Supponiamo che \(G\) sia completo. \`E allora ovvio che \(\sim\) sia d'equivalenza. Supponiamo invece che \(\sim\) sia d'equivalenza e siano \(v,w\) vertici di \(G\). Poiché \(G\) è connesso esiste un cammino da \(v\) a \(w\), quindi applicando induttivamente la transitività otteniamo che \((v,w)\in E\).\qed 
 \end{proof}
 \begin{definition}
 	Sia \(t\) un intero positivo e \(G\) un grafo. Chiamiamo \emph{\(t-\)esima potenza normale} di \(G\) il grafo \(G_t=(V^t, E_t)\), dove \(V^t\) è il prodotto cartesiano di \(t\) copie di \(V\), mentre
@@ -338,7 +338,7 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 	\begin{equation}
 		\label{eq:rtypprob} R^{*}(\mathbf{A})\ge 2^{-tH(R)-K_{4}\sqrt{t}}. 
 	\end{equation}
-	Osserviamo quindi che possiamo stimare \(R^{*}(\mathcal{N}_{\mathbf{v}})\) contando il numero di sequenze \(R-\)tipiche in esso. Queste saranno almeno tante quante le sequenze \(Q-\)tipiche di prima componente \(v\), che abbiamo stimato con \eqref{eq:qtypnumber}. Abbiamo stimato la probabilità di ciascuna in \eqref{eq:rtypprob}, per cui possiamo concludere che \(R^{*}(\mathcal{N}_{\mathbf{v}})\) sia maggiore del loro prodotto.
+	Possiamo allora stimare \(R^{*}(\mathcal{N}_{\mathbf{v}})\) contando il numero di sequenze \(R-\)tipiche in esso. Queste saranno almeno tante quante le sequenze \(Q-\)tipiche di prima componente \(v\), che abbiamo stimato con \eqref{eq:qtypnumber}. Abbiamo stimato la probabilità di ciascuna in \eqref{eq:rtypprob}, per cui possiamo concludere che \(R^{*}(\mathcal{N}_{\mathbf{v}})\) sia maggiore del loro prodotto.
 	
 	Per quanto appena visto otteniamo 
 	\begin{equation}
@@ -346,7 +346,7 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 	\end{equation}
 	Mettendo insieme le equazioni \eqref{eq:margdist} e \eqref{eq:condentropy} osserviamo che \(H(Q\mid\sim) - H(R)\) si semplifica in \(H(G,P)\). Possiamo quindi riscrivere
 	\[\max_{\mathbf{v}\in T^t(P)} R_{M}^{*}(C_{\mathbf{v}})\le \left(1- \exp_{2}{\left[-tH(G,P) - K_{5}\sqrt{t}\right]}\right)^{M}\]
-	e inoltre applicare la diseguaglianza di Bernoulli per ottenere
+	e inoltre, con facili calcoli, ottenere
 	\[\max_{\mathbf{v}\in T^t(P)} R_{M}^{*}(C_{\mathbf{v}})\le \exp_{2}\left(-M\cdot 2^{-tH(G,P) - K_{5}\sqrt{t}}\right).\]
 	
 	Poniamo \(M=\left\lfloor 2^{tH(G,P)+\delta}\right\rfloor\). È immediato allora che il primo termine del membro di destra di \eqref{eq:objective} sia infinitesimo per \(t\to \infty\). Quindi per ogni \(\varepsilon\) e \(\delta\) esistono \(M\) nuclei che ricoprono un sottografo di probabilità almeno \(1-\varepsilon\). Ma per il Lemma \ref{minkernellemma} il numero cromatico di un grafo è uguale al minimo numero di nuclei che lo ricoprono, quindi per ogni \(\delta>0\)
@@ -394,9 +394,9 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 	Sostituendo e ricordando le definizioni di \(Q'(J)\) e \(R'(J\mid i)\) abbiamo la tesi: 
 	\begin{align}
 		\min_{\substack{X\in Y\in S(G) \\
-		X\sim P}} I(X;Y)&\le -\sum_{i=1}^n p_i\sum_{i\in J\in S(G)} R'(J\mid i)\log{\frac{Q^*(J)}{R'(J\mid i)}}\le \nonumber \\
-		&\le -\sum_{i=1}^n p_i\sum_{i\in J\in S(G)} R'(J\mid i)\log{\frac{Q'(J)}{R'(J\mid i)}}= \nonumber \\
-		&= -\sum_{i=1}^n p_i\log{a_i} \nonumber 
+		X\sim P}} I(X;Y)&\le -\sum_{i=1}^n p_i\sum_{i\in J\in S(G)} R'(J\mid i)\log{\frac{Q^*(J)}{R'(J\mid i)}} \nonumber \\
+		&\le -\sum_{i=1}^n p_i\sum_{i\in J\in S(G)} R'(J\mid i)\log{\frac{Q'(J)}{R'(J\mid i)}} \nonumber \\
+		&= -\sum_{i=1}^n p_i\log{a_i}\text{.} \nonumber 
 	\end{align}
 	\qed 
 \end{proof}
