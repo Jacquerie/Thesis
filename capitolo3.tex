@@ -127,7 +127,7 @@ Concludiamo questa sezione con una versione più precisa della stima superiore d
 \begin{proof}
 	Per fondere due catene useremo l'ovvio algoritmo lineare che a ogni passo rimuove e copia nell'output l'elemento minore fra i minimi delle catene. Nel caso peggiore tale algoritmo richiede tanti confronti quanti sono gli elementi della catena di lunghezza maggiore. La sequenza di fusioni delle catene forma un albero, detto di Huffman. È noto che l'altezza media di tale albero è maggiorata da \(\tilde{h}+1\) \cite{Cover2006}. Denotata con \(t_i\) l'altezza della catena \(C_i\), le precedenti osservazioni permettono di stimare il numero di confronti con
 	\[\sum_{i=1}^{k}{t_i|C_i|}=n\sum_{i=1}^{k}{t_i\frac{|C_i|}{n}}\le n(\tilde{h}+1),\]
-	cioé la tesi.\qed 
+	cioè la tesi.\qed 
 \end{proof}
 \begin{theorem}
 	\label{naivemergetheorem} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora, per ogni \(\varepsilon>0\), l'Algoritmo \ref{naivemerge} risolve il problema dell'ordinamento parziale impiegando al più \((1+\varepsilon)\log{e(P)}+(1+\varepsilon)\left(\log{e}+\log{\left(1+\frac{1}{\varepsilon}\right)}+1\right)\cdot n\) confronti. 
