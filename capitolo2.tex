@@ -5,7 +5,7 @@
 	Siano \(F\) e \(G\) grafi tali che \(V(G)=V(F)\) e \(E(F)\subset E(G)\). Allora per ogni scelta di \(P\) densità discreta sui vertici si ha \(H(F,P)\le H(G,P)\). 
 \end{lemma}
 \begin{proof}
-	Osserviamo che se \(E(F)\subset E(G)\) allora \(\text{VP}(G)\subset \text{VP}(F)\). Sfruttando la terza definizione di entropia di grafo abbiamo immediatamente la tesi, infatti stiamo prendendo il minimo della stessa funzione obiettivo su un insieme più grande.\qed 
+	Osserviamo che se \(E(F)\subset E(G)\) allora \(\text{STAB}(G)\subset \text{STAB}(F)\). Sfruttando la terza definizione di entropia di grafo abbiamo immediatamente la tesi, infatti stiamo prendendo il minimo della stessa funzione obiettivo su un insieme più grande.\qed 
 \end{proof}
 
 \subsection{Subadditività} 
@@ -14,7 +14,7 @@
 	\[H(F\cup G,P)\le H(F,P)+H(G,P).\]
 \end{lemma}
 \begin{proof}
-	Siano \(\mathbf{a}\in \text{VP}(F)\) e \(\mathbf{b}\in \text{VP}(G)\) i vettori che realizzino il minimo delle rispettive entropie. Osserviamo che l'intersezione di un insieme indipendente di \(F\) e di un insieme indipendente di \(G\) è un insieme indipendente in \(F\cup G\). In altri termini il prodotto scalare dei loro vettori caratteristici è il vettore caratteristico di un insieme indipendente di \(F\cup G\). Pertanto, sfruttando la convessità del politopo dei vertici, il prodotto scalare \(\mathbf{a}\cdot \mathbf{b}\) appartiene a \(\text{VP}(F\cup G)\). Ma allora possiamo scrivere
+	Siano \(\mathbf{a}\in \text{STAB}(F)\) e \(\mathbf{b}\in \text{STAB}(G)\) i vettori che realizzino il minimo delle rispettive entropie. Osserviamo che l'intersezione di un insieme indipendente di \(F\) e di un insieme indipendente di \(G\) è un insieme indipendente in \(F\cup G\). In altri termini il prodotto scalare dei loro vettori caratteristici è il vettore caratteristico di un insieme indipendente di \(F\cup G\). Pertanto, sfruttando la convessità del politopo dei vertici, il prodotto scalare \(\mathbf{a}\cdot \mathbf{b}\) appartiene a \(\text{STAB}(F\cup G)\). Ma allora possiamo scrivere
 	\[H(F,P)+H(G,P)=\sum_{i=1}^n p_i\log{\frac{1}{a_i}}+\sum_{i=1}^n p_i\log{\frac{1}{b_i}}=\sum_{i=1}^n p_i\log{\frac{1}{a_{i}b_{i}}}\ge H(F\cup G,P).\]
 	\qed 
 \end{proof}
@@ -206,7 +206,7 @@ e insieme delle frecce
 \end{align}
 
 \begin{lemma}
-  Sia \(P=(V,\le_{P})\) un insieme parzialmente ordinato e siano \(G=G(P)\) e \(D=D(P)\) rispettivamente il grafo e il grafo diretto ad esso associato. Allora \(x\in\mathbb{R}^V\) appartiene a \(\text{STAB}(G)\) se e solo se esiste un vettore \(y\in \mathbb{R}^{N(D)}\) tale che \(y_s=0\), \(y_t=1\), \(y\) non diminuisce lungo gli archi di \(D\) e \(y_{v^+}-y{v^-}=x_v\) per ogni \(v\in V\).
+  Sia \(P=(V,\le_{P})\) un insieme parzialmente ordinato e siano \(G=G(P)\) e \(D=D(P)\) rispettivamente il grafo e il grafo diretto ad esso associato. Allora \(x\in\mathbb{R}^V\) appartiene a \(\text{STAB}(G)\) se e solo se esiste un vettore \(y\in \mathbb{R}^{N(D)}\) tale che \(y_s=0\), \(y_t=1\), \(y\) non diminuisce lungo gli archi di \(D\) e \(y_{v^+}-y_{v^-}=x_v\) per ogni \(v\in V\).
 \end{lemma}
 \begin{proof}
   Supponiamo che esista un tale \(y\in\mathbb{R}^{N(D)}\). Sia \(v_1\le_{P} v_2\le_{P}\dots\le_{P}v_c\) una catena di \(P\). Abbiamo allora
