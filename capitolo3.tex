@@ -3,20 +3,20 @@
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Ordinamento con informazione parziale} 
 \begin{definition}
-	Sia \(P=\left(V,\le_{P}\right)\) un insieme parzialmente ordinato. Diciamo che un ordine totale \(\le\) \`e una \emph{estensione lineare} di \(\le_{P}\) se \((\forall v_i, v_j\in V)\;v_i\le_{P} v_j\Rightarrow v_i\le v_j\). Denotiamo inoltre con \(e(P)\) il numero di estensioni lineari di \(P\). 
+  Sia \(P=\left(V,\le_{P}\right)\) un insieme parzialmente ordinato. Diciamo che un ordine totale \(\le\) \`e una \emph{estensione lineare} di \(\le_{P}\) se \((\forall v_i, v_j\in V)\;v_i\le_{P} v_j\Rightarrow v_i\le v_j\). Denotiamo inoltre con \(e(P)\) il numero di estensioni lineari di \(P\). 
 \end{definition}
 \begin{definition}
-	Sia \(P=(V,\le_{P})\) un insieme parzialmente ordinato di cardinalit\`a \(n\). Il \emph{problema dell'ordinamento con informazione parziale} consiste nel determinare una estensione lineare \(\le\) fissata ma ignota per mezzo di domande del tipo ``\`e vero che \(v_i\le v_j\) ?'', detti \emph{confronti}. 
+  Sia \(P=(V,\le_{P})\) un insieme parzialmente ordinato di cardinalit\`a \(n\). Il \emph{problema dell'ordinamento con informazione parziale} consiste nel determinare una estensione lineare \(\le\) fissata ma ignota per mezzo di domande del tipo ``\`e vero che \(v_i\le v_j\) ?'', detti \emph{confronti}. 
 \end{definition}
 
-Tale problema fu originariamente posto da Fredman nel 1976 \cite{Fredman1976}. Sempre Fredman dimostrò l'esistenza di un algoritmo che lo risolva compiendo \(\log{e(P)} + 2n\) confronti, il quale tuttavia richiede tempo di esecuzione superpolinomiale. Nel 1984 Kahn e Saks dimostrarono l'esistenza di un algoritmo che compia \(O(\log{e(P)})\) confronti \cite{Kahn1984}. Essi mostrarono infatti che esiste sempre un confronto tale che le estensioni lineari per cui la risposta sia affermativa siano una parte compresa fra \(3/11\) e \(8/11\) del totale.\footnote{Questo enunciato è un rilassamento della congettura \(1/3-2/3\), indipendentemente posta da Kislitsyn nel 1968 \cite{Kislitsyn1968}, da Fredman nel 1975 e da Linial nel 1984 \cite{Linial1984}.}
+Tale problema fu originariamente posto da Fredman nel 1976 \cite{Fredman1976}. Sempre Fredman dimostrò l'esistenza di un algoritmo che lo risolva compiendo \(\log{e(P)} + 2n\) confronti, il quale tuttavia richiede tempo di esecuzione superpolinomiale. Nel 1984 Kahn e Saks dimostrarono l'esistenza di un algoritmo che richiede \(O(\log{e(P)})\) confronti \cite{Kahn1984}. Essi mostrarono infatti che esiste sempre un confronto tale che le estensioni lineari per cui la risposta sia affermativa siano una parte compresa fra \(3/11\) e \(8/11\) del totale.\footnote{Questo enunciato è un rilassamento della congettura \(1/3-2/3\), indipendentemente posta da Kislitsyn nel 1968 \cite{Kislitsyn1968}, da Fredman nel 1975 e da Linial nel 1984 \cite{Linial1984}.}
 
 È evidente che siano necessari \(\Omega(\log{e(P)})\) confronti: dobbiamo infatti discriminare fra \(e(P)\) possibili risultati, e ogni confronto ci fornisce esattamente un bit di informazione. Servono quindi \(\log{e(P)}\) bit, da cui il precedente limite inferiore.
 
 La questione dell'esistenza di un algoritmo che compia \(O(\log{e(P)})\) confronti e che richieda tempo polinomiale rimase aperta fino al 1995, quando un articolo di Kahn e Kim evidenziò il collegamento esistente fra l'entropia del grafo associato a \(P\) ed \(e(P)\) \cite{Kahn1995}. Il seguente teorema afferma ad esempio che \(nH(\overline{P})=\Theta(\log{e(P)})\). 
 \begin{theorem}
 	[Kahn, Kim] \label{kktheorem} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora vale
-	\[\log{e(P)}\le nH\left(\overline{P}\right)\le\min\left\{\log{e(P)}+\log{e\cdot n},\; c\log{e(P)}\right\},\]
+	\[\log{e(P)}\le nH(\overline{P})\le\min\left\{\log{e(P)}+\log{e\cdot n},\; c\log{e(P)}\right\},\]
 	dove \(c=1+7\log{e}\approx 11.1\). 
 \end{theorem}
 L'Algoritmo di Kahn e Kim calcola inizialmente l'entropia del grafo associato a \(P\). Successivamente stima la variazione dell'entropia dei grafi associati agli ordini parziali \(P'\), ottenuti da \(P\) aggiungendo il risultato di un confronto. Viene quindi selezionato quel confronto che avvicini maggiormente l'entropia a \(\log{n}\), entropia del grafo completo, associato all'insieme totalmente ordinato. Ad ogni passo è dunque necessario il calcolo dell'entropia di un grafo, un problema di minimizzazione su un insieme convesso per l'equazione \eqref{eq:entropythree}. Possiamo quindi applicare il metodo dell'ellissoide, ottenendo un algoritmo polinomiale ma non utile nella pratica.
