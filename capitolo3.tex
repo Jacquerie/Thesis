@@ -133,7 +133,7 @@ Concludiamo questa sezione con una versione più precisa della stima superiore d
 	\label{naivemergetheorem} Sia \(P\) un insieme parzialmente ordinato di cardinalità \(n\). Allora, per ogni \(\varepsilon>0\), l'Algoritmo \ref{naivemerge} risolve il problema dell'ordinamento parziale impiegando al più \((1+\varepsilon)\log{e(P)}+(1+\varepsilon)\left(\log{e}+\log{\left(1+\frac{1}{\varepsilon}\right)}+1\right)\cdot n\) confronti. 
 \end{theorem}
 \begin{proof}
-	Sia \(g(P)\) il numero di confronti richiesto per ordinare \(P\). Grazie al precedente lemma otteniamo
+	Sia \(g(P)\) il numero di confronti richiesto per ordinare \(P\). Grazie al Lemma \ref{naivemergelemma} otteniamo
 	\[g(P)\le n(\tilde{h}+1),\]
 	inoltre abbiamo 
 	\begin{align}
@@ -145,7 +145,8 @@ Concludiamo questa sezione con una versione più precisa della stima superiore d
 \end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Merge con informazione parziale} Scopo di questa sezione \`e risolvere il problema dell'ordinamento con informazione parziale per un insieme partizionabile in due catene disgiunte. Tale caso particolare \`e noto come \emph{problema della fusione con informazione parziale} e fu studiato da Linial nel 1984 \cite{Linial1984}. Egli propose un algoritmo che richiede al pi\`u \(C\log{e(P)}\) confronti con \(C=\left(\log{\frac{1+\sqrt{5}}{2}}\right)^{-1}\) e dimostr\`o l'ottimalit\`a di tale costante. Il suo algoritmo necessita per\`o del calcolo di \(n\) determinanti di matrici \(n\times n\). In questa sezione proporremo un algoritmo basato sull'entropia di grafo che risolva tale problema, e dimostreremo che richiede al pi\`u \(6\log{e(P)}\) confronti. \`E possibile inoltre dimostrare che questo algoritmo necessita di \(O(n^2\log{n})\) operazioni elementari.
+\section{Merge con informazione parziale} 
+Scopo di questa sezione \`e risolvere il problema dell'ordinamento con informazione parziale per un insieme partizionabile in due catene disgiunte. Tale caso particolare \`e noto come \emph{problema della fusione con informazione parziale} e fu studiato da Linial nel 1984 \cite{Linial1984}. Egli propose un algoritmo che richiede al pi\`u \(C\log{e(P)}\) confronti con \(C=\left(\log{\frac{1+\sqrt{5}}{2}}\right)^{-1}\) e dimostr\`o l'ottimalit\`a di tale costante. Il suo algoritmo necessita per\`o del calcolo di \(n\) determinanti di matrici \(n\times n\). In questa sezione proporremo un algoritmo basato sull'entropia di grafo che risolva tale problema, e dimostreremo che richiede al pi\`u \(6\log{e(P)}\) confronti. \`E possibile inoltre dimostrare che questo algoritmo necessita di \(O(n^2\log{n})\) operazioni elementari.
 
 Il seguente risultato descrive la struttura dei grafi associati agli insiemi parzialmente ordinati partizionabili in due catene disgiunte. La dimostrazione è immediata e quindi omessa. 
 \begin{lemma}
@@ -210,9 +211,16 @@ Nel caso di grafi bipartiti possiamo semplificare il Lemma \ref{chvatallemma}. A
 	\begin{figure}
 		\centering 
 		\begin{tikzpicture}
-			[scale=2] \node (u) at (0, 2) [vertex] {\(u\)}; \node (w) at (0, 1) [vertex] {\(w\)}; \node (u'') at (0, 0) [vertex] {\(u''\)}; \node (K) at (1.5, 1.5) [vertex,label=0:\(K\)] {}; \node (L) at (1.5, 0.5) [vertex,label=0:\(L\)] {};
+			[scale=2] 
+			\node (u) at (0, 2) [vertex] {\(u\)}; 
+			\node (w) at (0, 1) [vertex] {\(w\)}; 
+			\node (u'') at (0, 0) [vertex] {\(u''\)}; 
+			\node (K) at (1.5, 1.5) [vertex,label=0:\(K\)] {}; 
+			\node (L) at (1.5, 0.5) [vertex,label=0:\(L\)] {};
 			
-			\draw (u) -- (K) [thick]; \draw (u'') -- (K) [thick]; \draw (w) -- (L) [thick]; 
+			\draw (u) -- (K) [thick]; 
+			\draw (u'') -- (K) [thick]; 
+			\draw (w) -- (L) [thick]; 
 		\end{tikzpicture}
 		\caption{Esempio di componenti connesse incastonate.} \label{inlayexample} 
 	\end{figure}
@@ -221,7 +229,7 @@ La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi
 \begin{lemma}
 	\label{inlaylemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Dato \(x\in\text{STAB}^{*}(G)\) allora: 
 	\begin{enumerate}
-		[(i)] 
+	  [(i)] 
 		\item Se in \(G(x)\) una componente connessa \(L\) è incastonata in \(K\) allora \(L\) è libera. 
 		\item Se \(K\) ed \(L\) sono componenti connesse non banali di \(G(x)\) allora vale \(K\le_{P}L\) oppure \(L\le_{P}K\). 
 	\end{enumerate}
