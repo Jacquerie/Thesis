@@ -24,7 +24,7 @@ dove \(M\) è la cardinalità dell'immagine secondo la codifica. Sia quindi \(R(
 \end{equation}
 misurerà quindi la complessità del grafo. La definizione \eqref{eq:entropyzero} non consente però il calcolo esplicito dell'entropia del grafo, perché la quantità \(R(G,P,t,\varepsilon)\) è un minimo al variare in un insieme che non sappiamo descrivere esplicitamente. Dobbiamo quindi semplificarla ulteriormente, e per fare questo sfrutteremo la struttura di grafo data. 
 \begin{definition}
-  Sia \(t\) un intero positivo e \(G\) un grafo. Chiamiamo \emph{\(t-\)esima potenza conormale} di \(G\) il grafo \(G^t=(V^t, E^t)\), dove \(V^t\) è il prodotto cartesiano di \(t\) copie di \(V\), mentre
+  Sia \(t\) un intero positivo e \(G\) un grafo. Chiamiamo \emph{\(t\)-esima potenza conormale} di \(G\) il grafo \(G^t=(V^t, E^t)\), dove \(V^t\) è il prodotto cartesiano di \(t\) copie di \(V\), mentre
   \[E^t=\{(\mathbf{v},\mathbf{w})\ \vert\ \exists i\ (v_i, w_i)\in E\}.\]
 \end{definition}
 In altri termini fra due vertici \(\mathbf{v}\) e \(\mathbf{w}\) di \(G^t\) esiste un arco se e soltanto se le corrispondenti sequenze di lunghezza \(t\) sono distinguibili in almeno un elemento. 
@@ -33,33 +33,55 @@ In altri termini fra due vertici \(\mathbf{v}\) e \(\mathbf{w}\) di \(G^t\) esis
   \begin{figure}
     \centering 
     \begin{tikzpicture}
-      [scale=2] \node (b) at (0,0) [vertex] {b}; \node (a) at (2,0) [vertex] {a}; \node (c) at (1,1.732) [vertex] {c}; \draw (b.0) -- (a.180) [thick]; \draw (b.60) -- (c.240) [thick];
+      [scale=2] 
+      \node (b) at (0,0) [vertex] {b}; 
+      \node (a) at (2,0) [vertex] {a}; 
+      \node (c) at (1,1.732) [vertex] {c};
       
-      \node (aa) at (5,0) [vertex] {aa}; \node (ab) at (6,0) [vertex] {ab}; \node (ac) at (7,0) [vertex] {ac};
+      \draw (b.0) -- (a.180) [thick]; 
+      \draw (b.60) -- (c.240) [thick];
       
-      \node (ba) at (5,1) [vertex] {ba}; \node (bb) at (6,1) [vertex] {bb}; \node (bc) at (7,1) [vertex] {bc};
+      \node (aa) at (5,0) [vertex] {aa}; 
+      \node (ab) at (6,0) [vertex] {ab}; 
+      \node (ac) at (7,0) [vertex] {ac};
       
-      \node (ca) at (5,2) [vertex] {ca}; \node (cb) at (6,2) [vertex] {cb}; \node (cc) at (7,2) [vertex] {cc};
+      \node (ba) at (5,1) [vertex] {ba}; 
+      \node (bb) at (6,1) [vertex] {bb}; 
+      \node (bc) at (7,1) [vertex] {bc};
       
-      \draw (aa.0) -- (ab.180) [thick]; \draw (ab.0) -- (ac.180) [thick];
+      \node (ca) at (5,2) [vertex] {ca}; 
+      \node (cb) at (6,2) [vertex] {cb}; 
+      \node (cc) at (7,2) [vertex] {cc};
       
-      \draw (ba.0) -- (bb.180) [thick]; \draw (bb.0) -- (bc.180) [thick];
+      \draw (aa.0) -- (ab.180) [thick]; 
+      \draw (ab.0) -- (ac.180) [thick];
       
-      \draw (ca.0) -- (cb.180) [thick]; \draw (cb.0) -- (cc.180) [thick];
+      \draw (ba.0) -- (bb.180) [thick]; 
+      \draw (bb.0) -- (bc.180) [thick];
       
-      \draw (aa.90) -- (ba.270) [thick]; \draw (ba.90) -- (ca.270) [thick];
+      \draw (ca.0) -- (cb.180) [thick]; 
+      \draw (cb.0) -- (cc.180) [thick];
+      
+      \draw (aa.90) -- (ba.270) [thick]; 
+      \draw (ba.90) -- (ca.270) [thick];
 			
-      \draw (ab.90) -- (bb.270) [thick]; \draw (bb.90) -- (cb.270) [thick];
+      \draw (ab.90) -- (bb.270) [thick]; 
+      \draw (bb.90) -- (cb.270) [thick];
       
-      \draw (ac.90) -- (bc.270) [thick]; \draw (bc.90) -- (cc.270) [thick];
+      \draw (ac.90) -- (bc.270) [thick]; 
+      \draw (bc.90) -- (cc.270) [thick];
       
-      \draw (aa.45) -- (bb.225) [thick]; \draw (ba.315) -- (ab.135) [thick];
+      \draw (aa.45) -- (bb.225) [thick]; 
+      \draw (ba.315) -- (ab.135) [thick];
       
-      \draw (ab.45) -- (bc.225) [thick]; \draw (bb.315) -- (ac.135) [thick];
+      \draw (ab.45) -- (bc.225) [thick]; 
+      \draw (bb.315) -- (ac.135) [thick];
       
-      \draw (ba.45) -- (cb.225) [thick]; \draw (ca.315) -- (bb.135) [thick];
+      \draw (ba.45) -- (cb.225) [thick]; 
+      \draw (ca.315) -- (bb.135) [thick];
       
-      \draw (bb.45) -- (cc.225) [thick]; \draw (cb.315) -- (bc.135) [thick]; 
+      \draw (bb.45) -- (cc.225) [thick]; 
+      \draw (cb.315) -- (bc.135) [thick]; 
     \end{tikzpicture}
     \caption{Esempio di prodotto conormale per \(t=2\).} \label{conormalexample} 
   \end{figure}
@@ -72,7 +94,7 @@ Osserviamo che la coppia \((G^t, \mathbf{P}^t)\), dove \(\mathbf{P}^t\) è defin
   \end{equation}
 \end{definition}
 
-Affinchè la precedente risulti una buona definizione dovremmo dimostrarne l'indipendenza da \(\varepsilon\). Salteremo questa verifica e dimostreremo direttamente nella prossima sezione l'equivalenza con una seconda definizione, la quale non dipende da \(\varepsilon\).
+Affinchè la \ref{eq:entropyone} risulti una buona definizione dovremmo dimostrarne l'indipendenza da \(\varepsilon\). Salteremo questa verifica e dimostreremo direttamente nella prossima sezione l'equivalenza con una seconda definizione, la quale non dipende da \(\varepsilon\).
 
 \subsection{Definizione in termini di Mutua Informazione} 
 \begin{definition}
@@ -95,7 +117,7 @@ Possiamo già enunciare la seconda definizione di entropia di grafo.
   dove \(X\) è una variabile aleatoria a valori nei vertici di \(G\) con densità \(P\) e \(Y\) è una variabile aleatoria a valori negli insiemi indipendenti di \(G\) tale che l'evento \(\{X\in Y\}\) abbia probabilità \(1\). 
 \end{definition}
 
-Affinchè la precedente risulti una buona definizione occorre dimostrare che tale minimo esiste. Rinviamo alla prossima sezione per una dimostrazione di questo fatto.
+Affinchè la \ref{eq:entropytwo} risulti una buona definizione occorre dimostrare che tale minimo esiste. Rinviamo alla prossima sezione per una dimostrazione di questo fatto.
 
 \subsection{Definizione in termini di Politopo dei Vertici} 
 \begin{definition}
@@ -128,9 +150,18 @@ Affinchè la precedente risulti una buona definizione occorre dimostrare che tal
   \begin{figure}
     \centering 
     \begin{tikzpicture}
-      \draw [->] (4,0,0) -- (5,0,0) node [right] {$x$}; \draw [->] (0,4,0) -- (0,5,0) node [above] {$y$}; \draw [->] (0,0,5) -- (0,0,6) node [below left] {$z$};
+      \draw [->] (4,0,0) -- (5,0,0) node [right] {$x$}; 
+      \draw [->] (0,4,0) -- (0,5,0) node [above] {$y$}; 
+      \draw [->] (0,0,5) -- (0,0,6) node [below left] {$z$};
       
-      \draw (4,0,0) -- (0,4,5) [thick]; \draw (0,4,0) -- (0,4,5) [thick]; \draw (0,0,5) -- (0,4,5) [thick]; \draw (4,0,0) -- (0,0,5) [thick]; \draw (4,0,0) -- (0,4,0) [thick]; \draw (0,0) -- (4,0,0) [thick, dashed]; \draw (0,0) -- (0,4,0) [thick, dashed]; \draw (0,0) -- (0,0,5) [thick, dashed]; 
+      \draw (4,0,0) -- (0,4,5) [thick]; 
+      \draw (0,4,0) -- (0,4,5) [thick]; 
+      \draw (0,0,5) -- (0,4,5) [thick]; 
+      \draw (4,0,0) -- (0,0,5) [thick]; 
+      \draw (4,0,0) -- (0,4,0) [thick]; 
+      \draw (0,0) -- (4,0,0) [thick, dashed]; 
+      \draw (0,0) -- (0,4,0) [thick, dashed]; 
+      \draw (0,0) -- (0,0,5) [thick, dashed]; 
     \end{tikzpicture}
     \caption{Esempio di \(\text{STAB}(G)\).} \label{stabexample} 
   \end{figure}
@@ -169,7 +200,7 @@ Sia \(G\) un grafo. Chiamiamo \emph{nucleo} un sottoinsieme dei vertici indipend
   Senza perdita di generalità possiamo supporre che \(G\) sia connesso: basta infatti dimostrare il risultato per ogni componente connessa. Supponiamo che \(G\) sia completo. \`E allora ovvio che \(\sim\) sia d'equivalenza. Supponiamo invece che \(\sim\) sia d'equivalenza e siano \(v,w\) vertici di \(G\). Poiché \(G\) è connesso esiste un cammino da \(v\) a \(w\), quindi applicando induttivamente la transitività otteniamo che \((v,w)\in E\).\qed 
 \end{proof}
 \begin{definition}
-  Sia \(t\) un intero positivo e \(G\) un grafo. Chiamiamo \emph{\(t-\)esima potenza normale} di \(G\) il grafo \(G_t=(V^t, E_t)\), dove \(V^t\) è il prodotto cartesiano di \(t\) copie di \(V\), mentre
+  Sia \(t\) un intero positivo e \(G\) un grafo. Chiamiamo \emph{\(t\)-esima potenza normale} di \(G\) il grafo \(G_t=(V^t, E_t)\), dove \(V^t\) è il prodotto cartesiano di \(t\) copie di \(V\), mentre
   \[E_t=\{(\mathbf{v},\mathbf{w})\ \vert\ \forall i\ v_i = w_i\vee (v_i, w_i)\in E,\ \exists i\ (v_i,w_i)\in E\}.\]
 \end{definition}
 
@@ -181,24 +212,24 @@ conta il numero minimo di parole che sono necessarie per dare una codifica propr
 
 Enunciamo i seguenti due lemmi omettendone la dimostrazione \cite{Korner1971}. 
 \begin{lemma}
-  \label{boundslemma} Sia \(G\) unione di grafi completi a due a due disgiunti e \(\sim\) la relazione d'equivalenza definita nel precedente lemma. Denotiamo con \([v]\) la classe d'equivalenza di \(v\) per tale relazione e definiamo
+  \label{boundslemma} Sia \(G\) unione di grafi completi a due a due disgiunti e \(\sim\) la relazione d'equivalenza definita nel Lemma \ref{releqlemma}. Denotiamo con \([v]\) la classe d'equivalenza di \(v\) per tale relazione e definiamo
   \[H(P\mid \sim)=\sum_{v\in V} P(v)\log{\frac{P([v])}{P(v)}}.\]
   Allora
   \[2^{tH(P\mid \sim)-K\sqrt{N}}\le \chi_{n}(t,\varepsilon)\le 2^{tH(P\mid \sim)+K\sqrt{N}}\]
   per una qualche costante \(K\) non dipendente da \(t\) o da \(P\), ma solo da \(|V|\) ed\ \(\varepsilon\). 
 \end{lemma}
 \begin{definition}
-  Siano \(V\) un insieme finito e \(P\) una densità discreta su di esso. Chiamiamo \emph{\(P-\)tipica} una sequenza \(\mathbf{v}\) di lunghezza \(t\) se \(\forall w\in V\) il numero \(N(w\vert \mathbf{v})\) di occorrenze di \(w\) nella sequenza soddisfa
+  Siano \(V\) un insieme finito e \(P\) una densità discreta su di esso. Chiamiamo \emph{\(P\)-tipica} una sequenza \(\mathbf{v}\) di lunghezza \(t\) se \(\forall w\in V\) il numero \(N(w\vert \mathbf{v})\) di occorrenze di \(w\) nella sequenza soddisfa
   \[\Big| N(w\vert\mathbf{v}) - tP(w)\Big|\le K\sqrt{tP(w)}\]
   per una qualche costante \(K\). 
 \end{definition}
 
-In altre parole una sequenza è \(P-\)tipica se il numero di occorrenze di ogni simbolo \(w\) non differisce significativamente dal valore atteso \(tP(w)\). 
+In altre parole una sequenza è \(P\)-tipica se il numero di occorrenze di ogni simbolo \(w\) non differisce significativamente dal valore atteso \(tP(w)\). 
 \begin{lemma}
-  \label{ptyplemma} Sia \(T^t(P)\) l'insieme delle sequenze \(P-\)tipiche. Allora 
-  \begin{enumerate}
+  \label{ptyplemma} Sia \(T^t(P)\) l'insieme delle sequenze \(P\)-tipiche. Allora 
+  \begin{enumerate}[(i)]
   \item Per ogni \(\lambda\) esiste \(K\) tale che \(\mathbf{P}^t\big(\overline{T^{t}(P)}\big)<\lambda\) per questo \(K\). 
-  \item Se \(\mathbf{v}\) è \(P-\)tipica allora \(2^{-tH(P)-C\sqrt{n}}\le \mathbf{P}^t(\mathbf{v})\le2^{-tH(P)+C\sqrt{n}}.\) 
+  \item Se \(\mathbf{v}\) è \(P\)-tipica allora \(2^{-tH(P)-C\sqrt{n}}\le \mathbf{P}^t(\mathbf{v})\le2^{-tH(P)+C\sqrt{n}}.\) 
   \item La cardinalità di \(T^{t}(P)\) è limitata da \(2^{tH(P)-C\sqrt{n}}\le |T^{t}(P)|\le 2^{tH(P)+C\sqrt{n}}.\) 
   \end{enumerate}
   Inoltre la costante \(C\) non dipende da \(t\) o da \(P\), ma soltanto da \(|V|\) ed\ \(\lambda\). 
@@ -243,7 +274,7 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
   \end{equation}
   dove abbiamo indicato con \(\mathcal{N}^t\) l'insieme dei nuclei di \(G^t\).
 	
-  Si tratta in effetti del prodotto cartesiano di \(t\) copie di \(\mathcal{N}\). Supponiamo infatti che \(\mathbf{N}\in \mathcal{N}^t\), e che \(p_i\) per \(i\in\{1\dots t\}\) siano le proiezioni di una sequenza di lunghezza \(t\) sull'\(i-\)esimo elemento. Supponiamo per assurdo che \(p_i(\mathcal{N}^t)\) non sia un nucleo. Allora deve esistere \(v\) non connesso ad alcun vertice di \(p_i(\mathcal{N}^t)\). Definiamo \(\mathbf{w}\) come un qualunque elemento di \(\mathbf{N}\) in cui abbiamo rimpiazzato l'\(i-\)esimo elemento con \(v\). Questo elemento non è adiacente ad alcun elemento del nucleo, contro la massimalità di \(\mathbf{N}\).
+  Si tratta in effetti del prodotto cartesiano di \(t\) copie di \(\mathcal{N}\). Supponiamo infatti che \(\mathbf{N}\in \mathcal{N}^t\), e che \(p_i\) per \(i\in\{1\dots t\}\) siano le proiezioni di una sequenza di lunghezza \(t\) sull'\(i\)-esimo elemento. Supponiamo per assurdo che \(p_i(\mathcal{N}^t)\) non sia un nucleo. Allora deve esistere \(v\) non connesso ad alcun vertice di \(p_i(\mathcal{N}^t)\). Definiamo \(\mathbf{w}\) come un qualunque elemento di \(\mathbf{N}\) in cui abbiamo rimpiazzato l'\(i\)-esimo elemento con \(v\). Questo elemento non è adiacente ad alcun elemento del nucleo, contro la massimalità di \(\mathbf{N}\).
   
   Stimando con il massimo la probabilità di ogni \(\mathbf{v}\in \mathbf{N}\cap T^{t}(P)\) abbiamo la diseguaglianza 
   \begin{equation}
@@ -252,11 +283,11 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
 	
   Sia ora \(\mathbf{N}\) tale che \(\big\vert \mathbf{N}\cap T^t(P) \big\vert\) sia massimo e sia \(\mathbf{v}\in T^t(P)\cap \mathcal{N}\). Siano \(w\in V\) e \(M\) un nucleo di \(G\) contenente \(w\), e sia \(N(w,M\mid \mathbf{v}, \mathbf{N})\) il numero di occorrenze di \((w,M)\) nella sequenza
   \[(v_1, N_1)\ \dots\ (v_t, N_t),\]
-  inoltre denotiamo con \(N(w\mid \mathbf{v})\) il numero di occorrenze di \(w\) in \(\mathbf{v}\). Allora la sequenza \((\mathbf{v}, \mathbf{N})\) è \(Q-\)tipica per la distribuzione di probabilità su \(V(\Gamma)\) 
+  inoltre denotiamo con \(N(w\mid \mathbf{v})\) il numero di occorrenze di \(w\) in \(\mathbf{v}\). Allora la sequenza \((\mathbf{v}, \mathbf{N})\) è \(Q\)-tipica per la distribuzione di probabilità su \(V(\Gamma)\) 
   \begin{equation}
     \label{eq:probdist} Q(w,M)=\frac{N(w,M\mid \mathbf{v}, \mathbf{N})}{N(w\mid \mathbf{v})}\cdot P(w). 
   \end{equation}
-  Infatti, sfruttando la \(P-\)tipicità di \(\mathbf{v}\), abbiamo 
+  Infatti, sfruttando la \(P\)-tipicità di \(\mathbf{v}\), abbiamo 
   \begin{align}
     \big\vert N(w,M\mid \mathbf{v}, \mathbf{N}) - tQ(w,M)\big\vert &= \bigg\vert \frac{tQ(w,M)}{tP(w)}\bigg\vert \cdot \big\vert N(w\mid \mathbf{v}) - tP(w)\big\vert \le \nonumber \\
     &\le \bigg\vert \frac{Q(w,M)}{P(w)}\bigg\vert \cdot K\sqrt{tP(w)} = K\sqrt{t\cdot\frac{Q^{2}(w,M)}{P(w)}} \le \nonumber \\
@@ -264,9 +295,9 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
   \end{align}
   Sia poi \(R\) la distribuzione marginale su \(\mathcal{N}\) definita da
   \[R(M)=\sum_{w:\ w\in M} Q(w,M).\]
-  Allora \(\mathbf{N}\) è \(P-\)tipica rispetto ad essa. Infatti abbiamo
+  Allora \(\mathbf{N}\) è \(P\)-tipica rispetto ad essa. Infatti abbiamo
   \[N(M\mid \mathbf{N})-tR(M)=\sum_{w\in M} N(w,M\mid \mathbf{v},\mathbf{N})-tQ(w,M)\]
-  e, sfruttando la \(Q-\)tipicità di \((\mathbf{v}, \mathbf{N})\), vale
+  e, sfruttando la \(Q\)-tipicità di \((\mathbf{v}, \mathbf{N})\), vale
   \[\big\vert N(M\mid \mathbf{N})-tR(M) \big\vert\le \sum_{w\in V} K\sqrt{tQ(w,M)}\le K_{1}\sqrt{t\sum_{w\in V} Q(w,M)}=K_{1}\sqrt{tR(M)},\]
   dove la diseguaglianza centrale segue dalla concavità della radice.
   
@@ -277,7 +308,7 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
     \label{eq:bounds} \Big[2^{tH(Q\mid\sim)-K_{2}\sqrt{t}},\ 2^{tH(Q\mid\sim)+K_{2}\sqrt{t}}\Big]. 
   \end{equation}
   
-  Esistono al più \((t+1)^{\vert V(\Gamma)\vert}\) distribuzioni ausiliarie di probabilità del tipo \eqref{eq:probdist}, infatti ogni coppia \((w,M)\) comparirà da \(0\) a \(t\) volte in \((\mathbf{v},\mathbf{N})\). Ogni sequenza \(\mathbf{v}\) in \(\mathbf{N}\cap T^{t}(P)\) sarà \(Q-\)tipica per una probabilità del tipo \eqref{eq:probdist}, infatti dalla dimostrazione è evidente che basta che \(\mathbf{v}\) sia \(P-\)tipica e poi porre \(\mathbf{A}=\mathbf{N}\). Allora abbiamo la stima 
+  Esistono al più \((t+1)^{\vert V(\Gamma)\vert}\) distribuzioni ausiliarie di probabilità del tipo \eqref{eq:probdist}, infatti ogni coppia \((w,M)\) comparirà da \(0\) a \(t\) volte in \((\mathbf{v},\mathbf{N})\). Ogni sequenza \(\mathbf{v}\) in \(\mathbf{N}\cap T^{t}(P)\) sarà \(Q\)-tipica per una probabilità del tipo \eqref{eq:probdist}, infatti dalla dimostrazione è evidente che basta che \(\mathbf{v}\) sia \(P\)-tipica e poi porre \(\mathbf{A}=\mathbf{N}\). Allora abbiamo la stima 
   \begin{equation}
     \label{eq:finalbound} \max_{\mathbf{N}\in \mathcal{N}^t} \big\vert \mathbf{N}\cap T^{t}(P) \big\vert \le (t+1)^{\vert V(\Gamma)\vert} \cdot 2^{t\max_{Q\in \mathcal{A}} H(Q\mid\sim)+K_1\sqrt{t}}, 
   \end{equation}

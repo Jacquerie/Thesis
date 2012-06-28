@@ -1,26 +1,26 @@
-\chapter{Proprietà e teoremi notevoli} 
-\section{Proprietà notevoli dell'entropia di grafo} 
+\chapter{Proprietà e teoremi principali} 
+\section{Proprietà dell'entropia di grafo} 
 \subsection{Monotonia} 
 \begin{lemma}
-	Siano \(F\) e \(G\) grafi tali che \(V(G)=V(F)\) e \(E(F)\subset E(G)\). Allora per ogni scelta di \(P\) densità discreta sui vertici si ha \(H(F,P)\le H(G,P)\). 
+	Siano \(F\) e \(G\) grafi tali che \(V(F)=V(G)\) e \(E(F)\subset E(G)\). Allora per ogni scelta di \(P\) densità discreta sui vertici si ha \(H(F,P)\le H(G,P)\). 
 \end{lemma}
 \begin{proof}
-	Osserviamo che se \(E(F)\subset E(G)\) allora \(\text{VP}(G)\subset \text{VP}(F)\). Sfruttando la terza definizione di entropia di grafo abbiamo immediatamente la tesi, infatti stiamo prendendo il minimo della stessa funzione obiettivo su un insieme più grande.\qed 
+	Osserviamo che se \(E(F)\subset E(G)\) allora \(\text{STAB}(G)\subset \text{STAB}(F)\). Sfruttando la terza definizione di entropia di grafo abbiamo immediatamente la tesi, infatti stiamo prendendo il minimo della stessa funzione obiettivo su un insieme più grande.\qed 
 \end{proof}
 
 \subsection{Subadditività} 
 \begin{lemma}
-	Siano \(F\) e \(G\) grafi di comune insieme dei vertici \(V\). Sia \(F\cup G\) il grafo di vertici \(V\) ed insieme degli archi \(E(F)\cup E(G)\). Per ogni scelta di \(P\) densità discreta sui vertici si ha
+	Siano \(F\) e \(G\) grafi aventi \(V(F) = V(G)\). Sia \(F\cup G\) il grafo di vertici \(V\) ed insieme degli archi \(E(F)\cup E(G)\). Per ogni scelta di \(P\) densità discreta sui vertici si ha
 	\[H(F\cup G,P)\le H(F,P)+H(G,P).\]
 \end{lemma}
 \begin{proof}
-	Siano \(\mathbf{a}\in \text{VP}(F)\) e \(\mathbf{b}\in \text{VP}(G)\) i vettori che realizzino il minimo delle rispettive entropie. Osserviamo che l'intersezione di un insieme indipendente di \(F\) e di un insieme indipendente di \(G\) è un insieme indipendente in \(F\cup G\). In altri termini il prodotto scalare dei loro vettori caratteristici è il vettore caratteristico di un insieme indipendente di \(F\cup G\). Pertanto, sfruttando la convessità del politopo dei vertici, il prodotto scalare \(\mathbf{a}\cdot \mathbf{b}\) appartiene a \(\text{VP}(F\cup G)\). Ma allora possiamo scrivere
+	Siano \(\mathbf{a}\in \text{STAB}(F)\) e \(\mathbf{b}\in \text{STAB}(G)\) i vettori che realizzino il minimo delle rispettive entropie. Osserviamo che l'intersezione di un insieme indipendente di \(F\) e di un insieme indipendente di \(G\) è un insieme indipendente in \(F\cup G\). In altri termini il prodotto componente a componente \(\mathbf{a}\cdot \mathbf{b}\) dei loro vettori caratteristici è il vettore caratteristico di un insieme indipendente di \(F\cup G\). Pertanto, sfruttando la convessità del politopo dei vertici, \(\mathbf{a}\cdot \mathbf{b}\) appartiene a \(\text{STAB}(F\cup G)\). Ma allora possiamo scrivere
 	\[H(F,P)+H(G,P)=\sum_{i=1}^n p_i\log{\frac{1}{a_i}}+\sum_{i=1}^n p_i\log{\frac{1}{b_i}}=\sum_{i=1}^n p_i\log{\frac{1}{a_{i}b_{i}}}\ge H(F\cup G,P).\]
 	\qed 
 \end{proof}
 
 \subsection{Additività per sostituzioni}
-Siano \(F\) e \(G\) grafi su insiemi di vertici disgiunti, sia \(v\) un vertice di \(G\). Chiamiamo grafo ottenuto sostituendo \(F\) a \(v\), e scriviamo \(G_{v\leftarrow F}\), il grafo ottenuto da \(G\) cancellando \(v\) e connettendo ogni vertice adiacente a \(v\) con ciascun vertice di una copia isomorfa di \(F\). Supponiamo inoltre che \(P\) sia una densità sui vertici di \(G\) e che \(Q\) sia una densità sui vertici di \(F\). Allora possiamo definire una densità \(P_{v\leftarrow Q}\) in modo che la coppia \((G_{v\leftarrow F}, P_{v\leftarrow Q})\) sia un grafo probabilistico. Per fare questo poniamo
+Siano \(F\) e \(G\) grafi tali che \(V(F)\cap V(G)\neq \emptyset\) e sia \(v\) un vertice di \(G\). Chiamiamo grafo ottenuto sostituendo \(F\) a \(v\), e scriviamo \(G_{v\leftarrow F}\), il grafo ottenuto da \(G\) cancellando \(v\) e connettendo ogni vertice adiacente a \(v\) con ciascun vertice di una copia isomorfa di \(F\). Supponiamo inoltre che \(P\) sia una densità sui vertici di \(G\) e che \(Q\) sia una densità sui vertici di \(F\). Allora possiamo definire una densità \(P_{v\leftarrow Q}\) in modo che la coppia \((G_{v\leftarrow F}, P_{v\leftarrow Q})\) sia un grafo probabilistico. Per fare questo poniamo
 \[P_{v\leftarrow Q}(x)= 
 \begin{cases}
 	P(x) & \text{se}\ x\in V(G)-\{v\}\\
@@ -34,7 +34,7 @@ Vale allora il seguente lemma sull'entropia di grafi della forma \(G_{v\leftarro
 \end{lemma}
 Il precedente lemma consente inoltre di ricondurre il calcolo dell'entropia di un grafo al calcolo delle entropie delle componenti connesse.
 \begin{corollary}
-	Sia \((G,P)\) un grafo probabilistico e siano \(G_{1}\dots G_{k}\) le sue componenti connesse. Poniamo \(P_i(x)=P(x)[P(V(G_i))]^{-1}\) per \(x\in V(G_i)\). Allora abbiamo
+	Sia \((G,P)\) un grafo probabilistico e siano \(G_{1}\dots G_{k}\) le sue componenti connesse. Poniamo \(P_i(x)=\frac{P(x)}{P(V(G_i))}\) per \(x\in V(G_i)\). Allora abbiamo
 	\[H(G,P)=\sum_{i=1}^k P(V(G_i))H(G_i,P_i).\]
 \end{corollary}
 \begin{proof}
@@ -55,7 +55,7 @@ Il precedente lemma consente inoltre di ricondurre il calcolo dell'entropia di u
 	\end{equation}
   Dalla disuguaglianza di Jensen segue la ben nota ``Log sum inequality'', cioè la disuguaglianza
   \[
-    \sum_{i=1}^n{\left(a_i\log{\frac{a_i}{b_i}}\right)} \ge \sum_{i=1}^n{a_i}\cdot\log{\frac{\sum_{i=1}^n{a_i}}{\sum_{i=1}^n{b_i}}}
+    \sum_{i=1}^n{\left(a_i\log{\frac{a_i}{b_i}}\right)} \ge \sum_{i=1}^n{a_i}\cdot\log{\frac{\sum_{i=j}^n{a_j}}{\sum_{j=1}^n{b_j}}}
   \]
   per due \(n\)-uple di numeri non negativi \(a_1,\dots,a_n\) e \(b_1,\dots,b_n\).
   Ponendo allora \(p_i = a_i\) e \(b_i = q_i\;\) per \(1\le i\le n\) otteniamo
@@ -102,7 +102,7 @@ Come corollario del precedente teorema otteniamo che \(G\) è perfetto se e solt
   Chiamiamo \emph{ordine parziale} una relazione binaria \(\le\) che sia riflessiva, antisimmetrica e transitiva. Inoltre chiamiamo \emph{insieme parzialmente ordinato} la coppia di un insieme e un ordine parziale su di esso.
 \end{definition}
 
-Siano \(P\) insieme parzialmente ordinato e \(a\), \(b\) due suoi elementi. Diciamo che \(a\) e \(b\) sono \emph{confrontabili} se \(a\le b\) oppure \(b\le a\), \emph{inconfrontabili} altrimenti. Chiamiamo \emph{catena} un sottoinsieme di elementi a due a due confrontabili, e \emph{anticatena} un sottoinsieme di elementi a due a due inconfrontabili. Infine diciamo che \(b\) è \emph{massimale} se vale \(a\le b\) per ogni \(b\) confrontabile con \(a\), e definiamo in modo analogo gli elementi \emph{minimali}. È immediato osservare che gli elementi massimali e gli elementi minimali formano anticatene.
+Siano \(P\) insieme parzialmente ordinato e \(a\), \(b\) due suoi elementi. Diciamo che \(a\) e \(b\) sono \emph{confrontabili} se \(a\le b\) oppure \(b\le a\), \emph{inconfrontabili} altrimenti. Chiamiamo \emph{catena} un sottoinsieme di elementi a due a due confrontabili, e \emph{anticatena} un sottoinsieme di elementi a due a due inconfrontabili. Infine diciamo che \(b\) è \emph{massimale} se vale \(a\le b\) per ogni \(a\) confrontabile con \(b\), e definiamo in modo analogo gli elementi \emph{minimali}. È immediato osservare che gli elementi massimali e gli elementi minimali formano anticatene.
 
 Associamo a \(P\) un grafo di vertici gli elementi di \(P\) e un arco fra \(a\text{,}\,b\in P\) se e soltanto se \(a\) e \(b\) sono confrontabili, che denotiamo \(G(P)\). Nel seguito faremo uso anche del grafo complementare, che denoteremo invece \(\overline{G}(P)\).
 
@@ -120,7 +120,11 @@ I grafi associati agli ordini parziali godono di interessanti proprietà. Ad ese
   di cardinalità \(m\) e quindi massimale, perciò deve essere \(x_k\in M\), contro l'ipotesi. Possiamo dunque applicare l'ipotesi induttiva a \(P-M\), che può quindi essere scritto come unione disgiunta di \(m-1\) anticatene. Ma allora abbiamo scritto \(P\) come unione di \(m\) anticatene: le precedenti \(m-1\) ed \(M\).\qed
 \end{proof}
 
-In termini di teoria dei grafi il precedente teorema afferma che, per i grafi associati agli ordini parziali, il numero cromatico e il numero di cricca coincidono. I sottografi indotti dai sottoinsiemi dell'insieme di sostegno dell'ordine parziale sono ancora grafi associati ad ordini parziali. Ma allora deduciamo che i grafi associati agli ordini parziali sono perfetti.
+Gli elementi di una catena sono fra loro confrontabili, dunque inducono nel grafo associato \(G(P)\) un sottografo completo. Gli elementi di una anticatena, invece, inducono un insieme indipendente. Il Teorema \ref{mirskytheorem} afferma dunque che, se \(G(P)\) possiede una cricca di \(m\) vertici allora si pu\`o scrivere come unione di \(m\) insiemi indipendenti, cio\`e ha numero cromatico al più \(m\). Quindi \(\chi(G(P))\le \omega(G(P))\), e perciò \(\chi(G(P))=\omega(G(P))\).
+
+TODO
+
+% In termini di teoria dei grafi il precedente teorema afferma che, per i grafi associati agli ordini parziali, il numero cromatico e il numero di cricca coincidono. I sottografi indotti dai sottoinsiemi dell'insieme di sostegno dell'ordine parziale sono ancora grafi associati ad ordini parziali. Ma allora deduciamo che i grafi associati agli ordini parziali sono perfetti.
 
 È infine possibile dare una caratterizzazione più precisa di \(\text{STAB}(G)\) quando \(G\) è un grafo perfetto. Vale infatti il seguente lemma, di cui omettiamo la dimostrazione \cite{Chvatal1975}.
 
@@ -206,7 +210,7 @@ e insieme delle frecce
 \end{align}
 
 \begin{lemma}
-  Sia \(P=(V,\le_{P})\) un insieme parzialmente ordinato e siano \(G=G(P)\) e \(D=D(P)\) rispettivamente il grafo e il grafo diretto ad esso associato. Allora \(x\in\mathbb{R}^V\) appartiene a \(\text{STAB}(G)\) se e solo se esiste un vettore \(y\in \mathbb{R}^{N(D)}\) tale che \(y_s=0\), \(y_t=1\), \(y\) non diminuisce lungo gli archi di \(D\) e \(y_{v^+}-y{v^-}=x_v\) per ogni \(v\in V\).
+  Sia \(P=(V,\le_{P})\) un insieme parzialmente ordinato e siano \(G=G(P)\) e \(D=D(P)\) rispettivamente il grafo e il grafo diretto ad esso associato. Allora \(x\in\mathbb{R}^V\) appartiene a \(\text{STAB}(G)\) se e solo se esiste un vettore \(y\in \mathbb{R}^{N(D)}\) tale che \(y_s=0\), \(y_t=1\), \(y\) non diminuisce lungo gli archi di \(D\) e \(y_{v^+}-y_{v^-}=x_v\) per ogni \(v\in V\).
 \end{lemma}
 \begin{proof}
   Supponiamo che esista un tale \(y\in\mathbb{R}^{N(D)}\). Sia \(v_1\le_{P} v_2\le_{P}\dots\le_{P}v_c\) una catena di \(P\). Abbiamo allora
