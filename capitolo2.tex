@@ -43,7 +43,7 @@ Il precedente lemma consente inoltre di ricondurre il calcolo dell'entropia di u
 
 \subsection{Entropia di grafo completo} 
 \begin{proposition}
-  Sia \(K_n\) il grafo completo su \(n\) vertici. Comunque scelta \(P\) densità discreta sui vertici avremo
+  Sia \(K_n\) il grafo completo su \(n\) vertici. Per ogni \(P\) densità discreta sui vertici abbiamo
   \[H(K_n,P)=H(P).\]
 \end{proposition}
 \begin{proof}
@@ -55,9 +55,9 @@ Il precedente lemma consente inoltre di ricondurre il calcolo dell'entropia di u
   \end{equation}
   Dalla disuguaglianza di Jensen segue la ben nota ``Log sum inequality'', cioè la disuguaglianza
   \[
-  \sum_{i=1}^n{\left(a_i\log{\frac{a_i}{b_i}}\right)} \ge \sum_{i=1}^n{a_i}\cdot\log{\frac{\sum_{i=j}^n{a_j}}{\sum_{j=1}^n{b_j}}}
+  \sum_{i=1}^n{\left(a_i\log{\frac{a_i}{b_i}}\right)} \ge \sum_{i=1}^n{a_i}\cdot\log{\frac{\sum_{j=1}^n{a_j}}{\sum_{j=1}^n{b_j}}}
   \]
-  per due \(n\)-uple di numeri non negativi \(a_1,\dots,a_n\) e \(b_1,\dots,b_n\).
+  per due \(n\)-uple di numeri non negativi \(a_1,\dots,a_n\) e \(b_1,\dots,b_n\) \cite{Cover2006}.
   Ponendo allora \(p_i = a_i\) e \(b_i = q_i\;\) per \(1\le i\le n\) otteniamo
   \[
   \sum_{i=1}^n{\left(p_i\log{\frac{p_i}{q_i}}\right)} \le \log{\sum_{i=1}^n{q_i}} = 0\text{,}
