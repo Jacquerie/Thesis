@@ -28,64 +28,7 @@ misurerà quindi la complessità del grafo. La definizione \eqref{eq:entropyzero
   \[E^t=\{(\mathbf{v},\mathbf{w})\ \vert\ \exists i\ (v_i, w_i)\in E\}.\]
 \end{definition}
 In altri termini fra due vertici \(\mathbf{v}\) e \(\mathbf{w}\) di \(G^t\) esiste un arco se e soltanto se le corrispondenti sequenze di lunghezza \(t\) sono distinguibili in almeno un elemento. 
-\begin{example}
-  Sia \(L\) il grafo su tre vertici con due archi, rappresentato a sinistra nella Figura \ref{conormalexample}. Allora \(L^2\) è rappresentato a destra. 
-  \begin{figure}
-    \centering 
-    \begin{tikzpicture}
-      [scale=2] 
-      \node (b) at (0,0) [vertex] {b}; 
-      \node (a) at (2,0) [vertex] {a}; 
-      \node (c) at (1,1.732) [vertex] {c};
-      
-      \draw (b.0) -- (a.180) [thick]; 
-      \draw (b.60) -- (c.240) [thick];
-      
-      \node (aa) at (5,0) [vertex] {aa}; 
-      \node (ab) at (6,0) [vertex] {ab}; 
-      \node (ac) at (7,0) [vertex] {ac};
-      
-      \node (ba) at (5,1) [vertex] {ba}; 
-      \node (bb) at (6,1) [vertex] {bb}; 
-      \node (bc) at (7,1) [vertex] {bc};
-      
-      \node (ca) at (5,2) [vertex] {ca}; 
-      \node (cb) at (6,2) [vertex] {cb}; 
-      \node (cc) at (7,2) [vertex] {cc};
-      
-      \draw (aa.0) -- (ab.180) [thick]; 
-      \draw (ab.0) -- (ac.180) [thick];
-      
-      \draw (ba.0) -- (bb.180) [thick]; 
-      \draw (bb.0) -- (bc.180) [thick];
-      
-      \draw (ca.0) -- (cb.180) [thick]; 
-      \draw (cb.0) -- (cc.180) [thick];
-      
-      \draw (aa.90) -- (ba.270) [thick]; 
-      \draw (ba.90) -- (ca.270) [thick];
-			
-      \draw (ab.90) -- (bb.270) [thick]; 
-      \draw (bb.90) -- (cb.270) [thick];
-      
-      \draw (ac.90) -- (bc.270) [thick]; 
-      \draw (bc.90) -- (cc.270) [thick];
-      
-      \draw (aa.45) -- (bb.225) [thick]; 
-      \draw (ba.315) -- (ab.135) [thick];
-      
-      \draw (ab.45) -- (bc.225) [thick]; 
-      \draw (bb.315) -- (ac.135) [thick];
-      
-      \draw (ba.45) -- (cb.225) [thick]; 
-      \draw (ca.315) -- (bb.135) [thick];
-      
-      \draw (bb.45) -- (cc.225) [thick]; 
-      \draw (cb.315) -- (bc.135) [thick]; 
-    \end{tikzpicture}
-    \caption{Esempio di prodotto conormale per \(t=2\).} \label{conormalexample} 
-  \end{figure}
-\end{example}
+
 Osserviamo che la coppia \((G^t, \mathbf{P}^t)\), dove \(\mathbf{P}^t\) è definita da \eqref{eq:probability}, è ancora un grafo probabilistico. Volendo codificare propriamente un sottoinsieme \(U\subset V^{t}\) abbiamo bisogno di almeno tante parole quanti insiemi indipendenti servono per partizionare \(U\). Ma questo è proprio il numero cromatico del sottografo indotto da \(G^t\) su \(U\), che denotiamo \(\chi(G^t(U))\). Siamo ora pronti per enunciare la prima definizione di entropia di grafo. 
 \begin{definition}
   Sia \((G,P)\) un grafo probabilistico. Chiamiamo \emph{entropia di grafo} il seguente limite: 
@@ -203,8 +146,65 @@ Sia \(G\) un grafo. Chiamiamo \emph{nucleo} un sottoinsieme dei vertici indipend
   Sia \(t\) un intero positivo e \(G\) un grafo. Chiamiamo \emph{\(t\)-esima potenza normale} di \(G\) il grafo \(G_t=(V^t, E_t)\), dove \(V^t\) è il prodotto cartesiano di \(t\) copie di \(V\), mentre
   \[E_t=\{(\mathbf{v},\mathbf{w})\ \vert\ \forall i\ v_i = w_i\vee (v_i, w_i)\in E,\ \exists i\ (v_i,w_i)\in E\}.\]
 \end{definition}
-
 In altri termini fra due vertici \(\mathbf{v}\) e \(\mathbf{w}\) di \(G_t\) esiste un arco se le corrispondenti sequenze di lunghezza \(t\) sono distinguibili in almeno un elemento, nei restanti sono distinguibili oppure coincidono.
+\begin{example}
+  Sia \(L\) il grafo su tre vertici con due archi, rappresentato a sinistra nella Figura \ref{normalexample}. Allora \(L_2\) è rappresentato a destra. 
+  \begin{figure}
+    \centering 
+    \begin{tikzpicture}
+      [scale=2] 
+      \node (b) at (0,0) [vertex] {b}; 
+      \node (a) at (2,0) [vertex] {a}; 
+      \node (c) at (1,1.732) [vertex] {c};
+      
+      \draw (b.0) -- (a.180) [thick]; 
+      \draw (b.60) -- (c.240) [thick];
+      
+      \node (aa) at (5,0) [vertex] {aa}; 
+      \node (ab) at (6,0) [vertex] {ab}; 
+      \node (ac) at (7,0) [vertex] {ac};
+      
+      \node (ba) at (5,1) [vertex] {ba}; 
+      \node (bb) at (6,1) [vertex] {bb}; 
+      \node (bc) at (7,1) [vertex] {bc};
+      
+      \node (ca) at (5,2) [vertex] {ca}; 
+      \node (cb) at (6,2) [vertex] {cb}; 
+      \node (cc) at (7,2) [vertex] {cc};
+      
+      \draw (aa.0) -- (ab.180) [thick]; 
+      \draw (ab.0) -- (ac.180) [thick];
+      
+      \draw (ba.0) -- (bb.180) [thick]; 
+      \draw (bb.0) -- (bc.180) [thick];
+      
+      \draw (ca.0) -- (cb.180) [thick]; 
+      \draw (cb.0) -- (cc.180) [thick];
+      
+      \draw (aa.90) -- (ba.270) [thick]; 
+      \draw (ba.90) -- (ca.270) [thick];
+			
+      \draw (ab.90) -- (bb.270) [thick]; 
+      \draw (bb.90) -- (cb.270) [thick];
+      
+      \draw (ac.90) -- (bc.270) [thick]; 
+      \draw (bc.90) -- (cc.270) [thick];
+      
+      \draw (aa.45) -- (bb.225) [thick]; 
+      \draw (ba.315) -- (ab.135) [thick];
+      
+      \draw (ab.45) -- (bc.225) [thick]; 
+      \draw (bb.315) -- (ac.135) [thick];
+      
+      \draw (ba.45) -- (cb.225) [thick]; 
+      \draw (ca.315) -- (bb.135) [thick];
+      
+      \draw (bb.45) -- (cc.225) [thick]; 
+      \draw (cb.315) -- (bc.135) [thick]; 
+    \end{tikzpicture}
+    \caption{Esempio di prodotto normale per \(t=2\).}     \label{normalexample} 
+\end{figure}
+\end{example}
 
 Osserviamo che la coppia \((G_t, \mathbf{P}^t)\), dove \(\mathbf{P}^t\) è definita da \eqref{eq:probability}, è un grafo probabilistico. Sia \(0<\varepsilon <1\), allora la quantità
 \[\chi_{n}(t,\varepsilon) = \min_{\substack{U\subset V^{t}\\\mathbf{P}^t(U)\ge 1-\varepsilon}} \chi(G_{t}(U))\]
