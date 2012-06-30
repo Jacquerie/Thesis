@@ -55,9 +55,9 @@ Possiamo già enunciare la seconda definizione di entropia di grafo.
 \begin{definition}
   Sia \((G,P)\) un grafo probabilistico. Chiamiamo \emph{entropia di grafo} il seguente minimo: 
   \begin{equation}
-    \label{eq:entropytwo} H(G,P)=\min I(X;Y) 
+    \label{eq:entropytwo} H(G,P)=\min_{\substack{X\sim P \\ X\in Y\in S(G)}} I(X;Y) 
   \end{equation}
-  dove \(X\) è una variabile aleatoria a valori nei vertici di \(G\) con densità \(P\) e \(Y\) è una variabile aleatoria a valori negli insiemi indipendenti di \(G\) tale che l'evento \(\{X\in Y\}\) abbia probabilità \(1\). 
+  dove \(S(G)\) \`e l'insieme degli insiemi indipendenti di \(G\).
 \end{definition}
 
 Affinchè la \ref{eq:entropytwo} risulti una buona definizione occorre dimostrare che tale minimo esiste. Rinviamo alla prossima sezione per una dimostrazione di questo fatto.
