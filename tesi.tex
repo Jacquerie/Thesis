@@ -100,14 +100,17 @@
 
 \ifpdf \DeclareGraphicsExtensions{.pdf, .jpg, .tif} \else \DeclareGraphicsExtensions{.eps, .jpg} \fi
 
-\maketitle \setcounter{chapter}{-1}
+\maketitle
 
-\include{introduzione} 
-\include{capitolo1}
-\include{capitolo2}
-\include{capitolo3}
-\include{capitolo4}
-\printbibliography
-\include{appendice}
+\frontmatter
+  \include{introduzione}
+  
+\mainmatter
+  \include{capitolo1}
+  \include{capitolo2}
+  \include{capitolo3}
+  \include{capitolo4}
+  \printbibliography
+  \include{appendice}
 
 \end{document} 
