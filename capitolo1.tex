@@ -107,7 +107,7 @@ Osserviamo che la coppia \((G^t, \mathbf{P}^t)\), dove \(\mathbf{P}^t\) è defin
   \end{equation}
 \end{definition}
 
-Affinché la \ref{eq:entropyone} risulti una buona definizione dovremmo dimostrarne l'indipendenza da \(\varepsilon\). Salteremo questa verifica e dimostreremo direttamente nella prossima sezione l'equivalenza con una seconda definizione, la quale non dipende da \(\varepsilon\).
+Affinché la \eqref{eq:entropyone} risulti una buona definizione dovremmo dimostrarne l'indipendenza da \(\varepsilon\). Salteremo questa verifica e dimostreremo direttamente nella prossima sezione l'equivalenza con una seconda definizione, la quale non dipende da \(\varepsilon\).
 
 \subsection{Definizione in termini di Mutua Informazione} 
 \begin{definition}
@@ -130,7 +130,7 @@ Possiamo già enunciare la seconda definizione di entropia di grafo.
   dove \(S(G)\) \`e l'insieme degli insiemi indipendenti di \(G\).
 \end{definition}
 
-Affinché la \ref{eq:entropytwo} risulti una buona definizione occorre dimostrare che tale minimo esiste. Rinviamo alla prossima sezione per una dimostrazione di questo fatto.
+Affinché la \eqref{eq:entropytwo} risulti una buona definizione occorre dimostrare che tale minimo esiste. Rinviamo alla prossima sezione per una dimostrazione di questo fatto.
 
 \subsection{Definizione in termini di Politopo dei Vertici} 
 \begin{definition}
@@ -385,7 +385,7 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
   perché le \(Q\) sono distribuzioni ammissibili nel senso della definizione \eqref{eq:preimage}, infatti
   \[\sum_{M:\ w\in M} Q(w, M)=\frac{P(w)}{N(w\mid \mathbf{v})}\cdot \sum_{M:\ w\in M} N(w,M\mid \mathbf{v}, \mathbf{A})=P(w).\]
   
-  Ricordando inoltre il Lemma \ref{ptyplemma} \((ii)\)abbiamo 
+  Ricordando inoltre il Lemma \ref{ptyplemma} \((ii)\) abbiamo 
   \begin{equation}
     \label{eq:finalestimate} \max_{\mathbf{v}\in T^{t}(P)} \mathbf{P}^t(\mathbf{v}) \le 2^{-tH(P)-C\sqrt{t}}. 
   \end{equation}
@@ -421,7 +421,7 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
   \begin{equation}
     \label{eq:objective} \sum_{\mathbf{v}\in V^{t}} R_{M}^{*}(C_{\mathbf{v}})\cdot \mathbf{P}^t(\mathbf{v}) = \sum_{\mathbf{v}\in T^{t}(P)} R_{M}^{*}(C_{\mathbf{v}})\cdot \mathbf{P}^t(\mathbf{v})\ + \sum_{\mathbf{v}\in \overline{T^{t}(P)}} R_{M}^{*}(C_{\mathbf{v}})\cdot \mathbf{P}^t(\mathbf{v}) 
   \end{equation}
-  ed osservare che il secondo termine è maggiorato da \(\mathbf{P}^t\Big(\overline{T^{t}(P)}\Big)\), che per il Lemma \ref{ptyplemma} \((i)\) possiamo supporre essere più piccolo di \(\varepsilon/2\). Per stimare il primo termine osserviamo innanzitutto che
+  ed osservare che il secondo termine è maggiorato da \(\mathbf{P}^t\Big(\overline{T^{t}(P)}\Big)\), che per il Lemma ~\ref{ptyplemma} \((i)\) possiamo supporre essere più piccolo di \(\varepsilon/2\). Per stimare il primo termine osserviamo innanzitutto che
   \[\sum_{\mathbf{v}\in T^t(P)} R_M^{*}(C_{\mathbf{v}})\cdot \mathbf{P}^t(\mathbf{v})\le \mathbf{P}^t\big(T^t(P)\big)\cdot \max_{\mathbf{v}\in T^t(P)} R_{M}^{*}(C_{\mathbf{v}})\le \max_{\mathbf{v}\in T^t(P)} R_{M}^{*}(C_{\mathbf{v}})\]
   maggiorando con il massimo e sfruttando il fatto che hanno massa totale \(1\). Possiamo maggiorare ulteriormente questo termine con
   \[\max_{\mathbf{v}\in T^t(P)} R_{M}^{*}(C_{\mathbf{v}})\le \max_{\mathbf{v}\in T^t(P)} (1-R^{*}(\mathcal{N}_{\mathbf{v}}))^{M},\]
