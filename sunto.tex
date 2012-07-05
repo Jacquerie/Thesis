@@ -1,5 +1,25 @@
 \documentclass[12pt]{article}
 
+\usepackage[italian]{babel}
+
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+
+% Setup for fullpage use
+\usepackage{fullpage}
+
+% More symbols
+\usepackage{amsmath} 
+\usepackage{amssymb} 
+\usepackage{latexsym} 
+\usepackage{enumerate}
+
+\newenvironment{definition}[1][Definizione.]{ 
+\begin{trivlist}
+	\item[\hskip \labelsep {\bfseries #1}]}{ 
+\end{trivlist}
+}
+
 \begin{document}
   
 Il concetto di entropia di una sorgente fu introdotto da Claude E. Shannon nel fondamentale articolo ``A Mathematical Theory of Communication'' \cite{Shannon1948}.
