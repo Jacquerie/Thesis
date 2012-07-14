@@ -136,7 +136,7 @@ I grafi associati agli ordini parziali godono di interessanti proprietà. Ad ese
   Sia \(P\) un insieme parzialmente ordinato. Allora il grafo associato \(G(P)\) è perfetto.
 \end{corollary}
 \begin{proof}
-  Gli elementi di una catena di \(P\) sono fra loro confrontabili, dunque inducono in \(G(P)\) un sottografo completo. Gli elementi di una anticatena, invece, inducono un insieme indipendente. Il Teorema \ref{mirskytheorem} afferma dunque che, se \(G(P)\) possiede una cricca massimale di \(m\) vertici, allora si pu\`o scrivere come unione di \(m\) insiemi indipendenti, cio\`e ha numero cromatico al più \(m\). Quindi \(\chi(G(P))\le \omega(G(P))\), e perciò \(\chi(G(P))=\omega(G(P))\). Osserviamo ora che le restrizioni di un ordine parziale ai sottoinsiemi dell'insieme di sostegno sono ancora ordini parziali. Ai grafi ad essi associati si applica il precedente argomento, cioè numero cromatico e numero di cricca coincidono. Abbiamo quindi dimostrato che, per ogni sottografo \(H\) di \(G(P)\), si ha \(\chi(H)=\omega(H)\), perciò \(G(P)\) è perfetto.\qed
+  Gli elementi di una catena di \(P\) sono fra loro confrontabili, dunque inducono in \(G(P)\) un sottografo completo. Gli elementi di una anticatena, invece, inducono un insieme indipendente. Il Teorema \ref{mirskytheorem} afferma dunque che, se \(G(P)\) possiede una cricca massimale di \(m\) vertici, allora si può scrivere come unione di \(m\) insiemi indipendenti, cioè ha numero cromatico al più \(m\). Quindi \(\chi(G(P))\le \omega(G(P))\), e perciò \(\chi(G(P))=\omega(G(P))\). Osserviamo ora che le restrizioni di un ordine parziale ai sottoinsiemi dell'insieme di sostegno sono ancora ordini parziali. Ai grafi ad essi associati si applica il precedente argomento, cioè numero cromatico e numero di cricca coincidono. Abbiamo quindi dimostrato che, per ogni sottografo \(H\) di \(G(P)\), si ha \(\chi(H)=\omega(H)\), perciò \(G(P)\) è perfetto.\qed
 \end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
@@ -201,7 +201,7 @@ Dalla costruzione è evidente che tale punto appartenga a \(\text{STAB}(G)\), e 
 
 Sia \(P=(V, \le_{P})\) un insieme parzialmente ordinato e sia \(G=G(P)\) il grafo ad esso associato. Nel seguito scriveremo \(H(P)\) e \(H(\overline{P})\) invece di \(H(G(P))\) e \(H(\overline{G}(P))\).
 
-Siano \(v,w\in V\). Diciamo che \(v\) \emph{\`e ricoperto da} \(w\) se \(v\le_{P} w\), \(v\neq w\) e \(v\le_{P}z\le_{P}w\) implica \(z=v\) oppure \(z=w\). Chiamiamo \emph{diagramma di Hasse} il grafo diretto di insieme dei nodi \(V\) e insieme delle frecce \(\{(v,w):v\;\text{è ricoperto da }w\;\text{in}\;P\}\).
+Siano \(v,w\in V\). Diciamo che \(v\) \emph{è ricoperto da} \(w\) se \(v\le_{P} w\), \(v\neq w\) e \(v\le_{P}z\le_{P}w\) implica \(z=v\) oppure \(z=w\). Chiamiamo \emph{diagramma di Hasse} il grafo diretto di insieme dei nodi \(V\) e insieme delle frecce \(\{(v,w):v\;\text{è ricoperto da }w\;\text{in}\;P\}\).
 
 Costruiamo ora un grafo diretto \(D=D(P)\) di insieme dei nodi
 \[

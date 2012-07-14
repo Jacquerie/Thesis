@@ -3,10 +3,10 @@
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Ordinamento con informazione parziale} 
 \begin{definition}
-  Sia \(P=\left(V,\le_{P}\right)\) un insieme parzialmente ordinato. Diciamo che un ordine totale \(\le\) \`e una \emph{estensione lineare} di \(\le_{P}\) se \((\forall v_i, v_j\in V)\;v_i\le_{P} v_j\Rightarrow v_i\le v_j\). Denotiamo inoltre con \(e(P)\) il numero di estensioni lineari di \(P\). 
+  Sia \(P=\left(V,\le_{P}\right)\) un insieme parzialmente ordinato. Diciamo che un ordine totale \(\le\) è una \emph{estensione lineare} di \(\le_{P}\) se \((\forall v_i, v_j\in V)\;v_i\le_{P} v_j\Rightarrow v_i\le v_j\). Denotiamo inoltre con \(e(P)\) il numero di estensioni lineari di \(P\). 
 \end{definition}
 \begin{definition}
-  Sia \(P=(V,\le_{P})\) un insieme parzialmente ordinato di cardinalit\`a \(n\). Il \emph{problema dell'ordinamento con informazione parziale} consiste nel determinare una estensione lineare \(\le\) fissata ma ignota per mezzo di domande del tipo ``\`e vero che \(v_i\le v_j\) ?'', detti \emph{confronti}. 
+  Sia \(P=(V,\le_{P})\) un insieme parzialmente ordinato di cardinalità \(n\). Il \emph{problema dell'ordinamento con informazione parziale} consiste nel determinare una estensione lineare \(\le\) fissata ma ignota per mezzo di domande del tipo ``è vero che \(v_i\le v_j\) ?'', detti \emph{confronti}. 
 \end{definition}
 
 Tale problema fu originariamente posto da Fredman nel 1976 \cite{Fredman1976}. Sempre Fredman dimostrò l'esistenza di un algoritmo che lo risolva compiendo \(\log{e(P)} + 2n\) confronti, il quale tuttavia richiede tempo di esecuzione superpolinomiale. Nel 1984 Kahn e Saks dimostrarono l'esistenza di un algoritmo che richiede \(O(\log{e(P)})\) confronti \cite{Kahn1984}. Essi mostrarono infatti che esiste sempre un confronto tale che le estensioni lineari per cui la risposta sia affermativa siano una parte compresa fra \(3/11\) e \(8/11\) del totale.\footnote{Questo enunciato è un rilassamento della congettura \(1/3-2/3\), indipendentemente posta da Kislitsyn nel 1968 \cite{Kislitsyn1968}, da Fredman nel 1975 e da Linial nel 1984 \cite{Linial1984}.}
@@ -149,7 +149,7 @@ Concludiamo questa sezione con una versione più precisa della stima superiore d
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
 \section{Merge con informazione parziale} 
-Scopo di questa sezione \`e risolvere il problema dell'ordinamento con informazione parziale per un insieme partizionabile in due catene disgiunte. Tale caso particolare \`e noto come \emph{problema della fusione con informazione parziale} e fu studiato da Linial nel 1984 \cite{Linial1984}. Egli propose un algoritmo che richiede al pi\`u \(C\log{e(P)}\) confronti con \(C=\left(\log{\frac{1+\sqrt{5}}{2}}\right)^{-1}\) e dimostr\`o l'ottimalit\`a di tale costante. Il suo algoritmo necessita per\`o del calcolo di \(n\) determinanti di matrici \(n\times n\). In questa sezione proporremo un algoritmo basato sull'entropia di grafo che risolva tale problema, e dimostreremo che richiede al pi\`u \(6\log{e(P)}\) confronti. \`E possibile inoltre dimostrare che questo algoritmo necessita di \(O(n^2\log{n})\) operazioni elementari.
+Scopo di questa sezione è risolvere il problema dell'ordinamento con informazione parziale per un insieme partizionabile in due catene disgiunte. Tale caso particolare è noto come \emph{problema della fusione con informazione parziale} e fu studiato da Linial nel 1984 \cite{Linial1984}. Egli propose un algoritmo che richiede al più \(C\log{e(P)}\) confronti con \(C=\left(\log{\frac{1+\sqrt{5}}{2}}\right)^{-1}\) e dimostrò l'ottimalità di tale costante. Il suo algoritmo necessita però del calcolo di \(n\) determinanti di matrici \(n\times n\). In questa sezione proporremo un algoritmo basato sull'entropia di grafo che risolva tale problema, e dimostreremo che richiede al più \(6\log{e(P)}\) confronti. \`E possibile inoltre dimostrare che questo algoritmo necessita di \(O(n^2\log{n})\) operazioni elementari.
 
 Il seguente risultato descrive la struttura dei grafi associati agli insiemi parzialmente ordinati partizionabili in due catene disgiunte. La dimostrazione è immediata e quindi omessa. 
 \begin{lemma}
@@ -157,7 +157,7 @@ Il seguente risultato descrive la struttura dei grafi associati agli insiemi par
   \begin{enumerate}
     [(i)] 
   \item \(G\) è bipartito. 
-  \item \(G\) è biconvesso, cio\`e i vertici adiacenti ad un vertice di una catena formano un intervallo nella catena opposta. 
+  \item \(G\) è biconvesso, cioè i vertici adiacenti ad un vertice di una catena formano un intervallo nella catena opposta. 
   \item Siano \(u\) e \(v\) vertici appartenenti alla stessa catena, che supporremo senza perdita di generalità essere \(A\), tali che \(u\le_{P} v\). Siano \([c_u,d_u]\) e \([c_v,d_v]\) gli intervalli dei vertici \(B\) adiacenti rispettivamente a \(u\) e \(v\). Allora \(c_u\le_{P} c_v\) e \(d_u\le_{P} d_v\), e in particolare se \(u\le_{P}w\le_{P}v\) i vertici adiacenti a \(w\) sono un intervallo contenuto in \([c_u,d_v]\). 
   \end{enumerate}
 \end{lemma}
@@ -173,7 +173,7 @@ Nel caso di grafi bipartiti è possibile calcolare esattamente l'entropia. Vale 
 
 Possiamo costruire tali partizioni iterativamente. Dato \(S\subset V\) sottoinsieme dei vertici, denotiamo con \(N_G(S)\) l'insieme dei vertici adiacenti ad almeno un vertice di \(S\). Sia allora \(A_i\) un sottoinsieme di \(A'=A-(A_1\cup\dots\cup A_{i-1})\) che renda massimo
 \[\frac{|A_i|}{|N_{G'}(A_i)|},\]
-dove \(G'\) \`e ottenuto da \(G\) rimuovendo tutti i vertici contenuti in un qualche \(A_j\) o \(B_j\) per \(j<i\), e \(B_i=N_{G'}(A_i)\). Se esiste un vertice isolato \(u\) in \(A'\) allora poniamo \(A_i=\{u\}\) e \(B_i=\emptyset\). Se invece \(A'\) \`e vuoto e \(B'=B-(B_1\cup\dots\cup B_{i-1})\) non lo \`e allora scegliamo \(v\in B'\) e poniamo \(A_i=\emptyset\) e \(B_i=\{v\}\).
+dove \(G'\) è ottenuto da \(G\) rimuovendo tutti i vertici contenuti in un qualche \(A_j\) o \(B_j\) per \(j<i\), e \(B_i=N_{G'}(A_i)\). Se esiste un vertice isolato \(u\) in \(A'\) allora poniamo \(A_i=\{u\}\) e \(B_i=\emptyset\). Se invece \(A'\) è vuoto e \(B'=B-(B_1\cup\dots\cup B_{i-1})\) non lo è allora scegliamo \(v\in B'\) e poniamo \(A_i=\emptyset\) e \(B_i=\{v\}\).
 
 Al fine di evitare casi degeneri denotiamo nel seguito con \(\text{STAB}^{*}(G)\) i punti di \(\text{STAB}(G)\) di coordinate tutte positive. Se infatti così non fosse la funzione obiettivo dell'equazione \eqref{eq:entropythree} non sarebbe definita.
 
@@ -191,10 +191,10 @@ Nel caso di grafi bipartiti possiamo semplificare il Lemma \ref{chvatallemma}. A
 \begin{proof}
   Dal Lemma \ref{structurelemma} \((iii)\) segue che \(u'v\) e \(uv'\) sono archi di \(G\). Supponiamo per assurdo che \(uv'\) non sia stretto. Avremmo allora: 
   \begin{align}
-    x_v &= 1-x_u &\text{(poich\'e } uv \text{ \`e stretto)}\nonumber \\
-    &> x_{v'} &\text{(poich\'e } uv' \text{ non \`e stretto)}\nonumber \\
-    &= 1-x_{u'} &\text{(poich\'e } u'v' \text{ \`e stretto)}\nonumber \\
-    &\ge x_{v}, &\text{(poich\'e } u'v \text{ \`e un arco e per il Lemma \ref{chvatallemma})}\nonumber 
+    x_v &= 1-x_u &\text{(poiché } uv \text{ è stretto)}\nonumber \\
+    &> x_{v'} &\text{(poiché } uv' \text{ non è stretto)}\nonumber \\
+    &= 1-x_{u'} &\text{(poiché } u'v' \text{ è stretto)}\nonumber \\
+    &\ge x_{v}, &\text{(poiché } u'v \text{ è un arco e per il Lemma \ref{chvatallemma})}\nonumber 
   \end{align}
   chiaramente un assurdo. Possiamo procedere analogamente per \(u'v\), da cui la tesi.\qed 
 \end{proof}
@@ -210,7 +210,7 @@ Nel caso di grafi bipartiti possiamo semplificare il Lemma \ref{chvatallemma}. A
   Sia \(x\in\text{STAB}^{*}(G)\). Una componente connessa \(L\) di \(G(x)\) è detta \emph{incastonata} in un'altra componente connessa \(K\) se esistono un vertice \(w\in L\) e due vertici \(u,u''\in K\) tutti appartenenti ad un'unica catena e tali inoltre che \(u\le_{P}w\le_{P}u''\). 
 \end{definition}
 \begin{example}
-  Nella figura \ref{inlayexample} la componente connessa \(L\) \`e incastonata in \(K\). 
+  Nella figura \ref{inlayexample} la componente connessa \(L\) è incastonata in \(K\). 
   \begin{figure}
     \centering 
     \begin{tikzpicture}
@@ -240,7 +240,7 @@ La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi
 \begin{proof}
   \begin{enumerate}
     [(i)] 
-  \item Supponiamo per assurdo che \(L\) non sia libera ma sia incastonata in \(K\). Siano allora \(w\in L\) e \(u,u''\in K\) come nella definizione. Senza perdita di generalità possiamo assumere \(w,u',u''\in A\) e che \(u'\not\in K\) se \(u\le_{P}u'\le_{P}u''\). \(K\) \`e una componente connessa che contiene sia \(u\) sia \(u''\), dunque esiste \(v\in K\cap B\) adiacente ad entrambi. Per il Lemma \ref{structurelemma} \((iii)\) abbiamo che \(vw\) \`e un arco di \(G\), ma poich\'e \(K\) ed \(L\) sono componenti connesse distinte \(vw\) non \`e un arco di \(G(x)\). Se \(L\) non fosse banale allora esisterebbe un arco di \(L\) incidente in \(w\) che incrocia \(uv\) o \(u''v\), dunque per il Lemma \ref{crossinglemma} avremmo che \(vw\) \`e stretto, assurdo. Se invece \(L\) fosse bilanciata avremmo \(x_w+x_v=1+x_v>1\), contro il Lemma \ref{chvatallemma}. 
+  \item Supponiamo per assurdo che \(L\) non sia libera ma sia incastonata in \(K\). Siano allora \(w\in L\) e \(u,u''\in K\) come nella definizione. Senza perdita di generalità possiamo assumere \(w,u',u''\in A\) e che \(u'\not\in K\) se \(u\le_{P}u'\le_{P}u''\). \(K\) è una componente connessa che contiene sia \(u\) sia \(u''\), dunque esiste \(v\in K\cap B\) adiacente ad entrambi. Per il Lemma \ref{structurelemma} \((iii)\) abbiamo che \(vw\) è un arco di \(G\), ma poiché \(K\) ed \(L\) sono componenti connesse distinte \(vw\) non è un arco di \(G(x)\). Se \(L\) non fosse banale allora esisterebbe un arco di \(L\) incidente in \(w\) che incrocia \(uv\) o \(u''v\), dunque per il Lemma \ref{crossinglemma} avremmo che \(vw\) è stretto, assurdo. Se invece \(L\) fosse bilanciata avremmo \(x_w+x_v=1+x_v>1\), contro il Lemma \ref{chvatallemma}. 
   \item Supponiamo per assurdo che siano false entrambe le disuguaglianze. Per il punto precedente \(K\) e \(L\), essendo non banali, non possono essere incastonate l'una nell'altra. Senza perdita di generalità possiamo allora assumere che valgano
     \[K\cap A\le_{P}L\cap A\qquad\text{ e }\qquad L\cap B\le_{P}K\cap B.\]
     Siano quindi \(u,u'\in A\) e \(v,v'\in B\) tali che \(uv\) e \(u'v'\) siano archi di \(G\). Dunque tali archi si incrociano, perciò in particolare \(uv'\) è un arco di \(G\). Ma allora \(K\) ed \(L\) sarebbero la stessa componente connessa, una contraddizione.\qed 
@@ -264,9 +264,9 @@ La relazione d'ordine \(\le_{P}\) induce una relazione d'ordine sui sottoinsiemi
     [1] \WHILE{esiste una componente sbilanciata \(K\) di \(G(x)\)} \STATE calcola lo scarto \(\sigma\) di \(K\) \STATE poni \(x_v := x_v+\sigma\) per \(v\in A\cap K\), \(x_v := x_v-\sigma\) per \(v\in B\cap K\)\ENDWHILE 
   \end{algorithmic}
 \end{algorithm}
-Denotiamo con \(x'\) il vettore \(x\) dopo una esecuzione del corpo del while. Ad ogni esecuzione accade che o una componente risulta bilanciata o un arco di \(G\) fra componenti connesse distinte diviene stretto. In entrambi i casi il numero di componenti sbilanciate diminuisce, perci\`o l'algoritmo termina.
+Denotiamo con \(x'\) il vettore \(x\) dopo una esecuzione del corpo del while. Ad ogni esecuzione accade che o una componente risulta bilanciata o un arco di \(G\) fra componenti connesse distinte diviene stretto. In entrambi i casi il numero di componenti sbilanciate diminuisce, perciò l'algoritmo termina.
 
-Nel secondo caso diciamo che \(K\) \emph{si fonde} con un'altra componente connessa di \(G(x')\). Possiamo dare una condizione necessaria affinch\'e ci\`o accada in termini della seguente definizione. 
+Nel secondo caso diciamo che \(K\) \emph{si fonde} con un'altra componente connessa di \(G(x')\). Possiamo dare una condizione necessaria affinché ciò accada in termini della seguente definizione. 
 \begin{definition}
   Sia \(x\in\text{STAB}(G)\). Diciamo che due componenti connesse \(K\) ed \(L\) di \(G(x)\) \emph{sono a contatto} se sono collegate da un arco di \(G\) e se non esiste una componente connessa non banale \(M\) diversa da \(K\) ed \(L\) tale che un arco \(uv\) di \(M\) sia compreso fra \(K\) ed \(L\). In altri termini, supposto \(u\in A\) e \(v\in B\), non devono valere \(K\cap A\le_{P}\{u\}\le_{P}L\cap A\) e \(K\cap B\le_{P}\{v\}\le_{P}L\cap B\), oppure \(L\cap A\le_{P}\{u\}\le_{P}K\cap A\) e \(L\cap B\le_{P}\{v\}\le_{P}K\cap B\). 
 \end{definition}
@@ -290,7 +290,7 @@ Nel secondo caso diciamo che \(K\) \emph{si fonde} con un'altra componente conne
   \label{touchinglemma} Sia \(x\in\text{STAB}^{*}(G)\), e sia \(x'\) il punto ottenuto ribilanciando \(x\). Se la componente connessa \(K\) si fonde con la componente connessa \(L\) di \(G(x)\) allora \(K\) ed \(L\) sono a contatto. 
 \end{lemma}
 \begin{proof}
-  Supponiamo per assurdo che \(K\) ed \(L\) non siano a contatto. Siano allora \(M\) una componente connessa e \(uv\) un suo arco come nella precedente definizione. Sia inoltre \(u'v'\) l'arco di estremi rispettivamente in \(K\) ed \(L\) che sia diventato stretto in \(G(x')\). Gli archi \(uv\) e \(u'v'\) si incrociano: possiamo allora applicare il Lemma \ref{crossinglemma} e concludere che \(uv'\) \`e un arco di \(G(x')\), quindi \(M\) ed \(L\) sono contenuti in una stessa componente connessa di \(G(x')\). Ma l'Algoritmo \ref{rebalance} non altera i pesi dei vertici non appartenenti a \(K\), pertanto \(M\) ed \(L\) erano contenuti in una stessa componente connessa di \(G(x)\), una contraddizione.\qed 
+  Supponiamo per assurdo che \(K\) ed \(L\) non siano a contatto. Siano allora \(M\) una componente connessa e \(uv\) un suo arco come nella precedente definizione. Sia inoltre \(u'v'\) l'arco di estremi rispettivamente in \(K\) ed \(L\) che sia diventato stretto in \(G(x')\). Gli archi \(uv\) e \(u'v'\) si incrociano: possiamo allora applicare il Lemma \ref{crossinglemma} e concludere che \(uv'\) è un arco di \(G(x')\), quindi \(M\) ed \(L\) sono contenuti in una stessa componente connessa di \(G(x')\). Ma l'Algoritmo \ref{rebalance} non altera i pesi dei vertici non appartenenti a \(K\), pertanto \(M\) ed \(L\) erano contenuti in una stessa componente connessa di \(G(x)\), una contraddizione.\qed 
 \end{proof}
 \begin{definition}
   Sia \(x\in\text{STAB}^{*}(G)\). Diciamo che una componente connessa \(K\) di \(G(x)\) è \emph{rossa} se si ha \(|A\cap K|\ge|B\cap K|\), altrimenti diciamo che \(K\) è \emph{blu}. 
@@ -298,8 +298,8 @@ Nel secondo caso diciamo che \(K\) \emph{si fonde} con un'altra componente conne
 \begin{definition}
   Sia \(x\in\text{STAB}^{*}(G)\). Diciamo che \emph{rispetta i colori} se per ogni componente connessa \(K\) di \(G(x)\) e per ogni scelta di \(u\in A\cap K\) e \(v\in B\cap K\) abbiamo 
   \begin{align}
-    x_u\ge\frac{1}{2}&\quad\text{ e }\quad x_v\le\frac{1}{2}\qquad\text{ se }K\text{ \`e rossa,} \nonumber \\
-    x_u<\frac{1}{2}&\quad\text{ e }\quad x_v>\frac{1}{2}\qquad\text{ se }K\text{ \`e blu.} \nonumber 
+    x_u\ge\frac{1}{2}&\quad\text{ e }\quad x_v\le\frac{1}{2}\qquad\text{ se }K\text{ è rossa,} \nonumber \\
+    x_u<\frac{1}{2}&\quad\text{ e }\quad x_v>\frac{1}{2}\qquad\text{ se }K\text{ è blu.} \nonumber 
   \end{align}
 \end{definition}
 Osserviamo che la precedente definizione è un rilassamento della definizione di componente connessa bilanciata. 
@@ -307,21 +307,21 @@ Osserviamo che la precedente definizione è un rilassamento della definizione di
   \label{consistentlemma} Sia \(x\in\text{STAB}^{*}(G)\) e sia \(x'\) ottenuto ribilanciando \(x\). Sia poi \(K\) una componente connessa di \(G(x)\). Allora se \(x\) rispetta i colori anche \(x'\) rispetta i colori. Inoltre non è possibile che \(K\) si sia fusa con componenti connesse di colore diverso, perciò la componente di \(G(x')\) contenente \(K\) è dello stesso colore. 
 \end{lemma}
 \begin{proof}
-  Poich\'e \(x\) rispetta i colori lo scarto \(\sigma\) \`e non negativo, dunque per \(v\in A\cap K\) abbiamo \(x'_v\ge \frac{1}{2}\) se e solo se \(x_v\ge \frac{1}{2}\), mentre per \(v\in B\cap K\) abbiamo \(x'_v>\frac{1}{2}\) se e solo se \(x_v>\frac{1}{2}\). Pertanto se \(K\) non si fonde con altre componenti connesse allora anche \(x'\) rispetta i colori. Supponiamo invece che \(K\) si fonda con una componente \(L\), e sia \(vw\) un arco di \(G(x)\) che sia diventato stretto rispetto a \(x'\), e tale inoltre che \(v\in K\) e \(w\in L\). Da \(x'_w=x_w\) e \(x_v+x_w < x'_v+x'_w = 1\) segue che \(x'_v > x_v\). Abbiamo quattro casi: 
+  Poiché \(x\) rispetta i colori lo scarto \(\sigma\) è non negativo, dunque per \(v\in A\cap K\) abbiamo \(x'_v\ge \frac{1}{2}\) se e solo se \(x_v\ge \frac{1}{2}\), mentre per \(v\in B\cap K\) abbiamo \(x'_v>\frac{1}{2}\) se e solo se \(x_v>\frac{1}{2}\). Pertanto se \(K\) non si fonde con altre componenti connesse allora anche \(x'\) rispetta i colori. Supponiamo invece che \(K\) si fonda con una componente \(L\), e sia \(vw\) un arco di \(G(x)\) che sia diventato stretto rispetto a \(x'\), e tale inoltre che \(v\in K\) e \(w\in L\). Da \(x'_w=x_w\) e \(x_v+x_w < x'_v+x'_w = 1\) segue che \(x'_v > x_v\). Abbiamo quattro casi: 
   \begin{itemize}
-  \item \(v\in A\) e \(K\) \`e rossa in \(G(x)\). Allora \(x'_v>x_v\ge\frac{1}{2}\) e \(x_w=x'_w<\frac{1}{2}\). 
-  \item \(v\in A\) e \(K\) \`e blu in \(G(x)\). Allora \(x_v<\frac{1}{2}\), quindi \(x'_v<\frac{1}{2}\) e \(x_w=x'_w>\frac{1}{2}\). 
-  \item \(v\in B\) e \(K\) \`e rossa in \(G(x)\). Allora \(x_v\le\frac{1}{2}\), quindi \(x'_v\le\frac{1}{2}\) e \(x_w=x'_w\ge\frac{1}{2}\). 
-  \item \(v\in B\) e \(K\) \`e blu in \(G(x)\). Allora \(x'_v>x_v>\frac{1}{2}\) e \(x'_w=x_w<\frac{1}{2}\). 
+  \item \(v\in A\) e \(K\) è rossa in \(G(x)\). Allora \(x'_v>x_v\ge\frac{1}{2}\) e \(x_w=x'_w<\frac{1}{2}\). 
+  \item \(v\in A\) e \(K\) è blu in \(G(x)\). Allora \(x_v<\frac{1}{2}\), quindi \(x'_v<\frac{1}{2}\) e \(x_w=x'_w>\frac{1}{2}\). 
+  \item \(v\in B\) e \(K\) è rossa in \(G(x)\). Allora \(x_v\le\frac{1}{2}\), quindi \(x'_v\le\frac{1}{2}\) e \(x_w=x'_w\ge\frac{1}{2}\). 
+  \item \(v\in B\) e \(K\) è blu in \(G(x)\). Allora \(x'_v>x_v>\frac{1}{2}\) e \(x'_w=x_w<\frac{1}{2}\). 
   \end{itemize}
-  In tutti i casi concludiamo che \(L\) abbia lo stesso colore di \(K\), quindi a maggior ragione la componente connessa di \(G(x')\) contenente \(K\) avr\`a lo stesso colore di \(K\).\qed 
+  In tutti i casi concludiamo che \(L\) abbia lo stesso colore di \(K\), quindi a maggior ragione la componente connessa di \(G(x')\) contenente \(K\) avrà lo stesso colore di \(K\).\qed 
 \end{proof}
 \begin{remark}
-  Ad ogni passo dell'algoritmo l'entropia di \(x'\) \`e minore dell'entropia di \(x\). Infatti la funzione
+  Ad ogni passo dell'algoritmo l'entropia di \(x'\) è minore dell'entropia di \(x\). Infatti la funzione
   \[ \xi \mapsto \frac{|A\cap K|}{|K|}\log{\xi} + \frac{|B\cap K|}{|K|}\log{(1-\xi)} \]
-  \`e convessa sull'intervallo \((0,1)\) con minimo in \(\xi = \frac{|A\cap K|}{|K|}\). 
+  è convessa sull'intervallo \((0,1)\) con minimo in \(\xi = \frac{|A\cap K|}{|K|}\). 
 \end{remark}
-La fusione di catene verr\`a effettuata con l'Algoritmo di Hwang-Lin. Date due catene \(X\) e \(Y\) con \(|X|\ge|Y|\), tale algoritmo divide la catena maggiore in blocchi di grandezza \(2^{\lfloor\log{\frac{|X|}{|Y|}}\rfloor}\). Ogni vertice di \(Y\) \`e inserito eseguendo prima una scansione lineare fra i blocchi e poi per bisezione all'interno del blocco. Osserviamo che, poich\'e gli elementi di \(Y\) sono ordinati, una volta scartato un blocco questo non dovr\`a essere considerato per i successivi elementi. Avremo bisogno della seguente stima sul numero di confronti effettuato da tale algoritmo. 
+La fusione di catene verrà effettuata con l'Algoritmo di Hwang-Lin. Date due catene \(X\) e \(Y\) con \(|X|\ge|Y|\), tale algoritmo divide la catena maggiore in blocchi di grandezza \(2^{\lfloor\log{\frac{|X|}{|Y|}}\rfloor}\). Ogni vertice di \(Y\) è inserito eseguendo prima una scansione lineare fra i blocchi e poi per bisezione all'interno del blocco. Osserviamo che, poiché gli elementi di \(Y\) sono ordinati, una volta scartato un blocco questo non dovrà essere considerato per i successivi elementi. Avremo bisogno della seguente stima sul numero di confronti effettuato da tale algoritmo. 
 \begin{lemma}
   \label{hwanglinlemma} Siano \(X\) e \(Y\) due catene disgiunte. Supponiamo che \(|X|\ge|Y|\). Allora il numero di confronti richiesto dall'Algoritmo di Hwang-Lin è maggiorato da \(|Y|\log(\frac{4|X|}{|Y|})\). 
 \end{lemma}
@@ -383,28 +383,28 @@ La fusione di catene verr\`a effettuata con l'Algoritmo di Hwang-Lin. Date due c
   \label{evolutionlemma} Denotiamo con \(G\) e \(x\) rispettivamente il grafo e il punto all'inizio di un ciclo while. Denotiamo invece con \(G'\) e \(x'\) il grafo e il punto appena eseguita la riga \(6\) dell'Algoritmo \ref{essentialmerge}. Allora \(x'\) appartiene a \(\text{STAB}(G')\) e rispetta i colori. 
 \end{lemma}
 \begin{proof}
-  Osserviamo che se \(v\in K\) allora \(\{v\}\) \`e una componente libera di \(G'(x)\). Il nostro obiettivo \`e dimostrare che questo \`e vero anche in \(G'(x')\). Possiamo distinguere quattro casi: 
+  Osserviamo che se \(v\in K\) allora \(\{v\}\) è una componente libera di \(G'(x)\). Il nostro obiettivo è dimostrare che questo è vero anche in \(G'(x')\). Possiamo distinguere quattro casi: 
   \begin{itemize}
-  \item \(v\in A\) e \(K\) \`e rossa. Allora \(x_v\ge\frac{1}{2}\), quindi \(x'_v=x_v\). Pertanto \(\{v\}\) rimane libera in \(G'(x')\). 
-  \item \(v\in B\) e \(K\) \`e rossa. Allora \(x_v\le\frac{1}{2}\), quindi \(x'_v=\frac{1}{2}+\frac{1}{2n}\). Poich\'e \(K\) \`e buona un vertice \(w\) che sia adiacente a \(v\) in \(G'\) apparteneva ad una componente connessa blu di \(G(x)\), dunque \(x_w<\frac{1}{2}\). Essendo \(x\) localmente ottimo deve essere \(x_w\le\frac{1}{2}-\frac{1}{n}\), e da questo segue 
+  \item \(v\in A\) e \(K\) è rossa. Allora \(x_v\ge\frac{1}{2}\), quindi \(x'_v=x_v\). Pertanto \(\{v\}\) rimane libera in \(G'(x')\). 
+  \item \(v\in B\) e \(K\) è rossa. Allora \(x_v\le\frac{1}{2}\), quindi \(x'_v=\frac{1}{2}+\frac{1}{2n}\). Poiché \(K\) è buona un vertice \(w\) che sia adiacente a \(v\) in \(G'\) apparteneva ad una componente connessa blu di \(G(x)\), dunque \(x_w<\frac{1}{2}\). Essendo \(x\) localmente ottimo deve essere \(x_w\le\frac{1}{2}-\frac{1}{n}\), e da questo segue 
     \begin{align}
       x'_v+x'_w &= (\frac{1}{2} + \frac{1}{2n}) + x_w \le \nonumber \\
       &\le (\frac{1}{2} + \frac{1}{2n}) + (\frac{1}{2} - \frac{1}{n}) \le \nonumber \\
       &\le 1\text{,} \nonumber 
     \end{align}
-    cio\`e \(vw\) non \`e stretto in \(G'(x')\), quindi \(\{v\}\) \`e libera in \(G'(x')\). 
-  \item \(v\in B\) e \(K\) \`e blu. Allora \(x_v>\frac{1}{2}\), quindi, poich\'e \(x\) \`e localmente ottimo, \(x'_v=x_v\ge\frac{1}{2}+\frac{1}{n}\). 
-  \item \(v\in A\) e \(K\) \`e blu. Allora \(x_v<\frac{1}{2}\), quindi \(x'_v=\frac{1}{2}\). Se stiamo considerando una componente blu allora tutte le componenti rosse di \(G(x)\) sono banali. Inoltre, poich\'e \(x\) \`e localmente ottimo, nessuna di esse pu\`o essere libera. Essendo \(K\) buona \(v\) \`e adiacente in \(G\) soltanto a vertici della catena opposta, dunque a nessun vertice in \(G'\). Di conseguenza \(\{v\}\) \`e libera in \(G'(x')\). 
+    cioè \(vw\) non è stretto in \(G'(x')\), quindi \(\{v\}\) è libera in \(G'(x')\). 
+  \item \(v\in B\) e \(K\) è blu. Allora \(x_v>\frac{1}{2}\), quindi, poiché \(x\) è localmente ottimo, \(x'_v=x_v\ge\frac{1}{2}+\frac{1}{n}\). 
+  \item \(v\in A\) e \(K\) è blu. Allora \(x_v<\frac{1}{2}\), quindi \(x'_v=\frac{1}{2}\). Se stiamo considerando una componente blu allora tutte le componenti rosse di \(G(x)\) sono banali. Inoltre, poiché \(x\) è localmente ottimo, nessuna di esse può essere libera. Essendo \(K\) buona \(v\) è adiacente in \(G\) soltanto a vertici della catena opposta, dunque a nessun vertice in \(G'\). Di conseguenza \(\{v\}\) è libera in \(G'(x')\). 
   \end{itemize}
   In tutti i casi abbiamo ottenuto che \(\{v\}\) è libera in \(G'(x')\), dunque la tesi.\qed 
 \end{proof}
 \begin{lemma}
-  \label{finallemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Supponiamo che \(x\in\text{STAB}(G)\) sia localmente ottimo e tale che il contributo ad \(H(x)\) delle componenti rosse superi quello delle componenti blu. Allora l'Algoritmo \ref{essentialmerge} fonde \(A\) e \(B\) impiegando al pi\`u \(3nH(x)\) confronti. 
+  \label{finallemma} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Supponiamo che \(x\in\text{STAB}(G)\) sia localmente ottimo e tale che il contributo ad \(H(x)\) delle componenti rosse superi quello delle componenti blu. Allora l'Algoritmo \ref{essentialmerge} fonde \(A\) e \(B\) impiegando al più \(3nH(x)\) confronti. 
 \end{lemma}
 \begin{proof}
   Sia \(k\) il numero di esecuzioni del corpo del while, e fissiamo \(j\) compreso fra \(1\) e \(k\). Siano poi \(G_j\) e \(x'\) rispettivamente il grafo e il punto all'inizio della \(j-\)esima esecuzione, e siano \(x''\) il punto dopo la riga \(6\) e \(x'''\) alla fine dell'esecuzione. Siano inoltre \(K\) la componente buona scelta a tale passo, \(s_j\) e \(t_j\) rispettivamente il numero di elementi nella catena minore e maggiore. Denotiamo infine con \(r_j\) il numero di vertici nella catena minore di qualche componente rossa in \(G_j(x')\), e definiamo \(\phi_j=nH(x')+r_j\), dove abbiamo posto \(r_{k+1}=0\) e \(\phi_{k+1}=0\).
   
-  Supponiamo che \(K\) sia rossa in \(G_j(x')\) e sia \(v\) un vertice della catena minore di \(K\). Il contributo a \(H(x')\) corrispondente a tale vertice \`e \(x'_v = -\frac{1}{n}\log{\frac{s_j}{s_j+t_j}}\). Dopo la riga \(6\), poich\'e \(x''_v\) \`e diventato almeno \(\frac{1}{2}\), il contributo a \(H(x'')\) \`e al pi\`u \(x''_v = -\frac{1}{n}\log{\frac{1}{2}} = \frac{1}{n}\). Pertanto, sommando su tutti i vertici della catena minore di \(K\), abbiamo:
+  Supponiamo che \(K\) sia rossa in \(G_j(x')\) e sia \(v\) un vertice della catena minore di \(K\). Il contributo a \(H(x')\) corrispondente a tale vertice è \(x'_v = -\frac{1}{n}\log{\frac{s_j}{s_j+t_j}}\). Dopo la riga \(6\), poiché \(x''_v\) è diventato almeno \(\frac{1}{2}\), il contributo a \(H(x'')\) è al più \(x''_v = -\frac{1}{n}\log{\frac{1}{2}} = \frac{1}{n}\). Pertanto, sommando su tutti i vertici della catena minore di \(K\), abbiamo:
   \[ H(x')-H(x'') \ge -\frac{s_j}{n}\log{\frac{s_j}{s_j+t_j}} - \frac{s_j}{n} = \frac{s_j}{n}\log{\frac{s_j+t_j}{s_j}} - \frac{s_j}{n}\text{.} \]
   Abbiamo in precedenza osservato che il ribilanciamento diminuisce l'entropia, dunque vale la stima 
   \begin{equation}
@@ -414,13 +414,13 @@ La fusione di catene verr\`a effettuata con l'Algoritmo di Hwang-Lin. Date due c
   \begin{equation}
     \label{eq:redvertices} r_j-r_{j+1} \ge s_j\text{,} 
   \end{equation}
-  poich\'e dopo il passo \(j\) non avremo pi\`u almeno i vertici rossi nella catena minore di \(K\).
+  poiché dopo il passo \(j\) non avremo più almeno i vertici rossi nella catena minore di \(K\).
   
-  Supponiamo invece che \(K\) sia blu in \(G_j(x')\). Allora non possono esistere componenti connesse rosse, altrimenti una di esse sarebbe buona per il Lemma \ref{goodlemma} e l'algoritmo avrebbe dato precedenza a questa. Poich\'e \(K\) \`e buona non pu\`o accadere che \(K\) si fonda con un'altra componente blu, pertanto durante il ribilanciamento ogni componente \(x_v\) corrispondente a un elemento della catena minore \`e diventato almeno \(1\). Il contributo a \(H(x''')\) diventa quindi nullo e, sommando su tutti i vertici della catena minore di \(K\), abbiamo 
+  Supponiamo invece che \(K\) sia blu in \(G_j(x')\). Allora non possono esistere componenti connesse rosse, altrimenti una di esse sarebbe buona per il Lemma \ref{goodlemma} e l'algoritmo avrebbe dato precedenza a questa. Poiché \(K\) è buona non può accadere che \(K\) si fonda con un'altra componente blu, pertanto durante il ribilanciamento ogni componente \(x_v\) corrispondente a un elemento della catena minore è diventato almeno \(1\). Il contributo a \(H(x''')\) diventa quindi nullo e, sommando su tutti i vertici della catena minore di \(K\), abbiamo 
   \begin{equation}
     \label{eq:blueentropy} H(x')-H(x''') \ge \frac{s_j}{n}\log{\frac{s_j+t_j}{s_j}}\text{.} 
   \end{equation}
-  Infine, poich\'e non ci sono pi\`u componenti rosse, deve valere 
+  Infine, poiché non ci sono più componenti rosse, deve valere 
   \begin{equation}
     \label{eq:bluevertices} r_j - r_{j+1} = 0\text{.} 
   \end{equation}
@@ -438,27 +438,27 @@ La fusione di catene verr\`a effettuata con l'Algoritmo di Hwang-Lin. Date due c
     g(P) \le 2\phi_1 = 2nH(x) + 2r_1\text{.} 
   \end{equation}
   
-  Osserviamo che \(r_1\) \`e uguale a \(nH(\tilde{x})\), dove \(\tilde{x}\) \`e definito ponendo \(x_v=\frac{1}{2}\) per i \(v\) nella catena minore di qualche componente rossa di \(G\) ed \(1\) altrimenti. L'entropia di \(H(\tilde{x})\) \`e maggiorata dal contributo delle componenti rosse all'entropia del grafo, dunque da \(\frac{H(x)}{2}\) per ipotesi. Perci\`o abbiamo
+  Osserviamo che \(r_1\) è uguale a \(nH(\tilde{x})\), dove \(\tilde{x}\) è definito ponendo \(x_v=\frac{1}{2}\) per i \(v\) nella catena minore di qualche componente rossa di \(G\) ed \(1\) altrimenti. L'entropia di \(H(\tilde{x})\) è maggiorata dal contributo delle componenti rosse all'entropia del grafo, dunque da \(\frac{H(x)}{2}\) per ipotesi. Perciò abbiamo
   \[ g(P)\le 2nH(x) + 2r_1 = 2nH(x) + 2nH(\tilde{x}) \le 3nH(x)\text{,} \]
-  cio\`e la tesi.\qed 
+  cioè la tesi.\qed 
 \end{proof}
 \begin{algorithm}
   \caption{``Merge'' con informazione parziale} \label{merge} 
   \begin{algorithmic}
-    [1] \STATE calcola \(x\in\text{STAB}(G)\) che realizzi il minimo dell'entropia con l'Algoritmo di K\"orner e Marton \IF{il contributo delle componenti rosse ad \(H(x)\) supera quelle delle componenti blu} \STATE scambia le catene \(A\) e \(B\) \ENDIF \FOR{\(v\in A\cup B\)} \IF{\(v\) \`e un taglio} \STATE copia \(v\) alla sua posizione finale in \(C\) \ENDIF \ENDFOR \STATE invoca l'Algoritmo \ref{essentialmerge} \RETURN \(C\) 
+    [1] \STATE calcola \(x\in\text{STAB}(G)\) che realizzi il minimo dell'entropia con l'Algoritmo di K\"orner e Marton \IF{il contributo delle componenti rosse ad \(H(x)\) supera quelle delle componenti blu} \STATE scambia le catene \(A\) e \(B\) \ENDIF \FOR{\(v\in A\cup B\)} \IF{\(v\) è un taglio} \STATE copia \(v\) alla sua posizione finale in \(C\) \ENDIF \ENDFOR \STATE invoca l'Algoritmo \ref{essentialmerge} \RETURN \(C\) 
   \end{algorithmic}
 \end{algorithm}
 \begin{theorem}
   \label{mergetheorem} Sia \(P\) un insieme parzialmente ordinato ricoperto da due catene disgiunte \(A\) e \(B\) e sia \(G=\overline{G}(P)\) il grafo ad esso associato. Allora l'Algoritmo \ref{merge} fonde \(A\) e \(B\) impiegando al più \(6\log{e(P)}\) confronti. 
 \end{theorem}
 \begin{proof}
-  Sia \(g(P)\) il numero di confronti necessario a fondere \(A\) e \(B\). Il calcolo dell'entropia alla riga \(1\) non comporta alcun confronto. Nelle righe da \(2\) a \(9\) ci assicuriamo di essere nelle condizioni di applicare il Lemma \ref{finallemma}, e poter quindi dedurre che, eseguendo la riga \(10\), vengano compiuti al pi\`u \(3nH(x)\) confronti. Per il Teorema \ref{cfjjmtheorem} abbiamo allora
+  Sia \(g(P)\) il numero di confronti necessario a fondere \(A\) e \(B\). Il calcolo dell'entropia alla riga \(1\) non comporta alcun confronto. Nelle righe da \(2\) a \(9\) ci assicuriamo di essere nelle condizioni di applicare il Lemma \ref{finallemma}, e poter quindi dedurre che, eseguendo la riga \(10\), vengano compiuti al più \(3nH(x)\) confronti. Per il Teorema \ref{cfjjmtheorem} abbiamo allora
   \[g(P)\le 3nH(x)\le 6\log{e(P)},\]
-  cio\`e la tesi.\qed 
+  cioè la tesi.\qed 
 \end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Merge sort} Abbiamo definito ``naive'' l'Algoritmo \ref{naivemerge} poich\'e, ogni volta che effettua una fusione fra due catene, non fa uso dell'informazione contenuta nell'insieme parzialmente ordinato. In questa sezione dimostreremo che \`e sufficiente compiere con cautela solo l'ultima di queste fusioni per ottenere un algoritmo che ordini compiendo \(O(\log{e(P)})\) confronti. Per fare questo sfrutteremo l'Algoritmo \ref{merge} della precedente sezione. 
+\section{Merge sort} Abbiamo definito ``naive'' l'Algoritmo \ref{naivemerge} poiché, ogni volta che effettua una fusione fra due catene, non fa uso dell'informazione contenuta nell'insieme parzialmente ordinato. In questa sezione dimostreremo che è sufficiente compiere con cautela solo l'ultima di queste fusioni per ottenere un algoritmo che ordini compiendo \(O(\log{e(P)})\) confronti. Per fare questo sfrutteremo l'Algoritmo \ref{merge} della precedente sezione. 
 \begin{algorithm}
   \caption{``Merge sort'' con informazione parziale} \label{mergesort} 
   \begin{algorithmic}
