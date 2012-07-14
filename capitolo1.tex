@@ -10,11 +10,11 @@ Sia \(t\) un intero positivo fissato, e sia \(V^t\) l'insieme delle stringhe lun
 \begin{equation}
   \label{eq:probability}\mathbf{P}^t(\mathbf{v})=\prod_{j=1}^t p_{i_j}, 
 \end{equation}
-e al sottoinsieme \(U\subset V^{t}\) la probabilit\`a 
+e al sottoinsieme \(U\subset V^{t}\) la probabilità 
 \begin{equation}
   \mathbf{P}^t(U)=\sum_{\mathbf{v}\in U} {\mathbf{P}^t(\mathbf{v})}. \nonumber 
 \end{equation}
-Sia \(0<\varepsilon<1\) fissato e sia \(U\subset V^{t}\) tale che \(\mathbf{P}^t(U)>1-\varepsilon\). Una \emph{codifica propria} \`e una mappa dalle stringhe di \(V^t\) a un insieme di simboli, tale che stringhe distinguibili di \(U\), cio\`e distinguibili in almeno un elemento, vengono mandate in simboli distinti.\footnote{Trascuriamo parte delle stringhe, come tipico in teoria dei codici, perché ad esse non ci interessa assegnare un significato e dunque un simbolo.} È intuitivamente preferibile una codifica che faccia uso del minor numero possibile di simboli. Cerchiamo dunque di minimizzare la quantità
+Sia \(0<\varepsilon<1\) fissato e sia \(U\subset V^{t}\) tale che \(\mathbf{P}^t(U)>1-\varepsilon\). Una \emph{codifica propria} è una mappa dalle stringhe di \(V^t\) a un insieme di simboli, tale che stringhe distinguibili di \(U\), cioè distinguibili in almeno un elemento, vengono mandate in simboli distinti.\footnote{Trascuriamo parte delle stringhe, come tipico in teoria dei codici, perché ad esse non ci interessa assegnare un significato e dunque un simbolo.} È intuitivamente preferibile una codifica che faccia uso del minor numero possibile di simboli. Cerchiamo dunque di minimizzare la quantità
 \begin{equation}
   \frac{\log{M}}{t}, \nonumber 
 \end{equation}
@@ -103,7 +103,7 @@ Affinché la \eqref{eq:entropyone} risulti una buona definizione dovremmo dimost
 \begin{definition}
   Sia \(X\) una variabile aleatoria discreta di densità \(P=(p_1\dots p_n)\). Chiamiamo \emph{entropia di Shannon di \(X\)} la somma
   \[H(X)=\sum_{i=1}^n p_i \log{\frac{1}{p_i}}.\]
-  Con abuso di notazione scriveremo talvolta \(H(P)\) per indicare l'entropia di Shannon di una variabile aleatoria discreta di densit\`a \(P\). 
+  Con abuso di notazione scriveremo talvolta \(H(P)\) per indicare l'entropia di Shannon di una variabile aleatoria discreta di densità \(P\). 
 \end{definition}
 \begin{definition}
   Siano \(X\) ed \(Y\) due variabili aleatorie discrete. Chiamiamo \emph{mutua informazione di \(X\) ed \(Y\)} la quantità
@@ -117,7 +117,7 @@ Possiamo già enunciare la seconda definizione di entropia di grafo.
   \begin{equation}
     \label{eq:entropytwo} H(G,P)=\min_{\substack{X\sim P \\ X\in Y\in S(G)}} I(X;Y) 
   \end{equation}
-  dove \(S(G)\) \`e l'insieme degli insiemi indipendenti di \(G\).
+  dove \(S(G)\) è l'insieme degli insiemi indipendenti di \(G\).
 \end{definition}
 
 Affinché la \eqref{eq:entropytwo} risulti una buona definizione occorre dimostrare che tale minimo esiste. Rinviamo alla prossima sezione per una dimostrazione di questo fatto.
@@ -479,7 +479,7 @@ Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle pri
   \[\min_{\substack{X\in Y\in S(G) \\
       X\sim P}} I(X;Y)\le -\sum_{i=1}^n p_i\sum_{i\in J\in S(G)} R'(J\mid i)\log{\frac{Q^*(J)}{R'(J\mid i)}}.\]
   Scrivendo la disuguaglianza di concavità del logaritmo con pesi i \(Q^*(J)\) abbiamo
-  \[\sum_{J\in S(G)} Q^*(J)\log{\frac{(Q'(J))}{Q*(J)}} \le 0,\]
+  \[\sum_{J\in S(G)} Q^*(J)\log{\frac{(Q'(J))}{Q^*(J)}} \le 0,\]
   da cui, sostituendo la definizione di \(Q^*(J)\),
   \[-\sum_{i,J} p_i\ R'(J\mid i)\log(Q^*(J))\le -\sum_{i,J} p_i\ R'(J\mid i)\log(Q'(J)).\]
   Sostituendo e ricordando le definizioni di \(Q'(J)\) e \(R'(J\mid i)\) abbiamo la tesi: 
