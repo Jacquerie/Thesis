@@ -6,10 +6,10 @@
   Sia \(P=\left(V,\le_{P}\right)\) un insieme parzialmente ordinato. Diciamo che un ordine totale \(\le\) è una \emph{estensione lineare} di \(\le_{P}\) se \((\forall v_i, v_j\in V)\;v_i\le_{P} v_j\Rightarrow v_i\le v_j\). Denotiamo inoltre con \(e(P)\) il numero di estensioni lineari di \(P\). 
 \end{definition}
 \begin{definition}
-  Sia \(P=(V,\le_{P})\) un insieme parzialmente ordinato di cardinalità \(n\). Il \emph{problema dell'ordinamento con informazione parziale} consiste nel determinare una estensione lineare \(\le\) fissata ma ignota per mezzo di domande del tipo ``è vero che \(v_i\le v_j\) ?'', detti \emph{confronti}. 
+  Sia \(P=(V,\le_{P})\) un insieme parzialmente ordinato. Il \emph{problema dell'ordinamento con informazione parziale} consiste nel determinare una estensione lineare \(\le\) fissata ma ignota per mezzo di domande del tipo ``è vero che \(v_i\le v_j\) ?'', detti \emph{confronti}. 
 \end{definition}
 
-Tale problema fu originariamente posto da Fredman nel 1976 \cite{Fredman1976}. Sempre Fredman dimostrò l'esistenza di un algoritmo che lo risolva compiendo \(\log{e(P)} + 2n\) confronti, il quale tuttavia richiede tempo di esecuzione superpolinomiale. Nel 1984 Kahn e Saks dimostrarono l'esistenza di un algoritmo che richiede \(O(\log{e(P)})\) confronti \cite{Kahn1984}. Essi mostrarono infatti che esiste sempre un confronto tale che le estensioni lineari per cui la risposta sia affermativa siano una parte compresa fra \(3/11\) e \(8/11\) del totale.\footnote{Questo enunciato è un rilassamento della congettura \(1/3-2/3\), indipendentemente posta da Kislitsyn nel 1968 \cite{Kislitsyn1968}, da Fredman nel 1975 e da Linial nel 1984 \cite{Linial1984}.}
+Tale problema fu originariamente posto da Fredman nel 1976 \cite{Fredman1976}. Sempre Fredman dimostrò l'esistenza di un algoritmo che lo risolva compiendo \(\log{e(P)} + 2n\) confronti, dove \(n\) è la cardinalità dell'insieme parzialmente ordinato. TODO il quale tuttavia richiede tempo di esecuzione superpolinomiale. Nel 1984 Kahn e Saks dimostrarono l'esistenza di un algoritmo che richiede \(O(\log{e(P)})\) confronti \cite{Kahn1984}. Essi mostrarono infatti che esiste sempre un confronto tale che le estensioni lineari per cui la risposta sia affermativa siano una parte compresa fra \(3/11\) e \(8/11\) del totale.\footnote{Questo enunciato è un rilassamento della congettura \(1/3-2/3\), indipendentemente posta da Kislitsyn nel 1968 \cite{Kislitsyn1968}, da Fredman nel 1975 e da Linial nel 1984 \cite{Linial1984}.}
 
 È evidente che siano necessari \(\Omega(\log{e(P)})\) confronti: dobbiamo infatti discriminare fra \(e(P)\) possibili risultati, e ogni confronto ci fornisce esattamente un bit di informazione. Servono quindi \(\log{e(P)}\) bit, da cui il precedente limite inferiore.
 
@@ -117,9 +117,9 @@ Concludiamo questa sezione con una versione più precisa della stima superiore d
 \newpage
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Merge sort naive} 
+\section{Merge sort na\"ive} 
 \begin{algorithm}
-  \caption{``Merge sort naive'' con informazione parziale} \label{naivemerge} 
+  \caption{``Merge sort na\"ive'' con informazione parziale} \label{naivemerge} 
   \begin{algorithmic}
     [1] \STATE \, \COMMENT Preparazione \STATE trova una decomposizione golosa di \(P\) in catene \(C_1,\dots,C_k\) \STATE \(\mathcal{C}\leftarrow\left\{C_1,\dots,C_k\right\}\) \STATE \, \COMMENT Ordinamento \WHILE{\(|\mathcal{C}|>1\)} \STATE seleziona da \(\mathcal{C}\) due catene di lunghezza minima \(C\) e \(C'\) \STATE fondi \(C\) e \(C'\) in tempo lineare, ottenendo \(C''\) \STATE cancella \(C\) e \(C'\) da \(\mathcal{C}\), aggiungi \(C''\) \ENDWHILE \RETURN l'unica catena di \(\mathcal{C}\) 
   \end{algorithmic}
@@ -388,8 +388,8 @@ La fusione di catene verrà effettuata con l'Algoritmo di Hwang-Lin. Date due ca
   \item \(v\in A\) e \(K\) è rossa. Allora \(x_v\ge\frac{1}{2}\), quindi \(x'_v=x_v\). Pertanto \(\{v\}\) rimane libera in \(G'(x')\). 
   \item \(v\in B\) e \(K\) è rossa. Allora \(x_v\le\frac{1}{2}\), quindi \(x'_v=\frac{1}{2}+\frac{1}{2n}\). Poiché \(K\) è buona un vertice \(w\) che sia adiacente a \(v\) in \(G'\) apparteneva ad una componente connessa blu di \(G(x)\), dunque \(x_w<\frac{1}{2}\). Essendo \(x\) localmente ottimo deve essere \(x_w\le\frac{1}{2}-\frac{1}{n}\), e da questo segue 
     \begin{align}
-      x'_v+x'_w &= (\frac{1}{2} + \frac{1}{2n}) + x_w \le \nonumber \\
-      &\le (\frac{1}{2} + \frac{1}{2n}) + (\frac{1}{2} - \frac{1}{n}) \le \nonumber \\
+      x'_v+x'_w &= (\frac{1}{2} + \frac{1}{2n}) + x_w \nonumber \\
+      &\le (\frac{1}{2} + \frac{1}{2n}) + (\frac{1}{2} - \frac{1}{n}) \nonumber \\
       &\le 1\text{,} \nonumber 
     \end{align}
     cioè \(vw\) non è stretto in \(G'(x')\), quindi \(\{v\}\) è libera in \(G'(x')\). 
@@ -458,7 +458,7 @@ La fusione di catene verrà effettuata con l'Algoritmo di Hwang-Lin. Date due ca
 \end{proof}
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
-\section{Merge sort} Abbiamo definito ``naive'' l'Algoritmo \ref{naivemerge} poiché, ogni volta che effettua una fusione fra due catene, non fa uso dell'informazione contenuta nell'insieme parzialmente ordinato. In questa sezione dimostreremo che è sufficiente compiere con cautela solo l'ultima di queste fusioni per ottenere un algoritmo che ordini compiendo \(O(\log{e(P)})\) confronti. Per fare questo sfrutteremo l'Algoritmo \ref{merge} della precedente sezione. 
+\section{Merge sort} Abbiamo definito ``na\"ive'' l'Algoritmo \ref{naivemerge} poiché, ogni volta che effettua una fusione fra due catene, non fa uso dell'informazione contenuta nell'insieme parzialmente ordinato. In questa sezione dimostreremo che è sufficiente compiere con cautela solo l'ultima di queste fusioni per ottenere un algoritmo che ordini compiendo \(O(\log{e(P)})\) confronti. Per fare questo sfrutteremo l'Algoritmo \ref{merge} della precedente sezione. 
 \begin{algorithm}
   \caption{``Merge sort'' con informazione parziale} \label{mergesort} 
   \begin{algorithmic}
