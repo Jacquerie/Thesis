@@ -54,6 +54,8 @@
 \usepackage[style=numeric,maxcitenames=5,maxbibnames=5]{biblatex} 
 \bibliography{entropy}
 
+\usepackage{unipitesi}
+
 %\newif\ifpdf
 %\ifx\pdfoutput\undefined
 %\pdffalse % we are not running PDFLaTeX
@@ -103,6 +105,7 @@
 \maketitle
 
 \frontmatter
+  \tableofcontents
   \include{introduzione}
   
 \mainmatter
@@ -110,6 +113,8 @@
   \include{capitolo2}
   \include{capitolo3}
   \include{capitolo4}
+
+\backmatter
   \printbibliography
   \include{appendice}
 
