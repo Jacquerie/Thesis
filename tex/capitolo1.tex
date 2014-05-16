@@ -1,0 +1,493 @@
+\chapter{Tre definizioni equivalenti di entropia di grafo} 
+\section{Tre definizioni di entropia di grafo} 
+\subsection{Definizione in termini di Numero Cromatico} \label{codinganalogy} 
+\begin{definition}
+  Un \emph{grafo probabilistico} consiste in una coppia \((G,P)\), dove \(G=(V,E)\) è un grafo e \(P\) una distribuzione di probabilità discreta sui vertici, ovvero se \(|V|=n\) allora \(P\) è una \(n\)-upla \((p_1,\dots ,p_n)\) tale che \(p_1 + \dots + p_n = 1\). 
+\end{definition}
+Come accennato nell'introduzione, questo oggetto modella una sorgente priva di memoria e stazionaria che emette ad ogni istante discreto un simbolo \(v_i\) in un insieme finito \(V=\{v_1,\dots ,v_n\}\) con la corrispondente probabilità \(p_i\). Nel nostro caso supponiamo che due simboli \(v_i\) e \(v_j\) siano distinguibili se e solo se \((v_i, v_j) \in E\).
+
+Sia \(t\) un intero positivo fissato, e sia \(V^t\) l'insieme delle stringhe lunghe \(t\) di simboli in \(V\). Poiché la sorgente è priva di memoria, è naturale assegnare alla stringa \(\mathbf{v} = v_{i_1}\dots v_{i_t}\) la probabilità 
+\begin{equation}
+  \label{eq:probability}\mathbf{P}^t(\mathbf{v})=\prod_{j=1}^t p_{i_j}, 
+\end{equation}
+e al sottoinsieme \(U\subset V^{t}\) la probabilità 
+\begin{equation}
+  \mathbf{P}^t(U)=\sum_{\mathbf{v}\in U} {\mathbf{P}^t(\mathbf{v})}. \nonumber 
+\end{equation}
+Sia \(0<\varepsilon<1\) fissato e sia \(U\subset V^{t}\) tale che \(\mathbf{P}^t(U)>1-\varepsilon\). Una \emph{codifica propria} è una mappa dalle stringhe di \(V^t\) a un insieme di simboli, tale che stringhe distinguibili di \(U\), cioè distinguibili in almeno un elemento, vengono mandate in simboli distinti.\footnote{Trascuriamo parte delle stringhe, come tipico in teoria dei codici, perché ad esse non ci interessa assegnare un significato e dunque un simbolo.} È intuitivamente preferibile una codifica che faccia uso del minor numero possibile di simboli. Cerchiamo dunque di minimizzare la quantità
+\begin{equation}
+  \frac{\log{M}}{t}, \nonumber 
+\end{equation}
+dove \(M\) è la cardinalità dell'immagine secondo la codifica. Sia quindi \(R(G,P,t,\varepsilon)\) il minimo di tale frazione al variare delle codifiche. Il limite 
+\begin{equation}
+  \label{eq:entropyzero} \liminf_{\varepsilon \to 0} \liminf_{t \to \infty} R(G,P,t,\varepsilon) 
+\end{equation}
+misurerà quindi la complessità del grafo. La definizione \eqref{eq:entropyzero} non consente però il calcolo esplicito dell'entropia del grafo, perché la quantità \(R(G,P,t,\varepsilon)\) è un minimo al variare in un insieme che non sappiamo descrivere esplicitamente. Dobbiamo quindi semplificarla ulteriormente, e per fare questo sfrutteremo la struttura di grafo data. 
+\begin{definition}
+  Sia \(t\) un intero positivo e \(G\) un grafo. Chiamiamo \emph{\(t\)-esima potenza conormale} di \(G\) il grafo \(G^t=(V^t, E^t)\), dove \(V^t\) è il prodotto cartesiano di \(t\) copie di \(V\), mentre
+  \[E^t=\{(\mathbf{v},\mathbf{w})\ \vert\ \exists i\ (v_i, w_i)\in E\}.\]
+\end{definition}
+In altri termini fra due vertici \(\mathbf{v}\) e \(\mathbf{w}\) di \(G^t\) esiste un arco se e soltanto se le corrispondenti sequenze di lunghezza \(t\) sono distinguibili in almeno un elemento.
+\begin{example}
+  Sia \(L\) il grafo su tre vertici con due archi, rappresentato a sinistra nella Figura \ref{conormalexample}. Allora \(L^2\) è rappresentato a destra. 
+\begin{figure}
+  \centering 
+  \begin{tikzpicture}
+    [scale=2] 
+    \node (b) at (0,0) [vertex] {b}; 
+    \node (a) at (2,0) [vertex] {a}; 
+    \node (c) at (1,1.732) [vertex] {c};
+    
+    \draw (b.0) -- (a.180) [thick]; 
+    \draw (b.60) -- (c.240) [thick];
+    
+    \node (aa) at (5,0) [vertex] {aa}; 
+    \node (ab) at (6,0) [vertex] {ab}; 
+    \node (ac) at (7,0) [vertex] {ac};
+    
+    \node (ba) at (5,1) [vertex] {ba}; 
+    \node (bb) at (6,1) [vertex] {bb}; 
+    \node (bc) at (7,1) [vertex] {bc};
+    
+    \node (ca) at (5,2) [vertex] {ca}; 
+    \node (cb) at (6,2) [vertex] {cb}; 
+    \node (cc) at (7,2) [vertex] {cc};
+    
+    \draw (aa.0) -- (ab.180) [thick]; 
+    \draw (ab.0) -- (ac.180) [thick];      
+    \draw (ba.0) -- (bb.180) [thick]; 
+    \draw (bb.0) -- (bc.180) [thick];
+    \draw (ca.0) -- (cb.180) [thick]; 
+    \draw (cb.0) -- (cc.180) [thick];
+
+    \draw (aa.90) -- (ba.270) [thick]; 
+    \draw (ba.90) -- (ca.270) [thick];
+    \draw (ab.90) -- (bb.270) [thick]; 
+    \draw (bb.90) -- (cb.270) [thick];
+    \draw (ac.90) -- (bc.270) [thick]; 
+    \draw (bc.90) -- (cc.270) [thick];
+
+    \draw (aa.45) -- (bb.225) [thick]; 
+    \draw (ba.315) -- (ab.135) [thick];
+    \draw (ab.45) -- (bc.225) [thick]; 
+    \draw (bb.315) -- (ac.135) [thick];
+    \draw (ba.45) -- (cb.225) [thick]; 
+    \draw (ca.315) -- (bb.135) [thick];
+    \draw (bb.45) -- (cc.225) [thick]; 
+    \draw (cb.315) -- (bc.135) [thick];
+
+    \draw (aa.23) -- (bc.203) [thick];
+    \draw (aa.68) -- (cb.248) [thick];
+    \draw (ac.113) -- (cb.293) [thick];
+    \draw (ac.158) -- (ba.338) [thick];
+    \draw (ca.293) -- (ab.113) [thick];
+    \draw (ca.338) -- (bc.158) [thick];
+    \draw (cc.248) -- (ab.68) [thick];
+    \draw (cc.203) -- (ba.23) [thick];
+  \end{tikzpicture}
+  \caption{Esempio di potenza conormale per \(t=2\).}       \label{conormalexample} 
+\end{figure}
+\end{example}
+
+Osserviamo che la coppia \((G^t, \mathbf{P}^t)\), dove \(\mathbf{P}^t\) è definita da \eqref{eq:probability}, è ancora un grafo probabilistico. Volendo codificare propriamente un sottoinsieme \(U\subset V^{t}\) abbiamo bisogno di almeno tante parole quanti insiemi indipendenti servono per partizionare \(U\). Ma questo è proprio il numero cromatico del sottografo indotto da \(G^t\) su \(U\), che denotiamo \(\chi(G^t(U))\). Siamo ora pronti per enunciare la prima definizione di entropia di grafo. 
+\begin{definition}
+  Sia \((G,P)\) un grafo probabilistico. Chiamiamo \emph{entropia di grafo} il seguente limite: 
+  \begin{equation}
+    \label{eq:entropyone} H(G,P)=\lim_{t\to \infty} \min_{\substack{ U\subset V^t\\\mathbf{P}^t(U)>1-\varepsilon}} \frac{1}{t}\log{\chi(G^t(U))}. 
+  \end{equation}
+\end{definition}
+
+Affinché la \eqref{eq:entropyone} risulti una buona definizione dovremmo dimostrarne l'indipendenza da \(\varepsilon\). Salteremo questa verifica e dimostreremo direttamente nella prossima sezione l'equivalenza con una seconda definizione, la quale non dipende da \(\varepsilon\).
+
+\subsection{Definizione in termini di Mutua Informazione} 
+\begin{definition}
+  Sia \(X\) una variabile aleatoria discreta di densità \(P=(p_1\dots p_n)\). Chiamiamo \emph{entropia di Shannon di \(X\)} la somma
+  \[H(X)=\sum_{i=1}^n p_i \log{\frac{1}{p_i}}.\]
+  Con abuso di notazione scriveremo talvolta \(H(P)\) per indicare l'entropia di Shannon di una variabile aleatoria discreta di densità \(P\). 
+\end{definition}
+\begin{definition}
+  Siano \(X\) ed \(Y\) due variabili aleatorie discrete. Chiamiamo \emph{mutua informazione di \(X\) ed \(Y\)} la quantità
+  \[I(X;Y)=H(X)+H(Y)-H((X,Y))\]
+  dove \((X,Y)\) è la variabile aleatoria congiunta. 
+\end{definition}
+
+Possiamo già enunciare la seconda definizione di entropia di grafo. 
+\begin{definition}
+  Sia \((G,P)\) un grafo probabilistico. Chiamiamo \emph{entropia di grafo} il seguente minimo: 
+  \begin{equation}
+    \label{eq:entropytwo} H(G,P)=\min_{\substack{X\sim P \\ X\in Y\in S(G)}} I(X;Y) 
+  \end{equation}
+  dove \(S(G)\) è l'insieme degli insiemi indipendenti di \(G\).
+\end{definition}
+
+Affinché la \eqref{eq:entropytwo} risulti una buona definizione occorre dimostrare che tale minimo esiste. Rinviamo alla prossima sezione per una dimostrazione di questo fatto.
+
+\subsection{Definizione in termini di Politopo dei Vertici} 
+\begin{definition}
+  Sia \(G\) un grafo. Chiamiamo \emph{politopo dei vertici di \(G\)} l'involucro convesso dei vettori caratteristici degli insiemi indipendenti di \(G\) e lo denotiamo \(\text{STAB}(G)\). 
+\end{definition}
+\begin{example}
+  Sia \(G\) il grafo semplice non diretto su \(3\) vertici con \(2\) archi. A meno di isomorfismo possiamo supporre \(V=\{1,2,3\}\) ed \(E=\{(1,2),(1,3)\}\). Gli insiemi indipendenti di \(G\) sono allora \(\{\emptyset , \{1\}, \{2\}, \{3\}, \{2,3\}\}\). I loro vettori caratteristici sono quindi
+  \[ \left( 
+  \begin{array}{c}
+    0\\0\\0 
+  \end{array}
+  \right) , \left( 
+  \begin{array}{c}
+    1\\0\\0 
+  \end{array}
+  \right) , \left( 
+  \begin{array}{c}
+    0\\1\\0 
+  \end{array}
+  \right) , \left( 
+  \begin{array}{c}
+    0\\0\\1 
+  \end{array}
+  \right) , \left( 
+  \begin{array}{c}
+    0\\1\\1 
+  \end{array}
+  \right) \]
+  e il loro involucro convesso è rappresentato nella figura \ref{stabexample}. 
+  \begin{figure}
+    \centering 
+    \begin{tikzpicture}
+      \draw [->] (4,0,0) -- (5,0,0) node [right] {$x$}; 
+      \draw [->] (0,4,0) -- (0,5,0) node [above] {$y$}; 
+      \draw [->] (0,0,5) -- (0,0,6) node [below left] {$z$};
+      
+      \draw (4,0,0) -- (0,4,5) [thick]; 
+      \draw (0,4,0) -- (0,4,5) [thick]; 
+      \draw (0,0,5) -- (0,4,5) [thick]; 
+      \draw (4,0,0) -- (0,0,5) [thick]; 
+      \draw (4,0,0) -- (0,4,0) [thick]; 
+      \draw (0,0) -- (4,0,0) [thick, dashed]; 
+      \draw (0,0) -- (0,4,0) [thick, dashed]; 
+      \draw (0,0) -- (0,0,5) [thick, dashed]; 
+    \end{tikzpicture}
+    \caption{Esempio di \(\text{STAB}(G)\).} \label{stabexample} 
+  \end{figure}
+\end{example}
+
+Non abbiamo bisogno di altro per enunciare la terza definizione di entropia di grafo. 
+\begin{definition}
+  Sia \((G,P)\) un grafo probabilistico. Chiamiamo \emph{entropia di grafo} il seguente minimo: 
+  \begin{equation}
+    \label{eq:entropythree} H(G,P)=\min_{\substack{\mathbf{a}\in \text{STAB}(G) \\
+	\mathbf{a} > 0}} \sum_{i=1}^n p_i \log{\frac{1}{a_i}}. 
+  \end{equation}
+\end{definition}
+\begin{remark}
+  La funzione obiettivo di cui cerchiamo il minimo in \eqref{eq:entropythree} è convessa, tende a \(\infty\) quando una delle coordinate di \(\mathbf{a}\) tende a \(0\), tende monotonamente a \(-\infty\) lungo le rette per l'origine. Ne deriva che tale minimo esiste finito sul bordo di \(\text{STAB}(G)\) e che il vettore che lo realizza ha tutte le coordinate maggiori di \(0\). 
+\end{remark}
+
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ %
+\section{Equivalenza delle tre definizioni}
+
+\subsection{Numero Cromatico e Mutua Informazione}
+
+Sia \(G\) un grafo. Chiamiamo \emph{nucleo} un sottoinsieme dei vertici indipendente e massimale per l'inclusione. Avremo bisogno di due lemmi di teoria dei grafi e di una seconda nozione di potenza di grafo. 
+\begin{lemma}
+  \label{minkernellemma} Il minimo numero di nuclei necessari a ricoprire \(V\) coincide con il numero cromatico \(\chi(G)\). 
+\end{lemma}
+\begin{proof}
+  Sia \(\xi(G)\) il numero minimo di nuclei che ricoprono \(V\). Vogliamo mostrare che \(\xi(G)=\chi(G)\). È evidente che una colorazione può essere estesa ad un ricoprimento di nuclei: basta prendere per ogni colore un nucleo che lo contenga, dunque \(\xi(G)\le \chi(G)\). Dato invece un ricoprimento minimo osserviamo che ogni nucleo possiede almeno un vertice non contenuto in alcun altro nucleo. Se per assurdo così non fosse potremmo rimuovere dal ricoprimento un nucleo i cui elementi sono contenuti in un qualche altro nucleo, contraddicendo la minimalità. Assegnando gli elementi in comune fra più nuclei ad uno qualunque di essi estraiamo una colorazione dei vertici in \(\xi(G)\) colori, e quindi \(\chi(G)\le \xi(G)\).\qed 
+\end{proof}
+\begin{lemma}
+  \label{releqlemma} Sia \(G\) un grafo e siano \(v,w\) suoi vertici. Diciamo che
+  \[v\sim w\ \iff (v,w)\in E\quad\vee\quad v=w.\]
+  Allora \(\sim\) è una relazione d'equivalenza su \(V\) se e soltanto se \(G\) è unione di grafi completi a due a due disgiunti. 
+\end{lemma}
+\begin{proof}
+  Senza perdita di generalità possiamo supporre che \(G\) sia connesso: basta infatti dimostrare il risultato per ogni componente connessa. Supponiamo che \(G\) sia completo. \`E allora ovvio che \(\sim\) sia d'equivalenza. Supponiamo invece che \(\sim\) sia d'equivalenza e siano \(v,w\) vertici di \(G\). Poiché \(G\) è connesso esiste un cammino da \(v\) a \(w\), quindi applicando induttivamente la transitività otteniamo che \((v,w)\in E\).\qed 
+\end{proof}
+\begin{definition}
+  Sia \(t\) un intero positivo e \(G\) un grafo. Chiamiamo \emph{\(t\)-esima potenza normale} di \(G\) il grafo \(G_t=(V^t, E_t)\), dove \(V^t\) è il prodotto cartesiano di \(t\) copie di \(V\), mentre
+  \[E_t=\{(\mathbf{v},\mathbf{w})\ \vert\ \forall i\ v_i = w_i\vee (v_i, w_i)\in E,\ \exists i\ (v_i,w_i)\in E\}.\]
+\end{definition}
+In altri termini fra due vertici \(\mathbf{v}\) e \(\mathbf{w}\) di \(G_t\) esiste un arco se le corrispondenti sequenze di lunghezza \(t\) sono distinguibili in almeno un elemento, nei restanti sono distinguibili oppure coincidono.
+\begin{example}
+  Sia \(L\) il grafo su tre vertici con due archi, rappresentato a sinistra nella Figura \ref{normalexample}. Allora \(L_2\) è rappresentato a destra. 
+\begin{figure}
+  \centering 
+  \begin{tikzpicture}
+    [scale=2] 
+    \node (b) at (0,0) [vertex] {b}; 
+    \node (a) at (2,0) [vertex] {a}; 
+    \node (c) at (1,1.732) [vertex] {c};
+    
+    \draw (b.0) -- (a.180) [thick]; 
+    \draw (b.60) -- (c.240) [thick];
+    
+    \node (aa) at (5,0) [vertex] {aa}; 
+    \node (ab) at (6,0) [vertex] {ab}; 
+    \node (ac) at (7,0) [vertex] {ac};
+    
+    \node (ba) at (5,1) [vertex] {ba}; 
+    \node (bb) at (6,1) [vertex] {bb}; 
+    \node (bc) at (7,1) [vertex] {bc};
+    
+    \node (ca) at (5,2) [vertex] {ca}; 
+    \node (cb) at (6,2) [vertex] {cb}; 
+    \node (cc) at (7,2) [vertex] {cc};
+    
+    \draw (aa.0) -- (ab.180) [thick]; 
+    \draw (ab.0) -- (ac.180) [thick];
+      
+    \draw (ba.0) -- (bb.180) [thick]; 
+    \draw (bb.0) -- (bc.180) [thick];
+    
+    \draw (ca.0) -- (cb.180) [thick]; 
+    \draw (cb.0) -- (cc.180) [thick];
+    
+    \draw (aa.90) -- (ba.270) [thick]; 
+    \draw (ba.90) -- (ca.270) [thick];
+    
+    \draw (ab.90) -- (bb.270) [thick]; 
+    \draw (bb.90) -- (cb.270) [thick];
+    
+    \draw (ac.90) -- (bc.270) [thick]; 
+    \draw (bc.90) -- (cc.270) [thick];
+    
+    \draw (aa.45) -- (bb.225) [thick]; 
+    \draw (ba.315) -- (ab.135) [thick];
+    
+    \draw (ab.45) -- (bc.225) [thick]; 
+    \draw (bb.315) -- (ac.135) [thick];
+    
+    \draw (ba.45) -- (cb.225) [thick]; 
+    \draw (ca.315) -- (bb.135) [thick];
+    
+    \draw (bb.45) -- (cc.225) [thick]; 
+    \draw (cb.315) -- (bc.135) [thick]; 
+  \end{tikzpicture}
+  \caption{Esempio di potenza normale per \(t=2\).}       \label{normalexample} 
+\end{figure}
+\end{example}
+
+Osserviamo che la coppia \((G_t, \mathbf{P}^t)\), dove \(\mathbf{P}^t\) è definita da \eqref{eq:probability}, è un grafo probabilistico. Sia \(0<\varepsilon <1\), allora la quantità
+\[\chi_{n}(t,\varepsilon) = \min_{\substack{U\subset V^{t}\\\mathbf{P}^t(U)\ge 1-\varepsilon}} \chi(G_{t}(U))\]
+conta il numero minimo di parole che sono necessarie per dare una codifica propria di quasi tutte le sequenze di lunghezza \(t\), in analogia con quanto discusso nel paragrafo \ref{codinganalogy}.
+
+Enunciamo i seguenti due lemmi omettendone la dimostrazione \cite{Korner1971}. 
+\begin{lemma}
+  \label{boundslemma} Sia \(G\) unione di grafi completi a due a due disgiunti e \(\sim\) la relazione d'equivalenza definita nel Lemma \ref{releqlemma}. Denotiamo con \([v]\) la classe d'equivalenza di \(v\) per tale relazione e definiamo
+  \[H(P\mid \sim)=\sum_{v\in V} P(v)\log{\frac{P([v])}{P(v)}}.\]
+  Allora
+  \[2^{tH(P\mid \sim)-K\sqrt{N}}\le \chi_{n}(t,\varepsilon)\le 2^{tH(P\mid \sim)+K\sqrt{N}}\]
+  per una qualche costante \(K\) non dipendente da \(t\) o da \(P\), ma solo da \(|V|\) ed\ \(\varepsilon\). 
+\end{lemma}
+\begin{definition}
+  Siano \(V\) un insieme finito e \(P\) una densità discreta su di esso. Chiamiamo \emph{\(P\)-tipica} una sequenza \(\mathbf{v}\) di lunghezza \(t\) se \(\forall w\in V\) il numero \(N(w\vert \mathbf{v})\) di occorrenze di \(w\) nella sequenza soddisfa
+  \[\Big| N(w\vert\mathbf{v}) - tP(w)\Big|\le K\sqrt{tP(w)}\]
+  per una qualche costante \(K\). 
+\end{definition}
+
+In altre parole una sequenza è \(P\)-tipica se il numero di occorrenze di ogni simbolo \(w\) non differisce significativamente dal valore atteso \(tP(w)\). 
+\begin{lemma}
+  \label{ptyplemma} Sia \(T^t(P)\) l'insieme delle sequenze \(P\)-tipiche. Allora 
+  \begin{enumerate}[(i)]
+  \item Per ogni \(\lambda\) esiste \(K\) tale che \(\mathbf{P}^t\big(\overline{T^{t}(P)}\big)<\lambda\) per questo \(K\). 
+  \item Se \(\mathbf{v}\) è \(P\)-tipica allora \(2^{-tH(P)-C\sqrt{n}}\le \mathbf{P}^t(\mathbf{v})\le2^{-tH(P)+C\sqrt{n}}.\) 
+  \item La cardinalità di \(T^{t}(P)\) è limitata da \(2^{tH(P)-C\sqrt{n}}\le |T^{t}(P)|\le 2^{tH(P)+C\sqrt{n}}.\) 
+  \end{enumerate}
+  Inoltre la costante \(C\) non dipende da \(t\) o da \(P\), ma soltanto da \(|V|\) ed\ \(\lambda\). 
+\end{lemma}
+\begin{definition}
+  Sia \((G,P)\) un grafo probabilistico. Chiamiamo \emph{grafo dei nuclei} il grafo \(\Gamma\), in cui l'insieme dei vertici sono le coppie del tipo \((v,A)\) con \(A\) nucleo di \(G\) contenente \(v\) e due vertici \((v,A)\) e \((w,B)\) sono adiacenti se e soltanto se \(A\neq B\). 
+\end{definition}
+\begin{definition}
+  Sia \((G,P)\) un grafo probabilistico e sia \(\Gamma\) il suo grafo dei nuclei. Una distribuzione di probabilità \(Q\) su \(V(\Gamma)\) è detta \emph{distribuzione ausiliaria ammissibile} se soddisfa 
+  \begin{equation}
+    \label{eq:preimage} \sum_{A:\ v\in A} Q(v,A) = P(v). 
+  \end{equation}
+\end{definition}
+
+Se \(\mathcal{N}\) denota l'insieme dei nuclei di \(G\), una distribuzione ausiliaria ammissibile definisce su \(\mathcal{N}\) una distribuzione marginale \(R\) tramite 
+\begin{equation}
+  \label{eq:margdist} R(A)=\sum_{v:\ v\in A} Q(v,A). 
+\end{equation}
+
+Definendo le variabili aleatorie \(X\sim P\) e \(Y\sim R\) rispettivamente a valori in \(V\) e in \(\mathcal{N}\) abbiamo che 
+\begin{equation}
+  \label{eq:continuous} I(Q)=I(X;Y)=\sum_{v\in V}\sum_{A\in \mathcal{N}} Q(v,A)\log{\frac{Q(v,A)}{P(v)R(A)}}. 
+\end{equation}
+
+Sia \(\mathcal{A}\) l'insieme di tutte le distribuzioni ammissibili. Osserviamo che si tratta di un insieme chiuso e limitato nello spazio vettoriale delle funzioni di dominio \(V\times \mathcal{N}\). La limitatezza segue dall'essere un insieme di distribuzioni di probabilità, quindi a somma \(1\). La chiusura invece è conseguenza dell'essere preimmagine di un insieme finito di punti tramite le equazioni \eqref{eq:preimage} al variare di \(v\in V\). Inoltre tale spazio vettoriale è di dimensione finita essendo sia \(V\) sia \(\mathcal{N}\) finiti, per cui possiamo applicare il Teorema di Heine-Borel e concludere la compattezza di \(\mathcal{A}\). Ma allora la funzione continua \eqref{eq:continuous} possiede minimo per il Teorema di Weierstrass, da cui segue la buona definizione della seconda definizione di entropia di grafo. Nel seguito denoteremo con \(H(G,P)\) tale minimo.
+
+Abbiamo ora tutti gli strumenti necessari per dimostrare l'equivalenza delle prime due definizioni di entropia di grafo. Ne divideremo la dimostrazione nei successivi due teoremi, come in \cite{Korner1973}. 
+\begin{theorem}
+  [K\"orner] Sia \((G,P)\) un grafo probabilistico e sia \(\delta>0\). Per ogni \(0<\varepsilon<1\) e per \(t\) abbastanza grande abbiamo
+  \[\chi(t,\varepsilon)\ge 2^{t(H(G,P)-\delta)},\]
+  dove \(\chi(t, \varepsilon)\) è il minimo numero di parole necessarie ad una codifica che sia propria rispetto alla potenza conormale, tranne per un insieme di probabilità totale \(\varepsilon\). 
+\end{theorem}
+\begin{proof}
+  Per il Lemma \ref{ptyplemma} \((i)\), per ogni \(\lambda>0\) esiste \(K\) tale che, per \(t\) sufficientemente grande, \(\mathbf{P}^t(T^t(P))\ge 1-\lambda\). Per un tale \(t\) sia \(U_{t}\) un sottoinsieme di \(V^t\) tale che \(\mathbf{P}^t(U_{t})\ge 1-\varepsilon\). Ne deriva allora che 
+  \begin{equation}
+    \label{eq:epsilonlambda} 1-\varepsilon-\lambda\le \mathbf{P}^t(U_{t}\cap T^t(P)). 
+  \end{equation}
+  
+  Ogni insieme indipendente di una colorazione nel minimo numero di colori può essere espanso ad un nucleo, quindi possiamo scrivere 
+  \begin{equation}
+    \label{eq:expansion} \mathbf{P}^t(U_{t}\cap T^t(P))\le \chi(U_{t}\cap T^t(P))\cdot\max_{\mathbf{N}\in \mathcal{N}^t} \mathbf{P}^t(\mathbf{N}\cap T^t(P)) 
+  \end{equation}
+  dove abbiamo indicato con \(\mathcal{N}^t\) l'insieme dei nuclei di \(G^t\).
+	
+  Si tratta in effetti del prodotto cartesiano di \(t\) copie di \(\mathcal{N}\). Supponiamo infatti che \(\mathbf{N}\in \mathcal{N}^t\), e che \(p_i\) per \(i\in\{1\dots t\}\) siano le proiezioni di una sequenza di lunghezza \(t\) sull'\(i\)-esimo elemento. Supponiamo per assurdo che \(p_i(\mathcal{N}^t)\) non sia un nucleo. Allora deve esistere \(v\) non connesso ad alcun vertice di \(p_i(\mathcal{N}^t)\). Definiamo \(\mathbf{w}\) come un qualunque elemento di \(\mathbf{N}\) in cui abbiamo rimpiazzato l'\(i\)-esimo elemento con \(v\). Questo elemento non è adiacente ad alcun elemento del nucleo, contro la massimalità di \(\mathbf{N}\).
+  
+  Stimando con il massimo la probabilità di ogni \(\mathbf{v}\in \mathbf{N}\cap T^{t}(P)\) abbiamo la diseguaglianza 
+  \begin{equation}
+    \label{eq:maxmax} \max_{\mathbf{N}\in \mathcal{N}^t} \mathbf{P}^t(\mathbf{N}\cap T^t(P))\le \max_{\mathbf{v}\in T^{t}(P)} \mathbf{P}^t(\mathbf{v})\cdot \max_{\mathbf{N}\in \mathcal{N}^t} \big\vert \mathbf{N}\cap T^t(P) \big\vert. 
+  \end{equation}
+	
+  Sia ora \(\mathbf{N}\) tale che \(\big\vert \mathbf{N}\cap T^t(P) \big\vert\) sia massimo e sia \(\mathbf{v}\in T^t(P)\cap \mathcal{N}\). Siano \(w\in V\) e \(M\) un nucleo di \(G\) contenente \(w\), e sia \(N(w,M\mid \mathbf{v}, \mathbf{N})\) il numero di occorrenze di \((w,M)\) nella sequenza
+  \[(v_1, N_1)\ \dots\ (v_t, N_t),\]
+  inoltre denotiamo con \(N(w\mid \mathbf{v})\) il numero di occorrenze di \(w\) in \(\mathbf{v}\). Allora la sequenza \((\mathbf{v}, \mathbf{N})\) è \(Q\)-tipica per la distribuzione di probabilità su \(V(\Gamma)\) 
+  \begin{equation}
+    \label{eq:probdist} Q(w,M)=\frac{N(w,M\mid \mathbf{v}, \mathbf{N})}{N(w\mid \mathbf{v})}\cdot P(w). 
+  \end{equation}
+  Infatti, sfruttando la \(P\)-tipicità di \(\mathbf{v}\), abbiamo 
+  \begin{align}
+    \big\vert N(w,M\mid \mathbf{v}, \mathbf{N}) - tQ(w,M)\big\vert &= \bigg\vert \frac{tQ(w,M)}{tP(w)}\bigg\vert \cdot \big\vert N(w\mid \mathbf{v}) - tP(w)\big\vert \nonumber \\
+    &\le \bigg\vert \frac{Q(w,M)}{P(w)}\bigg\vert \cdot K\sqrt{tP(w)} = K\sqrt{t\cdot\frac{Q^{2}(w,M)}{P(w)}} \nonumber \\
+    &\le K\sqrt{tQ(w,M)}. \nonumber 
+  \end{align}
+  Sia poi \(R\) la distribuzione marginale su \(\mathcal{N}\) definita da
+  \[R(M)=\sum_{w:\ w\in M} Q(w,M).\]
+  Allora \(\mathbf{N}\) è \(P\)-tipica rispetto ad essa. Infatti abbiamo
+  \[N(M\mid \mathbf{N})-tR(M)=\sum_{w\in M} N(w,M\mid \mathbf{v},\mathbf{N})-tQ(w,M)\]
+  e, sfruttando la \(Q\)-tipicità di \((\mathbf{v}, \mathbf{N})\), vale
+  \[\big\vert N(M\mid \mathbf{N})-tR(M) \big\vert\le \sum_{w\in V} K\sqrt{tQ(w,M)}\le K_{1}\sqrt{t\sum_{w\in V} Q(w,M)}=K_{1}\sqrt{tR(M)},\]
+  dove la diseguaglianza centrale segue dalla concavità della radice.
+  
+  Nel corso della dimostrazione del Lemma \ref{boundslemma} viene dimostrato che una sequenza tipica di classi d'equivalenza per \(\sim\) contiene \(T\) sequenze \(P-\)tipiche di \(G^t\), dove \(T\) soddisfa
+  \[2^{tH(P\mid\sim)-C\sqrt{t}}\le T\le 2^{tH(P\mid\sim)+C\sqrt{t}}.\]
+  Osserviamo che \((v,A)\sim (w,B) \iff ((v,A),(w,B))\not\in E(\Gamma)\) è una relazione d'equivalenza, infatti è l'eguaglianza della seconda coordinata. Quindi per il Lemma \ref{releqlemma} il grafo complementare \(\overline{\Gamma}\) è unione di grafi completi a due a due disgiunti, e le sue componenti connesse sono i nuclei di \(G\). Osserviamo inoltre che la coppia \((\overline{\Gamma}, Q)\), dove \(Q\) è definita dall'equazione \eqref{eq:probdist}, è un grafo probabilistico. Perciò siamo nelle condizioni di applicare il Lemma \ref{boundslemma} e ottenere che il numero di sequenze \(Q-\)tipiche in ogni nucleo è compreso nell'intervallo 
+  \begin{equation}
+    \label{eq:bounds} \Big[2^{tH(Q\mid\sim)-K_{2}\sqrt{t}},\ 2^{tH(Q\mid\sim)+K_{2}\sqrt{t}}\Big]. 
+  \end{equation}
+  
+  Esistono al più \((t+1)^{\vert V(\Gamma)\vert}\) distribuzioni ausiliarie di probabilità del tipo \eqref{eq:probdist}, infatti ogni coppia \((w,M)\) comparirà da \(0\) a \(t\) volte in \((\mathbf{v},\mathbf{N})\). Ogni sequenza \(\mathbf{v}\) in \(\mathbf{N}\cap T^{t}(P)\) sarà \(Q\)-tipica per una probabilità del tipo \eqref{eq:probdist}; infatti dalla dimostrazione è evidente che basta che \(\mathbf{v}\) sia \(P\)-tipica e poi porre \(\mathbf{A}=\mathbf{N}\). Allora abbiamo la stima 
+  \begin{equation}
+    \label{eq:finalbound} \max_{\mathbf{N}\in \mathcal{N}^t} \big\vert \mathbf{N}\cap T^{t}(P) \big\vert \le (t+1)^{\vert V(\Gamma)\vert} \cdot 2^{t\max_{Q\in \mathcal{A}} H(Q\mid\sim)+K_1\sqrt{t}}, 
+  \end{equation}
+  perché le \(Q\) sono distribuzioni ammissibili nel senso della definizione \eqref{eq:preimage}, infatti
+  \[\sum_{M:\ w\in M} Q(w, M)=\frac{P(w)}{N(w\mid \mathbf{v})}\cdot \sum_{M:\ w\in M} N(w,M\mid \mathbf{v}, \mathbf{A})=P(w).\]
+  
+  Ricordando inoltre il Lemma \ref{ptyplemma} \((ii)\) abbiamo 
+  \begin{equation}
+    \label{eq:finalestimate} \max_{\mathbf{v}\in T^{t}(P)} \mathbf{P}^t(\mathbf{v}) \le 2^{-tH(P)-C\sqrt{t}}. 
+  \end{equation}
+  
+  Possiamo ora concludere. Dalle disuguaglianze \eqref{eq:epsilonlambda} \(-\) \eqref{eq:maxmax}, \eqref{eq:finalbound} e \eqref{eq:finalestimate} otteniamo
+  \[1-\varepsilon-\lambda \le \chi(U_{t}\cap T^t(P))\cdot \exp_{2}{\big[t(\max_{Q\in \mathcal{A}} H(Q\mid\sim)-H(P)) + K\sqrt{t}} + \vert V(\Gamma)\vert\cdot\log{(t+1)} \big]\]
+  ed equivalentemente
+  \[\chi(U_{t}\cap T^t(P))\ge (1-\varepsilon-\lambda)\cdot \exp_{2}{\big[t(H(P)-\max_{Q\in \mathcal{A}} H(Q\mid\sim)) - K\sqrt{t}} - \vert V(\Gamma)\vert\cdot\log{(t+1)} \big].\]
+  D'altra parte vale
+  \[H(P)-\max_{Q\in \mathcal{A}} H(Q\mid\sim) = \min_{Q\in \mathcal{A}} \sum_{v\in V}\sum_{A\in \mathcal{N}} Q(v,A)\log{\frac{Q(v,A)}{P(v)R(A)}}\]
+  e quindi riconosciamo in questo addendo \(H(G,P)\). Inoltre chiaramente \(\chi(U_{t})\ge\chi(U_{t}\cap T^{t}(P))\) intersecando gli insiemi indipendenti di una colorazione. Perciò possiamo scrivere
+  \[\chi(U_{t})\ge (1-\varepsilon-\lambda)\cdot \exp_{2}{\big[tH(G,P) - K\sqrt{t}} - \vert V(\Gamma)\vert\cdot\log{(t+1)} \big]\]
+  per ogni \(U_{t}\) che soddisfi \(\mathbf{P}^t(U_{t})\ge 1-\varepsilon\). Prendendo i logaritmi e dividendo per \(t\) abbiamo
+  \[\frac{1}{t}\log{\min_{\mathbf{P}^t(U_{t})\ge 1-\varepsilon}} \chi(U_{t})\ge \frac{1}{t}\log{(1-\varepsilon-\lambda)} + H(G,P) - \frac{K}{\sqrt{t}} - \frac{\vert V(\Gamma)\vert}{t}\cdot \log{(t+1)}\]
+  e quindi otteniamo la tesi
+  \[ \liminf_{t\to \infty} \frac{1}{t}\log\chi(t,\varepsilon)\ge H(G,P). \]
+  \qed 
+\end{proof}
+\begin{theorem}
+  [K\"orner] Sia \((G,P)\) un grafo probabilistico e sia \(\delta>0\). Per ogni \(0<\varepsilon<1\) e per \(t\) abbastanza grande esiste \(U_{t}\), sottografo di \(G^{t}\) tale che \(\mathbf{P}^t(U_{t})\ge 1-\varepsilon\) e inoltre
+  \[\chi(U_{t})\le 2^{t(H(G,P)+\delta)}.\]
+\end{theorem}
+\begin{proof}
+  Sia \(R\) la distribuzione marginale sull'insieme dei nuclei della \(Q\) che realizza il minimo \(H(G,P)\). Poiché i nuclei di \(G^t\) sono prodotti cartesiani di \(t\) nuclei di \(G\) possiamo definire una distribuzione di probabilità su \(\mathcal{N}^t\) tramite
+  \[R^{*}(\mathbf{A}) = \prod_{i=1}^t R(A_{i}).\]
+  Similmente sull'insieme delle successioni di \(M\) nuclei di \(G^t\) la formula
+  \[R_{M}^{*}(\mathbf{A}_{1},\dots\mathbf{A}_{M}) = \prod_{j=1}^M R^{*}(\mathbf{A}_j)\]
+  definisce una misura di probabilità sugli insiemi di \(M\) nuclei di \(G^t\). Denoteremo con \((\mathbf{A}_{1},\dots\mathbf{A}_{M})^{\mathsf{c}}\) l'insieme dei \(\mathbf{v}\in V^{t}\) non contenuti in alcun nucleo \(\mathbf{A}_{1},\dots\mathbf{A}_{M}\). Il nostro obiettivo è trovare un \(M\) per cui il valore atteso di \(\mathbf{P}^t\big((\mathbf{A}_{1},\dots\mathbf{A}_{M})^{\mathsf{c}}\big)\) sia minore di \(\varepsilon\), in modo che esista un sottografo \(U_{t}\) ricoperto dai nuclei \(\mathbf{A}_{1},\dots\mathbf{A}_{M}\) e tale che \(\mathbf{P}^t(U_{t})\ge 1-\varepsilon\).
+	
+  Osserviamo che vale
+  \[\sum_{\mathbf{A}_{1},\dots\mathbf{A}_{M}} R_{M}^{*}(\mathbf{A}_{1},\dots\mathbf{A}_{M})\cdot\mathbf{P}^t\big((\mathbf{A}_{1},\dots\mathbf{A}_{M})^{\mathsf{c}}\big)=\sum_{\mathbf{v}\in V^{t}} R_{M}^{*}(C_{\mathbf{v}})\cdot \mathbf{P}^t(\mathbf{v})\]
+  dove \(C_{\mathbf{v}}\) è l'evento \(\{\mathbf{v}\not\in \mathbf{A}_{1},\dots\mathbf{A}_{M}\}\). Possiamo spezzare il membro di destra in 
+  \begin{equation}
+    \label{eq:objective} \sum_{\mathbf{v}\in V^{t}} R_{M}^{*}(C_{\mathbf{v}})\cdot \mathbf{P}^t(\mathbf{v}) = \sum_{\mathbf{v}\in T^{t}(P)} R_{M}^{*}(C_{\mathbf{v}})\cdot \mathbf{P}^t(\mathbf{v})\ + \sum_{\mathbf{v}\in \overline{T^{t}(P)}} R_{M}^{*}(C_{\mathbf{v}})\cdot \mathbf{P}^t(\mathbf{v}) 
+  \end{equation}
+  ed osservare che il secondo termine è maggiorato da \(\mathbf{P}^t\Big(\overline{T^{t}(P)}\Big)\), che per il Lemma ~\ref{ptyplemma} \((i)\) possiamo supporre essere più piccolo di \(\varepsilon/2\). Per stimare il primo termine osserviamo innanzitutto che
+  \[\sum_{\mathbf{v}\in T^t(P)} R_M^{*}(C_{\mathbf{v}})\cdot \mathbf{P}^t(\mathbf{v})\le \mathbf{P}^t\big(T^t(P)\big)\cdot \max_{\mathbf{v}\in T^t(P)} R_{M}^{*}(C_{\mathbf{v}})\le \max_{\mathbf{v}\in T^t(P)} R_{M}^{*}(C_{\mathbf{v}})\]
+  maggiorando con il massimo e sfruttando il fatto che hanno massa totale \(1\). Possiamo maggiorare ulteriormente questo termine con
+  \[\max_{\mathbf{v}\in T^t(P)} R_{M}^{*}(C_{\mathbf{v}})\le \max_{\mathbf{v}\in T^t(P)} (1-R^{*}(\mathcal{N}_{\mathbf{v}}))^{M},\]
+  dove \(\mathcal{N}_{\mathbf{v}}\) indica l'insieme dei nuclei che contengono \(\mathbf{v}\), infatti ognuno degli \(M\) termini della produttoria \(R_{M}^{*}(C_{\mathbf{v}})\) è maggiorato da \(1-R^{*}(\mathcal{N}_{\mathbf{v}})\). Vogliamo ora stimare \(R^{*}(\mathcal{N}_{\mathbf{v}})\).
+  
+  Ricordiamo che \(Q\) è la distribuzione su \(V(\Gamma)\) che realizza il minimo \(H(G,P)\), e che se \(\mathbf{v}\) è \(P-\)tipica allora \((\mathbf{v}, \mathbf{N})\) è \(Q-\)tipica. Osserviamo che l'uguaglianza della prima coordinata è una relazione d'equivalenza su \(V(\Gamma)\), quindi applicando il Lemma \ref{boundslemma} il numero di sequenze \(Q-\)tipiche soddisfa 
+  \begin{equation}
+    \label{eq:qtypnumber} \left\vert T^{t}(Q)\right\vert \ge 2^{tH(Q\mid\sim)-K_{3}\sqrt{t}}. 
+  \end{equation}
+  In questo caso la classe d'equivalenza di un vertice \((v,A)\) è l'insieme delle coppie \((v,B)\) con \(B\) nucleo contenente \(v\). Per l'identità \eqref{eq:preimage} la probabilità totale di una classe d'equivalenza è \(P(v)\), quindi vale 
+  \begin{equation}
+    \label{eq:condentropy} H(Q\mid\sim)=\sum_{v\in V} \sum_{A\in \mathcal{N}} Q(v,A)\log{\frac{P(v)}{Q(v,A)}}. 
+  \end{equation}
+  Inoltre il Lemma \ref{ptyplemma} \((ii)\) implica che se \(\mathbf{A}\) è una sequenza di nuclei \(R-\)tipica allora 
+  \begin{equation}
+    \label{eq:rtypprob} R^{*}(\mathbf{A})\ge 2^{-tH(R)-K_{4}\sqrt{t}}. 
+  \end{equation}
+  Possiamo allora stimare \(R^{*}(\mathcal{N}_{\mathbf{v}})\) contando il numero di sequenze \(R-\)tipiche in esso. Queste saranno almeno tante quante le sequenze \(Q-\)tipiche di prima componente \(v\), che abbiamo stimato con \eqref{eq:qtypnumber}. Abbiamo stimato la probabilità di ciascuna in \eqref{eq:rtypprob}, per cui possiamo concludere che \(R^{*}(\mathcal{N}_{\mathbf{v}})\) sia maggiore del loro prodotto.
+	
+  Per quanto appena visto otteniamo 
+  \begin{equation}
+    \max_{\mathbf{v}\in T^t(P)} R_{M}^{*}(C_{\mathbf{v}})\le \left(1- \exp_{2}{\left[-tH(R) - K_{4}\sqrt{t} + tH(Q\mid\sim) - K_{3}\sqrt{t}\right]}\right)^{M} 
+  \end{equation}
+  Mettendo insieme le equazioni \eqref{eq:margdist} e \eqref{eq:condentropy} osserviamo che \(H(Q\mid\sim) - H(R)\) si semplifica in \(H(G,P)\). Possiamo quindi riscrivere
+  \[\max_{\mathbf{v}\in T^t(P)} R_{M}^{*}(C_{\mathbf{v}})\le \left(1- \exp_{2}{\left[-tH(G,P) - K_{5}\sqrt{t}\right]}\right)^{M}\]
+  e inoltre, con facili calcoli, ottenere
+  \[\max_{\mathbf{v}\in T^t(P)} R_{M}^{*}(C_{\mathbf{v}})\le \exp_{2}\left(-M\cdot 2^{-tH(G,P) - K_{5}\sqrt{t}}\right).\]
+  
+  Poniamo \(M=\left\lfloor 2^{tH(G,P)+\delta}\right\rfloor\). È immediato allora che il primo termine del membro di destra di \eqref{eq:objective} sia infinitesimo per \(t\to \infty\). Quindi per ogni \(\varepsilon\) e \(\delta\) esistono \(M\) nuclei che ricoprono un sottografo di probabilità almeno \(1-\varepsilon\). Ma per il Lemma \ref{minkernellemma} il numero cromatico di un grafo è uguale al minimo numero di nuclei che lo ricoprono, quindi per ogni \(\delta>0\)
+  \[\min_{\substack{U_{t}\subset V^{t}\\
+      \mathbf{P}^t(U_{t})\ge 1-\varepsilon}} \chi(U_{t})\le 2^{tH(G,P)+\delta}\]
+  o equivalentemente
+  \[\limsup_{t\to \infty}\frac{1}{t} \log{\chi({t,\varepsilon})}\le H(G,P).\]
+  \qed 
+\end{proof}
+
+\subsection{Mutua Informazione e Politopo dei Vertici} 
+\begin{theorem}
+  [Csiszár, K\"orner, Lovász, Marton, Simonyi] Sia \(G\) un grafo e siano \(S(G)\) i suoi insiemi indipendenti. Sia \(P\) una densità discreta sui vertici di \(G\). Allora abbiamo:
+  \[\min_{\substack{X\in Y\in S(G) \\
+      X\sim P}} I(X;Y)\ = \min_{\substack{\mathbf{a}\in \text{\text{STAB}}(G) \\
+      \mathbf{a}>0}} \sum_{i=1}^n p_i\log{\frac{1}{a_i}}\text{.}\]
+\end{theorem}
+\begin{proof}
+  Siano \(X,Y\) variabili aleatorie che realizzino il minimo del membro di sinistra, e sia \(Q\) la distribuzione marginale di \(Y\). Denotiamo con \(R\) la distribuzione condizionale di \(Y\) nota \(X\). Abbiamo
+  \[I(X;Y)=-\sum_{i=1}^n p_i\sum_{i\in J\in S(G)} R(J\mid i)\log{\frac{Q(J)}{R(J\mid i)}}\ge -\sum_{i=1}^n p_i \log{\sum_{i\in J\in S(G)}} Q(J)\]
+  utilizzando nel primo passaggio la definizione di mutua informazione, nel secondo la concavità del logaritmo. Poniamo
+  \[a_i=\sum_{i\in J\in S(G)} Q(J)\]
+  ed osserviamo che \(\mathbf{a}\) è contenuto in \(\text{STAB}(G)\) perché combinazione convessa di vettori delle caratteristiche degli insiemi indipendenti. Ne segue
+  \[\min_{\substack{X\in Y\in S(G) \\
+      X\sim P}} I(X;Y)\ \ge \min_{\substack{\mathbf{a}\in \text{STAB}(G) \\
+      \mathbf{a}>0}} \sum_{i=1}^n p_i\log{\frac{1}{a_i}}.\]
+  Sia allora \(\mathbf{a}\) che realizzi il minimo nel membro di destra. Similmente a prima possiamo porre
+  \[a_i=\sum_{i\in J\in S(G)} Q'(J)\]
+  poiché \(\mathbf{a}\in \text{STAB}(G)\). Possiamo pensare i \(Q'(J)\) sia come pesi di una combinazione convessa sia come una distribuzione di probabilità su \(S(G)\). Definiamo
+  \[R'(J\mid i)= 
+  \begin{cases}
+    \frac{Q'(J)}{a_i} & \text{se}\ i\in J\\
+    0 & \text{altrimenti} 
+  \end{cases}
+  \]
+  e, grazie ad essa, una nuova distribuzione su \(S(G)\) tramite la formula
+  \[Q^*(J)=\sum_{i=1}^n p_i\ R'(J\mid i).\]
+  Siano allora \(X\) di legge \(P\) ed \(Y\) di legge \(Q^*\). Per come le abbiamo definite esse soddisfano \(X\in Y\in S(G)\), quindi vale la diseguaglianza
+  \[\min_{\substack{X\in Y\in S(G) \\
+      X\sim P}} I(X;Y)\le -\sum_{i=1}^n p_i\sum_{i\in J\in S(G)} R'(J\mid i)\log{\frac{Q^*(J)}{R'(J\mid i)}}.\]
+  Scrivendo la disuguaglianza di concavità del logaritmo con pesi i \(Q^*(J)\) abbiamo
+  \[\sum_{J\in S(G)} Q^*(J)\log{\frac{(Q'(J))}{Q^*(J)}} \le 0,\]
+  da cui, sostituendo la definizione di \(Q^*(J)\),
+  \[-\sum_{i,J} p_i\ R'(J\mid i)\log(Q^*(J))\le -\sum_{i,J} p_i\ R'(J\mid i)\log(Q'(J)).\]
+  Sostituendo e ricordando le definizioni di \(Q'(J)\) e \(R'(J\mid i)\) abbiamo la tesi: 
+  \begin{align}
+    \min_{\substack{X\in Y\in S(G) \\
+	X\sim P}} I(X;Y)&\le -\sum_{i=1}^n p_i\sum_{i\in J\in S(G)} R'(J\mid i)\log{\frac{Q^*(J)}{R'(J\mid i)}} \nonumber \\
+    &\le -\sum_{i=1}^n p_i\sum_{i\in J\in S(G)} R'(J\mid i)\log{\frac{Q'(J)}{R'(J\mid i)}} \nonumber \\
+    &= -\sum_{i=1}^n p_i\log{a_i}\text{.} \nonumber 
+  \end{align}
+  \qed 
+\end{proof}

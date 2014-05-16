@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+
+\usepackage[italian]{babel}
+
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+
+% Setup for fullpage use
+\usepackage{fullpage}
+
+% More symbols
+\usepackage{amsmath} 
+\usepackage{amssymb} 
+\usepackage{latexsym} 
+\usepackage{enumerate}
+
+\newenvironment{definition}[1][Definizione.]{ 
+\begin{trivlist}
+	\item[\hskip \labelsep {\bfseries #1}]}{ 
+\end{trivlist}
+}
+
+% Pretty bibliography with biblatex
+\usepackage[style=numeric,maxcitenames=5,maxbibnames=5,backend=biber]{biblatex} 
+\bibliography{tesi}
+
+\begin{document}
+
+\section*{Entropia di grafo e il problema dell'ordinamento con informazione parziale}
+  
+Il concetto di entropia di una sorgente fu introdotto da Claude E. Shannon nel fondamentale articolo ``A Mathematical Theory of Communication'' \cite{Shannon1948}.
+\begin{definition}
+  Sia \(X\) una sorgente che a ogni istante discreto emetta un simbolo \(v_i\) nell'alfabeto finito \(\{v_1,\dots,v_n\}\) con probabilità \(p_i\) per \(1\le i\le n\). Chiamiamo \emph{entropia di \(X\)} la quantità
+  \[H(X)=\sum_{i=1}^n{p_i\log{\frac{1}{p_i}}}\text{.}\]
+\end{definition}
+
+Dalla sua introduzione sono state proposte più generalizzazioni, fra cui 
+ricordiamo in particolare l'entropia di Rényi \cite{Renyi1961}. In questa tesi 
+andremo a esporre un'ulteriore generalizzazione dovuta a Janos K\"orner, nota 
+come ``entropia di grafo'' \cite{Korner1973}. Infatti, oltre a generalizzare 
+la nozione di entropia di una sorgente, questa entropia consente di assegnare 
+a un grafo un numero che ne rappresenti la complessità. Ciò si ottiene 
+interpretando il grafo come rappresentante la relazione di distinguibilità dei 
+simboli emessi da una sorgente discreta. Più precisamente, detta \(X\) una 
+sorgente come nella precedente definizione, associamo a essa un grafo di 
+insieme dei vertici \(V=\{v_1,\dots,v_n\}\) e un arco \((v_i,v_j)\) ogni volta 
+che i simboli \(v_i\) e \(v_j\) sono distinguibili. Vorremmo quindi riottenere 
+la classica nozione di entropia di una sorgente nel caso di totale 
+distinguibilità, ovvero di grafo completo.
+
+La definizione rigorosa di entropia di grafo comporta alcune difficoltà 
+tecniche, la cui soluzione costituisce l'obiettivo del primo capitolo. Nel 
+secondo capitolo passeremo a esporre le principali proprietà dell'entropia di 
+grafo, fra cui la monotonia e una forma di subadditività. Enunceremo inoltre 
+l'interessante relazione con i grafi perfetti, cioè quei grafi per cui numero 
+cromatico e numero di cricca coincidono. Ne dedurremo alcuni lemmi sui grafi 
+di confrontabilità associati agli insiemi parzialmente ordinati. Questi 
+risultati verranno sfruttati nel terzo capitolo per descrivere algoritmi che 
+risolvano il problema dell'ordinamento con informazione parziale. Tale 
+problema consiste nel determinare adattivamente un ordine totale fissato ma 
+ignoto a partire da un insieme parzialmente ordinato. Jeff Kahn e Jeong H. Kim 
+nell'articolo ``Entropy and Sorting'' evidenziarono per primi il collegamento 
+esistente fra il problema dell'ordinamento con informazione parziale e 
+l'entropia del grafo a esso associato \cite{Kahn1995}. Essi esibirono inoltre 
+un algoritmo per la soluzione di tale problema in un numero asintoticamente 
+ottimo di confronti e per giunta polinomiale nelle operazioni elementari, ma 
+che a ogni passo fa uso del metodo dell'ellissoide. In un recente articolo 
+Jean Cardinal et al. hanno invece esibito tre algoritmi per la soluzione dello 
+stesso problema in un numero asintoticamente ottimo di confronti e comunque 
+polinomiali nelle operazioni elementari, senza però far uso del metodo 
+dell'ellissoide \cite{Cardinal2010}. Nel terzo capitolo verranno illustrati in 
+dettaglio questi ultimi tre algoritmi.
+
+Sull'entropia di grafo è stata scritta un'esauriente rassegna da G\'abor 
+Simonyi nel 1995 e una versione più aggiornata nel 2001 \cite{Simonyi1995}, 
+\cite{Simonyi2001}.
+
+\printbibliography
+
+\end{document}
